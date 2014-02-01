@@ -1,0 +1,154 @@
+<style>
+
+<!-- 
+designed by kyle (not a web developer). kyle {at} unsecu.re 
+ok to copy/steal
+-->
+
+html {
+	height: 100%;
+}
+
+body { 
+	margin-top: 0 !important; 
+	color:#555555;
+	font-family:'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	font-size:12px;
+	font-style:normal;
+	font-variant:normal;
+	font-weight:normal;
+	line-height:160%;
+	height: 100%;
+	
+}
+
+#pageWrapper { 
+	background-color: #333;
+	min-height: 100%;
+}
+
+.message {
+	#margin-bottom: 20px;
+	width: 960px;
+	border: none;
+	color: #CC0000;
+	padding: 10px;
+}
+
+
+.general {
+	background-color: #CC0000;
+	margin:0;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#header h1#logo-text {
+  color:#FFCC00;
+  font-family:'Trebuchet MS', Arial, sans-serif;
+  font-size:3.3em;
+  font-style:normal;
+  font-variant:normal;
+  font-weight:bolder;
+  letter-spacing:-2px;
+  line-height:normal;
+  margin:0;
+  padding:0;
+  text-transform:none;
+}
+
+#menu {
+	margin:0;
+	padding:0;
+	width: 1000px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#menu ul {
+	font-family:'Lucida Grande', Verdana, sans-serif;
+	font-size:13px;
+	font-style:normal;
+	font-variant:normal;
+	font-weight:bold;
+	margin: 0;
+	padding: 0;
+	list-style-image:initial;
+	list-style-position:initial;
+	list-style-type:none;
+	text-align: left;
+	background-color:#FFCC00;
+	padding:0 15px 0 0;
+}
+
+#menu ul li {
+	display: inline;
+	line-height:30px;
+}
+
+#menu ul li a {
+  color:#555;
+  padding:8px 10px;
+  text-decoration:none;
+}
+
+#menu ul li a:hover {
+  background-color:#EEE;
+  color:#555;
+}
+
+#main {
+	margin-right: auto;
+	margin-left: auto;
+	width: 960px; 
+	background-color: #FFF;
+	height: 100%;
+}
+
+#main h1 {
+  color:#88AC0B;
+  font-family:Verdana, 'Trebuchet MS', sans-serif;
+  font-size:100%;
+  font-style:normal;
+  font-variant:normal;
+  font-weight:bold;
+  line-height:normal;
+  margin-right:8px;
+  margin-top:10px;
+  padding:5px 0 0 25px;
+}
+
+#main p {
+	color:#555555;
+	font-family:'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	font-size:12px;
+	font-style:normal;
+	font-variant:normal;
+	font-weight:normal;
+	padding:0 0 0 25px;
+	width: 960px;
+	text-align: center;
+}
+
+#main table {
+	margin-right: auto;
+	margin-left: auto;
+}
+
+#main img {
+	display: inline;
+	float: left;
+	margin-right: 15px;
+}
+
+#main ul {
+	color:#555555;
+	font-family:'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	font-size:12px;
+	font-style:normal;
+	font-variant:normal;
+	font-weight:normal;
+	padding:0 0 0 25px;
+}
+
+</style>
