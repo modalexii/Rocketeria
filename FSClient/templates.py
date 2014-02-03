@@ -30,6 +30,8 @@ def get(blockname):
 				<input type="submit" class="button" style="background-color:#556B2F;" value="Act Like a Customer">
 			</form>
 			<br />
+			Resources:<br />
+			<a href="https://github.com/modalexii/Rocketeria">Browse Source</a>
 		</center>
 	</body>
 </html>
