@@ -1,0 +1,36 @@
+<html>
+	<head>
+		<title>My Lesson Schedule</title>
+		<link rel="stylesheet" type="text/css" media="all" href="/static/style/bo-master.css"/>
+		<link rel="icon" type="image/png" href="/static/style/favicon.png">
+	</head>
+	<body>
+		<div id="main">
+			<noscript> 
+				<h1>Oops</h1>
+				<h2>JavaScript is required to view this page.</h2>
+			</noscript>
+			<script type="text/javascript">
+				var submitted=false;
+			</script>
+			<iframe name="redirect_frame" id="redirect_frame" style="display:none;" onload="if(submitted) {window.location='/static/teacherview.html';}"></iframe>
+			<div id="logout">
+				<form action="https://app.fullslate.com/prelogin/logout" target="redirect_frame" onsubmit="submitted=true;">
+					<input type="submit" class="button" style="background-color:#CC0000;" value="LogOut">
+				</form>
+			</div>
+			<iframe id="fs-embed1" src="javascript:void(0);" frameborder="0"  
+			allowtransparency="true"></iframe> 
+			<script src="http://fullslate.com/api.js"> </script> 
+			<script> 
+				<!-- 
+				$fs.embed({ type: 'admin', features: [ 'nav' ], screens: [ 'schedule' ] }); 
+				if (document.getElementById('scr-login').style.visibility == 'visible') {
+					document.getElementById('logout').style.display = 'none';
+				}
+				--> 
+			</script> 
+
+		</div>
+	</body>
+</html>

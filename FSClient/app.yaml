@@ -1,0 +1,15 @@
+application: rockfsclient-dev
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: true
+
+libraries:
+- name: webapp2
+  version: latest
+
+handlers:
+- url: /static
+  static_dir: static
+- url: /*.*
+  script: main.application
