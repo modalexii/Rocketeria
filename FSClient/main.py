@@ -33,4 +33,4 @@ application = webapp2.WSGIApplication([
 	(r'/', DevRootHandler),
 	(r'/lessons', LessonsHandler),
 	webapp2.Route(r'/lessons/<:.*>', LessonsHandler),
-], debug=True)
+], debug=False)
