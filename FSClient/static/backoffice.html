@@ -16,7 +16,7 @@
 			<iframe name="redirect_frame" id="redirect_frame" style="display:none;" onload="if(submitted) {window.location='/static/backoffice.html';}"></iframe>
 			<div id="logout">
 				<form action="https://app.fullslate.com/prelogin/logout" target="redirect_frame" onsubmit="submitted=true;">
-					<input type="submit" class="button" style="background-color:#CC0000;" value="LogOut">
+					<input type="submit" class="button" value="&nbsp;Logout">
 				</form>
 			</div>
 			<iframe id="fs-embed1" src="javascript:void(0);" frameborder="0"  
@@ -24,13 +24,20 @@
 			<script src="http://fullslate.com/api.js"> </script> 
 			<script> 
 				<!-- 
-				$fs.embed({ type: 'admin', features: [ 'nav' ] }); 
-				if (document.getElementById('scr-login').style.visibility == 'visible') {
-					document.getElementById('logout').style.display = 'none';
+				$fs.embed({ type: 'admin', features: [ 'nav' ], screens: [ 'schedule' ] }); 
+				function hideElementIfLogin() {
+	    			if (window.location.hash == "#login") {
+	        			document.getElementById('logout').style.display = 'none';
+	    			}
+	    			else
+	    			{
+	    				document.getElementById('logout').style.display = 'inline';
+	    			}
 				}
+				hideElementIfLogin();
+				window.onhashchange = hideElementIfLogin;
 				--> 
 			</script> 
-
 		</div>
 	</body>
 </html>
