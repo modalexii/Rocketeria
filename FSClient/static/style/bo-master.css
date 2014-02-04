@@ -1,23 +1,29 @@
-#main {
-	margin: 0;
-}
-
-#main iframe {
+html,body {
 	width: 100%;
 	height: 100%;
-	margin: -8px;
+	margin: 0;
+	padding: 0;
+	background-color: #EFEFEF;
+}
+
+iframe {
+	width: 100%;
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
 }
 
 .button {
-	color: #FFFAF0;
-	font-weight: bold;
+	color: #333;
 	cursor: pointer;
-	margin-left: 8px;
+	margin-left: 10px;
+	margin-top: 0px;
+	padding-top: 35px;
+	background: url(/static/style/logout.png) no-repeat center; 
+	border: none;
 }
 
 #logout {
-	width: auto;
-	height: 20px;
-	margin: -8px;
 	position: fixed;
+	display: none;
 }
