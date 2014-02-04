@@ -24,15 +24,15 @@
 			<script src="http://fullslate.com/api.js"> </script> 
 			<script> 
 				<!-- 
-				$fs.embed({ type: 'admin', features: [ 'nav' ], screens: [ 'schedule' ] }); 
+				$fs.embed({ type: 'admin', features: [ 'nav' ], }); 
 				function hideElementIfLogin() {
-	    			if (window.location.hash == "#login") {
-	        			document.getElementById('logout').style.display = 'none';
-	    			}
-	    			else
-	    			{
-	    				document.getElementById('logout').style.display = 'inline';
-	    			}
+					if (window.location.hash == "#login") {
+						document.getElementById('logout').style.display = 'none';
+					}
+					else
+					{
+						document.getElementById('logout').style.display = 'inline';
+					}
 				}
 				hideElementIfLogin();
 				window.onhashchange = hideElementIfLogin;
