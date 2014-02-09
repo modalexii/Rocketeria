@@ -101,24 +101,14 @@ def get(blobname):
 				  '''
 	elif blobname == "myaccount":
 		webcode = ''' '''
-	elif blobname == "book":
-		webcode = '''
-		<div id="fs-wrap">
-			<div id="fs-embed-7PQgHZyw07"></div>
-			<script type="text/javascript">
-				(function() {(window.$fs || (window.$fs = [])).push([ "embed", {"root":"fs-embed-7PQgHZyw07","host":"rocketeria2.fullslate.com"} ]);if (!window.$fs._isFullSlate) { var fsscr = document.createElement("script"); fsscr.type = "text/javascript";fsscr.async = true; fsscr.src = ["http", (document.location.protocol == "https:" ? "s" : ""), "://rocketeria2.fullslate.com/api.js"].join("");var other = document.getElementsByTagName("script")[0]; other.parentNode.insertBefore(fsscr, other); }})();
-			</script>
-			<noscript>
-				<p><a title="Online scheduling" href="http://rocketeria2.fullslate.com/?view=bare">Schedule Lesson</a></p>
-			</noscript>
-		</div>
-				  '''
+
 	elif blobname == "lessons-main":
 		webcode = '''
 		<div id="left">
 			<p>Presumably, some content.</p>
 			<p>Content.</p>
 			<p>COOOOOOOOOOOOOOOOOOOOOOONTENT!!!!!!1!<p>
+			<a href="/lessons/book">BOOK A LESSON RIGHT NOW WOW!!!1!</a>
 		</div>
 		<div id="right">
 			<script type="text/javascript">
