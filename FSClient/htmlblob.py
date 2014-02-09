@@ -1,6 +1,8 @@
-def get(blockname):
+import jsblob
 
-	if blockname == "devroot":
+def get(blobname):
+
+	if blobname == "devroot":
 		webcode = '''
 <html>
 	<head>
@@ -36,13 +38,16 @@ def get(blockname):
 	</body>
 </html>
 			'''
-	elif blockname == "rocketeria-head":
+	elif blobname == "rocketeria-head":
 		webcode = '''
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html style="height: 100%;">
 <head>
 	<link rel="stylesheet" type="text/css" media="all" href="/static/style/rocketeria.css"/>
-	<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+	<link type="text/css" href="http://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript" src="http://fullslate.com/api.js"></script>
+	<script type="text/javascript" src="/static/bookingflow.js"></script>
 	<meta name="googlebot" content="noarchive" />
 	<title>Lessons :: Rocketeria</title>
 </head>
@@ -87,15 +92,16 @@ def get(blockname):
 	</div>	
 	<div id="main">	
 				  '''
-	elif blockname == "rocketeria-tail":
+
+	elif blobname == "rocketeria-tail":
 		webcode = '''
 		</div>
 	</body>
 </html>
 				  '''
-	elif blockname == "myaccount":
+	elif blobname == "myaccount":
 		webcode = ''' '''
-	elif blockname == "book":
+	elif blobname == "book":
 		webcode = '''
 		<div id="fs-wrap">
 			<div id="fs-embed-7PQgHZyw07"></div>
@@ -107,7 +113,7 @@ def get(blockname):
 			</noscript>
 		</div>
 				  '''
-	elif blockname == "lessons-main":
+	elif blobname == "lessons-main":
 		webcode = '''
 		<div id="left">
 			<p>Presumably, some content.</p>

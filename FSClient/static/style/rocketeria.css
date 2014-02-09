@@ -1,9 +1,8 @@
-<style>
-
-<!-- 
-designed by kyle (not a web developer). kyle {at} unsecu.re 
-ok to copy/steal
--->
+/*
+rocketeria.css
+a mock-up of Pat's design for new Rock.biz,
+applies to /lessons and linked children
+*/
 
 html {
 	height: 100%;
@@ -32,6 +31,10 @@ body {
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#000000',GradientType=1 ); /* IE6-8 */
 }
 
+#main {
+	min-height: 100%
+}
+
 .message {
 	width: 960px;
 	border: none;
@@ -54,9 +57,6 @@ body {
 }
 
 #menu {
-	#padding:0;
-	#margin-left: -15px;
-	#margin-right: -15px;
 	width: 990px;
 	margin-left: auto;
 	margin-right: auto;
@@ -70,8 +70,6 @@ body {
 	font-weight:bold;
 	margin: 0;
 	padding: 0;
-	#list-style-image:initial;
-	#list-style-position:initial;
 	list-style-type:none;
 	text-align: left;
 	background-color:#F7BD20;
@@ -109,17 +107,11 @@ body {
 #left {
 	width: 70%;
 	float:left;
-	#display: inline;
-	#margin-right: auto;
-	#margin-left: 0;
 }
 
 #right {
 	width: 30%;
 	float: right;
-	#display: inline;
-	#margin-left: auto;
-	#margin-right: 0;
 }
 
 #right iframe {
@@ -133,4 +125,72 @@ body {
 	margin-left: auto;
 }
 
-</style>
+#services {
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.service {
+	display: inline-block;
+	width: 24%;
+}
+
+.service img{
+	width: 60px;
+	height: 60px;
+	display: block;
+}
+
+.service input[type=radio] {
+	display:none; 
+	margin:10px;
+}
+
+.service input[type=radio] + label {
+	display:inline-block;
+	padding: 4px 20px;
+	border: 2px solid #F7BD20;
+	background-image: none;
+}
+
+.service input[type=radio]:checked + label { 
+	background-color:#F7BD20;
+	border: 2px solid #962320;
+}
+
+
+#employees {
+	display: none; /* displayed after service is selected */
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.employee {
+	display: none; /* displayed after service is selected */
+	width: 32%;
+}
+
+.employee img{
+	width: 150px;
+	height: 150px;
+	display: block;
+}
+
+.employee input[type=radio] {
+	display:none; 
+	margin:10px;
+}
+
+.employee input[type=radio] + label {
+	display:inline-block;
+	padding: 4px 20px;
+	border: 2px solid #F7BD20;
+	background-image: none;
+}
+
+.employee input[type=radio]:checked + label { 
+	background-color:#F7BD20;
+	border: 2px solid #962320;
+}
