@@ -32,7 +32,8 @@ body {
 }
 
 #main {
-	min-height: 100%
+	min-height: 100%;
+	margin-bottom: -20px;
 }
 
 .message {
@@ -40,7 +41,6 @@ body {
 	border: none;
 	color: #962320;
 }
-
 
 .general {
 	background-color: #962320;
@@ -96,7 +96,7 @@ body {
 	margin-left: auto;
 	width: 960px; 
 	background-color: #FFF;
-	height: 100%;
+	height: auto;
 	padding-top: 10px;
 }
 

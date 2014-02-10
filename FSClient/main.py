@@ -33,9 +33,13 @@ class LessonsHandler(webapp2.RequestHandler):
 			employeeobj = employeeobj.content
 			employeeobj = json.loads(employeeobj)
 			webcode += employees.gethtml(employeeobj)
+			webcode += htmlblob.get('emptycalendardiv')
 			#webcode += htmlblob.get("book")
 		elif "myaccount" in path:
 			webcode += htmlblob.get("myaccount")
+		elif "cal" in path:
+			import openings
+			webcode += openings.gethtml()
 		else:
 			webcode += htmlblob.get("lessons-main")
 		webcode += htmlblob.get("rocketeria-tail")
@@ -62,17 +66,17 @@ class JQReqHandler(webapp2.RequestHandler):
 			response = employeelist
 			print 'WHOOFFERS ', response
 		elif request == u'getopenings':
+			import openings
 			print "ok!!"
 			selserviceid = cgi.escape(self.request.get('serviceid'))
 			selemployeeid = cgi.escape(self.request.get('employeeid'))
 			if selemployeeid == 'Any':
 				selemployeeid = None
-			post = {'service' : selserviceid, 'employee' : selemployeeid, 'range' : 'search'}
+			post = {'service' : selserviceid, 'employee' : selemployeeid, 'after' : '20140210T000000Z', 'before' :'20140215T000000Z'}
 			post = json.dumps(post)
-			openings = fsapi.request('openings',post)
-			print post
-			print openings.content
-			response = openings.content
+			openingobj = fsapi.request('openings',post)
+			openingobj = json.loads(openingobj.content)
+			response = openings.gethtml(openingobj)
 		else:
 			response = "Unknown value for REQUEST"
 

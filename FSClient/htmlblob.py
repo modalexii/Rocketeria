@@ -44,10 +44,12 @@ def get(blobname):
 <html style="height: 100%;">
 <head>
 	<link rel="stylesheet" type="text/css" media="all" href="/static/style/rocketeria.css"/>
+	<link rel="stylesheet" type="text/css" media="all" href="/static/style/calendar.css"/>
 	<link type="text/css" href="http://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script type="text/javascript" src="http://fullslate.com/api.js"></script>
 	<script type="text/javascript" src="/static/bookingflow.js"></script>
+	<script type="text/javascript" src="/static/calendar.js"></script>
 	<meta name="googlebot" content="noarchive" />
 	<title>Lessons :: Rocketeria</title>
 </head>
@@ -99,6 +101,12 @@ def get(blobname):
 	</body>
 </html>
 				  '''
+	elif blobname == "emptycalendardiv":
+		webcode = '''
+				<div id="calendar">	
+					&nbsp;
+				</div>
+				'''
 	elif blobname == "myaccount":
 		webcode = ''' '''
 

@@ -1,0 +1,124 @@
+/**************************** CSS Reset  ****************************/
+/*html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent;}
+*/
+body{line-height:1;}
+ol,ul{list-style:none;}
+blockquote,q
+blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}
+a{color:#487697;text-decoration:none;}
+:focus{outline:0;}
+ins{text-decoration:none;}
+del{text-decoration:line-through;}
+table{border-collapse:collapse;border-spacing:0;}
+
+/**************************** General ****************************/
+a:hover{text-decoration:underline;}
+p{color:#333;font-size:11px;}
+/*body{font-family:Lucida Grande;background:#fff;}*/
+
+/**************************** Calendar ****************************/
+#calendar{
+	margin: 0 auto;
+	margin-right: auto;
+	margin-left: auto;
+	min-width: 100%;
+	text-align: center;
+  	position: relative;
+}
+#calheader{
+	width:100%;
+	height:30px;
+	text-align:center;
+}
+#calheader h2{
+	margin-top:15px;
+}
+#calcontainer{
+	min-width: 100%;
+	margin-bottom:10px;
+}
+#daysmonth{
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+	clear:both;
+}
+.dayweek{width:14%;float:left;border-left:1px solid #e5e5e5;}
+.dayweek p{display:block;text-align:center;padding:0 !important;line-height:31px;margin-bottom:5px;}
+.week{overflow:auto;border-top:1px solid #c2c2c2;}
+.weeku{overflow:auto;border-top:1px solid #c2c2c2;border-bottom:1px solid #e5e5e5;}
+.today{background:#fffcdf;border-left:1px solid #e5e5e5;}
+.today .daybar{background:#fffac1;}
+.day{width:14%;float:left;border-left:1px solid #e5e5e5;border-left:1px solid #e5e5e5;}
+.brn{}
+.bun{border-bottom:none;}
+.day:hover{background:#e9f0f8;cursor:pointer;}
+.daybar{width:100%;float:left;background:#f3f3f3;}
+.daybar p{padding:3px !important;margin-left:3px;margin-top:3px;margin-bottom:3px;font-size:10px;font-weight:400;color:#969696;}
+.dots{padding:0 !important;width:100%;height:35px;clear:both;}
+.dots ul{text-align:center;white-space:nowrap;overflow:hidden;}
+.dots ul li{margin-top:10px;display:inline-block;-webkit-border-radius:14px;width:12px;height:12px;}
+.big{width:14%;float:left;}
+.big:hover{background:#e9f0f8;cursor:pointer;}
+.big .dots{height:65px;}
+.big .dots li{margin-top:25px;}
+
+/**************************** Events when slide is open ****************************/
+.open{height:auto;width:100%;border-top:1px solid #e5e5e5;float:left;clear:both;}
+.open ul{padding:0 !important;}
+.open li{-webkit-border-radius:10px;margin-left:1px;margin-right:1px;}
+.open li p{margin: 2px;color:#ffffff;overflow:hidden;}
+.open li:hover{cursor:pointer;}
+
+/**************************** Colors ****************************/
+.none{background:#d6d6d6;}
+.none:hover{background:#dfdfdf;}
+.blue{background:#5496dd;}
+.blue:hover{background:#5c9ef9;}
+.red{background:#ff454b;}
+.red:hover{background:#ff6164;}
+.yellow{background:#ffac4d;}
+.yellow:hover{background:#ffbd6a;}
+.green{background:#94e354;}
+.green:hover{background:#98e857;}
+
+/**************************** Duration of an event ****************************/
+.l15m{height:5px;overflow:hidden;}
+.l30m{height:10px;overflow:hidden;}
+.l45m{height:15px;overflow:hidden;}
+.l1h{height:20px;overflow:hidden;}
+.l1h30m{height:30px;overflow:hidden;}
+.l2h{height:40px;overflow:hidden;}
+.l3h{height:60px;overflow:hidden;}
+.l4h{height:80px;overflow:hidden;}
+
+/**************************** Amount of hours between previous event or start of the day ****************************/
+.a1{margin-top:20px;}
+.a2{margin-top:40px;}
+.a3{margin-top:60px;}
+.a4{margin-top:80px;}
+.a5{margin-top:100px;}
+.a6{margin-top:120px;}
+.a7{margin-top:140px;}
+.a8{margin-top:160px;}
+.a9{margin-top:180px;}
+.a10{margin-top:200px;}
+.a11{margin-top:220px;}
+.a12{margin-top:240px;}
+.a13{margin-top:260px;}
+.a14{margin-top:280px;}
+.a15{margin-top:300px;}
+.a16{margin-top:320px;}
+.a17{margin-top:340px;}
+.a18{margin-top:360px;}
+.a19{margin-top:380px;}
+.a20{margin-top:400px;}
+.a21{margin-top:420px;}
+.a22{margin-top:440px;}
+.a23{margin-top:460px;}
+.a24{margin-top:480px;}
+
+/**************************** Legend ****************************/
+#calcat{float:right;margin-bottom:20px;margin-right:5px;border:1px solid #F7BD20}
+#calcat p{margin:4px;float:left;padding:0 !important;}
+.caldot{float:left;width:12px;height:12px;border-radius:20px;margin-left:10px;margin-top:4px;margin-right:8px;}
