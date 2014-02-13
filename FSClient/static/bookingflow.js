@@ -60,7 +60,7 @@ $(document).ready(function(){
 			}, function (data) {
 					$('#calendar').html(data);
 					initMenu();
-					$('#calendar').slideDown("slow"); // hide #calendar (does nothing on first run)
+					$('#calendar').slideDown("slow");
 					$("#calendar").animate({ scrollTop: $('#calendar')[0].scrollHeight}, 1000);
 			}, 'html')
 			.fail(function(xhr, textStatus, errorThrown) {
