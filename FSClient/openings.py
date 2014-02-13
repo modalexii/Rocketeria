@@ -9,41 +9,48 @@
 "tz":"EST",
 "success":true}
 '''
+import datetime
 
 def getweekdates():
 	'''returns dict of lists of date objects for this week and the next 2 weeks'''
-	import datetime
 	Y = int(datetime.datetime.today().strftime('%Y'))
 	m = int(datetime.datetime.today().strftime('%m'))
 	d = int(datetime.datetime.today().strftime('%d'))
 	today = datetime.date(Y, m, d)
 	#today = datetime.date(2014, 03, 1)
 	firstdate = 0 - int(today.strftime('%w'))
-	lastdate = 7 - int(today.strftime('%w'))
-	thisweek = [today + datetime.timedelta(days=i) for i in range(firstdate, lastdate)]
+	lastdate = 21 - int(today.strftime('%w'))
+	alldays = [today + datetime.timedelta(days=i) for i in range(firstdate, lastdate)]
 
-	for day in thisweek:
-		nextweek = ([day + datetime.timedelta(days=i+1) for i in range(firstdate, lastdate)])
+	#dates = {'current' : alldays[0:7], 'nextweek' : alldays[7:14], 'thirdweek' : alldays[14:21],}
+	dates = {}
+	dates['current'] = alldays[0:7]
+	dates['nextweek'] = alldays[7:14]
+	dates['thirdweek'] = alldays[14:21]
 
-	for day in nextweek:
-		thirdweek = ([day + datetime.timedelta(days=i+1) for i in range(firstdate, lastdate)])
-
-	dates = {'current' : thisweek, 'nextweek' : nextweek, 'thirdweek' : thirdweek,}
 	return dates
 
 def parseopenings(openingobj):
 	'''OPENINGOBJ is list of strings formatted YYYYMMDD[T]HHMMSS[Z] (literal 'T', 'Z')'''
+	import timezoneconvert
+	GMT = timezoneconvert.Zone(0,False,'GMT')
+	EST = timezoneconvert.Zone(-5,False,'EST')
 	openingsbyday = {}
 	for o in openingobj['openings']:
-		dow = o[6:8]
-		hhmm = "%s:%s" % (o[9:11], o[11:13])
+		# convert from 24-hr GMT string to 12-hr EST string
+		gmttimeobj = datetime.datetime.strptime(o, '%Y%m%dT%H%M%SZ')
+		gmttimeobj = gmttimeobj.replace(tzinfo=GMT)
+		esttimeobj = gmttimeobj.astimezone(EST)
+		dom = esttimeobj.strftime('%d')
+		hhmm = esttimeobj.strftime('%I:%M %p')
+
 		try:
-			openingsbyday[dow] += [hhmm]
+			openingsbyday[dom] += [hhmm]
 		except KeyError:
-			openingsbyday[dow] = [hhmm]
+			openingsbyday[dom] = [hhmm]
 	return openingsbyday
 
-def makeweek(dates, openingsbyday):
+def makeweek(dates, openingsbyday,today):
 	html = []
 	for week in dates:
 		openings = dates[week]
@@ -52,14 +59,18 @@ def makeweek(dates, openingsbyday):
 		html.append('''<div class="week">''')
 		for dow in xrange(0,7):
 			thisday = dates[week][dow].strftime('%d')
-			html.append('''	<div class="day">''')
-			html.append('''		<div class="daybar"><p>%s</p></div>''' % (thisday))
+			if thisday == today:
+				todayclass = " today" # leading space intentional
+			else:
+				todayclass = ""
+			html.append('''	<div class="day%s">''' % (todayclass))
+			html.append('''		<div class="daybar%s"><p>%s</p></div>''' % (todayclass, thisday))
 			html.append('''
 								<div class="dots">
 									<ul>''')
 			try: # make green if there are openings today
 				openingsbyday[thisday]
-				html.append('''			<li class="green"></li>''')
+				html.append('''			<li class="green">%s OPEN</li>''' % len(openingsbyday[thisday]))
 			except KeyError:
 				html.append('''			<li class="red"></li>''')
 			html.append('''
@@ -70,7 +81,7 @@ def makeweek(dates, openingsbyday):
 									<ul>''')
 			try: # list openings if there are any
 				for opening in openingsbyday[thisday]:
-					html.append('''			<li class="green"><p>%s</p></li> ''' % (opening))
+					html.append('''			<li class="green"><a href="#123"><p>%s</p></a></li> ''' % (opening))
 			except KeyError,TypeError:
 				pass
 			html.append('''
@@ -102,7 +113,8 @@ def gethtml(openingobj):
 							<div class="dayweek"><p>Saturday</p></div>
 						</div>
 						<div id="daysmonth">''')
-	html.append(makeweek(dates, openingsbyday))
+	today = datetime.datetime.today().strftime('%d')
+	html.append(makeweek(dates, openingsbyday, today))
 	html.append('''
 						</div> <!--/daysmonth-->
 						<div id="calcat">
