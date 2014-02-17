@@ -2,7 +2,8 @@
 def gethtml(serviceobj):
 	'''return html blob consisting of the template filled out for each element in SERVICEOBJ'''
 	html = []
-	html.append('''	<div id="services">''')
+	html.append('''<div id="services">''')
+	html.append('''<h2>Choose an Instrument</h2>''')
 	for s in serviceobj:
 		html.append('''	<div id="svc%s" class="service">'''				% (s['id']))
 		html.append('''		<input type="radio" id="%s" name="service" value="%s" />'''	% (s['id'],s['id']))

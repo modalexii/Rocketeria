@@ -1,44 +1,8 @@
 import jsblob
 
-def get(blobname):
+def get(blobname,data = None):
 
-	if blobname == "devroot":
-		webcode = '''
-<html>
-	<head>
-		<title>rockfsclient-dev</title>
-	</head>
-	<body>
-		<style type="text/css">
-			.button {
-				width: 300px;
-				height: auto;
-				color: #FFFAF0;
-				font-weight: bold;
-				font-size: 1.25em;
-				padding: 3px;
-				cursor: pointer;
-			}
-		</style>
-		<center>
-			<h2>Welcome to the FullSlate Client Development Server!</h2>
-			<form action="/static/teacherview.html">
-				<input type="submit" class="button" style="background-color:#008B8B;" value="Act Like a Teacher">
-			</form>
-			<form action="/static/backoffice.html">
-				<input type="submit" class="button" style="background-color:#FF8C00;" value="Act Like Counter Staff ">
-			</form>
-			<form action="/lessons">
-				<input type="submit" class="button" style="background-color:#556B2F;" value="Act Like a Customer">
-			</form>
-			<br />
-			Resources:<br />
-			<a href="https://github.com/modalexii/Rocketeria">Browse Source</a>
-		</center>
-	</body>
-</html>
-			'''
-	elif blobname == "rocketeria-head":
+	if blobname == "rocketeria-head":
 		webcode = '''
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html style="height: 100%;">
@@ -119,18 +83,56 @@ def get(blobname):
 			<a href="/lessons/book">BOOK A LESSON RIGHT NOW WOW!!!1!</a>
 		</div>
 		<div id="right">
-			<script type="text/javascript">
-				var submitted=false;
-			</script>
-			<iframe name="redirect_frame" id="redirect_frame" style="display:none;" onload="if(submitted) {window.location='/schedule.html';}"></iframe>
-			<h3>Already have an account?</h3>
-			<p>Sign in:<br />
-				<!--<iframe src="https://rocketeria2.fullslate.com/login"></iframe>-->
-				<form action="https://rocketeria2.fullslate.com/login" method="POST" target="redirect_frame" onsubmit="submitted=true;">
-					Email: <input name="email" type="text" /><br />
-					Pass: <input name="password" type="password" /> <br />
-					<input type="submit" name="login" value="Submit">
-				</form>
+			<div id="openidauth">
+				'''
+		from google.appengine.api import users
+		user = users.get_current_user()
+		if user:  # signed in already
+			signouturl = users.create_logout_url(dest_url='/lessons/loggedout')
+			webcode += '''Logged in as <em>%s</em>''' % (user.nickname())
+			webcode += '''
+			<a href="/studentarea">
+				<img src="/static/style/studentarea.png" />
+				Student Area
+			</a>
+			<br />
+					   '''
+			webcode += '''<a href="%s">''' % (signouturl)
+			webcode += '''
+							<img src="/static/style/logoff.png" />
+							Sign Out
+						</a>
+					   '''
+		else: # show authenticators
+			webcode += '''Sign in with:<br />'''
+			providers = [
+				('google','https://www.google.com/accounts/o8/id'),
+				('yahoo','yahoo.com'),
+				('aol','aol.com'),
+				('myopenid','myopenid.com'),
+				# add more here
+			]
+			for p in providers:
+				name = p[0]
+				uri = p[1]
+				url = users.create_login_url(dest_url='/studentarea',federated_identity=uri)
+				webcode += '''
+				<a class="openidauth" href="%s">
+					<img src="/static/style/openidimg/%s.png" />
+				</a>''' % (url,name)
+			webcode += '''</div>'''
+		webcode += '''
+			<br/><br/><br/>This is the right side of the page and it is super cool unlike that stupid left side.
+			<br/>This is the right side of the page and it is super cool unlike that stupid left side.
+			<br/>This is the right side of the page and it is super cool unlike that stupid left side.
+		</div>
+				  '''
+	elif blobname == "loggedout":
+		webcode = '''
+		<div id="loggedout">
+			<h2>You have been logged out of Rocketeria.</h2>
+			<h3>However, you are <b><u>still logged in</u></b> to the account you have linked with us!<h3>
+			<p>If you are using a computer that is shared with others, you should visit the website that you've linked with Rocketeria and sign out there, too. For example, if you log in to Rocketeria with Google, go to gmail.com and log out; if you signed in with Facebook, go to facebook.com and log out, and so on.</p>
 		</div>
 				  '''
 

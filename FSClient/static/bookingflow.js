@@ -12,7 +12,8 @@ $(document).ready(function(){
 			if ($(this).is(':checked')) {
 				$("#employees").slideUp("fast"); // hide #employees (does nothing on first run)
 				$("#calendar").slideUp("fast"); // hide #calendar (does nothing on first run)
-				$.post("/lessons/api", { // get data from server
+				$("input[name='employee']").prop('checked', false); // uncheck employee button
+				$.post("/api", { // get data from server
 					'request' : 'whooffers',
 					'serviceid' : $(this).val(),
 				})
@@ -53,7 +54,7 @@ $(document).ready(function(){
 			if (selectedservice.length > 0) {
 				service = selectedservice.val();
 			}
-			$.post("/lessons/api", {
+			$.post("/api", {
 				'request' : 'getopenings',
 				'serviceid' : service,
 				'employeeid' : employee,
@@ -61,7 +62,6 @@ $(document).ready(function(){
 					$('#calendar').html(data);
 					initMenu();
 					$('#calendar').slideDown("slow"); // hide #calendar (does nothing on first run)
-					$("#calendar").animate({ scrollTop: $('#calendar')[0].scrollHeight}, 1000);
 			}, 'html')
 			.fail(function(xhr, textStatus, errorThrown) {
 				alert(textStatus + ': ' + errorThrown);
