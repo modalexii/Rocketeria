@@ -61,7 +61,12 @@ $(document).ready(function(){
 			}, function (data) {
 					$('#calendar').html(data);
 					initMenu();
+<<<<<<< HEAD
 					$('#calendar').slideDown("slow"); // hide #calendar (does nothing on first run)
+=======
+					$('#calendar').slideDown("slow");
+					$("#calendar").animate({ scrollTop: $('#calendar')[0].scrollHeight}, 1000);
+>>>>>>> e90537e4204f20daf501068a2d973cba2d683d67
 			}, 'html')
 			.fail(function(xhr, textStatus, errorThrown) {
 				alert(textStatus + ': ' + errorThrown);
