@@ -13,11 +13,12 @@
 			var submitted=false;
 		</script>
 		<iframe name="redirect_frame" id="redirect_frame" style="display:none;" onload="if(submitted) {window.location='/static/teacherview.html';}"></iframe>
-		<div id="logout">
-			<form action="https://app.fullslate.com/prelogin/logout" target="redirect_frame" onsubmit="submitted=true;">
-				<input type="submit" class="button" value="&nbsp;Logout">
-			</form>
-		</div>
+		<div id="header">
+				<a class="motd" href="#" target="redirect_frame" onclick="submitted=true;">MOTD: None today :)</a>
+				<a class="logout" href="https://app.fullslate.com/prelogin/logout" target="redirect_frame" onclick="submitted=true;">SIGN OUT</a>
+				<a class="info" href="https://github.com/modalexii/Rocketeria/issues/milestones" target="_blank">MILESTONE: PoC (&#945;)</a>
+				<a class="info" href="https://appengine.google.com/dashboard?app_id=s~rockfsclient-dev" target="_blank">ENVIRONMENT: DEVELOPMENT</a>
+			</div>
 		<iframe id="fs-embed1" src="javascript:void(0);" frameborder="0"  
 		allowtransparency="true"></iframe> 
 		<script src="http://fullslate.com/api.js"> </script> 

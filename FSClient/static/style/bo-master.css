@@ -12,21 +12,55 @@ html,body {
 
 iframe {
 	width: 100%;
-	height: 100%;
-	margin: 0px;
-	padding: 0px;
-}
-
-.button {
-	color: #333;
-	cursor: pointer;
-	margin-left: 10px;
-	margin-top: 0px;
-	padding-top: 35px;
-	background: url(/static/style/logout.png) no-repeat center; 
+	height: 96%;
+	margin: 0;
+	padding: 0;
 	border: none;
 }
 
-#logout {
+#header {
 	display: none; /*changed to "inline" by JS */
+	height:4%;
+	text-align: center;
+}
+
+#header a {
+	font-family: sans-serif;
+	text-align: center;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	padding-left: 6px;
+	padding-right: 6px;
+	display: inline-block;
+	text-decoration: none;
+}
+
+#header a.logout {
+	color: #FFF;
+	width: auto;
+	background-color: #962320;
+	float: right;
+	border: 1px solid #F7BD20;
+}
+
+#header a.logout:hover {
+	background-color: #AD0F0A;
+}
+
+#header a.info {
+	color: #888;
+	width: auto;
+	float: right;
+	border: 1px solid #F7BD20;
+}
+
+#header a.info:hover {
+	background-color: #EEE;
+}
+
+#header a.motd {
+	color: #888;
+	width: auto;
+	float: left;
+	border: 1px solid #FFF;
 }
