@@ -10,15 +10,18 @@ class TestHandler(webapp2.RequestHandler):
 	def get(self):
 		'''handle HTTP GETs'''
 		self.response.headers['Content-Type'] = 'text/html'
-		webcode = '''<hmtl><body>'''
-		import fsapi,json,pprint
-		clientobj = fsapi.apirequest('clients')
-		clientobj = json.loads(clientobj.content)
-		pprint.pprint(clientobj)
+		self.response.write('''<hmtl><body>''')
+		import fsapi,json,pprint,clients
 
+		client = clients.fs_client_from('kylec.steely@gmail.com')
+		self.response.write('''<h2>CLIENT OBJECT:</h2>''')
+		self.response.write(client)
 
-		webcode += '''</body></html>'''
-		self.response.write(webcode)
+		allevents = clients.fs_events_attended(id=client['id'],start='2014-03-16',stop='2014-04-10')
+		self.response.write('''<h2>EVENT OBJECT:</h2>''')
+		self.response.write(allevents)
+
+		self.response.write('''</body></html>''')
 
 application = webapp2.WSGIApplication([
 	(r'/test', TestHandler),
