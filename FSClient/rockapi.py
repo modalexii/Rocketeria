@@ -29,7 +29,8 @@ class RockAPIHandler(webapp2.RequestHandler):
 			selemployeeid = cgi.escape(self.request.get('employeeid'))
 			if selemployeeid == 'Any':
 				selemployeeid = None
-			fsrange = datetimemgmt.getfsrange()
+			fsrange = datetimemgmt.getfsrange(offset=0,num_weeks=3)
+			print "++++++FSRANGE: ",fsrange
 			fsafter = fsrange[0]
 			fsbefore = fsrange[1]
 			post = {'service' : selserviceid, 'employee' : selemployeeid, 'after' : fsafter, 'before' :fsbefore}
