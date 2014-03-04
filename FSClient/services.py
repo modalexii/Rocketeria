@@ -6,7 +6,7 @@ def gethtml(serviceobj):
 	html.append('''<h2>Choose an Instrument</h2>''')
 	for s in serviceobj:
 		html.append('''	<div id="svc%s" class="service">'''				% (s['id']))
-		html.append('''		<input type="radio" id="%s" name="service" value="%s" />'''	% (s['id'],s['id']))
+		html.append('''		<input type="radio" id="%s" name="service" value="%s" />'''	% (s['id'],s['name']))
 		html.append('''		<label for="%s">'''							% (s['id']))
 		html.append('''			<img src="/static/style/%s.png" />'''	% (s['name']))
 		html.append('''			%s'''									% (s['name']))
@@ -14,7 +14,6 @@ def gethtml(serviceobj):
 		html.append('''		<p>%s</p>'''								% (s['description']))
 		html.append('''		<h3 class="pricetime">$%s/%s min</h3>'''	% (str(s['price']),str(s['time'] / 60)))
 		html.append('''	</div>''')
-	html.append('''	<hr />''')
 	html.append('''	</div>''')
 	return u'\n'.join(html)
 

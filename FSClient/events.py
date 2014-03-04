@@ -1,43 +1,42 @@
-import datetime
-import timezoneconvert
-
-GMT = timezoneconvert.Zone(0,False,'GMT')
-EST = timezoneconvert.Zone(-5,False,'EST')
-
-def parseopenings(openingobj):
+def is_reschedulable(today, event):
 	'''
-	Return dict formatted { day of month : [opening,opening,] } for each object in OPENINGOBJ.
-	OPENINGOBJ is list of strings formatted YYYYMMDDTHHMMSSZ, e.g. ['20140214T000000Z',]
+	Determine if an appointment is reschedulable
+	TODAY is datetime
+	EVENT is fullslate event object with normalized dates
+	Returns Bool
 	'''
+	try:
+		event['recurrence']
+	except KeyError: # not a recurring appointment
+		return False
+	if not event['occurrence_at'] >= today: # appointment is today or earlier
+		return False
+	return True
 
-	openingsbyday = {}
-
-	for o in openingobj['openings']:
-		# convert from 24-hr GMT string to 12-hr EST string
-		obj_in_GMT = datetime.datetime.strptime(o, '%Y%m%dT%H%M%SZ')
-		obj_in_GMT = obj_in_GMT.replace(tzinfo=GMT)
-		obj_in_EST = obj_in_GMT.astimezone(EST)
-
-		dom = obj_in_EST.strftime('%d')
-		hhmm = obj_in_EST.strftime('%I:%M %p')
-
-		try:
-			openingsbyday[dom] += [hhmm]
-		except KeyError: # first element
-			openingsbyday[dom] = [hhmm]
-
-	return openingsbyday
-
-def make_week(dates,openingsbyday,today):
+def makeweek(dates,openings_by_day,today,labels):
 	'''
 	Returns string of html to show one week in the calendar-like element.
-	DATES expected as returned from datetimemgmt.getweekdates()
-	OPENINGSBYDAY expected as returned by parseopenings()
-	TODAY expected as datetime.datetime.today().strftime('%d')
+	DATES expected as returned from ranges.getweekdates()
+	OPENINGS_BY_DAY expected as returned by openings.byday()
+	TODAY is a datetime object
+	LABLES - see makecal()
+
+	Todo: replave "openings' verbage with "events" where appropriate
 	'''
+
+	import fs_datetime
+
 	html = []
 	html.append('''<!-- ------------- week ------------- -->''')
 	html.append('''<div class="week">''')
+
+	# accepted values of LABLES - keep mirrored with makecal()
+	if labels == "new":
+		event = "Available &#187;"
+	elif labels == "existing":
+		event = "Booked"
+	else:
+		raise Exception("bad value passed to events.makeweek() lables: %s" % lables)
 
 	for dow in xrange(0,7):
 		thisday = dates[dow].strftime('%d')
@@ -47,7 +46,7 @@ def make_week(dates,openingsbyday,today):
 		else:
 			month_label = ""
 
-		if thisday == today:
+		if thisday == today.strftime('%d'):
 			todayclass = " today" # leading space intentional
 		else:
 			todayclass = ""
@@ -59,10 +58,9 @@ def make_week(dates,openingsbyday,today):
 								<ul>''')
 
 		try: # make green if there are openings today
-			openingsbyday[thisday]
-			html.append('''			<li class="green">%s AVAILABLE</li>''' % len(openingsbyday[thisday]))
+			html.append('''			<li class="green">%s %s</li>''' % (len(openings_by_day[thisday]),event))
 		except KeyError:
-			html.append('''			<li class="red"></li>''')
+			pass # this used to add li.red elements
 
 		html.append('''
 								</ul>
@@ -72,15 +70,54 @@ def make_week(dates,openingsbyday,today):
 								<ul>''')
 
 		try: # list openings if there are any
-			for opening in openingsbyday[thisday]:
-				html.append('''			<li class="green">''')
-				html.append('''				<input type="radio" id="%s" name="opening" value="%s" /> ''' % (opening,opening))
-				html.append('''				<label for="%s">'''			% (opening))
-				html.append('''					%s'''					% (opening))
-				html.append('''				</label>''')
-				html.append('''			</li>''')
-		except KeyError,TypeError:
-			pass
+			# important to catch all potential KeyError in this large try/except
+			for o in openings_by_day[thisday]:
+
+				try: # o is fullslate event
+					fs_at = fs_datetime.fullslateify(o["occurrence_at"],"%Y-%m-%dT%H:%M:%S-0500")
+					start_hhmm = o["occurrence_at"].strftime('%I:%M %p')
+					end_hhmm = o['to'].strftime('%I:%M %p')
+					'''
+					o["to"] may be an issue - it is the end time of the last appointment (if recurrence)
+					and it may not reflect the end time of the current appointment
+					'''
+				except TypeError: # o is datetime
+					fs_at = fs_datetime.fullslateify(o,"%Y-%m-%dT%H:%M:%S-0500")
+					start_hhmm = o.strftime('%I:%M %p')
+
+				html.append('''			<li class="green event">''')
+				try: # o is fullslate event
+					html.append('''				<input type="radio" id="%s" name="event" value="%s" /> ''' % (o['id'],o['id']))
+					html.append('''				<label for="%s">'''			% (o['id']))
+				except TypeError:  # o is datetime
+					html.append('''				<input type="radio" id="%s" name="opening" value="%s" /> ''' % (fs_at,fs_datetime.fullslateify(o,"%A %B %d, %I:%M %p")))
+					html.append('''				<label for="%s">'''			% start_hhmm)
+
+				try:
+					html.append('''					%s-%s'''				% (start_hhmm,end_hhmm))
+				except UnboundLocalError: # no end_hhmm - o is datetime
+					html.append('''					%s'''					% start_hhmm)
+
+				if labels == "existing":
+					html.append(''' Instructor: <br/>%s''' % o['employee']['name'])
+					html.append(''' <i>[debug: %s, %s]</i><br/>''' % (o['occurrence_at'].strftime("%Y-%m-%d"), o['attendees'][0]['name']))
+
+					if is_reschedulable(today,o):
+						# rechedulable implies reocurring
+						html.append(''' <img src="/static/style/repeat.png" class="repeat_ico" title="part of a series of appointments"/>''')
+						cancel_class = "reschedule"
+						button_val = "cancel/reschedule"
+					else:
+						cancel_class = "cancel"
+						button_val = "cancel"
+					html.append(''' 		<form class="cancel" action="#">''')
+					html.append(''' 			<input type="submit" class="%s" value="%s" />''' % (cancel_class,button_val))
+					html.append(''' 		</form>''')
+					html.append(''' 	</label>''')
+					html.append(''' </li>''')
+
+		except KeyError as e:
+			print '\nGOT KEY ERROR %s\n' % e
 
 		html.append('''
 								</ul>
@@ -92,17 +129,33 @@ def make_week(dates,openingsbyday,today):
 
 	return u'\n'.join(html)
 
-def make_cal(eventsobj,num_weeks=3):
-	'''Fill out the template for each item in EVENTSOBJ'''
-	'''EVENTSOBJ is list of strings formatted YYYYMMDD[T]HHMMSS[Z] (literal 'T', 'Z')'''
-	import datetimemgmt
+def makecal(eventlist,num_weeks,labels):
+	'''
+	Fill out the template for each item in EVENTLIST
+	EVENTLIST list of datetime objects
+	LABLES is a string that sets the wording used throughout
+	Returns a string (of html)
+	'''
+	import ranges,timezoneconvert,openings
+	from datetime import datetime
 
-	openingsbyday = parseopenings(openingobj)
+	# accepted values of LABLES - keep mirrored with makeweek()
+	if labels == "new":
+		heading = "Choose an Appointment"
+	elif labels == "existing":
+		heading = "Your Appointments"
+	else:
+		raise Exception("bad value passed to events.makecal() lables: %s" % lables)
+
+	openings_by_day = openings.byday_full(eventlist)
+
 	html = []
 	html.append('''				
 					<div id="calcontainer">
 						<div id="calheader">
-							<h2>Choose a Time</h2>
+				''')
+	html.append('''<h2>%s</h2>''' % heading)
+	html.append('''
 						</div>
 						<div id="daysweek">
 							<div class="dayweek brn"><p>Sunday</p></div>
@@ -114,20 +167,26 @@ def make_cal(eventsobj,num_weeks=3):
 							<div class="dayweek"><p>Saturday</p></div>
 						</div>
 						<div id="daysmonth">''')
-	today = datetime.datetime.today().replace(tzinfo=GMT).astimezone(EST).strftime('%d') # today %d in EST
+
+	# Get today's date/time in EST
+	EST = timezoneconvert.abbr2zone("EST")
+	GMT = EST = timezoneconvert.abbr2zone("GMT")
+	today = datetime.today()
+	print '\n\nTODAY %d %H:%M: ',today,'  \  ',today.strftime('%d %H:%M')
+	today = timezoneconvert.set(today,GMT)
+	today = timezoneconvert.convert(today,EST)
+	print '\n\nTODAY-CONVERTED %d %H:%M: ',today,'  \  ',today.strftime('%d %H:%M')
+
 	for w in xrange(num_weeks):
-		dates = datetimemgmt.getweekdates(offset=w)
-		htmlweek = make_week(dates, openingsbyday, today)
+		dates = ranges.getweekdates(offset=w)
+		htmlweek = makeweek(dates, openings_by_day, today, labels)
 		html.append(htmlweek)
 	html.append('''
 						</div> <!--/daysmonth-->
-					</div> <!--/calcontainer-->
-					<div id="calcat">
-						<!--<div class="caldot blue"></div><p>NEW CAT1</p>-->
-						<!--<div class="caldot yellow"></div><p>NET CAT2</p>-->
-						<div class="caldot green"></div><p>Times Available</p>
-						<div class="caldot red"></div><p>No Availability</p>
-					</div>						
+					</div> <!--/calcontainer-->				
 				</div>
+				<hr />
 			<p></p><!--pushes #main down-->	''')
 	return u'\n'.join(html)
+
+

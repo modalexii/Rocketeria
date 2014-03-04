@@ -14,12 +14,12 @@ class TestHandler(webapp2.RequestHandler):
 		import fsapi,json,pprint,clients
 
 		client = clients.fs_client_from('kylec.steely@gmail.com')
-		self.response.write('''<h2>CLIENT OBJECT:</h2>''')
-		self.response.write(client)
 
-		allevents = clients.fs_events_attended(id=client['id'],start='2014-03-16',stop='2014-04-10')
-		self.response.write('''<h2>EVENT OBJECT:</h2>''')
-		self.response.write(allevents)
+		post = {}
+
+		bookings = fsapi.apirequest('bookings',post)
+
+		self.response.write(bookings.content)
 
 		self.response.write('''</body></html>''')
 

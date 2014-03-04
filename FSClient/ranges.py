@@ -1,11 +1,8 @@
-'''MOVED TO RANGES.PY'''
-'''DELETE THIS'''
-
 import datetime
 
 def getweekdates(offset=0):
 	'''
-	returns list of 7 past or future datetime objects, 
+	returns list of 7 datetime objects representing a week, 
 	with the 0th element being a Sunday and the 6th being a Saturday,
 	starting OFFSET weeks from the current week.
 	'''
@@ -25,18 +22,15 @@ def getweekdates(offset=0):
 
 def getfsrange(offset=0,num_weeks=1):
 	'''
-	Return a tuple with the after and before days to send to FullSlate 
-	FSAFTER will be today + 7(OFFSET) + 1
-	FSBEFORE will be <this saturday> + 7(OFFSET) + 7(NUMWEEKS)
+	Return a dict with the after and before days to send to FullSlate 
+	FSAFTER will be today + 7(OFFSET)
+	FSBEFORE will be FSAFTER + 7(NUMWEEKS)
 	'''
-	dates = getweekdates(offset=offset)
 	offset_days = 7 * offset
-	num_days = 7 * num_weeks
 
-	earliest = datetime.datetime.today() + datetime.timedelta(days = offset_days + 1)
-	latest = dates[-1] + datetime.timedelta(days = offset_days + num_days)
+	print "\n\nOFFSET/NUM_WEEKS/OFFSET_DAYS FROM GETFSRANGE: ",offset,' / ',num_weeks,' / ',offset_days
 
-	fsafter = earliest.strftime('%Y%m%dT000000Z')
-	fsbefore = latest.strftime('%Y%m%dT115959Z')
+	fsafter = datetime.datetime.today() + datetime.timedelta(days=offset_days)
+	fsbefore = fsafter + datetime.timedelta(days = 7 * num_weeks, hours = -12)
 
-	return (fsafter,fsbefore)
+	return {"after" : fsafter, "before" : fsbefore}

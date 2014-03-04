@@ -6,7 +6,7 @@ def gethtml(employeeobj):
 	html.append('''<h2>Choose an Instructor</h2>''')
 	for e in employeeobj:
 		html.append('''	<div id="emp%s" class="employee">'''				% (e['id']))
-		html.append('''		<input type="radio" id="%s" name="employee" value="%s" />'''	% (e['id'],e['id']))
+		html.append('''		<input type="radio" id="%s" name="employee" value="%s %s" />'''	% (e['id'],e['first_name'],e['last_name']))
 		html.append('''		<label for="%s">'''							% (e['id']))
 		html.append('''			<img src="/static/style/%s%s.png" />'''	% (e['first_name'],e['last_name']))
 		html.append('''			%s %s'''								% (e['first_name'],e['last_name']))

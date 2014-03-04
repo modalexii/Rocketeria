@@ -161,6 +161,9 @@ body {
 	border: 2px solid #962320;
 }
 
+.reschedule-disabled input[type=submit] {
+
+}
 
 #employees {
 	display: none; /* displayed after service is selected */
@@ -205,19 +208,37 @@ body {
 }
 
 .open input[type=radio] + label {
-	display:inline-block;
+	display:block;
 	width:100%;
 	color: #FFF;
 	padding: 4px 20px;
 	background-image: none;
-	margin: 1px;
 	padding: 5px;
 	cursor:pointer;
-	background:#00D103;
 }
 
 .open input[type=radio]:checked + label { 
 	background-color:#F7BD20;
+}
+
+.open li {
+	border: 1px solid #FFF;
+}
+
+.open img {
+	width:12px;
+	height: 12px;
+	float:right;
+	display: inline;
+}
+
+.open form {
+	display: inline;
+}
+
+.open input[type=submit]{
+	cursor: pointer;
+	width:100%;
 }
 
 /* open id */
@@ -238,4 +259,33 @@ a.openidauth {
 	width: 80%;
 	margin-right: auto;
 	margin-left: auto;
+}
+
+#client_info {
+
+}
+
+#client_info input + label {
+	display: inline-block;
+	clear: right;
+}
+
+td.label {
+	text-align: right;
+}
+
+td.field {
+	text-align: left;
+}
+
+#book {
+	cursor: pointer;
+	font-family:'Roboto', cursive;
+	font-size:20px;
+	font-style:normal;
+	font-variant:normal;
+	font-weight:bold;
+	text-align: center;
+	padding: 10px;
+	background-color:#F7BD20;
 }

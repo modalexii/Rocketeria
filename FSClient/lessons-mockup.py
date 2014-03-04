@@ -18,15 +18,19 @@ class LessonsHandler(webapp2.RequestHandler):
 			import json
 			# pull services from FS
 			serviceobj = fsapi.apirequest('services')
+
 			serviceobj = serviceobj.content
 			serviceobj = json.loads(serviceobj)
-			webcode += services.gethtml(serviceobj)
+			
 			# pull & format employees from service object
 			employeeobj = fsapi.apirequest('employees')
 			employeeobj = employeeobj.content
 			employeeobj = json.loads(employeeobj)
-			webcode += employees.gethtml(employeeobj)
+			
+
 			webcode += htmlblob.get('emptycalendardiv')
+			webcode += employees.gethtml(employeeobj)
+			webcode += services.gethtml(serviceobj)
 			#webcode += htmlblob.get("book")
 		elif "loggedout" in path:
 			webcode += htmlblob.get("loggedout")

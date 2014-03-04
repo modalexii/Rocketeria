@@ -52,7 +52,7 @@ p{color:#333;font-size:11px;}
 .dayweek{width:137px;float:left;border-left:1px solid #e5e5e5;}
 .dayweek p{display:block;text-align:center;}
 .week{overflow:auto;border-top:1px solid #c2c2c2;}
-.weeku{overflow:auto;border-top:1px solid #c2c2c2;border-bottom:1px solid #e5e5e5;}
+.weeku{overflow:auto;border-top:1px solid #c2c2c2;border-.open input[type=radio] + labelbottom:1px solid #e5e5e5;}
 .today{background:#FCF7C0;border-left:1px solid #e5e5e5;}
 .today .daybar p{font-weight:bold;}
 .day{width:137px;float:left;border-left:1px solid #e5e5e5;border-left:1px solid #e5e5e5;}
@@ -87,44 +87,6 @@ p{color:#333;font-size:11px;}
 .yellow:hover{background:#ffbd6a;}
 .green{background:#00D103;}
 .green:hover{background:#F7BD20;}
-
-/**************************** Duration of an event ****************************/
-.l15m{height:5px;overflow:hidden;}
-.l30m{height:10px;overflow:hidden;}
-.l45m{height:15px;overflow:hidden;}
-.l1h{height:20px;overflow:hidden;}
-.l1h30m{height:30px;overflow:hidden;}
-.l2h{height:40px;overflow:hidden;}
-.l3h{height:60px;overflow:hidden;}
-.l4h{height:80px;overflow:hidden;}
-
-/**************************** Amount of hours between previous event or start of the day ****************************/
-.a1{margin-top:20px;}
-.a2{margin-top:40px;}
-.a3{margin-top:60px;}
-.a4{margin-top:80px;}
-.a5{margin-top:100px;}
-.a6{margin-top:120px;}
-.a7{margin-top:140px;}
-.a8{margin-top:160px;}
-.a9{margin-top:180px;}
-.a10{margin-top:200px;}
-.a11{margin-top:220px;}
-.a12{margin-top:240px;}
-.a13{margin-top:260px;}
-.a14{margin-top:280px;}
-.a15{margin-top:300px;}
-.a16{margin-top:320px;}
-.a17{margin-top:340px;}
-.a18{margin-top:360px;}
-.a19{margin-top:380px;}
-.a20{margin-top:400px;}
-.a21{margin-top:420px;}
-.a22{margin-top:440px;}
-.a23{margin-top:460px;}
-.a24{margin-top:480px;}
-
-/**************************** Legend ****************************/
-#calcat{float:right;margin-bottom:20px;margin-right:5px;border:1px solid #F7BD20}
-#calcat p{margin:4px;float:left;padding:0 !important;}
-.caldot{float:left;width:12px;height:12px;margin-left:10px;margin-top:4px;margin-right:8px;}
+.green input[type="radio"]:checked {
+	background:#F7BD20;
+}

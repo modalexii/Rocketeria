@@ -1,12 +1,10 @@
-function initMenu() {
-	var block = $(".day");
-		block.addClass("clickable");
-		block.hover(function(){window.status = $(this)}, function(){window.status = ""});
-	
-	$('.open').hide();
-	block.click(
-		function() {
-			$(this).parents('div:eq(0)').find('.open').slideToggle('fast');	
-		}
-	);}
+
+
+	//$('li').click( function(){
+	//	$('li.selected').removeClass('selected');
+	//	$(this).addClass('selected');
+	//	$(this).children("input[type=radio]").click();
+	//});
+
+
 //$(document).ready(function() {initMenu();});
