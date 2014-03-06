@@ -12,7 +12,7 @@ $(document).ready(function(){
 	function initMenu() {
 		var day = $('.day');
 		day.hover(function() {window.status = $(this)}, function() {window.status = ""});
-		
+
 		$('.open').hide();
 
 		day.click(
@@ -29,15 +29,7 @@ $(document).ready(function(){
 				open.stopPropagation();
 				selection['event_readable'] = fsevent_button.val(); // update selection
 				selection['event_fs_at'] = fsevent_button.attr('id'); // update selection
-				$.post("/api", {
-					'request' : 'book',
-				})
-				.done(function(data) {
-					load_confirmation(data);
-				})
-				.fail(function(textStatus, errorThrown) {
-					console.log(textStatus + ': ' + errorThrown); // temp debugging measure
-				});
+				load_confirmation();
 			}
 		);
 	}
@@ -78,15 +70,15 @@ $(document).ready(function(){
 		$("#employees").slideDown("slow");
 	}
 
-	function load_confirmation(data) {
-		$('#confirmation').html('<div id="event_info">' + data + '</div><div id="booknow">Book Now</div>');
-		var appt_details = "<h4>" + selection["service_name"] + " with " + selection["employee_name"] + "<br />" + selection["event_readable"] + "</h4>";
-		$('#event_info').html(appt_details); // add confirmation information
+	function load_confirmation() {
+		var appt_details = "<h3>" + selection["service_name"] + " with " + selection["employee_name"] + "<br />" + selection["event_readable"] + "</h3>";
+		$('#confirmation').html(
+			'<div id="event_info">' + appt_details + '</div><div id="booknow">Book Now</div><br /><br /><br /><hr />'
+			);
 		$("#confirmation").slideDown("slow");
 		//console.log(selection)
 
-		var submit = $('#book');
-		submit.click( function() {
+		$('#booknow').click( function() {
 			$.post("/api", {
 				'request' : 'book',
 				'at' : selection['event_fs_at'],
@@ -95,7 +87,57 @@ $(document).ready(function(){
 				'right_to_contact' : $('input[name="right_to_contact"]').attr('checked'),
 			})	
 			.done(function(data) {
-				alert(data);
+				// show whatever data was returned
+				load_client_info_form(data);
+			})
+			.fail(function(textStatus, errorThrown) {
+				console.log(textStatus + ': ' + errorThrown); // temp debugging measure
+			});
+			// hide everything thus far, in paralell with the POST request
+			$("#services").slideUp("fast");
+			$("#employees").slideUp("fast");
+			$("#calendar").slideUp("fast");
+			$("#confirmation").slideUp("fast");
+			$("#book_response").slideUp("fast");
+		});
+	}
+
+	function load_client_info_form(hmtl) {
+		var heading = '<h2>Almost there!</h2><p>Please fill out all required (*) fields:</p>'
+		var submit = '<div id="#submit">Submit</div>'
+		$('#book_response').html(heading + html)
+		$("#book_response").slideDown("slow");
+		$('#add_student').click function() {
+			$('#students').add('<tr><td class="label"><label for="student">Student Name</label></td><td class="field"><input type="text" class="student_name" value="%s" /></td></tr>')
+		}
+		$('#submit').click( function() {
+			$.post("/api", {
+				// this stuff is all still here, just hidden
+				'request' : 'book',
+				'at' : selection['event_fs_at'],
+				'service' : selection['service_fs_id'],
+				'employee' : selection['employee_fs_id'],
+				'right_to_contact' : $('input[name="right_to_contact"]').attr('checked'),
+				// new stuff from the form
+				children = []
+				$('.testimonial').each(function(i, obj) {
+					children.push(i);
+				});
+				'holder1_first' : $('input[name="holder1_first"]').val(),
+				'holder1_last' : $('input[name="holder1_last"]').val(),
+				'holder2_first' : $('input[name="holder2_first"]').val(),
+				'holder2_last' : $('input[name="holder2_last"]').val(),
+				'phone' : $('input[name="phone"]').val(),
+				'email' : $('input[name="email"]').val(),
+				'street1' : $('input[name="street1"]').val(),
+				'street2' : $('input[name="street2"]').val(),
+				'city' : $('input[name="city"]').val(),
+				'state' : $('input[name="state"]').val(),
+				'postal_code' : $('input[name="postal_code"]').val(),
+			})	
+			.done(function(data) {
+				console.log(data)
+				//redirect to authstudentarea?
 			})
 			.fail(function(textStatus, errorThrown) {
 				console.log(textStatus + ': ' + errorThrown); // temp debugging measure

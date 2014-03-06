@@ -100,33 +100,63 @@ class RockClient():
 		try:
 			self.first_name = fs_client["first_name"]
 		except KeyError:
-			pass
+			print "got no first name"
 		try:
 			self.last_name = fs_client["last_name"]
 		except KeyError:
+			print "got no last name"
+		try:
+			unpacked_names = unPack_family_names(self.first_name,self.last_name)
+		except AttributeError: # missing first or last name
 			pass
+		else:
+			self.holder1_first = unpacked_names["holder1_first"]
+			self.holder1_last = unpacked_names["holder1_last"]
+			self.holder2_first = unpacked_names["holder2_first"]
+			self.holder2_last = unpacked_names["holder2_last"]
+			self.children = unpacked_names["children"]
+
 		try:
 			self.emails = fs_client["emails"]
-			print "\n\nSELF.EMAILS FROM CLIENTS ROCKCLIENT __INIT__: ",self.emails
 		except KeyError:
-			print "\n\nGOT NO EMAILS FROM CLIENTS ROCKCLIENT __INIT__"
-			pass
+			print "got no emails"
+		else:
+			# singular primary email, needed for booking
+			for e in self.emails:
+				if e["position"] == 1:
+					self.email = e["address"]
 		try:
 			self.phone_numbers = fs_client["phone_numbers"]
 		except KeyError:
-			pass
+			print "got no phone numbers"
+		else:
+			# singular primary phone_number, needed for booking
+			for n in self.phone_numbers:
+				if n["position"] == 1:
+					self.phone_number = n["number"]
 		try:
 			self.addresses = fs_client["addresses"]
 		except KeyError:
-			pass
-		try:
-			self.right_to_contact = fs_client["right_to_contact"]
-		except KeyError:
-			pass
+			print "got no address"
+		else:
+			# singular primary address, needed for booking
+			# addresses is a list of dicts, but dicts have no key "position"
+			self.street1 = self.addresses[0]["street1"]
+			try:
+				self.street2 = self.addresses[0]["street2"]
+			except KeyError: # street2 not necessary
+				self.street2 = ""
+			self.city = self.addresses[0]["city"]
+			self.state = self.addresses[0]["state"]
+			self.postal_code = self.addresses[0]["postal_code"]
+		#try:
+		#	self.right_to_contact = fs_client["right_to_contact"]
+		#except KeyError:
+		#	print "got no right to contact"
 		try:
 			self.active = fs_client["active"] # nothing is done with this info yet
 		except KeyError:
-			pass
+			print "got no active"
 
 	def events_attended(self,fs_range):
 		'''
@@ -200,14 +230,20 @@ class RockClient():
 				print '\n\nCLIENTS() INFO_SOURCE = FULLSLATE!'
 			elif client_info_source == "post":
 				'''
+				Used to collect info from clients.
 				"Missing" attributes are empty strings and will not throw
-				exceptions is used later. User sees error from FullSlate if
-				something mandatory is omitted
+				exceptions if used later.
 				'''
+				"holder1_first" = post.get("holder1_first")
+				"holder1_last" = post.get("holder1_last")
+				"holder2_first" = post.get("holder2_first")
+				"holder2_last" = post.get("holder2_last")
+				"children" = post.get("children")
+				packed_names = fsPack_family_names(holder1_first,holder1_last,holder2_first,holder2_last,children)
 				fs_request.update({
 					# from web request
-					"first_name" : post.get("first_name"),
-					"last_name" : post.get("last_name"),
+					"first_name" : packed_names[0],
+					"last_name" : packed_names[1],
 					"street1" : post.get("street1"),
 					"street2" : post.get("street2"),
 					"city" : post.get("city"),
