@@ -141,7 +141,7 @@ def makecal(eventlist,num_weeks,labels):
 
 	# accepted values of LABLES - keep mirrored with makeweek()
 	if labels == "new":
-		heading = "Choose an Appointment"
+		heading = "Openings"
 	elif labels == "existing":
 		heading = "Your Appointments"
 	else:
