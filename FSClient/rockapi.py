@@ -91,16 +91,26 @@ class RockAPIHandler(webapp2.RequestHandler):
 			rock_client = clients.RockClient(fs_client,federated_user)
 
 			try:
-				print '\nTRIED INFO_SOURCE = FULLSLATE (ROCKAPI)'
+				print 'TRYING INFO_SOURCE = FULLSLATE (ROCKAPI)'
 				post = rock_client.booking_request(self.request, "fullslate") # try to fill out the request w/ info from FullSlate
-			except AttributeError: # important info missing
+				print 'INFO_SOURCE = FULLSLATE WORKED! POST LOOKS LIKE THIS: ',post
+			except AttributeError as e: # important info missing
+				print 'INFO_SOURCE = FULLSLATE FAILED, TRYING INFO_SOURCE = POST (ROCKAPI)', e
 				post = rock_client.booking_request(self.request, "post") # try to fill out the request w/ info from POST data
-				print '\nTRIED INFO_SOURCE = POST (ROCKAPI)'
+
 				# let it go through, missing info or not, and let FullSlate return error to client
-				response = htmlblob.get("client_info_form",rock_client)
-			else:
+				print 'POST NOW LOOKS LIKE THIS: ',post,'\nLETTING IT GO TO FULLSLATE...'
+				response = fsapi.apirequest('bookings',post)
+				if response.status_code != 200:
+					print 'FULLSLATE DIDNT LIKE THE BOOKING REQUEST: ',response.status_code,' ',response.content
+					print 'SENDING CLIENT INFO FORM...'
+					self.response.write(htmlblob.get("client_info_form",rock_client))
+					return
+					print "\n SHOULD NOT GET HERE! RETURN FAILED...\n"
+			finally:
+				print 'FINALLY, POST LOOKS LIKE THIS: ',post,'\nLETTING IT GO TO FULLSLATE...'
 				response = fsapi.apirequest('bookings',post) # change to redirect to pay/conf/thx
-				print '\nROCKAPI BOOK RESPONSE OBJECT: ',response
+				print '\nFULLSLATE RETURNED THE FOLLOWING BOOKING OBJECT: ',response.content
 
 		else:
 			response = "Unknown value for REQUEST"
