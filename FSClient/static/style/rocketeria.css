@@ -278,14 +278,29 @@ td.field {
 	text-align: left;
 }
 
-#book {
+#confirmatnion {
+	width: 100%
+}
+
+#event_info {
+	margin-left: auto;
+	margin-right: auto;
+	width: 300px;
+	text-align: center;
+}
+
+#booknow, #submit {
 	cursor: pointer;
 	font-family:'Roboto', cursive;
-	font-size:20px;
+	font-size:2em;
 	font-style:normal;
 	font-variant:normal;
 	font-weight:bold;
+	margin-left: auto;
+	margin-right: auto;
+	width: 300px;
 	text-align: center;
 	padding: 10px;
 	background-color:#F7BD20;
+	border: 2px solid #962320;
 }
