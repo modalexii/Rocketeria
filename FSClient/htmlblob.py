@@ -65,7 +65,9 @@ def get(blobname,data = None):
 				  '''
 	elif blobname == "emptycalendardiv":
 		webcode = '''
-				<div id="cconfirmation">
+				<div id="book_response">
+				</div>
+				<div id="confirmation">
 				</div>
 				<div id="calendar">
 				</div>
@@ -136,7 +138,7 @@ def get(blobname,data = None):
 				  '''
 	elif blobname == "client_info_form":
 		'''
-		Prefill what we know, set explanatory values for anything missing
+		Prefill what we know
 		DATA is an instance of clients.RockClient(client_info_source="fullslate")
 
 		THIS SHOULD BE MOVED SOMEWHERE ELSE - TOO MUCH PROCESSING FOR BLOB
@@ -151,6 +153,8 @@ def get(blobname,data = None):
 		except AttributeError:
 			first_name = last_name = ""
 		else:
+			# this unpacking is also done in clients.RockClient()
+			# this should be consolidated so we're not doing it twice
 			unpacked_names = clients.unPack_family_names((first_name,last_name))
 
 		try:
@@ -223,15 +227,15 @@ def get(blobname,data = None):
 		webcode.append('''		<tr colspan=2><td class="subitem">Contact & Billing</td></tr>''')
 		webcode.append('''		<tr>''')
 		webcode.append('''<!-- email field is just for show - it is ignored server-side-->''')
-		webcode.append('''		<td class="label"><label for="email">Email</label></td>''')
+		webcode.append('''		<td class="label"><label for="email">Email*</label></td>''')
 		webcode.append('''		<td class="field"><input type="text" class="primary_info" name="email" value="%s" disabled/></td>''' % email)
 		webcode.append('''		</tr>''')
 		webcode.append('''		<tr>''')
-		webcode.append('''		<td class="label"><label for="phone_number">Daytime Phone</label></td>''')
+		webcode.append('''		<td class="label"><label for="phone_number">Daytime Phone*</label></td>''')
 		webcode.append('''		<td class="field"><input type="text" class="primary_info" name="phone_number" value="%s" /></td>''' % phone_number)
 		webcode.append('''		</tr>''')
 		webcode.append('''		<tr>''')
-		webcode.append('''		<td class="label"><label for="street1">Street Addreess</label></td>''')
+		webcode.append('''		<td class="label"><label for="street1">Street Addreess*</label></td>''')
 		webcode.append('''		<td class="field"><input type="text" class="primary_info" name="street1" value="%s" /></td>''' % street1)
 		webcode.append('''		</tr>''')
 		webcode.append('''		<tr>''')
@@ -239,23 +243,26 @@ def get(blobname,data = None):
 		webcode.append('''		<td class="field"><input type="text" class="primary_info" name="street2" value="%s" /></td>''' % street2)
 		webcode.append('''		</tr>''')
 		webcode.append('''		<tr>''')
-		webcode.append('''		<td class="label"><label for="city">City</label></td>''')
+		webcode.append('''		<td class="label"><label for="city">City*</label></td>''')
 		webcode.append('''		<td class="field"><input type="text" class="primary_info" name="city" value="%s" /></td>''' % city)
 		webcode.append('''		</tr>''')
 		webcode.append('''		<tr>''')
-		webcode.append('''		<td class="label"><label for="state">State</label></td>''')
+		webcode.append('''		<td class="label"><label for="state">State*</label></td>''')
 		webcode.append('''		<td class="field"><input type="text" class="primary_info" name="state" value="%s" /></td>''' % state)
 		webcode.append('''		</tr>''')
 		webcode.append('''		<tr>''')
-		webcode.append('''		<td class="label"><label for="postal_code">Zip</label></td>''')
+		webcode.append('''		<td class="label"><label for="postal_code">Zip*</label></td>''')
 		webcode.append('''		<td class="field"><input type="text" class="primary_info" name="postal_code" value="%s" /></td>''' % postal_code)
 		webcode.append('''		</tr>''')
 		webcode.append('''		<tr colspan=2><td class="subitem">Student Names (if different from account holders above)</td></tr>''')
 		webcode.append('''		<div id="students">''')
 		for c in unpacked_names["children"]:
 			webcode.append('''		<tr>''')
-			webcode.append('''			<td class="label"><label for="student">Name</label></td>''')
+			webcode.append('''			<td class="label"><label for="student">Student Name</label></td>''')
 			webcode.append('''			<td class="field"><input type="text" class="student_name" value="%s" /></td>''' % c)
+			webcode.append('''		</tr>''')
+		webcode.append('''		<tr>''')
+		webcode.append('''		<div id="add_student">[+] Add Another Student</div>''')
 		webcode.append('''		</tr>''')
 		webcode.append('''		</div>''')
 		webcode.append('''		<tr>''')
