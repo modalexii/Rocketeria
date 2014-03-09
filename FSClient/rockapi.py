@@ -21,8 +21,8 @@ class RockAPIHandler(webapp2.RequestHandler):
 			servicesobj = json.loads(servicesobj)
 			employeelist = services.whooffers(selservice,servicesobj)
 
-			response = employeelist
-			print 'WHOOFFERS ', response
+			self.response.write(employeelist)
+
 		elif request == u'getopenings':
 			import openings,ranges,fs_datetime
 
@@ -50,7 +50,7 @@ class RockAPIHandler(webapp2.RequestHandler):
 				rock_openings.append(fs_datetime.normalize(o,"%Y%m%dT%H%M%SZ","GMT","EST"))
 
 			#print "ROCKOPENINGS  FROM ROCKAPI: ",rock_openings
-			response = events.makecal(rock_openings,3,"new")
+			self.response.write(events.makecal(rock_openings,3,"new"))
 		elif request == u"client_form":
 			'''
 			'''
@@ -72,7 +72,7 @@ class RockAPIHandler(webapp2.RequestHandler):
 
 			webcode = htmlblob.get("client_info_form",data)
 
-			response = webcode
+			self.response.write(webcode)
 		elif request == 'book':
 			'''
 			Confirm logged in, confirm we have all necessary info, 
@@ -80,6 +80,8 @@ class RockAPIHandler(webapp2.RequestHandler):
 			'''
 			from google.appengine.api import users
 			import fsapi,clients,htmlblob
+
+			# headers set below as we figure out what exactly we're returning
 
 			federated_user = users.get_current_user()
 
@@ -99,24 +101,41 @@ class RockAPIHandler(webapp2.RequestHandler):
 				post = rock_client.booking_request(self.request, "post") # try to fill out the request w/ info from POST data
 
 				# let it go through, missing info or not, and let FullSlate return error to client
-				print 'POST NOW LOOKS LIKE THIS: ',post,'\nLETTING IT GO TO FULLSLATE...'
-				response = fsapi.apirequest('bookings',post)
-				if response.status_code != 200:
-					print 'FULLSLATE DIDNT LIKE THE BOOKING REQUEST: ',response.status_code,' ',response.content
+				booking_response = fsapi.apirequest('bookings',post)
+				if booking_response.status_code != 200: 
+					print 'FULLSLATE DIDNT LIKE THE BOOKING REQUEST: ',booking_response.status_code,' ',booking_response.content
 					print 'SENDING CLIENT INFO FORM...'
+					self.response.headers['Content-Type'] = 'text/html'
 					self.response.write(htmlblob.get("client_info_form",rock_client))
 					return
-					print "\n SHOULD NOT GET HERE! RETURN FAILED...\n"
-			finally:
+			else:
 				print 'FINALLY, POST LOOKS LIKE THIS: ',post,'\nLETTING IT GO TO FULLSLATE...'
-				response = fsapi.apirequest('bookings',post) # change to redirect to pay/conf/thx
-				print '\nFULLSLATE RETURNED THE FOLLOWING BOOKING OBJECT: ',response.content
+				booking_response = fsapi.apirequest('bookings',post)
+				print "\nBOOKING RESPONSE: ",booking_response.status_code,booking_response.content
+				self.response.headers['Content-Type'] = 'application/json'
+				self.response.write(json.dumps({"status_code" : booking_response.status_code, "content" : booking_response.content}))
+
+		elif request == 'cancel':
+			'''
+			Cancel a booking.
+			Expects {"id" : <id>, "at" : <fsat>}
+			'''
+			import json
+			import fsapi
+
+			booking_id = self.request.get('id')
+			fs_at = self.request.get('at')
+
+			url = "events/%s" % booking_id
+			post = {"at" : fs_at}
+			post = json.dumps(post)
+
+			response_to_cancel = fsapi.apirequest(url,post,"delete")
+			print "\nRESPONSE_TO_CANCEL: ",response_to_cancel.status_code," ",response_to_cancel.content
+			return
 
 		else:
 			response = "Unknown value for REQUEST"
-
-		#print "\nRESPONSE FROM ROCKAPI: ",response
-		self.response.write(response)
 
 application = webapp2.WSGIApplication([
 	(r'/api', RockAPIHandler),
