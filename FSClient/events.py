@@ -156,7 +156,7 @@ def makecal(eventlist,num_weeks,labels):
 				''')
 	html.append('''<h2>%s</h2>''' % heading)
 	html.append('''
-						</div>
+						</div> <!-- /calheader -->
 						<div id="daysweek">
 							<div class="dayweek brn"><p>Sunday</p></div>
 							<div class="dayweek"><p>Monday</p></div>
@@ -165,17 +165,17 @@ def makecal(eventlist,num_weeks,labels):
 							<div class="dayweek"><p>Thursday</p></div>
 							<div class="dayweek"><p>Friday</p></div>
 							<div class="dayweek"><p>Saturday</p></div>
-						</div>
+						</div> <!-- /daysweek -->
 						<div id="daysmonth">''')
 
 	# Get today's date/time in EST
 	EST = timezoneconvert.abbr2zone("EST")
 	GMT = EST = timezoneconvert.abbr2zone("GMT")
 	today = datetime.today()
-	print '\n\nTODAY %d %H:%M: ',today,'  \  ',today.strftime('%d %H:%M')
+	#print '\n\nTODAY %d %H:%M: ',today,'  \  ',today.strftime('%d %H:%M')
 	today = timezoneconvert.set(today,GMT)
 	today = timezoneconvert.convert(today,EST)
-	print '\n\nTODAY-CONVERTED %d %H:%M: ',today,'  \  ',today.strftime('%d %H:%M')
+	#print '\n\nTODAY-CONVERTED %d %H:%M: ',today,'  \  ',today.strftime('%d %H:%M')
 
 	for w in xrange(num_weeks):
 		dates = ranges.getweekdates(offset=w)
@@ -184,9 +184,6 @@ def makecal(eventlist,num_weeks,labels):
 	html.append('''
 						</div> <!--/daysmonth-->
 					</div> <!--/calcontainer-->				
-				</div>
-				<hr />
-			<p></p><!--pushes #main down-->	''')
+				</div> <!-- /calendar -->
+				<hr />''')
 	return u'\n'.join(html)
-
-
