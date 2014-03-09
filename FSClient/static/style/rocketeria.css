@@ -278,6 +278,11 @@ td.field {
 	text-align: left;
 }
 
+td.subitem {
+	background-color:#F7BD20;
+	border: 1px solid #962320;
+}
+
 #confirmatnion {
 	width: 100%
 }
@@ -289,7 +294,13 @@ td.field {
 	text-align: center;
 }
 
-#booknow, #submit {
+#add_student {
+	background-color:#EEE;
+	border: 1px solid #CCC;
+	padding: 3px;
+}
+
+#booknow, #booknow_link, #submit {
 	cursor: pointer;
 	font-family:'Roboto', cursive;
 	font-size:2em;
