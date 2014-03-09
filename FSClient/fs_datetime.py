@@ -21,6 +21,8 @@ def normalize(in_string,in_format,current_zone=None,changeto_zone=None):
 	from datetime import datetime
 	dto = datetime.strptime(in_string,in_format)
 
+	#print "\nFSDATETIME NORMALIZING: ",in_string
+
 	if current_zone or changeto_zone:
 		import timezoneconvert
 		if current_zone:
