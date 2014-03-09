@@ -8,15 +8,20 @@ headers = { 'Content-Type': 'application/json',
 			'User-Agent' : "Rocketeria FullSlate Interface Development Server | kyle{@}rocketeria{.}biz "
 		  }
 
-def apirequest(resource,post = None):
+def apirequest(resource,post = None, http_method = "post"):
 	'''return response from POST to apiroot/apichild'''
 	url = "%s/%s" % (apiroot, (resource or ''),)
 	
+	if http_method == "post":
+		urlfetch_method = urlfetch.POST
+	elif http_method == "delete":
+		urlfetch_method = urlfetch.DELETE
+
 	try:
 		response = urlfetch.fetch(
 			url = url,
 			payload = post,
-			method = urlfetch.POST,
+			method = urlfetch_method,
 			headers = headers,
 			validate_certificate = True,
 			)
