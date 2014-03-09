@@ -58,7 +58,7 @@ def get(blobname,data = None):
 
 	elif blobname == "rocketeria-tail":
 		webcode = '''
-		</div>
+		</div> <!-- /main -->
 	<script type="text/javascript" src="/static/bookingflow.js"></script>
 	</body>
 </html>
@@ -66,11 +66,11 @@ def get(blobname,data = None):
 	elif blobname == "emptycalendardiv":
 		webcode = '''
 				<div id="book_response">
-				</div>
+				</div> <!-- /book_response -->
 				<div id="confirmation">
-				</div>
+				</div> <!-- /confirmation -->
 				<div id="calendar">
-				</div>
+				</div> <!-- /calendar -->
 				'''
 	elif blobname == "myaccount":
 		webcode = ''' '''
@@ -151,11 +151,17 @@ def get(blobname,data = None):
 			first_name = rock_client.first_name
 			last_name = rock_client.last_name
 		except AttributeError:
-			first_name = last_name = ""
+			holder1_first = holder1_last = holder2_first = holder2_last = ""
+			children = [" "] # must have one item to draw a form field
 		else:
 			# this unpacking is also done in clients.RockClient()
 			# this should be consolidated so we're not doing it twice
 			unpacked_names = clients.unPack_family_names((first_name,last_name))
+			holder1_first = unpacked_names["holder1_first"]
+			holder1_last = unpacked_names["holder1_last"]
+			holder2_first = unpacked_names["holder2_first"]
+			holder2_last = unpacked_names["holder2_last"]
+			children = unpacked_names["children"]
 
 		try:
 			phone_numbers = rock_client.phone_numbers
@@ -205,26 +211,36 @@ def get(blobname,data = None):
 			right_to_contact = ""
 
 		webcode = []
+		webcode.append('''<h3>Please fill out all required (*) fields:</h3>''')
 		webcode.append('''<p>''')
 		webcode.append('''	<table class="account_info">''')
 		webcode.append('''		<tr>''')
-		webcode.append('''		<tr colspan=2><td class="subitem">Primary Account Holder</td></tr>''')
+		webcode.append('''		<tr><td colspan=2 class="subitem">Primary Account Holder</td></tr>''')
 		webcode.append('''		<td class="label"><label for="holder1_first">First Name*</label></td>''')
-		webcode.append('''		<td class="field"><input type="text" class="primary_info" name="holder1_first" value="%s" /></td>''' % unpacked_names["holder1_first"])
+		webcode.append('''		<td class="field"><input type="text" class="primary_info" name="holder1_first" value="%s" /></td>''' % holder1_first)
 		webcode.append('''		</tr>''')
 		webcode.append('''		<tr>''')
 		webcode.append('''		<td class="label"><label for="holder1_last">Last Name*</label></td>''')
-		webcode.append('''		<td class="field"><input type="text" class="primary_info" name="holder1_last" value="%s" /></td>''' % unpacked_names["holder1_last"])
+		webcode.append('''		<td class="field"><input type="text" class="primary_info" name="holder1_last" value="%s" /></td>''' % holder1_last)
 		webcode.append('''		</tr>''')
-		webcode.append('''		<tr colspan=2><td class="subitem">Secondary Account Holder</td></tr>''')
+		webcode.append('''		<tr><td colspan=2 class="subitem">Secondary Account Holder</td></tr>''')
 		webcode.append('''		<td class="label"><label for="holder2_first">First Name</label></td>''')
-		webcode.append('''		<td class="field"><input type="text" class="primary_info" name="holder2_first" value="%s" /></td>''' % unpacked_names["holder2_first"])
+		webcode.append('''		<td class="field"><input type="text" class="primary_info" name="holder2_first" value="%s" /></td>''' % holder2_first)
 		webcode.append('''		</tr>''')
 		webcode.append('''		<tr>''')
 		webcode.append('''		<td class="label"><label for="holder2_last">Last Name</label></td>''')
-		webcode.append('''		<td class="field"><input type="text" class="primary_info" name="holder2_last" value="%s" /></td>''' % unpacked_names["holder2_last"])
+		webcode.append('''		<td class="field"><input type="text" class="primary_info" name="holder2_last" value="%s" /></td>''' % holder2_last)
 		webcode.append('''		</tr>''')
-		webcode.append('''		<tr colspan=2><td class="subitem">Contact & Billing</td></tr>''')
+		webcode.append('''		<tr><td colspan=2 class="subitem">Student Names (if different from account holders above)</td></tr>''')
+		for c in children: # must always be at least one item - handled when pulled from unpacked_names
+			webcode.append('''		<tr class="student">''')
+			webcode.append('''			<td class="label"><label for="student">Student Name</label></td>''')
+			webcode.append('''			<td class="field"><input type="text" class="student_name" value="%s" /></td>''' % c)
+			webcode.append('''		</tr>''')
+		webcode.append('''		<tr>''')
+		webcode.append('''		<td class="label"></td><td class="field"><div id="add_student">Add Another Name</div></td>''')
+		webcode.append('''		</tr>''')
+		webcode.append('''		<tr><td colspan=2 class="subitem">Contact & Billing</td></tr>''')
 		webcode.append('''		<tr>''')
 		webcode.append('''<!-- email field is just for show - it is ignored server-side-->''')
 		webcode.append('''		<td class="label"><label for="email">Email*</label></td>''')
@@ -254,20 +270,12 @@ def get(blobname,data = None):
 		webcode.append('''		<td class="label"><label for="postal_code">Zip*</label></td>''')
 		webcode.append('''		<td class="field"><input type="text" class="primary_info" name="postal_code" value="%s" /></td>''' % postal_code)
 		webcode.append('''		</tr>''')
-		webcode.append('''		<tr colspan=2><td class="subitem">Student Names (if different from account holders above)</td></tr>''')
-		webcode.append('''		<div id="students">''')
-		for c in unpacked_names["children"]:
-			webcode.append('''		<tr>''')
-			webcode.append('''			<td class="label"><label for="student">Student Name</label></td>''')
-			webcode.append('''			<td class="field"><input type="text" class="student_name" value="%s" /></td>''' % c)
-			webcode.append('''		</tr>''')
-		webcode.append('''		<tr>''')
-		webcode.append('''		<div id="add_student">[+] Add Another Student</div>''')
-		webcode.append('''		</tr>''')
-		webcode.append('''		</div>''')
 		webcode.append('''		<tr>''')
 		webcode.append('''		<td class="label"><label for="right_to_contact">Email appointment reminders</label></td>''' )
 		webcode.append('''		<td class="field"><input type="checkbox" class="right_to_contact" name="right_to_contact" %s/></td>''' % (right_to_contact))
+		webcode.append('''		</tr>''')
+		webcode.append('''		<tr>''')
+		webcode.append('''		<td colspan=2><div id="submit">Submit</div></td>''')
 		webcode.append('''		</tr>''')
 		webcode.append('''	</table>''')
 		webcode.append('''	</fieldset>		
@@ -276,5 +284,50 @@ def get(blobname,data = None):
 					   ''' )
 
 		webcode = u"\n".join(webcode)
+
+	elif blobname == "federated_login":
+		from google.appengine.api import users
+		user = users.get_current_user()
+		webcode = '''<div id="openidauth">'''
+		if user:  # signed in already
+			signouturl = users.create_logout_url(dest_url='/lessons/loggedout')
+			webcode += '''Logged in as <em>%s</em>''' % (user.nickname())
+			webcode += '''
+			<a href="/studentarea">
+				<img src="/static/style/studentarea.png" />
+				Student Area
+			</a>
+			<br />
+					   '''
+			webcode += '''<a href="%s">''' % (signouturl)
+			webcode += '''
+							<img src="/static/style/logoff.png" />
+							Sign Out
+						</a>
+					   '''
+		else: # show authenticators
+			webcode += '''Sign in with:<br />'''
+			providers = [
+				('google','https://www.google.com/accounts/o8/id'),
+				('yahoo','yahoo.com'),
+				('aol','aol.com'),
+				('myopenid','myopenid.com'),
+				# add more here
+			]
+			for p in providers:
+				name = p[0]
+				uri = p[1]
+				url = users.create_login_url(dest_url='/studentarea',federated_identity=uri)
+				webcode += '''
+				<a class="openidauth" href="%s">
+					<img src="/static/style/openidimg/%s.png" />
+				</a>''' % (url,name)
+		webcode += '''<p><b>What is this?</b> By linking your use of this site with one of the above sites, you (the customer) are 
+		relieved of needing to remember yet another username and psssword, and we (the web site operators) are 
+		revlieved of having to manage usernames and passwords ourselves. It's safer and easier for everyone. The 
+		service that you choose to link with us will share only your email address - we can't see any other
+		info or use your account in any way.</p>'''
+		webcode += '''</div>'''
+
 
 	return webcode
