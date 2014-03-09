@@ -8,12 +8,16 @@ def fs_client_from(email):
 	import json
 
 	# get all valid IDs
-	fs_clients = fsapi.apirequest("clients?include=emails,phone_numbers,addresses")
+	fs_clients = fsapi.apirequest("clients?include=addresses,emails,phone_numbers")
 	fs_clients = json.loads(fs_clients.content)
+
 	for c in fs_clients: # each client
 		for e in c["emails"]: # each email object
-			if e["address"] == email:
+			if e["address"] == email:				
+				#print "\n\nFS_CLIENT FROM CLIENTS.FS_CLIENT_FROM(): ",c
 				return c # entire FullSlate client object
+
+	return {} # no client in FullSlate 
 
 def fsPack_phones(numbers):
 	'''
@@ -50,11 +54,8 @@ def fsPack_family_names(holder1_first,holder1_last,holder2_first="",holder2_last
 		first_name = "%s/%s" % (first_name, c)
 
 	last_name = holder1_last # "Smith"
-	try:
-		if holder2_last != holder1_last: # "Smith/Jenkins"
-			last_name = "%s/%s" % (last_name, holder2_last)
-	except NameError:
-		pass
+	if holder2_last and holder2_last != holder1_last: # "Smith/Jenkins"
+		last_name = "%s/%s" % (last_name, holder2_last)
 
 	return (first_name,last_name)
 
@@ -94,8 +95,14 @@ class RockClient():
 
 	def __init__(self,fs_client,federated_user):
 
-		self.id = fs_client["id"] # there will always be in ID if the email lookup succeeded
 		self.email = federated_user.email() # always user federated email for everything
+
+		#print "\n\nFS_CLIENT FROM CLIENTS.ROCKCLIENT(): ",fs_client
+
+		try:
+			self.id = fs_client["id"]
+		except KeyError:
+			print "got no id"
 
 		try:
 			self.first_name = fs_client["first_name"]
@@ -106,7 +113,7 @@ class RockClient():
 		except KeyError:
 			print "got no last name"
 		try:
-			unpacked_names = unPack_family_names(self.first_name,self.last_name)
+			unpacked_names = unPack_family_names((self.first_name,self.last_name))
 		except AttributeError: # missing first or last name
 			pass
 		else:
@@ -234,12 +241,14 @@ class RockClient():
 				"Missing" attributes are empty strings and will not throw
 				exceptions if used later.
 				'''
-				"holder1_first" = post.get("holder1_first")
-				"holder1_last" = post.get("holder1_last")
-				"holder2_first" = post.get("holder2_first")
-				"holder2_last" = post.get("holder2_last")
-				"children" = post.get("children")
+				holder1_first = post.get("holder1_first")
+				holder1_last = post.get("holder1_last")
+				holder2_first = post.get("holder2_first")
+				holder2_last = post.get("holder2_last")
+				children = post.get("children")
+				print "\nCLIENTS.PY POST PACKING NAMES: ",holder1_first,holder1_last,holder2_first,holder2_last,children
 				packed_names = fsPack_family_names(holder1_first,holder1_last,holder2_first,holder2_last,children)
+				print packed_names
 				fs_request.update({
 					# from web request
 					"first_name" : packed_names[0],
