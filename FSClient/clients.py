@@ -191,9 +191,9 @@ class RockClient():
 					if a[u'id'] == self.id: # if client is attending
 						# make fs-style strings into datetime objects
 						# these are EST and include "-0500", which is cut
-						e['at'] = fs_datetime.normalize(e['at'][:-5], "%Y-%m-%dT%H:%M:%S", current_zone="EST")
-						e['to'] = fs_datetime.normalize(e['to'][:-5], "%Y-%m-%dT%H:%M:%S", current_zone="EST")
-						e['occurrence_at'] = fs_datetime.normalize(e['occurrence_at'][:-5], "%Y-%m-%dT%H:%M:%S", current_zone="EST")
+						e['at'] = fs_datetime.normalize(e['at'][:-5], "%Y-%m-%dT%H:%M:%S")
+						e['to'] = fs_datetime.normalize(e['to'][:-5], "%Y-%m-%dT%H:%M:%S")
+						e['occurrence_at'] = fs_datetime.normalize(e['occurrence_at'][:-5], "%Y-%m-%dT%H:%M:%S")
 						my_events.append(e)
 			except KeyError: # no attendees
 				# careful - can also pass on KeyError caused by typo or non-existant element of e
@@ -288,3 +288,78 @@ class RockClient():
 		fs_request = json.dumps(fs_request)
 
 		return fs_request
+
+	def prefilled_form(self):
+		'''
+		return html of the client info form, prefilled 
+		with all info that we know about this client
+		'''
+
+		# set empty strings if attributes do not exist
+		# UGH this is horrible SO MUCH REDUNDANT CODE FIX THIS SHIT!
+
+		try:
+			holder1_first = self.holder1_first
+		except AttributeError:
+			holder1_first = ""
+		try:
+			holder1_last = self.holder1_last
+		except AttributeError:
+			holder1_last = ""
+		try:
+			holder2_first = self.holder2_first
+		except AttributeError:
+			holder2_last = ""
+		try:
+			holder2_last = self.holder2_last
+		except AttributeError:
+			holder2_last = ""
+		try:
+			children = self.children
+		except AttributeError:
+			children = []
+
+		try:
+			phone_numbers = self.phone_numbers
+			# can only update primary phone here
+			#print "PHONE_NUMBERS FROM HTMLBLOB GET account_info_form: ",phone_numbers
+		except AttributeError:
+			phone_number = ""
+		else:
+			for p in phone_numbers:
+				if p["position"] == 1:
+					phone_number = p["number"]
+
+		email = self.email # there will always be an email
+
+		try:
+			street1 = self.street1
+		except AttributeError:
+			street1 = ""
+		try:
+			street2 = self.street2
+		except AttributeError:
+			street2 = ""
+		try:
+			city = self.city
+		except AttributeError:
+			city = ""
+		try:
+			state = self.state
+		except AttributeError:
+			state = ""
+		try:
+			postal_code = self.postal_code
+		except AttributeError:
+			postal_code = ""
+
+		import templates
+
+		student_fields = ""
+		#for c in children:
+		#	student_field_template = templates.get("client_info_form_students")
+		#	student_fields += student_field_template.format(**locals())
+
+		form_template = templates.get("client_info_form")
+
+		return form_template.format(**locals())
