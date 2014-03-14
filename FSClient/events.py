@@ -136,7 +136,7 @@ def makecal(eventlist,num_weeks,labels):
 	LABLES is a string that sets the wording used throughout
 	Returns a string (of html)
 	'''
-	import ranges,timezoneconvert,openings
+	import ranges,fs_datetime,openings
 	from datetime import datetime
 
 	# accepted values of LABLES - keep mirrored with makeweek()
@@ -147,7 +147,7 @@ def makecal(eventlist,num_weeks,labels):
 	else:
 		raise Exception("bad value passed to events.makecal() lables: %s" % lables)
 
-	openings_by_day = openings.byday_full(eventlist)
+	openings_by_day = openings.byday(eventlist)
 
 	html = []
 	html.append('''				
@@ -168,13 +168,9 @@ def makecal(eventlist,num_weeks,labels):
 						</div> <!-- /daysweek -->
 						<div id="daysmonth">''')
 
-	# Get today's date/time in EST
-	EST = timezoneconvert.abbr2zone("EST")
-	GMT = EST = timezoneconvert.abbr2zone("GMT")
 	today = datetime.today()
 	#print '\n\nTODAY %d %H:%M: ',today,'  \  ',today.strftime('%d %H:%M')
-	today = timezoneconvert.set(today,GMT)
-	today = timezoneconvert.convert(today,EST)
+	today = fs_datetime.tz_convert(today,"GMT","America/New_York")
 	#print '\n\nTODAY-CONVERTED %d %H:%M: ',today,'  \  ',today.strftime('%d %H:%M')
 
 	for w in xrange(num_weeks):
