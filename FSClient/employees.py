@@ -15,8 +15,8 @@ def gethtml(employeeobj):
 		html.append('''	</div>''')
 	html.append('''
 	<div id="emp0" class="employee">
-		<input type="radio" id="0" name="employee" value="Any" />
-		<label for="0">
+		<input type="radio" id="Any" name="employee" value="Any" />
+		<label for="Any">
 			<img src="/static/style/Any.png" />
 			No Preference
 		</label>
