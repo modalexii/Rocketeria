@@ -59,6 +59,7 @@ $(document).ready(function(){
 		});
 		// open the employees section
 		$("#employees").slideDown("slow");
+		$('html,body').animate({ scrollTop: $('#employees').offset().top }, 'slow');
 	}
 
 	// ----- employees -----
@@ -103,6 +104,7 @@ $(document).ready(function(){
 		initMenu();
 		// show #calendar
 		$('#calendar').slideDown("slow");
+		$('html,body').animate({ scrollTop: $('#calendar').offset().top }, 'slow');
 	}
 
 	// ----- calendar -----
@@ -135,6 +137,7 @@ $(document).ready(function(){
 				selection['event_fs_at'] = fsevent_button.attr('id');
 				// display the Book Now button and continue
 				load_confirmation();
+				$('html,body').animate({ scrollTop: $('#yourid').offset().top }, 'slow');
 			}
 		);
 	}
@@ -153,6 +156,7 @@ $(document).ready(function(){
 		);
 		// show the confirmation section
 		$("#confirmation").slideDown("slow");
+		$('html,body').animate({ scrollTop: $('#confirmation').offset().top }, 'slow');
 		//console.log(selection)
 
 		stage_booknow();
