@@ -13,6 +13,11 @@ handlers:
 - url: /static
   static_dir: static
 
+- url: /templates
+  static_dir: templates
+  application_readable: true
+  login: admin
+
 - url: /studentarea?/?.*
   script: authstudentarea.application
   login: required
