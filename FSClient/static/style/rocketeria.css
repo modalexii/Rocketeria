@@ -243,7 +243,7 @@ body {
 
 /* open id */
 
-#openidauth {
+#openid_provider {
 	text-align: center;
 	border-style:none;
 }
