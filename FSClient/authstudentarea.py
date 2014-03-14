@@ -8,12 +8,12 @@ class AuthStudentHandler(webapp2.RequestHandler):
         if not federated_user:  # this should never happen, but just in case?
              self.redirect("/")
 
-        import htmlblob,events,clients,ranges,fs_datetime
+        import htmlblob,templates,events,clients,ranges,fs_datetime
 
         num_weeks = 3 # how many weeks to draw at a time
 
         self.response.headers['Content-Type'] = 'text/html'
-        webcode = htmlblob.get("rocketeria-head",)
+        webcode = templates.get("rocketeria-head")
 
         federated_nick = federated_user.nickname()
         federated_email = federated_user.email()
@@ -41,7 +41,7 @@ class AuthStudentHandler(webapp2.RequestHandler):
             webcode += events.makecal(eventlist=events_attended,num_weeks=num_weeks,labels="existing")
             #webcode += '''              </div> ''' # aah there is an extra div somewhere in makecal() fix this shiiiit
 
-        webcode += htmlblob.get("rocketeria-tail",)
+        webcode += templates.get("rocketeria-tail")
 
         self.response.write(webcode)
 
