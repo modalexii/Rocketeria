@@ -1,40 +1,34 @@
-'''
-EST = timezoneconvert.abbr2zone("EST")
-GMT = EST = timezoneconvert.abbr2zone("GMT")
-today = datetime.datetime.today()
-today = timezoneconvert.set(today,GMT)
-today = timezoneconvert.convert(today,EST)
-'''
+def tz_convert(dto, from_zone, to_zone):
+	from pytz.gae import pytz
+	from datetime import datetime
+	from_zone, to_zone = pytz.timezone(from_zone), pytz.timezone(to_zone)
+	return from_zone.localize(dto, is_dst=False).astimezone(to_zone)
 
-def normalize(in_string,in_format,current_zone=None,changeto_zone=None):
+def normalize(in_string,in_format,from_zone=None,to_zone=None):
 	'''
 	Take the various date & time strings given by FullSlate
 	and return a standard python datatime object.
 	IN_STRING is the date or time string to convert
 	IN_FORMAT is a string explaining STRING's format using
 	the strftime syntax
-	CURRENT_ZONE is the time zone (abbreviation, string) to associate 
-	with the data as-is (opt.)
-	CHANGETO_ZONE is the zone (abbreviation, string) to convert the
-	data to (opt.). Requires in_zone, OR tzinfo already set.
+	FROM_ZONE is the time zone (string like "America/New_York") to associate 
+	with the data as-is
+	TO_ZONE is the zone (string like "America/New_York") to convert the
+	data to
+	FROM_ZONE and TO_ZONE must both be specified to have an effect
 	'''
 	from datetime import datetime
 	dto = datetime.strptime(in_string,in_format)
 
 	#print "\nFSDATETIME NORMALIZING: ",in_string
 
-	if current_zone or changeto_zone:
-		import timezoneconvert
-		if current_zone:
-			current_zone = timezoneconvert.abbr2zone(current_zone)
-			dto = timezoneconvert.set(dto,current_zone)
-		if changeto_zone:
-			changeto_zone = timezoneconvert.abbr2zone(changeto_zone)
-			dto = timezoneconvert.convert(dto,changeto_zone)
+	if from_zone and to_zone:
+		dto = tz_convert(dto,from_zone,to_zone)
 
+	#print "\nFSDATETIME NORMALIZED: ",in_string
 	return dto
 
-def fullslateify(dto,out_format,current_zone=None,changeto_zone=None):
+def fullslateify(dto,out_format,from_zone=None,to_zone=None):
 	'''
 	Take a datetime object and return an equivilent string
 	in the format that FullSlate expects
@@ -46,13 +40,8 @@ def fullslateify(dto,out_format,current_zone=None,changeto_zone=None):
 	CHANGETO_ZONE is the zone (abbreviation, string) to convert the
 	data to (opt.). Requires in_zone, OR tzinfo already set.
 	'''
-	if current_zone or changeto_zone:
-		import timezoneconvert
-		if current_zone:
-			current_zone = timezoneconvert.abbr2zone(current_zone)
-			dto = timezoneconvert.set(dto,current_zone)
-		if changeto_zone:
-			changeto_zone = timezoneconvert.abbr2zone(changeto_zone)
-			dto = timezoneconvert.convert(dto,changeto_zone)
+
+	if from_zone and to_zone:
+		dto = tz_convert(dto,from_zone,to_zone)
 
 	return dto.strftime(out_format)
