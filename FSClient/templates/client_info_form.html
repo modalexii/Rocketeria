@@ -1,0 +1,69 @@
+<h3>Please fill out all required (*) fields:</h3>
+<p>
+	<table class="account_info">
+		<tr>
+		<td colspan=2 class="subitem">Primary Account Holder</td>
+		</tr>
+		<td class="label"><label for="holder1_first">First Name*</label></td>
+		<td class="field"><input type="text" class="primary_info" name="holder1_first" value="{holder1_first}" /></td>
+		</tr>
+		<tr>
+		<td class="label"><label for="holder1_last">Last Name*</label></td>
+		<td class="field"><input type="text" class="primary_info" name="holder1_last" value="{holder1_last}" /></td>
+		</tr>
+		<tr>
+		<td colspan=2 class="subitem">Secondary Account Holder</td>
+		</tr>
+		<td class="label"><label for="holder2_first">First Name</label></td>
+		<td class="field"><input type="text" class="primary_info" name="holder2_first" value="{holder2_first}" /></td>
+		</tr>
+		<tr>
+		<td class="label"><label for="holder2_last">Last Name</label></td>
+		<td class="field"><input type="text" class="primary_info" name="holder2_last" value="{holder2_last}" /></td>
+		</tr>
+		<tr>
+		<td colspan=2 class="subitem">Student Names (if different from account holders above)</td>
+		</tr>
+		<tr class="student"><td></td></tr>
+		{student_fields}
+		<tr>
+		<td class="label"></td><td class="field"><div id="add_student">Add Another Name</div></td>
+		</tr>
+		<tr>
+			<td colspan=2 class="subitem">Contact &amp; Billing</td>
+		</tr>
+		<tr>
+		<!-- email field is just for show - it is ignored server-side-->
+		<td class="label"><label for="email">Email*</label></td>
+		<td class="field"><input type="text" class="primary_info" name="email" value="{email}" disabled/></td>
+		</tr>
+		<tr>
+		<td class="label"><label for="phone_number">Daytime Phone*</label></td>
+		<td class="field"><input type="text" class="primary_info" name="phone_number" value="{phone_number}" /></td>
+		</tr>
+		<tr>
+		<td class="label"><label for="street1">Street Addreess*</label></td>
+		<td class="field"><input type="text" class="primary_info" name="street1" value="{street1}" /></td>
+		</tr>
+		<tr>
+		<td class="label"><label for="street2">Apt/Ste</label></td>
+		<td class="field"><input type="text" class="primary_info" name="street2" value="{street2}" /></td>
+		</tr>
+		<tr>
+		<td class="label"><label for="city">City*</label></td>
+		<td class="field"><input type="text" class="primary_info" name="city" value="{city}" /></td>
+		</tr>
+		<tr>
+		<td class="label"><label for="state">State*</label></td>
+		<td class="field"><input type="text" class="primary_info" name="state" value="{state}" /></td>
+		</tr>
+		<tr>
+		<td class="label"><label for="postal_code">Zip*</label></td>
+		<td class="field"><input type="text" class="primary_info" name="postal_code" value="{postal_code}" /></td>
+		</tr>
+		<tr>
+		<td colspan=2><div id="submit">Submit</div></td>
+		</tr>
+	</table>		
+</p>
+<hr/>
