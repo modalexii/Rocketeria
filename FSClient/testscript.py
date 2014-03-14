@@ -1,8 +1,3 @@
-'''
-render the development server root page...
-static html with links to various things
-'''
-
 import webapp2
 
 class TestHandler(webapp2.RequestHandler):
@@ -12,32 +7,19 @@ class TestHandler(webapp2.RequestHandler):
 		self.response.headers['Content-Type'] = 'text/html'
 		self.response.write('''<hmtl><body>''')
 		import fsapi,json,pprint,clients,rockapi
-		from google.appengine.api import urlfetch
+		
+		from pytz.gae import pytz
+		from datetime import datetime
+		def convert(dte, fromZone, toZone):
+			fromZone, toZone = pytz.timezone(fromZone), pytz.timezone(toZone)
+			return fromZone.localize(dte, is_dst=True).astimezone(toZone)
 
-		self.response.write('''
-			<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-			<script>
-			$(document).ready(function(){
-				function send_data() {
-					$.post("/api", {
-						"request" : "cancel", 
-						"id" : "8gUW60F2b4",
-						"fsat" : "2014-03-10T16:00:00-0500"
-					})	
-					.done(function(data) {
-						concole.log(ok);
-					})
-					.fail(function(textStatus, errorThrown) {
-						console.log(textStatus + ': ' + errorThrown); // temp debugging measure
-					});
-				}
 
-				console.log("about to send data...");
-				send_data();
-				console.log("should have sent data.");
-			});
-			</script>
-			''')
+		fstime = "20140312T105922Z"  
+		dto = datetime.strptime(fstime,"%Y%m%dT%H%M%SZ")
+
+		conv_dto = convert(dto,"America/New_York","GMT",)
+		self.response.write("%s, %s" % (dto,conv_dto))
 
 		self.response.write('''</body></html>''')
 
