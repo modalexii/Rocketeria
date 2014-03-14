@@ -1,4 +1,8 @@
 '''
+OBSOLETE. REMOVE THIS FILE
+'''
+
+
 This is mostly a bunch of wrappers for consistancy. It will probably help
 scale the application at a later date.
 
@@ -26,7 +30,7 @@ class Zone(tzinfo):
 def abbr2zone(abbr):
     '''
     given a string appreviation for a time zone, return the 
-    Zone object from Zone
+    Zone object from Zone()
     '''
     if abbr == "GMT":
        return Zone(0,False,'GMT') 
@@ -44,4 +48,5 @@ def convert(dto,zone):
     Convert a datetime object DTO to ZONE
     OBJECT is assumed to have tzinfo set already
     '''
+    #print "\nTIMEZONECONVERT CONVERT() DTO=%s, ZONE=%s" % (dto,zone)
     return  dto.astimezone(zone)
