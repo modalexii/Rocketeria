@@ -29,7 +29,7 @@ p{color:#333;font-size:11px;}
 	margin-left: auto;
 	min-width: 100%;
 	text-align: center;
-  	position: relative;
+  	/*position: relative;*/
 }
 #calheader{
 	width:100%;
