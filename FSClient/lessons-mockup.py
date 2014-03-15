@@ -4,8 +4,7 @@ class LessonsHandler(webapp2.RequestHandler):
 
 	def get(self, *args, **kwargs):
 		'''handle HTTP GETs'''
-		import htmlblob,templates
-		from google.appengine.api import users
+		import templates
 		self.response.headers['Content-Type'] = 'text/html'
 		webcode = templates.get("rocketeria-head",)
 
@@ -14,7 +13,7 @@ class LessonsHandler(webapp2.RequestHandler):
 		except IndexError:
 			path = ""
 		if "book" in path:
-			import fsapi,services,employees
+			import fsapi,services,employees,federated_login
 			import json
 			# pull services from FS
 			serviceobj = fsapi.apirequest('services')
@@ -26,12 +25,15 @@ class LessonsHandler(webapp2.RequestHandler):
 			employeeobj = fsapi.apirequest('employees')
 			employeeobj = employeeobj.content
 			employeeobj = json.loads(employeeobj)
-						
+			
+			webcode += federated_login.make_aware_bar()
 			webcode += services.gethtml(serviceobj)
 			webcode += employees.gethtml(employeeobj)
 			webcode += templates.get('booking_placeholders')
 			
 			#webcode += htmlblob.get("book")
+		elif "login" in path:
+			webcode += templates.get("federated_auth_page")
 		elif "loggedout" in path:
 			webcode += templates.get("loggedout")
 		else:
@@ -57,7 +59,7 @@ class LessonsHandler(webapp2.RequestHandler):
 					provider_name = p[0]
 					provider_uri = p[1]
 					provider_url = users.create_login_url(dest_url='/studentarea',federated_identity=provider_uri)
-					provider_link_template = templates.get("openid_provider")
+					provider_link_template = templates.get("openid_provider_stack")
 					openid_auth += provider_link_template.format(**locals())
 					
 				auth_links = "" # nothing since client is not authenticated
