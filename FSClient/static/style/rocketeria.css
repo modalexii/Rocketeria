@@ -243,15 +243,44 @@ body {
 
 /* open id */
 
-#openid_provider {
+.fixed {
+	position: fixed;
+}
+
+#openidauth {
 	text-align: center;
 	border-style:none;
 }
 
-a.openidauth {
+#openidauth_bar {
+	text-align: center;
+	top: 0;
+	width: 960px;
+	line-height: 30px;
+	background: #ccc;
+}
+
+#openidauth_bar img {
+	vertical-align: middle;
+	margin-bottom: 3px;
+}
+
+a.openid_provider {
 	display: block;
 	cursor: pointer;
 	margin: 3px;
+}
+
+a.openid_provider_inline {
+	display: inline;
+	cursor: pointer;
+	margin: 3px;
+}
+
+.openidauth_bar_link {
+	display: inline;
+	padding-left: 10px;
+	padding-right: 10px;
 }
 
 #loggedout {
