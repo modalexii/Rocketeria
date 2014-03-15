@@ -1,8 +1,26 @@
 def tz_convert(dto, from_zone, to_zone):
+	'''
+	Change datetime object DTO from tz object FROM_ZONE 
+	to tz object TO_ZONE
+	Returns datetime object
+	'''
 	from pytz.gae import pytz
 	from datetime import datetime
+	is_currently_dst = currently_dst(to_zone)
 	from_zone, to_zone = pytz.timezone(from_zone), pytz.timezone(to_zone)
-	return from_zone.localize(dto, is_dst=False).astimezone(to_zone)
+	return from_zone.localize(dto, is_dst=is_currently_dst).astimezone(to_zone)
+
+def currently_dst(zonename):
+	''' 
+	Return Bool indicating if ZONENAME is currently
+	in daylight zavings
+	ZONENAME is string like "America/New_York"
+	'''
+	import pytz.gae
+	from datetime import datetime, timedelta
+	tz = pytz.timezone(zonename)
+	now = pytz.utc.localize(datetime.utcnow())
+	return now.astimezone(tz).dst() != timedelta(0)
 
 def normalize(in_string,in_format,from_zone=None,to_zone=None):
 	'''
