@@ -73,8 +73,16 @@ def makeweek(dates,openings_by_day,today,labels):
 			# important to catch all potential KeyError in this large try/except
 			for o in openings_by_day[thisday]:
 
+				from fs_datetime import currently_dst
+				if currently_dst("America/New_York"):
+					tz_offset = "-0400"
+				else:
+					tz_offset = "=0500"
+
 				try: # o is fullslate event
-					fs_at = fs_datetime.fullslateify(o["occurrence_at"],"%Y-%m-%dT%H:%M:%S-0500")
+					print "\nO in EVENTS.MAKEWEEK: ",o
+					print "\nTZ_OFFSET in EVENTS.MAKEWEEK: ",tz_offset
+					fs_at = fs_datetime.fullslateify(o["occurrence_at"],"%Y-%m-%dT%H:%M:%S" + tz_offset)
 					start_hhmm = o["occurrence_at"].strftime('%I:%M %p')
 					end_hhmm = o['to'].strftime('%I:%M %p')
 					'''
@@ -82,7 +90,7 @@ def makeweek(dates,openings_by_day,today,labels):
 					and it may not reflect the end time of the current appointment
 					'''
 				except TypeError: # o is datetime
-					fs_at = fs_datetime.fullslateify(o,"%Y-%m-%dT%H:%M:%S-0500")
+					fs_at = fs_datetime.fullslateify(o,"%Y-%m-%dT%H:%M:%S" + tz_offset)
 					start_hhmm = o.strftime('%I:%M %p')
 
 				html.append('''			<li class="green event">''')
