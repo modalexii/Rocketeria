@@ -7,6 +7,18 @@ $(document).ready(function(){
 		};
 	})(jQuery);
 
+	// keep openID auth bar at the top as user scrolls
+	$(document).scroll(function() {
+		var scrollPosition = $(document).scrollTop();
+		var scrollReference = 126; // height of header + menu
+		if (scrollPosition >= scrollReference) {      
+			$("#openidauth_bar").addClass('fixed');   
+		} else {
+			$("#openidauth_bar").removeClass('fixed');
+			//$("#openidauth_bar").addClass('abs');
+		};
+	});
+
 	// declare dict to hold the client's selections as we go
 	var selection = {};
 
@@ -52,8 +64,7 @@ $(document).ready(function(){
 			if (jQuery.inArray(parseInt(employeeid, 10), data) > -1
 			|| parseInt(employeeid, 10) == 0) {
 				$(this).showinlineblock();
-			}
-			else {
+			} else {
 				$(this).hide();
 			}
 		});
@@ -104,7 +115,10 @@ $(document).ready(function(){
 		initMenu();
 		// show #calendar
 		$('#calendar').slideDown("slow");
-		$('html,body').animate({ scrollTop: $('#calendar').offset().top }, 'slow');
+		// scroll to #book_response to show full calendar
+		$('html,body').animate(
+			{ scrollTop: $('#book_response').offset().top }, 'slow'
+		);
 	}
 
 	// ----- calendar -----
@@ -122,6 +136,10 @@ $(document).ready(function(){
 		day.click(
 			function() {
 				$(this).parents('div:eq(0)').find('.open').slideToggle('fast');
+				// scroll to #book_response to keep full calendar in view
+				$('html,body').animate(
+					{ scrollTop: $('#book_response').offset().top }, 'slow'
+				);
 			}
 		);
 
@@ -131,14 +149,21 @@ $(document).ready(function(){
 				var fsevent_button = $(this).children("input[type=radio]")
 				fsevent_button.prop('checked',true);
 				open.stopPropagation();
-				// update selection
-				selection['event_readable'] = fsevent_button.val();
-				// update selection
-				selection['event_fs_at'] = fsevent_button.attr('id');
-				// display the Book Now button and continue
-				load_confirmation();
-				$('html,body').animate({ scrollTop: $('#yourid').offset().top }, 'slow');
-			}
+				if ($("#openidauth_bar:contains('What is this?')").length) {
+					//  auth bar contains login link - implies user not logged in
+					// want the auth bar to flash here - to be implemented
+					console.log("user not logged in!");
+				} else {
+					// update selection
+					selection['event_readable'] = fsevent_button.val();
+					// update selection
+					selection['event_fs_at'] = fsevent_button.attr('id');
+					// display the Book Now button and continue
+					load_confirmation();
+					// scroll up
+					$('html,body').animate({ scrollTop: $('html').offset().top }, 'slow');
+				}	
+			}	
 		);
 	}
 
@@ -174,12 +199,19 @@ $(document).ready(function(){
 				'right_to_contact' : $('input[name="right_to_contact"]').attr('checked'),
 			})	
 			.done(function(data) {
+				// data is {"status_code" : <http code>, "content" : "<whatever_content>"}
+				// this is FullSlate format and can be relayed directly from their API,
+				// or created by rockapi if we're making our own response
 				if (data["status_code"] === 200) {
 					// success
 					alert('Confirmed! We\'ll see you ' + selection["event_readable"]);
 					window.location.replace('/studentarea');
-				}
-				else {
+				} else if (data["status_code"] === 401) {
+					// client was not logged in
+					// this indicates tampering
+					console.log("[!] Error: " + data["content"]);
+					window.location.replace('/studentarea');
+				} else {
 					// fail
 					// reason is _assumed_ to be that FullSlate bounced the
 					// request on account of missing customer info, so fetch
@@ -263,8 +295,7 @@ $(document).ready(function(){
 					// success
 					alert('Confirmed! We\'ll see you ' + selection["event_readable"]);
 					window.location.replace('/studentarea');
-				}
-				else {
+				} else {
 					// fail
 					// nothing useful is shown to the user if 
 					// FullSlate bounces the request, so client-side
