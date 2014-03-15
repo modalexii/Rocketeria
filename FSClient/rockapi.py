@@ -93,8 +93,16 @@ class RockAPIHandler(webapp2.RequestHandler):
 
 			federated_user = users.get_current_user()
 			
-			fs_client = clients.fs_client_from(federated_user.email())
-			rock_client = clients.RockClient(fs_client,federated_user)
+			try:
+				fs_client = clients.fs_client_from(federated_user.email())
+			except AttributeError as e: 
+				# no email - not logged in
+				# indicates tampering
+				self.error(401) # not really proper http spec but
+				self.response.write("401 - No Federated User. Possible client tampering.")
+				return
+			else:	
+				rock_client = clients.RockClient(fs_client,federated_user)
 
 			try:
 				print 'TRYING INFO_SOURCE = FULLSLATE (ROCKAPI)'
