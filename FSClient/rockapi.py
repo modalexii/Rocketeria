@@ -65,7 +65,13 @@ class RockAPIHandler(webapp2.RequestHandler):
 
 			federated_user = users.get_current_user()
 			if not federated_user: # client-side tampering
+				print "secu: possible tampering of booking request from %s! '%s'" % (self.request.remote_addr,e)
 				self.error(403)
+				self.response.write(json.dumps({
+					"fs_status_code" : 0,
+					"rock_status_msg" : "No Federated User. Possible client tampering",
+				}))
+				return
 
 			#print '\nUSER FROM ROCKAPI: ',federated_user
 
@@ -98,8 +104,12 @@ class RockAPIHandler(webapp2.RequestHandler):
 			except AttributeError as e: 
 				# no email - not logged in
 				# indicates tampering
+				print "secu: possible tampering of booking request from %s! '%s'" % (self.request.remote_addr,e)
 				self.error(401) # not really proper http spec but
-				self.response.write("401 - No Federated User. Possible client tampering.")
+				self.response.write(json.dumps({
+					"fs_status_code" : 0,
+					"rock_status_msg" : "No Federated User. Possible client tampering",
+				}))
 				return
 			else:	
 				rock_client = clients.RockClient(fs_client,federated_user)
@@ -112,20 +122,45 @@ class RockAPIHandler(webapp2.RequestHandler):
 				print 'INFO_SOURCE = FULLSLATE FAILED, TRYING INFO_SOURCE = POST (ROCKAPI)', e
 				post = rock_client.booking_request(self.request, "post") # try to fill out the request w/ info from POST data
 
-				# let it go through, missing info or not, and let FullSlate return error to client
+				# let it go through, missing info or not, and let FullSlate return error
 				booking_response = fsapi.apirequest('bookings',post)
 				if booking_response.status_code != 200: 
-					print 'FULLSLATE DIDNT LIKE THE BOOKING REQUEST: ',booking_response.status_code,' ',booking_response.content
-					print 'SENDING CLIENT INFO FORM...'
-					self.response.headers['Content-Type'] = 'text/html'
-					self.response.write(rock_client.prefilled_form())
+					if "Please enter" in booking_response.content:
+						# Fullslate complaining about missing client data
+						print "info: FullSlate rejected booking: ",booking_response.content
+						print "info: Sending prefilled form"
+						self.response.headers['Content-Type'] = 'application/json'
+						self.response.write(json.dumps({
+							"fs_status_code" : booking_response.status_code, 
+							"rock_status_msg" : "incomplete_client",
+							"content" : rock_client.prefilled_form(),
+						}))
+					elif "no longer available" in booking_response.content:
+						print "info: FullSlate rejected booking: ",booking_response.content
+						self.response.headers['Content-Type'] = 'application/json'
+						self.response.write(json.dumps({
+							"status_code" : booking_response.status_code, 
+							"rock_status_msg" : "no_longer_available",
+							"content" : booking_response.content,
+						}))
+					else:
+						print "warn: FullSlate rejected booking: ",booking_response.content
+						self.response.headers['Content-Type'] = 'application/json'
+						self.response.write(json.dumps({
+							"status_code" : booking_response.status_code, 
+							"rock_status_msg" : "unhandled",
+							"content" : booking_response.content,
+						}))
+
+					return
+				else:
+					self.response.write(json.dumps({"fs_status_code" : booking_response.status_code, "content" : booking_response.content}))
 					return
 			else:
-				print 'FINALLY, POST LOOKS LIKE THIS: ',post,'\nLETTING IT GO TO FULLSLATE...'
 				booking_response = fsapi.apirequest('bookings',post)
 				print "\nBOOKING RESPONSE: ",booking_response.status_code,booking_response.content
 				self.response.headers['Content-Type'] = 'application/json'
-				self.response.write(json.dumps({"status_code" : booking_response.status_code, "content" : booking_response.content}))
+				self.response.write(json.dumps({"fs_status_code" : booking_response.status_code, "content" : booking_response.content}))
 
 		elif request == 'cancel':
 			'''

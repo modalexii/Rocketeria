@@ -160,8 +160,6 @@ $(document).ready(function(){
 					selection['event_fs_at'] = fsevent_button.attr('id');
 					// display the Book Now button and continue
 					load_confirmation();
-					// scroll up
-					$('html,body').animate({ scrollTop: $('html').offset().top }, 'slow');
 				}	
 			}	
 		);
@@ -181,7 +179,9 @@ $(document).ready(function(){
 		);
 		// show the confirmation section
 		$("#confirmation").slideDown("slow");
-		$('html,body').animate({ scrollTop: $('#confirmation').offset().top }, 'slow');
+		$('html,body').animate(
+			{ scrollTop: $('#confirmation').offset().top }, 'slow'
+		);
 		//console.log(selection)
 
 		stage_booknow();
@@ -190,6 +190,10 @@ $(document).ready(function(){
 	// ----- confirmation -----
 	function stage_booknow() {
 		$('#booknow').click( function() {
+			// scroll up
+			$('html,body').animate(
+				{ scrollTop: $('html').offset().top }, 'slow'
+			);
 			// ask the server to try to book the event
 			$.post("/api", {
 				'request' : 'book',
@@ -202,21 +206,21 @@ $(document).ready(function(){
 				// data is {"status_code" : <http code>, "content" : "<whatever_content>"}
 				// this is FullSlate format and can be relayed directly from their API,
 				// or created by rockapi if we're making our own response
-				if (data["status_code"] === 200) {
+				if (data["fs_status_code"] === 200) {
 					// success
 					alert('Confirmed! We\'ll see you ' + selection["event_readable"]);
 					window.location.replace('/studentarea');
-				} else if (data["status_code"] === 401) {
+				} else if (data["fs_status_code"] === 401) {
 					// client was not logged in
 					// this indicates tampering
 					console.log("[!] Error: " + data["content"]);
 					window.location.replace('/studentarea');
-				} else {
-					// fail
-					// reason is _assumed_ to be that FullSlate bounced the
-					// request on account of missing customer info, so fetch
+				} else if (data["rock_status_msg"] == "incomplete_client") {
+					// missing customer info, so fetch
 					// the form to collect customer info
-					load_client_info_form(data);
+					load_client_info_form(data['content']);
+				} else {
+					console.log('warn: unhandled booking error: ' + data)
 				}
 			})
 			.fail(function(textStatus, errorThrown) {
@@ -264,10 +268,10 @@ $(document).ready(function(){
 		$('#submit').click( function() {
 			// pack the contents of all Student Name fields into an array
 			var children = [];
-				$('.student').each(function(i, obj) { // add all students to array
-					children.push(i);
-				});
-
+			$('.student_name').each(function() { // add all students to array
+				children.push($(this).val());
+			});
+			
 			// ask the server to try to book the event
 			$.post("/api", {
 				// this stuff is all still here, just hidden
@@ -275,7 +279,8 @@ $(document).ready(function(){
 				'at' : selection['event_fs_at'],
 				'service' : selection['service_fs_id'],
 				'employee' : selection['employee_fs_id'],
-				'right_to_contact' : $('input[name="right_to_contact"]').attr('checked'),
+				'right_to_contact' : $('input[name="right_to_contact"]')
+				.attr('checked'),
 				// new stuff from the form
 				'children' : children,
 				'holder1_first' : $('input[name="holder1_first"]').val(),
@@ -291,16 +296,19 @@ $(document).ready(function(){
 				'postal_code' : $('input[name="postal_code"]').val(),
 			})	
 			.done(function(data) {
-				if (data["status_code"] === 200) {
+				if (data["fs_status_code"] === 200) {
 					// success
-					alert('Confirmed! We\'ll see you ' + selection["event_readable"]);
+					alert('Confirmed! We\'ll see you '
+						+ selection["event_readable"]);
 					window.location.replace('/studentarea');
-				} else {
-					// fail
+				} else if (data["rock_status_msg"] == "incomplete_client") {
 					// nothing useful is shown to the user if 
-					// FullSlate bounces the request, so client-side
-					// vallidation is important
-					console.log("failed to book with POSTed data: ",data);
+					// FullSlate bounces the request for incomplete
+					// client data, so client-side vallidation is important
+					console.log("incomplete_client; client-side validation failed or request was tampered");
+				} else if (data["rock_status_msg"] == "no_longer_available") {
+					alert('Sorry, the time you selected is no longer available. Please select another.');
+					window.location('/lessons/book');
 				}
 			})
 			.fail(function(textStatus, errorThrown) {

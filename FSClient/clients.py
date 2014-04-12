@@ -101,17 +101,17 @@ class RockClient():
 
 		try:
 			self.id = fs_client["id"]
-		except KeyError:
-			print "got no id"
+		except KeyError as e:
+			print "clients.py KeyError: ",e," (info: client is new to FullSlate)"
 
 		try:
 			self.first_name = fs_client["first_name"]
-		except KeyError:
-			print "got no first name"
+		except KeyError as e:
+			print "clients.py KeyError: ",e," (info: client info incomplete)"
 		try:
 			self.last_name = fs_client["last_name"]
-		except KeyError:
-			print "got no last name"
+		except KeyError as e:
+			print "clients.py KeyError: ",e," (info: client info incomplete)"
 		try:
 			unpacked_names = unPack_family_names((self.first_name,self.last_name))
 		except AttributeError: # missing first or last name
@@ -125,8 +125,8 @@ class RockClient():
 
 		try:
 			self.emails = fs_client["emails"]
-		except KeyError:
-			print "got no emails"
+		except KeyError as e:
+			print "clients.py KeyError: ",e," (info: client info incomplete)"
 		else:
 			# singular primary email, needed for booking
 			for e in self.emails:
@@ -134,8 +134,8 @@ class RockClient():
 					self.email = e["address"]
 		try:
 			self.phone_numbers = fs_client["phone_numbers"]
-		except KeyError:
-			print "got no phone numbers"
+		except KeyError as e:
+			print "clients.py KeyError: ",e," (info: client info incomplete)"
 		else:
 			# singular primary phone_number, needed for booking
 			for n in self.phone_numbers:
@@ -143,27 +143,40 @@ class RockClient():
 					self.phone_number = n["number"]
 		try:
 			self.addresses = fs_client["addresses"]
-		except KeyError:
-			print "got no address"
+		except KeyError as e:
+			print "clients.py KeyError: ",e," (info: client info incomplete)"
 		else:
 			# singular primary address, needed for booking
 			# addresses is a list of dicts, but dicts have no key "position"
-			self.street1 = self.addresses[0]["street1"]
+			try:
+				self.street1 = self.addresses[0]["street1"]
+			except KeyError as e:
+				print "clients.py KeyError: ",e," (info: client info incomplete)"
 			try:
 				self.street2 = self.addresses[0]["street2"]
-			except KeyError: # street2 not necessary
+			except KeyError as e: # street2 not necessary
+				print "clients.py KeyError: ",e," (info: optional info 'street2' missing)"
 				self.street2 = ""
-			self.city = self.addresses[0]["city"]
-			self.state = self.addresses[0]["state"]
-			self.postal_code = self.addresses[0]["postal_code"]
+			try:
+				self.city = self.addresses[0]["city"]
+			except KeyError as e:
+				print "clients.py KeyError: ",e," (info: client info incomplete)"
+			try:
+				self.state = self.addresses[0]["state"]
+			except KeyError as e:
+				print "clients.py KeyError: ",e," (info: client info incomplete)"
+			try:
+				self.postal_code = self.addresses[0]["postal_code"]
+			except KeyError as e:
+				print "clients.py KeyError: ",e," (info: client info incomplete)"
 		#try:
 		#	self.right_to_contact = fs_client["right_to_contact"]
 		#except KeyError:
 		#	print "got no right to contact"
 		try:
 			self.active = fs_client["active"] # nothing is done with this info yet
-		except KeyError:
-			print "got no active"
+		except KeyError as e:
+			print "clients.py KeyError: ",e," (info: client info incomplete)"
 
 	def events_attended(self,fs_range):
 		'''
@@ -246,9 +259,9 @@ class RockClient():
 				holder2_first = post.get("holder2_first")
 				holder2_last = post.get("holder2_last")
 				children = post.get("children")
-				print "\nCLIENTS.PY POST PACKING NAMES: ",holder1_first,holder1_last,holder2_first,holder2_last,children
+				print "\nCLIENTS.PY POST NAMES BEFORE PACKING: ",holder1_first,holder1_last,holder2_first,holder2_last,children
 				packed_names = fsPack_family_names(holder1_first,holder1_last,holder2_first,holder2_last,children)
-				print packed_names
+				print "\nCLIENTS.PY POST NAMES AFTER PACKING: ",packed_names
 				fs_request.update({
 					# from web request
 					"first_name" : packed_names[0],
