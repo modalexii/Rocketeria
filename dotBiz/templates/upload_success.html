@@ -1,0 +1,22 @@
+<html>
+	<head>
+		<title>SCMS File Upload</title>
+	</head>
+	<body>
+		<h1>Success!</h1>
+		Your file is available at:
+		<h3>{absolute_uri}</h3>
+		Full HTML for the link:
+		<h3>&lt;img src="{absolute_uri}"&gt;</h3>
+		<form name="close">
+			<input type="submit" value="Close Window" onClick="window.close()" />
+		</form>
+		<form name="upload" action="/modify/upload" method="get">
+			<input type="submit" value="Upload Another" />
+		</form>	
+		<p>
+			Have you cleaned out the datastores recently? Delete orphaned pages and files every few months.
+		</p>
+	</body>
+</html>
+		

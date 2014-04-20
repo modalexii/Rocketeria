@@ -1,0 +1,10 @@
+PROGRESS
+
+404 page has no footer...
+
+jumbotron updater:
+jQ UI to get image order
+discard image names and upload item 1 as 01.jpg, 2 as 02.jpg, etc
+
+jumbo code still needs to be generated to account for image count changing
+generate jumbo code only when images are updated, sve to DB

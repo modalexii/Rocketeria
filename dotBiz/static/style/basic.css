@@ -1,0 +1,70 @@
+html, body {
+	height: 100%;
+}
+
+#not-footer-wrap {
+	min-height: 100%;
+}
+
+#header-wrap {
+	background: #DDD;
+}
+
+#editable {
+	overflow:auto;
+	padding-bottom: 80px; /* must be same height as the footer */
+}  
+
+#admin_bar {
+	background: #D21DE2;
+	text-align: center;
+}
+
+#admin_content {
+	width: 100%;
+	display: inline-block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.admin_link {
+	display: inline-block;
+	padding: 3px 5px 3px 5px;
+	cursor: pointer;
+}
+
+.admin_link:hover {
+	background: #9D1EA8;
+}
+
+#editfunctions {
+	display: inline-block;
+}
+
+.disabled {
+	color: #DDD;
+}
+
+.disabled:hover {
+	background: inherit !important;
+	cursor: inherit !important;
+}
+
+#footer-wrap {
+	/* sticky attributes */
+	position: relative;
+	margin-top: -80px; /* negative value of footer height */
+	height: 80px;
+	clear:both;
+	/* other attributes */
+	background: #CCC;
+} 
+
+/*Opera Fix*/
+body:before {
+	content:"";
+	height:100%;
+	float:left;
+	width:0;
+	margin-top:-32767px;/
+}
