@@ -59,6 +59,9 @@ $(document).ready(function(){
 	$('#signout').click(function() {
 		window.location.replace('/_ah/login?continue=/&action=logout');
 	});
+	$('#bannersettings').click(function() {
+		window.open('/modify/banner', 'banner', 'left=20,top=20,width=960,height=500,toolbar=1,resizable=0');
+	})
 	$('#upload').click(function() {
 		window.open('/modify/upload', 'upload', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0');
 	})

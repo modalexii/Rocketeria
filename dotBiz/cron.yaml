@@ -1,0 +1,3 @@
+cron:
+- url: /cron/bihourly
+  schedule: every 2 hours

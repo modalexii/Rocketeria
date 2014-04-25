@@ -23,14 +23,18 @@ handlers:
 - url: /res/.*
   script: gcs_wrapper.application
 
+# Hand-off
+- url: /enableadmin
+  script: login.application
+
 # Non-Public
 - url: /modify/?.*
   script: modify.application
   login: admin
 
-# Hand-off
-- url: /enableadmin
-  script: login.application
+- url: /cron/.*
+  script: cron.application
+  login: admin
 
 # Catch-all
 - url: /.*

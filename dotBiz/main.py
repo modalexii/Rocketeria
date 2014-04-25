@@ -23,6 +23,16 @@ class MainHandler(webapp2.RequestHandler):
 			templates.get("header")
 		)
 
+		if uri == "index":
+			try:
+				# grab banner
+				self.response.write(
+					gae_db.fetch_content(uri = "/banner") # THIS WILL BREAK IF THE BANNER DOES NOT EXIST - CATCH THAT
+				)
+			except AttributeError:
+				# no banner
+				pass
+
 		try:
 			# check the database...
 			content = gae_db.fetch_content(uri = uri)

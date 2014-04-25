@@ -41,6 +41,12 @@ class ModificationHandler(webapp2.RequestHandler):
 				templates.get("footer")
 			)
 
+		elif request_path == "modify/banner":
+			self.response.write(
+				templates.get("alert_banner_settings")
+			)
+
+
 
 	def post(self, *args, **kwargs):
 		'''handle HTTP POSTs'''
@@ -94,6 +100,41 @@ class ModificationHandler(webapp2.RequestHandler):
 			absolute_uri = "%s%s%s" % (self.request.host_url, gcs_bin, filename)
 
 			self.response.write(templates.get("upload_success").format(**locals()))
+
+		elif request_path == "modify/banner":
+
+			state = self.request.get("state")
+
+			if state != "on":
+				# clear banner
+				# THIS WILL BREAK IF THE BANNER DOES NOT EXIST - CATCH THAT
+				gae_db.delete_page("/banner")
+				return
+
+			banner_bg = self.request.get("banner_bg")
+			text_color = self.request.get("text_color")
+			message = self.request.get("message").strip()
+
+			# set expire date to 00:00 UTC of selected day
+			# this prevents each cron job fron needing to convert time zone
+			from datetime import datetime,timedelta
+			expiry = self.request.get("expire").strip()
+
+			if expiry:
+				expiry = datetime.strptime(expiry,"%d/%m/%Y")
+				offset = timedelta(hours = 5) # one hr off during DST is acceptable for this application
+				expiry += offset
+				expiry = expiry.strftime("%d/%m/%YT05:00:00")
+
+			style_class = "%s %s" % (banner_bg, text_color)
+
+			# we trust user input here. they're already admins...
+
+			banner_content = templates.get("alert_banner").format(**locals())
+
+			gae_db.add_or_update_page("/banner", banner_content)
+
+
 
 
 application = webapp2.WSGIApplication([
