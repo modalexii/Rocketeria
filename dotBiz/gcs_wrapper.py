@@ -11,7 +11,6 @@ class FetchHandler(webapp2.RequestHandler):
 
 		try:
 			gcs_object = cloudstorage.open(
-				#"/res/" + args[0], # request path, including /res/ (bucket name)
 				uri,
 				mode = "r",
 			)
@@ -19,7 +18,6 @@ class FetchHandler(webapp2.RequestHandler):
 			handle_errors.http404(self.request, self.response)
 		else:
 			gcs_object_info = cloudstorage.stat(
-				#"/res/" + args[0], # request path, including /res/ (bucket name)
 				uri,
 			)
 
@@ -29,6 +27,6 @@ class FetchHandler(webapp2.RequestHandler):
 			gcs_object.close()
 
 application = webapp2.WSGIApplication([
-	('/res/.*', FetchHandler)
+	('/dres/.*', FetchHandler)
 ], debug=False)
 
