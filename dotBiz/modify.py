@@ -8,6 +8,7 @@ class ModificationHandler(webapp2.RequestHandler):
 	def get(self):
 		'''handle HTTP GETs'''
 
+		self.response.headers['Content-Type'] = 'text/html'
 		request_path = self.request.path.strip('/')
 
 		if request_path == "modify/upload":
@@ -20,9 +21,16 @@ class ModificationHandler(webapp2.RequestHandler):
 		elif request_path == "modify/new":
 			from google.appengine.api import users
 
-			if users.is_current_user_admin():
-				current_user = users.get_current_user()
-				nickname = current_user.nickname().split('@')[0] # user, no domain
+			if not users.is_current_user_admin():
+				logging.error("SECURITY: non-admin user requested /modify/new")
+				return
+
+			current_user = users.get_current_user()
+			nickname = current_user.email().split('@')[0] # user, no domain
+
+			import get_env
+			environment = get_env.from_url(self.request.url)
+			version = get_env.version()
 
 			seteditable = '''<script>var editable_existing = false; var new_editor = true;</script>'''
 
@@ -35,7 +43,7 @@ class ModificationHandler(webapp2.RequestHandler):
 			)
 			self.response.write('''</div> <!-- /editable -->''')
 			self.response.write(
-				templates.get("admin_functions").format(**locals())
+				templates.get("admin_bar").format(**locals())
 			)
 			self.response.write(
 				templates.get("footer")
@@ -46,11 +54,16 @@ class ModificationHandler(webapp2.RequestHandler):
 				templates.get("alert_banner_settings")
 			)
 
+		elif request_path == "modify/logout":
+			from google.appengine.api import users
+			self.redirect(users.create_logout_url('/'))
+
 
 
 	def post(self, *args, **kwargs):
 		'''handle HTTP POSTs'''
 
+		self.response.headers['Content-Type'] = 'text/html'
 		from urllib import quote
 
 		request_path = self.request.path.strip('/')
@@ -77,7 +90,7 @@ class ModificationHandler(webapp2.RequestHandler):
 			uploaded_file = self.request.params["file"]
 			filename = quote(uploaded_file.filename)
 			child_bin = self.request.get("child_bin")
-			gcs_bin = "/res/"
+			gcs_bin = "/dres/"
 
 			if child_bin:
 				child_bin = child_bin.strip("/")
