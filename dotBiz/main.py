@@ -27,11 +27,13 @@ class MainHandler(webapp2.RequestHandler):
 			try:
 				# grab banner
 				self.response.write(
-					gae_db.fetch_content(uri = "/banner") # THIS WILL BREAK IF THE BANNER DOES NOT EXIST - CATCH THAT
+					gae_db.fetch_content(uri = "/banner")
 				)
 			except AttributeError:
 				# no banner
 				pass
+
+		self.response.write('''<div id="editable">''')
 
 		try:
 			# check the database...
@@ -41,14 +43,14 @@ class MainHandler(webapp2.RequestHandler):
 				# ...then check the templates
 				content = templates.get(uri)
 			except IOError as e:
-				handle_errors.http404(self.request, self.response)
+				self.response.set_status(404)
+				self.response.write("<h1>404</h1")
+				self.redirect("/404")
 				return
 			else:
 				content_source = "template"
-				self.response.write('''<div id="editable">''')
 		else:
 			content_source = "db"
-			self.response.write('''<div id="editable">''')
 
 		self.response.write(content)
 		self.response.write('''</div> <!-- /editable -->''')
@@ -56,8 +58,13 @@ class MainHandler(webapp2.RequestHandler):
 		from google.appengine.api import users
 		if users.is_current_user_admin():
 			current_user = users.get_current_user()
-			nickname = current_user.nickname()
+			nickname = current_user.email()
 			nickname = nickname.split('@')[0] # user, no domain
+
+			import get_env
+			environment = get_env.from_url(self.request.url)
+			version = get_env.version()
+
 			signout_url = users.create_logout_url(dest_url="/%s" % uri)
 
 			if content_source == "db":
@@ -65,11 +72,11 @@ class MainHandler(webapp2.RequestHandler):
 			else:
 				seteditable = '''<script>var editable_existing = false; var new_editor = false;</script>'''
 			self.response.write(
-				templates.get("admin_functions").format(**locals())
+				templates.get("admin_bar").format(**locals())
 			)
 
 		self.response.write(
-			templates.get("footer")
+			templates.get("footer") 
 		)
 
 	def post(self):
@@ -79,6 +86,3 @@ class MainHandler(webapp2.RequestHandler):
 application = webapp2.WSGIApplication([
 	(r'/.*', MainHandler),
 ], debug=False)
-
-#application.error_handlers[404] = handle_errors.http404()
-#application.error_handlers[500] = handle_errors.http500()
