@@ -4,7 +4,7 @@ import logging
 
 class Page(ndb.Model):
     uri = ndb.StringProperty(required = True)
-    content = ndb.StringProperty(required = True)
+    content = ndb.GenericProperty(indexed = False, required = True)
 
 def add_or_update_page(uri, content):
     new_page = Page(id = uri, uri = uri, content = content)
