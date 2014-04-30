@@ -1,0 +1,76 @@
+
+.red_border {
+	border: 2px solid #962320;
+}
+
+.yellow_border {
+	border: 2px solid #d79e06;
+}
+
+.blue_border {
+	border: 2px solid#03bde4;
+}
+
+.green_border {
+	border: 2px solid #58a225;
+}
+
+.red_bg {
+	background: #962320;
+}
+
+.yellow_bg {
+	background: #d79e06;
+}
+
+.blue_bg {
+	background: #03bde4;
+}
+
+.green_bg {
+	background: #58a225;
+	margin:0;
+}
+
+.plain_bg {
+	background: #EEE;
+	margin:0;
+}
+
+#admin_bar {
+	text-align: center;
+	width: 100%;
+	position: fixed;
+	bottom: 100px;
+}
+
+#admin_content {
+	width: 100%;
+	display: inline-block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.admin_link {
+	display: inline-block;
+	padding: 3px 5px 3px 5px;
+	cursor: pointer;
+}
+
+.admin_link:hover {
+	background: #58a225;
+}
+
+#editfunctions {
+	display: inline-block;
+}
+
+.disabled {
+	color: #999;
+	background: #BBB;
+}
+
+.disabled:hover {
+	background: #BBB;
+	cursor: default;
+}

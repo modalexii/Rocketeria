@@ -1,0 +1,59 @@
+<html>
+	<head>
+		<title>Alert Banner Settings</title>
+	</head>
+	<link rel="stylesheet" type="text/css" href="/static/script/datetimepicker/jquery.datetimepicker.css"/ >
+	<link rel="stylesheet" href="/static/style/basic.css"/>
+	<link rel="stylesheet" href="/static/style/alert_banner.css"/>
+	<body>
+		<h2>Configure Alert Banner</h2>
+		<div id="banner_state">
+			<input id="on" type="radio" value="on" name="state" checked>
+			<label for="on">On</label>
+			<input id="off" type="radio" value="off" name="state">
+			<label for="off">Off</label>
+		</div>
+		<div id="banner" class="stripe alert" contenteditable>
+			Rocketeria will be closed today due to inclement weather.
+		</div>
+		<div id="banner_color">
+			<p>
+				Banner:
+				<input id="red_bg" type="radio" value="red_bg" name="banner_color" checked>
+				<label for="red_bg">Red</label>
+				<input id="yellow_bg" type="radio" value="yellow_bg" name="banner_color">
+				<label for="yellow_bg">Yellow</label>
+				<input id="blue_bg" type="radio" value="blue_bg" name="banner_color">
+				<label for="blue_bg">Blue</label>
+				<input id="green_bg" type="radio" value="green_bg" name="banner_color">
+				<label for="green_bg">Green</label>
+				<input id="plain_bg" type="radio" value="plain_bg" name="banner_color">
+				<label for="plain_bg">Plain</label>
+			</p>
+		</div>
+		<div id="text_color">
+			<p>
+				Text:
+				<input id="white_txt" type="radio" value="white_txt" name="text_color" checked>
+				<label for="white_txt">White</label>
+				<input id="black_txt" type="radio" value="black_txt" name="text_color">
+				<label for="black_txt">Black</label>
+				<input id="red_txt" type="radio" value="red_txt" name="text_color">
+				<label for="red_txt">Red</label>
+			</p>
+		</div>
+		<div id="expire">
+			<p>Expire On (blank to never expire):
+				<input id="datetimepicker" name="expire" type="text" />
+		</div>
+		<div id="post">
+			Update Alert Banner
+		</div>
+		<div id="cancel">
+			Cancel
+		</div>
+	</body>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="/static/script/datetimepicker/jquery.datetimepicker.js"></script>
+	<script src="/static/script/alertBannerSettings.js"></script>
+</html>
