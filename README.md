@@ -1,1 +1,1 @@
-We're maing the website more better :)
+We're making the website more better :)
