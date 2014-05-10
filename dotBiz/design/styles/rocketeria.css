@@ -2,12 +2,12 @@
 
 /* @font-face {
 font-family: Quicksand;
-src: url("/static/style/fonts/Quicksand-Regular.otf");
+src: url("../style/fonts/Quicksand-Regular.otf");
 }
 
 @font-face {
 font-family: Quicksand-Bold;
-src: url("/static/style/fonts/Quicksand-Bold.otf");
+src: url("../style/fonts/Quicksand-Bold.otf");
 } */
 
 html, body {
@@ -20,16 +20,16 @@ width: 100%;
 body {
 	font-family: 'Quicksandregular', sans-serif;
 	color: #0f0403;
-	background: -moz-linear-gradient(left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 5%, rgba(150,35,31,1) 50%, rgba(150,35,31,1) 51%, rgba(0,0,0,1) 95%, rgba(0,0,0,1) 100%); /* FF3.6+ */
-	background: -webkit-gradient(left top, right top, color-stop(0%, rgba(0,0,0,1)), color-stop(5%, rgba(0,0,0,1)), color-stop(50%, rgba(150,35,31,1)), color-stop(51%, rgba(150,35,31,1)), color-stop(95%, rgba(0,0,0,1)), color-stop(100%, rgba(0,0,0,1))); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 5%, rgba(150,35,31,1) 50%, rgba(150,35,31,1) 51%, rgba(0,0,0,1) 95%, rgba(0,0,0,1) 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 5%, rgba(150,35,31,1) 50%, rgba(150,35,31,1) 51%, rgba(0,0,0,1) 95%, rgba(0,0,0,1) 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 5%, rgba(150,35,31,1) 50%, rgba(150,35,31,1) 51%, rgba(0,0,0,1) 95%, rgba(0,0,0,1) 100%); /* IE10+ */
-	background: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 5%, rgba(150,35,31,1) 50%, rgba(150,35,31,1) 51%, rgba(0,0,0,1) 95%, rgba(0,0,0,1) 100%); /* W3C */
+	background: url("../images/bg-main-2.png") no-repeat center top, -moz-linear-gradient(left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 5%, rgba(150,35,31,1) 50%, rgba(150,35,31,1) 51%, rgba(0,0,0,1) 95%, rgba(0,0,0,1) 100%); /* FF3.6+ */
+	background: url("../images/bg-main-2.png") no-repeat center top, -webkit-gradient(left top, right top, color-stop(0%, rgba(0,0,0,1)), color-stop(5%, rgba(0,0,0,1)), color-stop(50%, rgba(150,35,31,1)), color-stop(51%, rgba(150,35,31,1)), color-stop(95%, rgba(0,0,0,1)), color-stop(100%, rgba(0,0,0,1))); /* Chrome,Safari4+ */
+	background: url("../images/bg-main-2.png") no-repeat center top, -webkit-linear-gradient(left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 5%, rgba(150,35,31,1) 50%, rgba(150,35,31,1) 51%, rgba(0,0,0,1) 95%, rgba(0,0,0,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: url("../images/bg-main-2.png") no-repeat center top, -o-linear-gradient(left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 5%, rgba(150,35,31,1) 50%, rgba(150,35,31,1) 51%, rgba(0,0,0,1) 95%, rgba(0,0,0,1) 100%); /* Opera 11.10+ */
+	background: url("../images/bg-main-2.png") no-repeat center top, -ms-linear-gradient(left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 5%, rgba(150,35,31,1) 50%, rgba(150,35,31,1) 51%, rgba(0,0,0,1) 95%, rgba(0,0,0,1) 100%); /* IE10+ */
+	background: url("../images/bg-main-2.png") no-repeat center top, linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 5%, rgba(150,35,31,1) 50%, rgba(150,35,31,1) 51%, rgba(0,0,0,1) 95%, rgba(0,0,0,1) 100%); /* W3C */
 }
 
 .image-bg {
-	background: url("/static/image/bg-main.png") #0f0403 no-repeat center top !important;
+	background: url("../images/bg-main.png") #0f0403 no-repeat center top !important;
 }
 
 #page-wrapper {
@@ -70,7 +70,7 @@ clear: both;
 #header {
 background-color: #96231f;
 height: 103px;
-background-image: url("/static/image/bg-header.png");
+background-image: url("../images/bg-header.png");
 }
 
 #header a {
@@ -82,8 +82,8 @@ cursor: pointer;
 cursor: hand;
 }
 
-h1 {
-background: url("/static/image/header-text.png") no-repeat 26px 20px;
+#header h1 {
+background: url("../images/header-text.png") no-repeat 26px 20px;
 text-indent: -9999px;
 height: 80px;
 width: 372px;
@@ -134,6 +134,7 @@ padding-bottom: 11px;
 float: left;
 height: 290px;
 padding: 12px;
+overflow: hidden;
 }
 
 .billboard-container h2 {
@@ -151,15 +152,14 @@ height: 42px;
 }
 
 .billboard-content {
-height: 285px;
+height: 284px;
 width: 348px;
 position: relative;
-bottom: 289px;
+bottom: 288px;
 left: 348px;
 color: #FFFFFF;
-background: url("/static/image/billboard-content-bg-green.png") top right no-repeat;
+background: url("../images/billboard-content-bg-green.png") top right no-repeat;
 }
-
 .ie8 .billboard-content, .ie7 .billboard-content, .ie9 .billboard-content, .ie10 .billboard-content, .ie11 .billboard-content {
 bottom: 289px;
 }
@@ -205,7 +205,7 @@ width: 178px;
 
 .home-newsletter {
 float: right;
-background: url("/static/image/bg-newsletter-red.png") no-repeat;
+background: url("../images/bg-newsletter-red.png") no-repeat;
 color: #f7bd20;
 position: relative;
 right: 16px;
@@ -255,7 +255,7 @@ font-family: 'Quicksandbold', sans-serif !important;
 }
 
 .newsletter-social {
-background: url("/static/image/bg-social-yellow.png") no-repeat;
+background: url("../images/bg-social-yellow.png") no-repeat;
 padding-bottom: 10px;
 margin-top: 36px;
 }
@@ -267,7 +267,7 @@ font-family: 'Quicksandbold', sans-serif !important;
 }
 
 .btn-facebook-red {
-background: url("/static/image/btn-facebook-red.png") no-repeat;
+background: url("../images/btn-facebook-red.png") no-repeat;
 cursor: pointer;
 cursor: hand;
 width: 39px;
@@ -276,11 +276,11 @@ border: 0;
 }
 
 .btn-facebook-red:hover {
-background: url("/static/image/btn-facebook-black.png") no-repeat;
+background: url("../images/btn-facebook-black.png") no-repeat;
 }
 
 .btn-twitter-red {
-background: url("/static/image/btn-twitter-red.png") no-repeat;
+background: url("../images/btn-twitter-red.png") no-repeat;
 cursor: pointer;
 cursor: hand;
 width: 39px;
@@ -289,11 +289,11 @@ border: 0;
 }
 
 .btn-twitter-red:hover {
-background: url("/static/image/btn-twitter-black.png") no-repeat;
+background: url("../images/btn-twitter-black.png") no-repeat;
 }
 
 .btn-instagram-red {
-background: url("/static/image/btn-instagram-red.png") no-repeat;
+background: url("../images/btn-instagram-red.png") no-repeat;
 cursor: pointer;
 cursor: hand;
 width: 39px;
@@ -302,11 +302,11 @@ border: 0;
 }
 
 .btn-instagram-red:hover {
-background: url("/static/image/btn-instagram-black.png") no-repeat;
+background: url("../images/btn-instagram-black.png") no-repeat;
 }
 
 .btn-youtube-red {
-background: url("/static/image/btn-youtube-red.png") no-repeat;
+background: url("../images/btn-youtube-red.png") no-repeat;
 cursor: pointer;
 cursor: hand;
 width: 39px;
@@ -315,7 +315,7 @@ border: 0;
 }
 
 .btn-youtube-red:hover {
-background: url("/static/image/btn-youtube-black.png") no-repeat;
+background: url("../images/btn-youtube-black.png") no-repeat;
 }
 
 .home-bottom {
@@ -333,14 +333,14 @@ padding: 10px 0;
 }
 
 .home-testimonials {
-width: 293px;
-height: 390px;
-background: url("/static/image/bg-testimonials.png") no-repeat;
+width: 292px;
+height: 389px;
+background: url("../images/bg-testimonials.png") no-repeat;
 color: #abfffc;
 float: left;
 position: relative;
 bottom: 183px;
-margin-left: 12px;
+margin-left: 14px;
 }
 
 .home-testimonials h3 {
@@ -348,12 +348,12 @@ background-color: #04bde5;
 }
 
 .home-store {
-background: url("/static/image/bg-store.png") no-repeat;
-width: 293px;
-height: 183px;
+background: url("../images/bg-store.png") no-repeat;
+width: 292px;
+height: 182px;
 color: #f97b7d;
 float: left;
-margin: 0px 14px;
+margin: 0px 16px 0 14px;
 }
 
 .home-store:hover, .home-lessons:hover, .home-rentals:hover, .home-events:hover, .home-testimonials:hover {
@@ -367,9 +367,9 @@ background-color: #96231f;
 }
 
 .home-lessons {
-background: url("/static/image/bg-lessons.png") no-repeat;
-width: 293px;
-height: 183px;
+background: url("../images/bg-lessons.png") no-repeat;
+width: 292px;
+height: 182px;
 color: #9df860;
 float: left;
 margin: 0px 12px;
@@ -380,12 +380,12 @@ background-color: #58a326;
 }
 
 .home-rentals {
-background: url("/static/image/bg-rentals.png") no-repeat;
-width: 293px;
-height: 183px;
+background: url("../images/bg-rentals.png") no-repeat;
+width: 292px;
+height: 182px;
 color: #f5ed14;
 float: left;
-margin: 24px 14px 0;
+margin: 24px 16px 0 14px;
 }
 
 .home-rentals h3 {
@@ -393,9 +393,9 @@ background-color: #d79e05;
 }
 
 .home-events {
-background: url("/static/image/bg-events.png") no-repeat;
-width: 293px;
-height: 183px;
+background: url("../images/bg-events.png") no-repeat;
+width: 292px;
+height: 182px;
 color: #e26ffb;
 float: left;
 margin: 24px 12px 0;
@@ -424,7 +424,7 @@ width: 260px;
 height: 258px;
 margin-top: -258px;
 clear: both;
-background: url("/static/image/separator-footer.png") center top no-repeat #f7bd20;
+background: url("../images/separator-footer.png") center top no-repeat #f7bd20;
 }
 
 #footer h3 {
@@ -513,7 +513,7 @@ width: 177px;
 }
 
 .btn-facebook-black {
-background: url("/static/image/btn-facebook-black.png") no-repeat;
+background: url("../images/btn-facebook-black.png") no-repeat;
 cursor: pointer;
 cursor: hand;
 width: 39px;
@@ -522,11 +522,11 @@ border: 0;
 }
 
 .btn-facebook-black:hover {
-background: url("/static/image/btn-facebook-red.png") no-repeat;
+background: url("../images/btn-facebook-red.png") no-repeat;
 }
 
 .btn-twitter-black {
-background: url("/static/image/btn-twitter-black.png") no-repeat;
+background: url("../images/btn-twitter-black.png") no-repeat;
 cursor: pointer;
 cursor: hand;
 width: 39px;
@@ -535,11 +535,11 @@ border: 0;
 }
 
 .btn-twitter-black:hover {
-background: url("/static/image/btn-twitter-red.png") no-repeat;
+background: url("../images/btn-twitter-red.png") no-repeat;
 }
 
 .btn-instagram-black {
-background: url("/static/image/btn-instagram-black.png") no-repeat;
+background: url("../images/btn-instagram-black.png") no-repeat;
 cursor: pointer;
 cursor: hand;
 width: 39px;
@@ -548,11 +548,11 @@ border: 0;
 }
 
 .btn-instagram-black:hover {
-background: url("/static/image/btn-instagram-red.png") no-repeat;
+background: url("../images/btn-instagram-red.png") no-repeat;
 }
 
 .btn-youtube-black {
-background: url("/static/image/btn-youtube-black.png") no-repeat;
+background: url("../images/btn-youtube-black.png") no-repeat;
 cursor: pointer;
 cursor: hand;
 width: 39px;
@@ -561,5 +561,5 @@ border: 0;
 }
 
 .btn-youtube-black:hover {
-background: url("/static/image/btn-youtube-red.png") no-repeat;
+background: url("../images/btn-youtube-red.png") no-repeat;
 }
