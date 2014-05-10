@@ -42,10 +42,8 @@ class MainHandler(webapp2.RequestHandler):
 				content = templates.get(uri)
 			except IOError as e:
 				self.response.set_status(404)
-				self.response.write("<h1>404</h1")
-				self.redirect("/404")
-				return
-			else:
+				content = templates.get("404") 
+			else:/modify
 				content_source = "template"
 		else:
 			content_source = "db"
