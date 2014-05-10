@@ -29,19 +29,22 @@
 
 .green_bg {
 	background: #58a225;
-	margin:0;
-}
-
-.plain_bg {
-	background: #EEE;
-	margin:0;
 }
 
 #admin_bar {
+	font-size: 20px;
 	text-align: center;
-	width: 100%;
+	width: 960px;
 	position: fixed;
-	bottom: 100px;
+	bottom: 12px;
+	border-top: 2px solid #000;
+	border-bottom: 2px solid #000;
+	background: #03bde4;
+}
+
+#admin_bar input {
+	font-size: 20px;
+	font-family: 'Quicksandregular', sans-serif;
 }
 
 #admin_content {
@@ -51,26 +54,38 @@
 	margin-right: auto;
 }
 
+#admin_content a:hover {
+	font-weight: bold;
+}
+
 .admin_link {
 	display: inline-block;
-	padding: 3px 5px 3px 5px;
+	padding: 5px;
 	cursor: pointer;
 }
 
 .admin_link:hover {
-	background: #58a225;
+	font-weight: bolder;
 }
 
 #editfunctions {
 	display: inline-block;
 }
 
+#editthis {
+	padding-left: 5px;
+}
+
 .disabled {
-	color: #999;
-	background: #BBB;
+	color: #FFF;
 }
 
 .disabled:hover {
-	background: #BBB;
 	cursor: default;
+	font-weight: inherit;
+}
+
+.info {
+	vertical-align: baseline;
+	cursor: pointer;
 }
