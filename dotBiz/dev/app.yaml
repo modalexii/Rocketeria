@@ -36,6 +36,10 @@ handlers:
   script: cron.application
   login: admin
 
+# Public 3rd-Party API Proxy
+- url: /api_proxy_pub/.*
+  script: api_proxy_pub.application
+
 # Catch-all
 - url: /.*
   script: main.application
