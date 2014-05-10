@@ -33,8 +33,6 @@ class MainHandler(webapp2.RequestHandler):
 				# no banner
 				pass
 
-		self.response.write('''<div id="editable">''')
-
 		try:
 			# check the database...
 			content = gae_db.fetch_content(uri = uri)
@@ -53,17 +51,12 @@ class MainHandler(webapp2.RequestHandler):
 			content_source = "db"
 
 		self.response.write(content)
-		self.response.write('''</div> <!-- /editable -->''')
 
 		from google.appengine.api import users
 		if users.is_current_user_admin():
 			current_user = users.get_current_user()
 			nickname = current_user.email()
 			nickname = nickname.split('@')[0] # user, no domain
-
-			import get_env
-			environment = get_env.from_url(self.request.url)
-			version = get_env.version()
 
 			signout_url = users.create_logout_url(dest_url="/%s" % uri)
 
