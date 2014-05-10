@@ -1,7 +1,13 @@
+#banner {
+	margin-top: 12px;
+}
+
 .alert {
 	width: auto;
 	border: none;
 	color: #FFF;
+	font-family: 'Quicksandbold', sans-serif !important;
+	font-size: 20px;
 	padding: 20px;
 	text-align: center;
 }
