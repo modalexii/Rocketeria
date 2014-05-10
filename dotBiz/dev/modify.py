@@ -25,13 +25,6 @@ class ModificationHandler(webapp2.RequestHandler):
 				logging.error("SECURITY: non-admin user requested /modify/new")
 				return
 
-			current_user = users.get_current_user()
-			nickname = current_user.email().split('@')[0] # user, no domain
-
-			import get_env
-			environment = get_env.from_url(self.request.url)
-			version = get_env.version()
-
 			seteditable = '''<script>var editable_existing = false; var new_editor = true;</script>'''
 
 			self.response.write(
@@ -53,7 +46,16 @@ class ModificationHandler(webapp2.RequestHandler):
 			self.response.write(
 				templates.get("alert_banner_settings")
 			)
-
+		elif request_path == "modify/info":
+			from google.appengine.api import users
+			import get_env
+			environment = get_env.from_url(self.request.url)
+			version = get_env.version()
+			current_user = users.get_current_user()
+			nickname = current_user.email().split('@')[0] # user, no domain
+			self.response.write(
+				templates.get("info").format(**locals())
+			)
 		elif request_path == "modify/logout":
 			from google.appengine.api import users
 			self.redirect(users.create_logout_url('/'))
