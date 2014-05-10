@@ -22,6 +22,7 @@ $(document).ready(function(){
 			'expire' : $('input[name="expire"]').val(),
 		})
 		.done(function() {
+			alert('Banner Updated. Refresh the home page to inspect it.');
 			window.close();
 		})
 		.fail(function() {
