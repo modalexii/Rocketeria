@@ -142,6 +142,11 @@ float: left;
 margin: 12px 12px 16px;
 }
 
+.slider1_slides {
+cursor: pointer !important;
+cursor: hand !important;
+}
+
 .slider1_slides h3 {
 color: #FFF;
 position: relative;
@@ -170,10 +175,10 @@ height: 42px;
 }
 
 .billboard-content {
-height: 284px;
+height: 285px;
 width: 348px;
 position: relative;
-bottom: 126px;
+bottom: 125px;
 left: 224px;
 color: #FFFFFF;
 background: url("../images/billboard-content-bg-green.png") top right no-repeat;
@@ -213,6 +218,7 @@ float: left;
             {
             	position: absolute;
             	cursor: pointer;
+				cursor: hand;
             	display: block;
                 background: url("../images/a03.png") no-repeat;
                 overflow:hidden;
