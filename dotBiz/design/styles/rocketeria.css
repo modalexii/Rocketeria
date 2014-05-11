@@ -130,6 +130,24 @@ padding-bottom: 11px;
 
 /* Home Page */
 
+/* Billboard Slider */
+
+#slider1_container {
+position: relative;
+top: 0px;
+left: 0px;
+width: 696px;
+height: 285px;
+float: left;
+margin: 12px 12px 16px;
+}
+
+.slider1_slides h3 {
+color: #FFF;
+position: relative;
+}
+
+
 .billboard-container {
 float: left;
 height: 290px;
@@ -137,7 +155,7 @@ padding: 12px;
 overflow: hidden;
 }
 
-.billboard-container h2 {
+.billboard-content h2 {
 text-transform: uppercase;
 font-size: 33px;
 background-color: #58a326;
@@ -155,14 +173,14 @@ height: 42px;
 height: 284px;
 width: 348px;
 position: relative;
-bottom: 288px;
-left: 348px;
+bottom: 126px;
+left: 224px;
 color: #FFFFFF;
 background: url("../images/billboard-content-bg-green.png") top right no-repeat;
 }
-.ie8 .billboard-content, .ie7 .billboard-content, .ie9 .billboard-content, .ie10 .billboard-content, .ie11 .billboard-content {
+/* .ie8 .billboard-content, .ie7 .billboard-content, .ie9 .billboard-content, .ie10 .billboard-content, .ie11 .billboard-content {
 bottom: 289px;
-}
+} */
 
 .billboard-content p {
 position: relative;
@@ -178,6 +196,35 @@ position: relative;
 top: 64px;
 left: 66px;
 }
+
+.billboard-container img {
+float: left;
+}
+/* jssor slider arrow navigator skin 03 css */
+            /*
+            .jssora03l              (normal)
+            .jssora03r              (normal)
+            .jssora03l:hover        (normal mouseover)
+            .jssora03r:hover        (normal mouseover)
+            .jssora03ldn            (mousedown)
+            .jssora03rdn            (mousedown)
+            */
+            .jssora03l, .jssora03r, .jssora03ldn, .jssora03rdn
+            {
+            	position: absolute;
+            	cursor: pointer;
+            	display: block;
+                background: url("../images/a03.png") no-repeat;
+                overflow:hidden;
+            }
+            .jssora03l { background-position: -3px -33px; }
+            .jssora03r { background-position: -63px -33px; }
+            .jssora03l:hover { background-position: -123px -33px; }
+            .jssora03r:hover { background-position: -183px -33px; }
+            .jssora03ldn { background-position: -243px -33px; }
+            .jssora03rdn { background-position: -303px -33px; }
+
+/* End Billboard Styling */
 
 .btn-submit-yellow, input[type="submit"].btn-submit-yellow{
 text-transform: uppercase;
@@ -257,7 +304,7 @@ font-family: 'Quicksandbold', sans-serif !important;
 .newsletter-social {
 background: url("../images/bg-social-yellow.png") no-repeat;
 padding-bottom: 10px;
-margin-top: 36px;
+margin-top: 35px;
 }
 
 .newsletter-social h3 {
