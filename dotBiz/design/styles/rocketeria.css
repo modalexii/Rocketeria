@@ -132,12 +132,15 @@ padding-bottom: 11px;
 
 /* Billboard Slider */
 
-#slides {
-display: none;
+#slides, .no-js-slide {
 width: 696px;
 height: 285px;
 float: left;
 padding: 12px;
+}
+
+#slides {
+display: none;
 }
 
 
@@ -155,14 +158,14 @@ width: 50px;
 height: 50px;
 position: relative;
 bottom: 154px;
-left: 591px;
+left: 590px;
 z-index: 9999;
 background: url("../images/a03.png") 55px -35px no-repeat;
 }
 
-#slides .arrow-next:hover {
-background: url("../images/a03.png") -67px -35px no-repeat;
-} 
+#slides .arrow-next:focus,  #slides .arrow-previous:focus {
+outline: none;
+}
 
 #slides .arrow-previous {
 border: 0;
@@ -171,13 +174,10 @@ cursor: hand;
 width: 50px;
 height: 50px;
 position: relative;
+left: 1px;
 bottom: 154px;
 z-index: 9999;
 background: url("../images/a03.png") 55px -35px no-repeat;
-}
-
-#slides .arrow-previous:hover {
-background: url("../images/a03.png") -5px -35px no-repeat;
 }
 
 .slidejs-pagination {
@@ -208,8 +208,8 @@ color: #FFFFFF;
 background: url("../images/billboard-content-bg-green.png") top right no-repeat;
 }
 
-.ie8 .billboard-content, .ie7 .billboard-content, .ie9 .billboard-content, .ie10 .billboard-content, .ie11 .billboard-content {
-bottom: 289px;
+.ie7 .billboard-content {
+bottom: 285px;
 }
 
 .billboard-content p {
@@ -246,6 +246,10 @@ cursor: hand;
 
 .btn-submit-yellow:hover {
 color: #96231f;
+}
+
+.btn-submit-yellow:focus, .btn-submit-red:focus {
+outline: none;
 }
 
 .newsletter-submit {
