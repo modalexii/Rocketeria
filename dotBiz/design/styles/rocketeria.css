@@ -194,7 +194,7 @@ margin: 0;
 padding-top: 3px;
 position: relative;
 right: 48px;
-top: 38px;
+bottom: 252px;
 height: 42px;
 }
 
@@ -211,7 +211,12 @@ position: relative;
 bottom: 289px;
 left: 348px;
 color: #FFFFFF;
-background: url("../images/billboard-content-bg-green.png") top right no-repeat;
+/* background: url("../images/billboard-content-bg-green.png") top right no-repeat; */
+}
+
+.bg-billboard-green {
+position: relative;
+right: 95px;
 }
 
 .ie7 .billboard-content {
@@ -220,11 +225,11 @@ bottom: 285px;
 
 .billboard-content p {
 position: relative;
-top: 38px;
-width: 350px;
+bottom: 250px;
+width: 275px;
 font-size: 16px;
 line-height: 1.35em;
-right: 34px;
+left: 35px;
 }
 
 .ie7 .billboard-content p {
@@ -235,12 +240,12 @@ top: 105px;
 
 .billboard-link {
 position: relative;
-top: 63px;
-right: 4px;
+bottom: 227px;
+left: 68px;
 }
 
 .ie7 .billboard-link {
-top: 175px;
+bottom: 95px;
 }
 
 .bg-billboard-arrows-green {
