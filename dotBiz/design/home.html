@@ -16,7 +16,7 @@
 $(function(){
   $("#slides").slidesjs({
     play: {
-      active: true,
+      active: false,
         // [boolean] Generate the play and stop buttons.
         // You cannot use your own buttons. Sorry.
       effect: "slide",
@@ -138,8 +138,10 @@ $(function(){
 <div class="home-newsletter">
 <div class="newsletter-signup">
 <h3>Sign up for our Newsletter</h3>
+<form id="home-newsletter-signup-1" method="POST" name="newsletter" action="#">
 <input class="newsletter-email" type="email" value="ENTER EMAIL"><br />
 <input class="btn-submit-yellow newsletter-submit" type="submit" value="SUBMIT >"></a><br />
+</form>
 <p class="newsletter-tag">No spam, just rock</p>
 </div>
 <div class="newsletter-social">
@@ -196,8 +198,10 @@ Friday Night Live Series</p>
 </div>
 <div class="footer-newsletter">
 <h3>Sign Up For Our Newsletter</h3>
-<input class="newsletter-email" type="email" value="ENTER EMAIL">
+<form id="home-newsletter-signup-2" method="POST" name="newsletter" action="#">
+<input class="footer-newsletter-email" type="email" value="ENTER EMAIL">
 <input class="btn-submit-red footer-newsletter-submit" type="submit" value="SUBMIT >">
+</form>
 </div>
 <div class="footer-social">
 <h3>Social</h3>

@@ -554,11 +554,17 @@ font-family: 'Quicksandbold', sans-serif;
 }
 
 .footer-newsletter {
-margin-right: 19px;
+margin: 30px 19px 0 0;
 }
 
-.footer-newsletter .newsletter-email {
-margin-top: 13px;
+.footer-newsletter-email {
+padding: 9px 9px;
+margin: 13px 0 4px 14px;
+width: 160px;
+}
+
+.ie7 .footer-newsletter-email, .ie8 .footer-newsletter-email, .ie9 .footer-newsletter-email, .ie10 .footer-newsletter-email, .ie11 .footer-newsletter-email {
+margin-left: 15px;
 }
 
 .footer-social h3 {
@@ -591,8 +597,8 @@ color: #f7bd20;
 }
 
 .footer-newsletter-submit {
-margin: 4px 0 0 16px;
-width: 177px;
+margin-left: 16px;
+width: 178px;
 }
 
 .btn-facebook-black {
