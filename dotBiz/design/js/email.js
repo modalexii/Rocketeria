@@ -1,6 +1,6 @@
 $(document).ready(function() {
     //global variables
-    var form = $("#home-newsletter-signup-1");
+    var form = $("#billboard-newsletter-signup");
  
     var email = $(".newsletter-email"); //textbox being validated
  
@@ -21,7 +21,8 @@ $(document).ready(function() {
     function validateEmail() {
         //validation for empty emails
         if (email.val() == "") {
-			alert("Names cannot be empty!");
+			$("#lightbox-shadow").css("display", "block");
+			$("#lightbox-1").css("display", "block");
             return false;
         } else {
 
@@ -31,15 +32,15 @@ $(document).ready(function() {
         //testing regular expression
         var a = $(".newsletter-email").val();
  
-        var filter = /^[a-zA-Z0-9]+[a-zA-Z0-9_.-]+[a-zA-Z0-9_-]+@[a-zA-Z0-9]+[a-zA-Z0-9.-]+[a-zA-Z0-9]+.[a-z]{2,4}$/;
+        var filter = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         //if it's valid email
         if (filter.test(a)) {
-		    alert("Valid E-Mail");
             return true;
         }
         //if it's NOT valid
         else {
-            alert("Invalid E-Mail");
+			$("#lightbox-shadow").css("display", "block");
+			$("#lightbox-2").css("display", "block");
             return false;
         }
     }

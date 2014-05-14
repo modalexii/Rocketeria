@@ -67,6 +67,14 @@ $(function(){
 </head>
 <!--[if (gte IE 10)|!(IE)]><body><![endif]-->
 <!--[if lte IE 9 ]><body class="image-bg"><![endif]-->
+<div id="lightbox-shadow">
+</div>
+<div id="lightbox-1">
+<p>Empty E-Mail</p>
+</div>
+<div id="lightbox-2">
+<p>Invalid E-Mail</p>
+</div>
 <div id="page-wrapper">
 <div id="header">
 <a href="#"><h1>ROCKETERIA</h1></a>
@@ -94,6 +102,9 @@ $(function(){
 <br />
 <a class="billboard-link btn-submit-yellow" href="#">Learn more ></a>
 </div></div>
+<style type="text/css">
+#slides {display: none}
+</style>
 </noscript>
 <div id="slides">
 <div><img src="images/billboard-home.png" width="696" height="285" /><div class="billboard-content">
@@ -124,22 +135,10 @@ $(function(){
 <input type="button" class="slidesjs-next slidesjs-navigation arrow-next"/>
 </div> 
 
-<!--<div class="billboard-container">
-<img src="images/billboard-home.png" width="696" height="285" />
-<div class="billboard-content">
-<h2>Music Lessons</h2>
-<br />
-<p>Rocketeria provides a selection of instructional choices to fit your aspirations, schedule and budget.</p>
-<br />
-<a class="billboard-link btn-submit-yellow" href="#">Learn more ></a>
-</div>
-</div> -->
-
-
 <div class="home-newsletter">
 <div class="newsletter-signup">
 <h3>Sign up for our Newsletter</h3>
-<form id="home-newsletter-signup-1" method="POST" name="newsletter" action="#">
+<form id="billboard-newsletter-signup" method="POST" name="newsletter" action="#">
 <input class="newsletter-email" type="email" value="ENTER EMAIL"><br />
 <input class="btn-submit-yellow newsletter-submit" type="submit" value="SUBMIT >"></a><br />
 </form>
@@ -199,7 +198,7 @@ Friday Night Live Series</p>
 </div>
 <div class="footer-newsletter">
 <h3>Sign Up For Our Newsletter</h3>
-<form id="home-newsletter-signup-2" method="POST" name="newsletter" action="#">
+<form id="footer-newsletter-signup" method="POST" name="newsletter" action="#" onsubmit="return validateEmail(this);">
 <input class="footer-newsletter-email" type="email" value="ENTER EMAIL">
 <input class="btn-submit-red footer-newsletter-submit" type="submit" value="SUBMIT >">
 </form>
