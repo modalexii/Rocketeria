@@ -25,7 +25,7 @@ $(document).ready(function(){
 			var resource = $.trim($('input[name="resource"]').prop('value'));
 			if(resource == '') {
 				alert('Please enter a URI for this page!');
-				$('input[name="resource"]').addClass('highlight');
+				$('input[name="resource"]').addClass('red_border');
 			}
 			else {
 				$.post('/modify/publish', {
