@@ -1,13 +1,13 @@
 import webapp2
-import handle_errors
 
 class FetchHandler(webapp2.RequestHandler):
 
 	def get(self, *args, **kwargs):
 		import cloudstorage
-		from urllib import quote
+		from urllib import unquote
 
 		uri = self.request.path
+		uri = unquote(uri.encode('ascii')).decode('utf-8')
 
 		try:
 			gcs_object = cloudstorage.open(
@@ -15,7 +15,7 @@ class FetchHandler(webapp2.RequestHandler):
 				mode = "r",
 			)
 		except cloudstorage.NotFoundError:
-			handle_errors.http404(self.request, self.response)
+			self.response.set_status(404)
 		else:
 			gcs_object_info = cloudstorage.stat(
 				uri,
