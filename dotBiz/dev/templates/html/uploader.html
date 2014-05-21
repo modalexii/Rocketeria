@@ -1,51 +1,51 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-    "http://www.w3.org/TR/html4/strict.dtd">
-
-<!--[if lt IE 7 ]> <html class="ie6"> <![endif]-->
-<!--[if IE 7 ]>    <html class="ie7"> <![endif]-->
-<!--[if IE 8 ]>    <html class="ie8"> <![endif]-->
-<!--[if IE 9 ]>    <html class="ie9"> <![endif]-->
-<!--[if (gt IE 11)|!(IE)]><!--> <html> <!--<![endif]-->
-
-
-<head>
-	<script>
-	    if (document.documentMode===10){
-	        document.documentElement.className+=' ie10';
-	    }
-	    else if (document.documentMode===11){
-	        document.documentElement.className+=' ie11';
-	    }
-	</script>
-	<title>File Upload</title>
-	<link href="/static/style/fonts/stylesheet.css" type="text/css" rel="stylesheet">
-	<link href="/static/style/rocketeria.css" type="text/css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="/static/script/datetimepicker/jquery.datetimepicker.css"/ >
-	<link rel="stylesheet" href="/static/style/alert_banner.css"/ >
-	<style type="text/css">
-		body {
-			background: none !important;
-		}
-		input {
-			font-family: 'Quicksandregular', sans-serif;
-			color: #0f0403;
-		}
-	</style>
-</head>
-	<body>
-		<h2>File Upload</h2>
-		A public link will be provided after upload.
+		A public link will be provided after upload
 		<br/>
 		<br/>
-		<form action="/modify/upload" method="post" enctype="multipart/form-data">
-			<input type="file" name="file"/>
-			<br/>
-			<br/>
-			<label for="child_bin">GCS Child Bin (advanced):</label>
-			/dres/<input type="text" name="child_bin" value=""/>
-			<br/>
-			<br/>
-			<input type="submit" name="submit" value="Upload"/>
+		<form name="upload" action="/modify/upload" method="post" enctype="multipart/form-data">
+			<table>
+				<tr>
+					<td class="blue_bg" colspan=2>
+						<input type="file" name="file" id="file"/>&nbsp;
+					</td>
+				</tr>
+				<tr>
+					<td colspan=2>
+						<br/>
+						Limit file names to the following characters:
+						<ul>
+							<li>&bull;Uppercase English Letters</li>
+							<li>&bull;Lowercase English Letters</li>
+							<li>&bull;Numbers</li>
+							<li>&bull;Underscore, Hyphen, Plus, Tilde</li>
+						</ul>
+						<br/>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="child_bin">GCS Child Bin (advanced):</label>
+					</td>
+					<td>
+						/dres/<input type="text" name="child_bin" value=""/>
+					</td>
+				</tr>
+				<tr>
+					<td colspan=2>
+						Child Bins are like folders: if you upload &quot;policy.pdf&quot; and specify &quot;lessons&quot; as the Child Bin, the file will be available at &quot;/dres/lessons/policy.pdf&quot;
+						<br/>
+						<br/>
+					</td>
+				</tr>
+					<td>
+						<div id="upload" class="green_bg">
+							Upload
+						</div>
+					</td>
+					<td>
+						<div id="cancel" class="red_bg white_txt">
+							Cancel
+						</div>
+					</td>
+				</tr>
+			</table>
 		</form>
-	</body>
-</html>
