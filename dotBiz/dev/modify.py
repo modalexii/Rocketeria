@@ -1,5 +1,5 @@
 import webapp2,logging
-import handle_errors,gae_db,templates
+import gae_db,templates
 
 logging.getLogger().setLevel(logging.INFO)
 
@@ -14,8 +14,10 @@ class ModificationHandler(webapp2.RequestHandler):
 		if request_path == "modify/upload":
 			import cloudstorage
 
+			content = templates.get("uploader").format(**locals())
+
 			self.response.write(
-				templates.get("uploader")
+				templates.get("upload_wrap").format(**locals())
 			)
 
 		elif request_path == "modify/new":
@@ -66,21 +68,19 @@ class ModificationHandler(webapp2.RequestHandler):
 		'''handle HTTP POSTs'''
 
 		self.response.headers['Content-Type'] = 'text/html'
-		from urllib import quote
 
 		request_path = self.request.path.strip('/')
 
 		uri = self.request.get("resource")
 		if uri:
 			uri = uri.strip()
-			if uri[0] == "/":
-				uri = uri[1:]
-			uri = quote(uri)
+			uri = uri.strip("/")
 
 		if request_path == "modify/publish":
 			content = self.request.get("content")
 			key = gae_db.add_or_update_page(uri, content)
-			#self.redirect("/%s" % uri.strip())
+			logging.info("Published %s" % uri)
+			self.redirect("/%s" % uri)
 
 		elif request_path == "modify/delete":
 			gae_db.delete_page(uri)
@@ -90,13 +90,13 @@ class ModificationHandler(webapp2.RequestHandler):
 			import cloudstorage
 
 			uploaded_file = self.request.params["file"]
-			filename = quote(uploaded_file.filename)
+			filename = uploaded_file.filename
 			child_bin = self.request.get("child_bin")
 			gcs_bin = "/dres/"
 
 			if child_bin:
 				child_bin = child_bin.strip("/")
-				child_bin = quote(child_bin)
+				child_bin = child_bin
 				gcs_bin = "%s%s/" % (gcs_bin, child_bin)
 
 			logging.info("New file upload, bin \"%s\", name \"%s\", type \"%s\"" % (gcs_bin, filename, uploaded_file.type))
@@ -112,9 +112,16 @@ class ModificationHandler(webapp2.RequestHandler):
 			cloud_file.write(uploaded_file.value)
 			cloud_file.close()
 
+			from urllib import quote
+			uri = quote(uri.encode('utf-8'))
+
 			absolute_uri = "%s%s%s" % (self.request.host_url, gcs_bin, filename)
 
-			self.response.write(templates.get("upload_success").format(**locals()))
+			content = templates.get("upload_success").format(**locals())
+
+			self.response.write(
+				templates.get("upload_wrap").format(**locals())
+			)
 
 		elif request_path == "modify/banner":
 
@@ -155,5 +162,3 @@ class ModificationHandler(webapp2.RequestHandler):
 application = webapp2.WSGIApplication([
 	('/modify/?.*', ModificationHandler),
 ], debug=False)
-#application.error_handlers[404] = handle_errors.http404
-#application.error_handlers[500] = handle_errors.http500
