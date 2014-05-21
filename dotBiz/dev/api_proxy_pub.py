@@ -3,7 +3,20 @@ import webapp2,logging
 class APIProxyHandler(webapp2.RequestHandler):
 
 	def get(self):
-		pass
+		'''
+		The only reason a user would GET this handler is if JS is disabled on a JS-only form.
+		Display a decent page with some suggestions and JS-free links.
+		'''
+		import templates
+		self.response.write(
+			templates.get("header")
+		)
+		self.response.write(
+			templates.get("noscript-formsubmit")
+		)
+		self.response.write(
+			templates.get("footer")
+		)
 
 	def post(self):
 		uri = self.request.path.strip('/')
@@ -14,8 +27,6 @@ class APIProxyHandler(webapp2.RequestHandler):
 			from key_definitions import *
 
 			self.response.headers["Content-Type"] = "application/json"
-
-			self.response.write('''<html><body>Response: ''')
 
 			headers = {
 				"Content-Type" : "application/json",
@@ -30,7 +41,7 @@ class APIProxyHandler(webapp2.RequestHandler):
 					"id": cc_list_id
 					}
 				],
-				  "email_addresses": [
+				"email_addresses": [
 					{
 					"email_address": email
 					}
@@ -38,8 +49,6 @@ class APIProxyHandler(webapp2.RequestHandler):
 			}
 
 			post = json.dumps(post)
-
-			logging.info('POST looks like: ' + post)
 			
 			try:
 				cc_response = urlfetch.fetch(
@@ -51,17 +60,15 @@ class APIProxyHandler(webapp2.RequestHandler):
 					)
 			except Exception as e:
 				logging.error("Error POSTing to ConstantContact: %s" % e)
-				self.response.write('''error''')
+				self.response.set_status(500)
 			else:
-				if cc_response.status_code == 201:
-					self.response.write('''<h2>Thanks!</h2>''')
-				elif cc_response.status_code == 409:
-					self.response.write('''Looks like you're already on the list! If you're not getting emails, check your Spam folder or <a href="http://visitor.r20.constantcontact.com/manage/optin/ea?v=001Vzv-UqW3G56TS4HpjB5lNw%3D%3D" target="_blank">update your profile</a>.''')
+				self.response.set_status(cc_response.status_code)
+				if cc_response.status_code < 500:
+					logging.info("ConstantContact API returned %s for %s" % (cc_response.status_code,email))
 				else:
-					self.response.write('''Sorry, an error occurred. Please <a href="http://visitor.r20.constantcontact.com/manage/optin/ea?v=001Vzv-UqW3G56TS4HpjB5lNw%3D%3D" target="_blank">click here to subscribe</a>''')
-					logging.error("ConstantContact returned %s " % cc_response.status_code)
+					logging.error("ConstantContact API returned %s for %s" % (cc_response.status_code,email))
+				self.response.write('''{}''')
 
-			self.response.write('''</body></html>''')
 application = webapp2.WSGIApplication([
 	(r'/api_proxy_pub/.*', APIProxyHandler),
 ], debug=False)
