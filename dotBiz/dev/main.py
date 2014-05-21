@@ -1,5 +1,5 @@
 import webapp2,logging
-import templates,handle_errors
+import templates
 
 # debug, info, warning, error, critical
 logging.getLogger().setLevel(logging.INFO)
@@ -10,10 +10,10 @@ class MainHandler(webapp2.RequestHandler):
 		'''handle HTTP GETs'''
 
 		import gae_db
-		from urllib import quote
-
+		from urllib import unquote 
+		
 		uri = self.request.path.strip('/')
-		uri = quote(uri)
+		uri = unquote(uri.encode('ascii')).decode('utf-8')
 		self.response.headers['Content-Type'] = 'text/html'
 
 		if not uri:
@@ -22,6 +22,8 @@ class MainHandler(webapp2.RequestHandler):
 		self.response.write(
 			templates.get("header")
 		)
+
+		print "Main handler GET request for %s" % uri 
 
 		if uri == "index":
 			try:
@@ -42,8 +44,9 @@ class MainHandler(webapp2.RequestHandler):
 				content = templates.get(uri)
 			except IOError as e:
 				self.response.set_status(404)
-				content = templates.get("404") 
-			else:/modify
+				content = templates.get("404")
+				content_source = "template"
+			else:
 				content_source = "template"
 		else:
 			content_source = "db"
