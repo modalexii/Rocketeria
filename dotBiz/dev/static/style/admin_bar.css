@@ -76,15 +76,6 @@
 	padding-left: 5px;
 }
 
-.disabled {
-	color: #FFF;
-}
-
-.disabled:hover {
-	cursor: default;
-	font-weight: inherit;
-}
-
 .info {
 	vertical-align: baseline;
 	cursor: pointer;
