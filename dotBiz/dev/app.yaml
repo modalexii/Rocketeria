@@ -10,7 +10,6 @@ libraries:
 
 handlers:
 
-# Static non-application readable
 - url: /static
   static_dir: static
 
