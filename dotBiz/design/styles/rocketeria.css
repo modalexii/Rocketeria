@@ -480,7 +480,7 @@ float: left;
 margin: 0px 16px 0 14px;
 }
 
-.home-store:hover, .home-lessons:hover, .home-rentals:hover, .home-events:hover, .home-testimonials:hover {
+.home-store:hover, .home-lessons:hover, .home-rentals:hover, .home-events:hover, .home-testimonials:hover, .testimonials-side:hover {
 -webkit-box-shadow: 5px 5px 5px #888888;
 -o-box-shadow: 5px 5px 5px #888888;
 box-shadow: 5px 5px 5px #888888;
@@ -545,13 +545,13 @@ width: 260px;
 #content-sub h1 {
 text-transform: uppercase;
 color: #FFF;
-position: relative;
 z-index: 1;
 font-size: 25px;
-float: right;
 font-family: 'Quicksandbold', sans-serif !important;
+float: left;
+position: relative;
 bottom: 29px;
-right: 515px;
+left: 46px;
 }
 
 #content-sub {
@@ -578,12 +578,32 @@ margin: 29px 33px 24px;
  left: 14px;
  }
  
- .list-header-green {
+ .list-header-green, .list-header-red, .list-header-yellow, .list-header-purple, .list-header-blue {
  text-transform: uppercase;
- color: #58a326;
  margin-left: 32px;
  font-family: font-family: 'Quicksandbold', sans-serif !important;
  }
+ 
+ .list-header-green {
+ color: #58a326;
+ }
+ 
+ .list-header-red {
+ color: #96231f;
+ }
+ 
+ .list-header-yellow {
+ color: #f7bd20;
+ }
+ 
+ .list-header-purple {
+ color: #9702b7;
+ }
+ 
+ .list-header-blue {
+ color: #04bde5;
+ }
+ 
 
 .content-list {
 margin: 3px 0 0 50px;
