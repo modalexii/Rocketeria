@@ -126,6 +126,7 @@ color: #96231f;
 
 #main {
 padding-bottom: 11px;
+min-height: 735px;
 }
 
 #lightbox-1, #lightbox-2, #lightbox-3 {
@@ -311,7 +312,7 @@ margin: 4px 15px 1px;
 width: 178px;
 }
 
-.home-newsletter {
+.home-newsletter, .newsletter-side {
 float: right;
 background: url("../images/bg-newsletter-red.png") no-repeat;
 color: #f7bd20;
@@ -466,7 +467,7 @@ bottom: 183px;
 margin-left: 14px;
 }
 
-.home-testimonials h3 {
+.home-testimonials h3, .testimonials-side h3 {
 background-color: #04bde5;
 }
 
@@ -528,7 +529,7 @@ margin: 24px 12px 0;
 background-color: #9702b7;
 }
 
-.home-store p, .home-lessons p, .home-rentals p, .home-events p {
+.home-store p, .home-lessons p, .home-rentals p, .home-events p, .testimonials-side p {
 font-size: 20px;
 text-align: center;
 }
@@ -540,6 +541,111 @@ margin-left: 22px;
 width: 260px;
 }
 
+/* Sub-Page Styling */
+#content-sub h1 {
+text-transform: uppercase;
+color: #FFF;
+position: relative;
+z-index: 1;
+font-size: 25px;
+float: right;
+font-family: 'Quicksandbold', sans-serif !important;
+bottom: 29px;
+right: 515px;
+}
+
+#content-sub {
+float: left;
+width: 680px;
+}
+
+#content-sub .overview {
+font-size: 20px;
+color: #000;
+width: 670px;
+line-height: 1.2em;
+margin: 29px 33px 24px;
+}
+ #content-sub .main-body-content {
+ font-size: 16px;
+ margin: 0 0 25px 35px;
+ line-height: 1.4em;
+ }
+ 
+ .bg-header-sub {
+ position: relative;
+ top: 12px;
+ left: 14px;
+ }
+ 
+ .list-header-green {
+ text-transform: uppercase;
+ color: #58a326;
+ margin-left: 32px;
+ font-family: font-family: 'Quicksandbold', sans-serif !important;
+ }
+
+.content-list {
+margin: 3px 0 0 50px;
+line-height: 1.3em;
+} 
+
+.content-list li {
+margin-bottom: 5px;
+}
+ 
+.btn-lessons-signup {
+background-color: #58a326;
+color: #FFF;
+text-transform: uppercase;
+font-family: 'Quicksandbold', sans-serif !important;
+position: relative;
+left: 274px;
+top: 34px;
+font-size: 18px;
+padding: 7px 15px;
+-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;
+} 
+ 
+#sidebar {
+width: 245px;
+float: right;
+}
+
+.testimonials-side {
+float: right;
+width: 211px;
+height: 390px;
+background: url("../images/bg-testimonials-2.png") no-repeat;
+position: relative;
+top: 23px;
+right: 16px;
+color: #FFF;
+}
+
+.testimonials-side h3 {
+color: #FFFFFF;
+text-transform: uppercase;
+font-family: 'Quicksandbold', sans-serif !important;
+font-size: 24px;
+position: relative;
+top: 31px;
+width: 180px;
+padding: 13px 15px;
+
+}
+
+.testimonials-side p {
+font-size: 19px;
+line-height: 1.2em;
+margin-left: 22px;
+text-align: left;
+position: relative;
+top: 50px;
+width: 170px;
+}
 
 /* Footer */
 
