@@ -542,6 +542,11 @@ width: 260px;
 
 /* Sub-Page Styling */
 
+.push {
+height: 50px;
+clear: both;
+}
+
 #header-sub h1{
 text-transform: uppercase;
 color: #FFF;
