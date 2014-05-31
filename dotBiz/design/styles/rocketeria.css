@@ -568,19 +568,12 @@ width: 665px;
 padding-left: 35px;
 }
 
-#content-sub p {
+#content-sub p, #content-sub ul {
 line-height: 1.4em;
-margin-bottom: 24px;
 }
 
 #content-sub ul {
 padding: 6px 15px;
-line-height: 1.4em;
-}
-
-#content-sub .sub-large {
-font-size: 20px;
-line-height: 1.2em;
 }
  
  .bg-header-sub {
