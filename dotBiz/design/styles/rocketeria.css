@@ -464,6 +464,7 @@ float: left;
 position: relative;
 bottom: 183px;
 margin-left: 14px;
+overflow: hidden;
 }
 
 .home-testimonials h3, .testimonials-side h3 {
@@ -641,6 +642,7 @@ position: relative;
 top: 23px;
 right: 16px;
 color: #FFF;
+overflow: hidden;
 }
 
 .testimonials-side h3 {
