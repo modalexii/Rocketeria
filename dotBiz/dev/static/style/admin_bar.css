@@ -80,3 +80,9 @@
 	vertical-align: baseline;
 	cursor: pointer;
 }
+
+.quote_feed {
+	border-bottom: 2px solid #abfffc;
+	border-right: 1px solid #abfffc;
+	border-left: 1px solid #abfffc;
+}

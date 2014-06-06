@@ -1,5 +1,5 @@
 //
-// DEV environment
+// OFFLINE/DESIGN environemnt
 //
 
 $(document).ready(function() {
