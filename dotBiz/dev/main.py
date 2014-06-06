@@ -1,5 +1,5 @@
 import webapp2,logging
-import templates
+import templates,quote_feed
 
 # debug, info, warning, error, critical
 logging.getLogger().setLevel(logging.INFO)
@@ -25,16 +25,6 @@ class MainHandler(webapp2.RequestHandler):
 
 		print "Main handler GET request for %s" % uri 
 
-		if uri == "index":
-			try:
-				# grab banner
-				self.response.write(
-					gae_db.fetch_content(uri = "/banner")
-				)
-			except AttributeError:
-				# no banner
-				pass
-
 		try:
 			# check the database...
 			content = gae_db.fetch_content(uri = uri)
@@ -45,13 +35,38 @@ class MainHandler(webapp2.RequestHandler):
 			except IOError as e:
 				self.response.set_status(404)
 				content = templates.get("404")
-				content_source = "template"
-			else:
+			#	content_source = "template"
+			#else:
+			#	content_source = "template"
+			finally:
 				content_source = "template"
 		else:
 			content_source = "db"
 
-		self.response.write(content)
+		if uri == "index":
+			try:
+				# grab banner
+				self.response.write(
+					gae_db.fetch_content(uri = "banner")
+				)
+			except AttributeError:
+				# no banner
+				pass
+
+			nosidebar = True
+			random_quote = quote_feed.get_random()
+			#content = content.format(**locals())
+
+		self.response.write(content.format(**locals()))
+
+		try:
+			nosidebar
+		except UnboundLocalError:
+			# drop a random quote in the sidebar before writing it out
+			random_quote = quote_feed.get_random()
+			self.response.write(
+				templates.get("sidebar").format(**locals())
+			)
 
 		from google.appengine.api import users
 		if users.is_current_user_admin():
