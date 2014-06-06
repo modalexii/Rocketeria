@@ -577,7 +577,7 @@ line-height: 1.4em;
 padding: 6px 15px;
 }
 
-#content-sub a:hover {
+#content-sub a {
 text-decoration: underline;
 }
  
