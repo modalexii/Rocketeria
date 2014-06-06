@@ -7,6 +7,33 @@ CKEDITOR.editorConfig = function( config ) {
 	// Define changes to default configuration here.
 	// For complete reference see:
 	// http://docs.ckeditor.com/#!/api/CKEDITOR.config
+	 CKEDITOR.stylesSet.add( 'my_styles', [
+		// Block-level styles
+		{ 
+			name: 'Normal', 
+			element: 'p', 
+			styles: { '*':'inherit !important' }
+		},
+		{ 
+			name: 'Testimonial',
+			element: 'p',
+			styles: { 'border-bottom':'1px solid #0f0403', 'padding-bottom':'12px' },
+			attributes: { 'class': 'testimonial' }
+		},
+		// Inline styles
+		{ name: 'Big', element: 'big', },
+		{ name: 'Quote Feed',
+			element: 'span', 
+			attributes: { 'class': 'quote_feed' }
+		},
+		{ name: 'Highlight: R', element: 'span', styles: { 'background-color': '#f97b7d' } },
+		{ name: 'Highlight: G', element: 'span', styles: { 'background-color': '#9df860' } },
+		{ name: 'Highlight: B', element: 'span', styles: { 'background-color': '#abfffc' } },
+		{ name: 'Highlight: Y', element: 'span', styles: { 'background-color': '#f5ed14' } },
+		{ name: 'Highlight: P', element: 'span', styles: { 'background-color': '#e26ffb' } },
+	] );
+
+	config.stylesSet = 'my_styles';
 
 	// The toolbar groups arrangement, optimized for two toolbar rows.
 	config.toolbarGroups = [
