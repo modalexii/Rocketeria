@@ -311,7 +311,7 @@ margin: 4px 15px 1px;
 width: 178px;
 }
 
-.home-newsletter {
+.home-newsletter, .newsletter-side {
 float: right;
 background: url("/static/image/bg-newsletter-red.png") no-repeat;
 color: #f7bd20;
@@ -464,9 +464,10 @@ float: left;
 position: relative;
 bottom: 183px;
 margin-left: 14px;
+overflow: hidden;
 }
 
-.home-testimonials h3 {
+.home-testimonials h3, .testimonials-side h3 {
 background-color: #04bde5;
 }
 
@@ -479,7 +480,7 @@ float: left;
 margin: 0px 16px 0 14px;
 }
 
-.home-store:hover, .home-lessons:hover, .home-rentals:hover, .home-events:hover, .home-testimonials:hover {
+.home-store:hover, .home-lessons:hover, .home-rentals:hover, .home-events:hover, .home-testimonials:hover, .testimonials-side:hover {
 -webkit-box-shadow: 5px 5px 5px #888888;
 -o-box-shadow: 5px 5px 5px #888888;
 box-shadow: 5px 5px 5px #888888;
@@ -528,7 +529,7 @@ margin: 24px 12px 0;
 background-color: #9702b7;
 }
 
-.home-store p, .home-lessons p, .home-rentals p, .home-events p {
+.home-store p, .home-lessons p, .home-rentals p, .home-events p, .testimonials-side p {
 font-size: 20px;
 text-align: center;
 }
@@ -540,6 +541,135 @@ margin-left: 22px;
 width: 260px;
 }
 
+/* Sub-Page Styling */
+
+.push {
+height: 50px;
+clear: both;
+}
+
+#header-sub h1{
+text-transform: uppercase;
+color: #FFF;
+z-index: 1;
+font-size: 25px;
+font-family: 'Quicksandbold', sans-serif !important;
+float: left;
+position: relative;
+bottom: 29px;
+left: 46px;
+}
+
+#content-sub, #header-sub {
+float: left;
+width: 665px;
+}
+
+#content-sub {
+padding-left: 35px;
+}
+
+#content-sub p, #content-sub ul {
+line-height: 1.4em;
+}
+
+#content-sub ul {
+padding: 6px 15px;
+}
+
+#content-sub a:hover {
+text-decoration: underline;
+}
+ 
+ .bg-header-sub {
+ position: relative;
+ top: 12px;
+ left: 14px;
+ }
+ 
+ .list-header-green, .list-header-red, .list-header-yellow, .list-header-purple, .list-header-blue {
+ text-transform: uppercase;
+ margin-left: 32px;
+ font-family: font-family: 'Quicksandbold', sans-serif !important;
+ }
+ 
+ .list-header-green {
+ color: #58a326;
+ }
+ 
+ .list-header-red {
+ color: #96231f;
+ }
+ 
+ .list-header-yellow {
+ color: #f7bd20;
+ }
+ 
+ .list-header-purple {
+ color: #9702b7;
+ }
+ 
+ .list-header-blue {
+ color: #04bde5;
+ }
+
+ 
+.btn-lessons-signup {
+background-color: #58a326;
+color: #FFF;
+text-transform: uppercase;
+font-family: 'Quicksandbold', sans-serif !important;
+position: relative;
+left: 239px;
+top: 28px;
+font-size: 18px;
+padding: 7px 15px;
+-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;
+} 
+ 
+#sidebar {
+width: 245px;
+float: right;
+position: relative;
+bottom: 115px;
+left: 2px;
+}
+
+.testimonials-side {
+float: right;
+width: 211px;
+height: 390px;
+background: url("/static/image/bg-testimonials-2.png") no-repeat;
+position: relative;
+top: 23px;
+right: 16px;
+color: #FFF;
+overflow: hidden;
+}
+
+.testimonials-side h3 {
+color: #FFFFFF;
+text-transform: uppercase;
+font-family: 'Quicksandbold', sans-serif !important;
+font-size: 24px;
+position: relative;
+top: 31px;
+width: 180px;
+padding: 13px 15px;
+
+}
+
+.testimonials-side p {
+font-size: 19px;
+line-height: 1.2em;
+margin-left: 22px;
+text-align: left;
+position: relative;
+top: 50px;
+width: 170px;
+}
 
 /* Footer */
 
