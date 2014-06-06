@@ -11,6 +11,16 @@ class ModificationHandler(webapp2.RequestHandler):
 		self.response.headers['Content-Type'] = 'text/html'
 		request_path = self.request.path.strip('/')
 
+		from google.appengine.api import users
+		current_user = users.get_current_user()
+		nickname = current_user.email()
+
+		if not users.is_current_user_admin():
+			logging.error("SECURITY: non-admin user %s requested %s" % (nickname, request_path))
+			return
+		else:
+			logging.info("User %s sent GET request for %s" % (nickname, request_path))
+
 		if request_path == "modify/upload":
 			import cloudstorage
 
@@ -21,22 +31,34 @@ class ModificationHandler(webapp2.RequestHandler):
 			)
 
 		elif request_path == "modify/new":
-			from google.appengine.api import users
 
-			if not users.is_current_user_admin():
-				logging.error("SECURITY: non-admin user requested /modify/new")
-				return
+			current_user = users.get_current_user()
+			nickname = current_user.email()
 
 			seteditable = '''<script>var editable_existing = false; var new_editor = true;</script>'''
 
 			self.response.write(
 				templates.get("header")
 			)
-			self.response.write('''<div id="editable">''')
 			self.response.write(
-				'''<p class="click_to_edit">Click here to begin editing...</p>'''
+				templates.get("header-sub")
 			)
-			self.response.write('''</div> <!-- /editable -->''')
+			self.response.write('''<div id="content-sub">''')
+			self.response.write(
+				'''
+				<p>Click here to begin editing...</p>
+				<p>Remember to change the page title above. Click the background of the title to cycle colors. Before clicking &quot;Save&quot; below, enter the desired URL in the &quot;Save to&quot; field. The page URL does not have to match the page title above.</p>
+				<p>Consult the <a href="https://docs.google.com/a/rocketeria.biz/document/d/161u3MvfQGBfpvJJqEpcVHPntjfqvizoCDssJQLySAEc/edit?usp=sharing" target="_blank">Content Author's Manual</a> for further guidance.</p>
+				'''
+			)
+			self.response.write('''</div> <!--End of #content-sub -->''')
+			# drop a random quote in the sidebar before writing it out
+			import quote_feed
+			random_quote = quote_feed.get_random()
+			self.response.write(
+				templates.get("sidebar").format(**locals())
+			)
+
 			self.response.write(
 				templates.get("admin_bar").format(**locals())
 			)
@@ -67,9 +89,19 @@ class ModificationHandler(webapp2.RequestHandler):
 	def post(self, *args, **kwargs):
 		'''handle HTTP POSTs'''
 
+		from google.appengine.api import users
+		current_user = users.get_current_user()
+		nickname = current_user.email()
+
+		if not users.is_current_user_admin():
+			logging.error("SECURITY: non-admin user %s requested %s" % (nickname, request_path))
+			return
+
 		self.response.headers['Content-Type'] = 'text/html'
 
 		request_path = self.request.path.strip('/')
+
+		logging.info("User %s sent POST request for %s" % (nickname, request_path))
 
 		uri = self.request.get("resource")
 		if uri:
@@ -79,12 +111,12 @@ class ModificationHandler(webapp2.RequestHandler):
 		if request_path == "modify/publish":
 			content = self.request.get("content")
 			key = gae_db.add_or_update_page(uri, content)
-			logging.info("Published %s" % uri)
+			logging.info("User %s published %s" % (nickname, uri))
 			self.redirect("/%s" % uri)
 
 		elif request_path == "modify/delete":
+			logging.info("User %s deleted %s" % (nickname, uri))
 			gae_db.delete_page(uri)
-			logging.info("deleting uri \"%s\"" % uri)
 
 		elif request_path == "modify/upload":
 			import cloudstorage
@@ -99,7 +131,7 @@ class ModificationHandler(webapp2.RequestHandler):
 				child_bin = child_bin
 				gcs_bin = "%s%s/" % (gcs_bin, child_bin)
 
-			logging.info("New file upload, bin \"%s\", name \"%s\", type \"%s\"" % (gcs_bin, filename, uploaded_file.type))
+			logging.info("User %s uploaded file \"%s\", type \"%s\", to bin \"%s\"" % (nickname, filename, uploaded_file.type, gcs_bin))
 
 			cloud_file = cloudstorage.open(
 				"%s%s" % (gcs_bin, filename),
@@ -129,7 +161,7 @@ class ModificationHandler(webapp2.RequestHandler):
 
 			if state != "on":
 				# clear banner
-				# THIS WILL BREAK IF THE BANNER DOES NOT EXIST - CATCH THAT
+				logging.info("User %s removed the alert banner" % (nickname))
 				gae_db.delete_page("/banner")
 				return
 
@@ -154,6 +186,7 @@ class ModificationHandler(webapp2.RequestHandler):
 
 			banner_content = templates.get("alert_banner").format(**locals())
 
+			logging.info("User %s published alert banner reading \"%s\"" % (nickname, message))
 			gae_db.add_or_update_page("/banner", banner_content)
 
 
