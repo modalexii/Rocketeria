@@ -7,7 +7,11 @@ class Page(ndb.Model):
 	content = ndb.GenericProperty(indexed = False, required = True)
 
 def add_or_update_page(uri, content):
-	new_page = Page(id = uri, uri = uri, content = content)
+	new_page = Page(
+		id = uri.encode('utf-8', 'xmlcharrefreplace'), 
+		uri = uri.encode('utf-8', 'xmlcharrefreplace'), 
+		content = content.encode('utf-8', 'xmlcharrefreplace')
+	)
 	key = new_page.put()
 	return key
 
