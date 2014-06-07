@@ -1,5 +1,5 @@
 from google.appengine.ext import ndb
-import logging
+#import logging
 
 
 class Page(ndb.Model):
@@ -19,6 +19,6 @@ def delete_page(uri):
 	ndb.Key(Page, uri).delete()
 
 def fetch_content(uri):
-	logging.info("DATAFASE FETCH: " + uri)
+	#logging.info("DATAFASE FETCH: " + uri)
 	target = Page.get_by_id(uri)
 	return target.content
