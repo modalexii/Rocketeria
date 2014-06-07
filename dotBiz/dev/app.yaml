@@ -11,6 +11,17 @@ libraries:
 - name: lxml
   version: "latest"
 
+pagespeed:
+
+  domains_to_rewrite:
+  - http://*.rocketeria.biz
+  url_blacklist:
+  - http://*.rocketeria.biz/dres
+  enabled_rewriters:
+  - MinifyCss
+  disabled_rewriters:
+  - ImageStripColorProfile
+
 handlers:
 
 - url: /static
@@ -45,3 +56,7 @@ handlers:
 # Catch-all
 - url: /.*
   script: main.application
+
+error_handlers:
+  - error_code: over_quota
+    file: templates/html/gae-quota.html
