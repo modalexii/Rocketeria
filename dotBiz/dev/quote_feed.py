@@ -10,11 +10,11 @@ def get_random() :
 	try:
 		all_content = gae_db.fetch_content(uri = "testimonials")
 	except AttributeError:
-		quote = 'People are saying some really nice things about us. Click above to see for yourself!'
+		quote = 'I just spent this evening listening to some of the best music talent Olney has to offer and I have the devoted staff of Rocketeria to thank for that.'
 	else:
 
 		tree = html.fromstring(all_content)
 		all_quotes = [e.text_content() for e in tree.xpath('//span[@class="quote_feed"]')]
 		quote = random.choice(all_quotes)
 
-	return quote.encode('utf-8', 'xmlcharrefreplace')
+	return quote
