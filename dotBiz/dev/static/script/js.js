@@ -1,9 +1,5 @@
 $(document).ready(function() {
 
-	//
-	// indent your script, you animal!
-	//
-
 	$(".arrow-next").mouseenter(function() {
 		$(this).css("background", "url('/static/image/a03.png') -186px -35px no-repeat");
 	})
@@ -32,11 +28,43 @@ $(document).ready(function() {
 		$(this).css("background", "url('/static/image/a03.png') -125px -35px no-repeat");
 	});
 
-	$("#lightbox-shadow").click(function() {
-		$("#lightbox-1").css("display", "none");
-		$("#lightbox-2").css("display", "none");
-		$("#lightbox-3").css("display", "none");
-		$("#lightbox-shadow").css("display", "none");
+	$.getScript( "/static/script/jquery.slides.js", function() {
+		$("#slides").slidesjs({
+			play: {
+				active: false,
+				// [boolean] Generate the play and stop buttons.
+				// You cannot use your own buttons. Sorry.
+				effect: "slide",
+				// [string] Can be either "slide" or "fade".
+				interval: 8000,
+				// [number] Time spent on each slide in milliseconds.
+				auto: true,
+				// [boolean] Start playing the slideshow on load.
+				swap: true,
+				// [boolean] show/hide stop and play buttons
+				pauseOnHover: false,
+				// [boolean] pause a playing slideshow on hover
+				restartDelay: 2500
+				// [number] restart delay on inactive slideshow
+			},
+			pagination: {
+			active: false,
+			effect: "slide"
+			},
+			navigation: {
+				active: true,
+				// [boolean] Generates next and previous buttons.
+				// You can set to false and use your own buttons.
+				// User defined buttons must have the following:
+				// previous button: class="slidesjs-previous slidesjs-navigation"
+				// next button: class="slidesjs-next slidesjs-navigation"
+				effect: "slide"
+				// [string] Can be either "slide" or "fade".
+			},
+			width: 696,
+			height: 285,
+			start: 3  
+			});
 	});
 
 });
