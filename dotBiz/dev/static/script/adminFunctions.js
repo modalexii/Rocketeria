@@ -124,7 +124,7 @@ $(document).ready(function(){
 
 	if(editable_existing){
 		$('#deletethis').click(function() {
-			if (confirm('Really delete ' + window.location.pathname + 'forever?')) {
+			if (confirm('Really delete ' + window.location.pathname + ' forever?')) {
 				$.post('/modify/delete', {
 					'resource' : window.location.pathname,
 				})
