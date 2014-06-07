@@ -23,8 +23,6 @@ class MainHandler(webapp2.RequestHandler):
 			templates.get("header")
 		)
 
-		print "Main handler GET request for %s" % uri 
-
 		try:
 			# check the database...
 			content = gae_db.fetch_content(uri = uri)
