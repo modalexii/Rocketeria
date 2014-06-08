@@ -17,7 +17,7 @@ CKEDITOR.editorConfig = function( config ) {
 		{ 
 			name: 'Testimonial',
 			element: 'p',
-			styles: { 'border-bottom':'1px solid #0f0403', 'padding-bottom':'12px' },
+			styles: { 'border-bottom':'1px solid #0f0403', 'padding-bottom':'12px', 'padding-top':'12px' },
 			attributes: { 'class': 'testimonial' }
 		},
 		// Inline styles
