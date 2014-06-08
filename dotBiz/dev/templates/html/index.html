@@ -1,20 +1,6 @@
 
-<noscript>
-<div class="no-js-slide"><img src="/static/image/billboard-home.png" width="696" height="285" />
-<div class="billboard-content">
-<img class="bg-billboard-green" src="/static/image/bg-billboard-green-main-2.png" width="443" height="285" />
-<h2>Music Lessons</h2>
-<br />
-<p>Rocketeria provides a selection of instructional choices to fit your aspirations, schedule and budget.</p>
-<br />
-<a class="billboard-link btn-submit-yellow" href="#">Learn more ></a>
-</div>
-<style type="text/css">
-#slides {{display: none}}
-</style>
-</div>
-</noscript>
-<div id="slides">
+<div id="slides" >
+<!-- Content replaced by JS -->
 <div><img src="/static/image/billboard-home.png" width="696" height="285" /><div class="billboard-content">
 <img class="bg-billboard-green" src="/static/image/bg-billboard-green-main-2.png" width="443" height="285" />
 <h2>Music Lessons</h2>
@@ -23,6 +9,10 @@
 <br />
 <a class="billboard-link btn-submit-yellow" href="#">Learn more ></a>
 </div></div>
+</div> <!-- /slides -->
+
+<script id="slides-content" type="text/html">
+<!-- // This content populates #slides on $(document).ready() -->
 <div><img src="/static/image/billboard-home.png" width="696" height="285" /><div class="billboard-content">
 <img class="bg-billboard-green" src="/static/image/bg-billboard-green-main-2.png" width="443" height="285" />
 <h2>Music Lessons</h2>
@@ -41,12 +31,8 @@
 </div></div>
 <input type="button" class="slidesjs-previous slidesjs-navigation arrow-previous" />
 <input type="button" class="slidesjs-next slidesjs-navigation arrow-next"/>
-</div> 
-<script type="text/javascript">
-<!--
-$(document).ready(function() {{ $('head').append( '<script type="text/javascript" src="/static/script/js.js"></script>'); }});
--->
 </script>
+
 <div class="home-newsletter">
 <div class="newsletter-signup">
 <h3>Sign up for our Newsletter</h3>
