@@ -119,6 +119,10 @@ padding-bottom: 95px;
 overflow: auto;
 }
 
+.ie7 #main {
+overflow: hidden;
+}
+
 #lightbox-1, #lightbox-2, #lightbox-3 {
 	position: absolute;
 	top: 200px;
@@ -456,6 +460,11 @@ position: relative;
 bottom: 183px;
 margin-left: 14px;
 overflow: hidden;
+}
+
+.ie7 .home-testimonials {
+float: none;
+left: 14px;
 }
 
 .home-testimonials h3, .testimonials-side h3 {
