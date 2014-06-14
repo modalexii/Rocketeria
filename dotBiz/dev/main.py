@@ -78,12 +78,13 @@ class MainHandler(webapp2.RequestHandler):
 				seteditable = '''<script>var editable_existing = true; var new_editor = false;</script>'''
 			else:
 				seteditable = '''<script>var editable_existing = false; var new_editor = false;</script>'''
-			self.response.write(
-				templates.get("admin_bar").format(**locals())
-			)
+
+			admin_bar = templates.get("admin_bar").format(**locals())
+		else:
+			admin_bar = ""
 
 		self.response.write(
-			templates.get("footer") 
+			templates.get("footer").format(**locals())
 		)
 
 	def post(self):
