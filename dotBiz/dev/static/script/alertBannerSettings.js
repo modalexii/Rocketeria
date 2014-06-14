@@ -26,7 +26,7 @@ $(document).ready(function(){
 			window.close();
 		})
 		.fail(function() {
-			alert('Sorry, the update didn\'t go through. Check your internet connection, refresh and try again. If this condition persists, please submit a bug report.');
+			alert('Sorry, the update didn\'t go through. Check your internet connection and try again. If this condition persists, please submit a bug report.');
 			window.close();
 		});
 	});
