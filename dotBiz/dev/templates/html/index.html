@@ -1,42 +1,138 @@
-
-<div id="slides" >
-<!-- Content replaced by JS -->
-<div><img src="/static/image/billboard-home.png" width="696" height="285" /><div class="billboard-content">
-<img class="bg-billboard-green" src="/static/image/bg-billboard-green-main-2.png" width="443" height="285" />
-<h2>Music Lessons</h2>
-<br />
-<p>Rocketeria provides a selection of instructional choices to fit your aspirations, schedule and budget.</p>
-<br />
-<a class="billboard-link btn-submit-yellow" href="#">Learn more ></a>
-</div></div>
-</div> <!-- /slides -->
+<div id="slides">
+	<div>
+		<img src="/static/image/billboard-home.png" width="696" height="285" />
+		<div class="billboard-content">
+			<img class="bg-billboard-green" src="/static/image/bg-billboard-green-main-2.png" width="443" height="285" />
+			<h2>Music Lessons</h2>
+			<br />
+			<p>Rocketeria provides a selection of instructional choices to fit your aspirations, schedule and budget.</p>
+			<br />
+			<a class="billboard-link btn-submit-yellow" href="/lessons">Learn more &gt;</a>
+		</div>
+	</div>
+</div> 
 
 <script id="slides-content" type="text/html">
-<!-- // This content populates #slides on $(document).ready() -->
-<div><img src="/static/image/billboard-home.png" width="696" height="285" /><div class="billboard-content">
-<img class="bg-billboard-green" src="/static/image/bg-billboard-green-main-2.png" width="443" height="285" />
-<h2>Music Lessons</h2>
-<br />
-<p>Rocketeria provides a selection of instructional choices to fit your aspirations, schedule and budget.</p>
-<br />
-<a class="billboard-link btn-submit-yellow" href="#">Learn more ></a>
-</div></div>
-<div><img src="/static/image/billboard-home.png" width="696" height="285" /><div class="billboard-content">
-<img class="bg-billboard-green" src="/static/image/bg-billboard-green-main-2.png" width="443" height="285" />
-<h2>Music Lessons</h2>
-<br />
-<p>Rocketeria provides a selection of instructional choices to fit your aspirations, schedule and budget.</p>
-<br />
-<a class="billboard-link btn-submit-yellow" href="#">Learn more ></a>
-</div></div>
+	<div>
+		<img src="/static/image/billboard-home.png" width="696" height="285" />
+		<div class="billboard-content">
+			<img class="bg-billboard-green" src="/static/image/bg-billboard-green-main-2.png" width="443" height="285" />
+			<h2>Music Lessons</h2>
+			<br />
+			<p>Rocketeria provides a selection of instructional choices to fit your aspirations, schedule and budget.</p>
+			<br />
+			<a class="billboard-link btn-submit-yellow" href="/lessons">Learn more &gt;</a>
+		</div>
+	</div>
+		<div>
+		<img src="/static/image/billboard-home.png" width="696" height="285" />
+		<div class="billboard-content">
+			<img class="bg-billboard-green" src="/static/image/bg-billboard-green-main-2.png" width="443" height="285" />
+			<h2>Music Lessons</h2>
+			<br />
+			<p>Rocketeria provides a selection of instructional choices to fit your aspirations, schedule and budget.</p>
+			<br />
+			<a class="billboard-link btn-submit-yellow" href="/lessons">Learn more &gt;</a>
+		</div>
+	</div>
+		<div>
+		<img src="/static/image/billboard-home.png" width="696" height="285" />
+		<div class="billboard-content">
+			<img class="bg-billboard-green" src="/static/image/bg-billboard-green-main-2.png" width="443" height="285" />
+			<h2>Music Lessons</h2>
+			<br />
+			<p>Rocketeria provides a selection of instructional choices to fit your aspirations, schedule and budget.</p>
+			<br />
+			<a class="billboard-link btn-submit-yellow" href="/lessons">Learn more &gt;</a>
+		</div>
+	</div>
 <input type="button" class="slidesjs-previous slidesjs-navigation arrow-previous" />
 <input type="button" class="slidesjs-next slidesjs-navigation arrow-next"/>
 </script>
+
+ <script type="text/javascript">
+    $(document).ready(function() {{ 
+      $.getScript(
+        "/static/script/jquery.slides.js", 
+        function() {{
+          $('#slides').append( $('#slides-content').html() ); 
+          $(document).ready(function() {{
+
+            $(".arrow-next").mouseenter(function() {{
+              $(this).css("background", "url('/static/image/a03.png') -186px -35px no-repeat");
+            }})
+            .mouseleave(function(){{
+              $(this).css("background", "url('/static/image/a03.png') 55px -35px no-repeat");
+            }});
+            $(".arrow-next").mousedown(function() {{
+              $(this).css("background", "url('/static/image/a03.png') -66px -35px no-repeat");
+            }})
+            .mouseup(function() {{
+              $(this).css("background", "url('/static/image/a03.png') -186px -35px no-repeat");
+            }});
+            $(".arrow-previous").mouseenter(function() {{
+              $(this).css("background", "url('/static/image/a03.png') -125px -35px no-repeat");
+            }})
+            .mouseleave(function() {{
+              $(this).css("background", "url('/static/image/a03.png') 55px -35px no-repeat");
+            }});
+            $(".arrow-previous").mousedown(function() {{
+              $(this).css("background", "url('/static/image/a03.png') -5px -35px no-repeat");
+            }})
+            .mouseup(function() {{
+              $(this).css("background", "url('/static/image/a03.png') -125px -35px no-repeat");
+            }});
+
+            $("#slides").slidesjs({{
+              play: {{
+                active: false,
+                // [boolean] Generate the play and stop buttons.
+                // You cannot use your own buttons. Sorry.
+                effect: "slide",
+                // [string] Can be either "slide" or "fade".
+                interval: 8000,
+                // [number] Time spent on each slide in milliseconds.
+                auto: true,
+                // [boolean] Start playing the slideshow on load.
+                swap: true,
+                // [boolean] show/hide stop and play buttons
+                pauseOnHover: false,
+                // [boolean] pause a playing slideshow on hover
+                restartDelay: 2500
+                // [number] restart delay on inactive slideshow
+              }},
+              pagination: {{
+              active: false,
+              effect: "slide"
+              }},
+              navigation: {{
+                active: true,
+                // [boolean] Generates next and previous buttons.
+                // You can set to false and use your own buttons.
+                // User defined buttons must have the following:
+                // previous button: class="slidesjs-previous slidesjs-navigation"
+                // next button: class="slidesjs-next slidesjs-navigation"
+                effect: "slide"
+                // [string] Can be either "slide" or "fade".
+              }},
+              width: 696,
+              height: 285,
+              start: 3  
+            }});
+          }});
+        }}
+      );
+    }});
+  </script>
 
 <div class="home-newsletter">
 <div class="newsletter-signup">
 <h3>Sign up for our Newsletter</h3>
 <form id="billboard-newsletter-signup" method="GET" name="newsletter" action="javascript:void(0);">
+<!-- 
+	HTTP GET to /api-proxy-pub provides links for things someone *might* have submitted a form for.
+	This is an awk. way to handle noscript cases. To be remedied in future enhancements.
+-->
 <input name="email" class="newsletter-email" type="email" required="required" value="ENTER EMAIL"><br />
 <input class="btn-submit-yellow newsletter-submit" type="submit" value="SUBMIT >"></a><br />
 </form>
@@ -44,32 +140,32 @@
 </div>
 <div class="newsletter-social">
 <h3>Social</h3>
-<a href="https://www.facebook.com/rocketeria"><input type="button" class="btn-facebook-red" /></a>
-<a href="https://twitter.com/therocketeria"><input type="button" class="btn-twitter-red" /></a>
-<a href="http://instagram.com/therocketeria"><input type="button" class="btn-instagram-red" /></a>
-<a href="https://www.youtube.com/user/TheRocketeria"><input type="button" class="btn-youtube-red" /></a>
+<a href="https://www.facebook.com/rocketeria" target="_blank"><input type="button" class="btn-facebook-red" /></a>
+<a href="https://twitter.com/therocketeria" target="_blank"><input type="button" class="btn-twitter-red" /></a>
+<a href="http://instagram.com/therocketeria" target="_blank"><input type="button" class="btn-instagram-red" /></a>
+<a href="https://www.youtube.com/user/TheRocketeria" target="_blank"><input type="button" class="btn-youtube-red" /></a>
 </div>
 </div>
 <div class="clear"></div>
 <img class="separator" src="/static/image/separator.png" width="960px" height="16px" />
 <div class="home-bottom">
 <div class="home-store">
-<a href="/store"><h3>Store ></h3></a>
+<a href="/store"><h3>Store &gt;</h3></a>
 <p>Guitars &bull; Amps<br />
 Strings &bull; Accessories</p>
 </div>
 <div class="home-lessons">
-<a href="/lessons"><h3>Lessons ></h3></a>
+<a href="/lessons"><h3>Lessons &gt;</h3></a>
 <p>Guitar &bull; Piano &bull; Drums<br />
 Violin &bull; Cello</p>
 </div>
 <div class="clear"></div>
 <div class="home-rentals">
-<a href="/rentals"><h3>Rentals ></h3></a>
+<a href="/rentals"><h3>Rentals &gt;</h3></a>
 <p>Band &amp; Orchestra</p>
 </div>
 <div class="home-events">
-<a href="/events"><h3>Events ></h3></a>
+<a href="/events"><h3>Events &gt;</h3></a>
 <p>Rock The Lot <br />
 Friday Night Live Series</p>
 </div>
