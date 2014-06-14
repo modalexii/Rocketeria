@@ -52,18 +52,16 @@ class ModificationHandler(webapp2.RequestHandler):
 				'''
 			)
 			self.response.write('''</div> <!--End of #content-sub -->''')
-			# drop a random quote in the sidebar before writing it out
-			import quote_feed
-			random_quote = quote_feed.get_random()
+
+			random_quote = "This text replaces Quote Feed content when creating a new page. Please disregard."
 			self.response.write(
 				templates.get("sidebar").format(**locals())
 			)
 
+			admin_bar = templates.get("admin_bar").format(**locals())
+
 			self.response.write(
-				templates.get("admin_bar").format(**locals())
-			)
-			self.response.write(
-				templates.get("footer")
+				templates.get("footer").format(**locals())
 			)
 
 		elif request_path == "modify/banner":
@@ -162,7 +160,7 @@ class ModificationHandler(webapp2.RequestHandler):
 			if state != "on":
 				# clear banner
 				logging.info("User %s removed the alert banner" % (nickname))
-				gae_db.delete_page("/banner")
+				gae_db.delete_page("banner")
 				return
 
 			banner_bg = self.request.get("banner_bg")
@@ -187,7 +185,7 @@ class ModificationHandler(webapp2.RequestHandler):
 			banner_content = templates.get("alert_banner").format(**locals())
 
 			logging.info("User %s published alert banner reading \"%s\"" % (nickname, message))
-			gae_db.add_or_update_page("/banner", banner_content)
+			gae_db.add_or_update_page("banner", banner_content)
 
 
 
