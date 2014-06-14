@@ -32,24 +32,19 @@ handlers:
   static_dir: templates
   application_readable: true
   login: admin
-# All GCS parent bins
-- url: /dres/.*
+- url: /dres/.* # GCSs
   script: gcs_wrapper.application
-# Hand-off
-- url: /enableadmin
+- url: /enableadmin # Hand-off
   script: login.application
-# Non-Public
-- url: /modify/?.*
+- url: /modify/?.* # Non-Public
   script: modify.application
   login: admin
-- url: /cron/.*
+- url: /cron/.* # Non-Public
   script: cron.application
   login: admin
-# Public 3rd-Party API Proxy
-- url: /api_proxy_pub/.*
+- url: /api_proxy_pub/.* # Public 3rd-Party API Proxy
   script: api_proxy_pub.application
-# Catch-all
-- url: /.*
+- url: /.* # Catch-all
   script: main.application
 
 error_handlers:
