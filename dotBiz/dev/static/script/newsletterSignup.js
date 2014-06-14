@@ -19,7 +19,7 @@ $(document).ready(function() {
 			switch (xhr) {
 				// switch-case used to ease implementation of additional circumstantial return messages from ConCon API
 				case 'Conflict':
-					container.html('<h3>You\'re already<br/>on the list!</h3> <p style="text-align:center;">If you\'re not getting quarterly emails, check your Spam folder or click <u><a href="http://visitor.r20.constantcontact.com/manage/optin/ea?v=001Vzv-UqW3G56TS4HpjB5lNw%3D%3D" target="_blank">here</a></u> to update your profile.');
+					container.html('<h3>You\'re already<br/>on the list!</h3><p style="text-align:center;">If you\'re not getting<br/>quarterly emails, check<br/>your Spam folder or <br/>click <u><a href="http://visitor.r20.constantcontact.com/manage/optin/ea?v=001Vzv-UqW3G56TS4HpjB5lNw%3D%3D" target="_blank">here</a></u> to update<br/>your profile.');
 					break;
 				default:
 					container.html('<h3>Sorry, there was a problem :-/<br/><br/>Please click <a href="http://visitor.r20.constantcontact.com/manage/optin/ea?v=001Vzv-UqW3G56TS4HpjB5lNw%3D%3D" target="_blank"><u>here</u></a> to subscribe.</h3>');
