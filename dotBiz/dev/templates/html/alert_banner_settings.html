@@ -42,7 +42,7 @@
 	<body>
 		<h2>Alert Banner Settings</h2>
 		Edit banner text and appearance below
-		<div id="banner" class="stripe alert" style="margin-bottom: 12px;" contenteditable>
+		<div id="banner" class="stripe alert purple_bg" style="margin-bottom: 12px;" contenteditable>
 			Rocketeria will be closed today due to inclement weather.
 		</div>
 		<table>
@@ -58,7 +58,7 @@
 					<input id="off" type="radio" value="off" name="state">
 					<label for="off">Off</label>
 				</td>
-				<td colspan=3> 
+				<td colspan=4> 
 				</td> 
 			</tr>
 			<tr>
@@ -66,7 +66,11 @@
 					Background:
 				</td>
 				<td>
-					<input id="red_bg" type="radio" value="red_bg" name="banner_color" checked>
+					<input id="purple_bg" type="radio" value="purple_bg" name="banner_color" checked>
+					<label for="purplr_bg">Purple</label>
+				</td>
+				<td>
+					<input id="red_bg" type="radio" value="red_bg" name="banner_color">
 					<label for="red_bg">Red</label>
 				</td>
 				<td>
@@ -102,14 +106,14 @@
 					<input id="red_txt" type="radio" value="red_txt" name="text_color">
 					<label for="red_txt">Red</label>
 				</td>
-				<td colspan=2> 
+				<td colspan=3> 
 				</td> 
 			</tr>
 			<tr>
 				<td class="right">
 					Expire On:
 				</td> 
-				<td colspan=5>
+				<td colspan=6>
 					<input id="datetimepicker" name="expire" type="text" />  (blank to never expire)
 				</td>
 			</tr> 
@@ -125,6 +129,8 @@
 					<div id="cancel" class="red_bg white_txt">
 						Cancel
 					</div>
+				</td>
+				<td colspan=2>
 				</td>
 		</table>
 		
