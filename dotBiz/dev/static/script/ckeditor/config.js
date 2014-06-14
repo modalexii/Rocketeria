@@ -31,6 +31,31 @@ CKEDITOR.editorConfig = function( config ) {
 		{ name: 'Highlight: B', element: 'span', styles: { 'background-color': '#abfffc' } },
 		{ name: 'Highlight: Y', element: 'span', styles: { 'background-color': '#f5ed14' } },
 		{ name: 'Highlight: P', element: 'span', styles: { 'background-color': '#e26ffb' } },
+		{ name: 'Button: R',
+			element: 'span', 
+			attributes: { 'class': 'btn' },
+			styles: { 'color':'#fff', 'background-color':'#96231f' }
+		},
+		{ name: 'Button: G',
+			element: 'a', 
+			attributes: { 'class': 'btn' },
+			styles: { 'background-color':'#58a326' }
+		},
+		{ name: 'Button: B',
+			element: 'a', 
+			attributes: { 'class': 'btn' },
+			styles: { 'background-color':'#04bde5' }
+		},
+		{ name: 'Button: Y',
+			element: 'a', 
+			attributes: { 'class': 'btn' },
+			styles: { 'background-color':'#d79e05' }
+		},
+		{ name: 'Button: P',
+			element: 'a', 
+			attributes: { 'class': 'btn' },
+			styles: { 'background-color':'#9702b7' }
+		},
 	] );
 
 	config.stylesSet = 'my_styles';
