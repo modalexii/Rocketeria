@@ -63,7 +63,7 @@ height: 103px;
 background-image: url("../images/bg-header.png");
 }
 
-#header a {
+#header > a {
 height: 103px;
 width: 372px;
 display: block;
@@ -81,6 +81,23 @@ margin: 0;
 float: left;
 }
 
+#header .header-info {
+float: right;
+color:  #f7bd20;
+font-weight:  bold;
+text-align: right;
+padding-right: 20px;
+padding-top: 12px;
+}
+
+#header .header-info a {
+float: none;
+color:  #f7bd20;
+}
+
+#header .header-info a:hover {
+text-decoration: underline;
+}
 
 
 /* Navigation */
@@ -215,7 +232,7 @@ right: 95px;
 }
 
 .ie7 .billboard-content {
-bottom: 285px;
+bottom: 289px;
 }
 
 .billboard-content p {
@@ -316,7 +333,8 @@ text-align: center;
 text-transform: uppercase;
 color: #FFFFFF;
 font-size: 25px;
-padding: 3px 55px 0;
+padding-top: 3px;
+text-align: center;
 margin-bottom: 5px;
 }
 
@@ -631,15 +649,14 @@ overflow: hidden;
 }
 
 .testimonials-side h3 {
-color: #FFFFFF;
-text-transform: uppercase;
-font-family: 'Quicksandbold', sans-serif !important;
+color: #ffffff;
+font-family: 'Quicksandbold',sans-serif !important;
 font-size: 24px;
+padding: 13px 0;	
 position: relative;
+text-align: center;
+text-transform: uppercase;
 top: 31px;
-width: 180px;
-padding: 13px 15px;
-
 }
 
 .testimonials-side p {
