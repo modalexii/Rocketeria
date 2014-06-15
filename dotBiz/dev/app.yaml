@@ -44,6 +44,8 @@ handlers:
   login: admin
 - url: /api_proxy_pub/.* # Public 3rd-Party API Proxy
   script: api_proxy_pub.application
+- url: /sendmail/.* # Public 3rd-Party API Proxy
+  script: sendmail.application
 - url: /.* # Catch-all
   script: main.application
 
