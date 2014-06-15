@@ -2,22 +2,6 @@ import webapp2,logging
 
 class APIProxyHandler(webapp2.RequestHandler):
 
-	def get(self):
-		'''
-		The only reason a user would GET this handler is if JS is disabled on a JS-only form.
-		Display a decent page with some suggestions and JS-free links.
-		'''
-		import templates
-		self.response.write(
-			templates.get("header")
-		)
-		self.response.write(
-			templates.get("noscript-formsubmit")
-		)
-		self.response.write(
-			templates.get("footer")
-		)
-
 	def post(self):
 		uri = self.request.path.strip('/')
 
