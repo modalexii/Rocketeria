@@ -82,8 +82,6 @@ class ModificationHandler(webapp2.RequestHandler):
 			from google.appengine.api import users
 			self.redirect(users.create_logout_url('/'))
 
-
-
 	def post(self, *args, **kwargs):
 		'''handle HTTP POSTs'''
 
@@ -166,6 +164,7 @@ class ModificationHandler(webapp2.RequestHandler):
 			banner_bg = self.request.get("banner_bg")
 			text_color = self.request.get("text_color")
 			message = self.request.get("message").strip()
+			override_hours = self.request.get("override_hours").strip()
 
 			# set expire date to 00:00 UTC of selected day
 			# this prevents each cron job fron needing to convert time zone
@@ -183,6 +182,8 @@ class ModificationHandler(webapp2.RequestHandler):
 			# we trust user input here. they're already admins...
 
 			banner_content = templates.get("alert_banner").format(**locals())
+			if override_hours:
+				banner_content = "<script>var override_hours = '{override_hours}';</script>{banner_content}".format(**locals())
 
 			logging.info("User %s published alert banner reading \"%s\"" % (nickname, message))
 			gae_db.add_or_update_page("banner", banner_content)
