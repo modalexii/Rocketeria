@@ -684,26 +684,15 @@ text-transform: uppercase;
 margin-top: 0;
 }
 
-.footer-nav, .footer-newsletter, .footer-social {
+.footer-nav, .footer-newsletter, .footer-social, .footer-quick-links {
 float: left;
-width: 206px;
+width: 240px;
+margin-top: 28px;
 }
 
-.footer-quick-links {
-float: left;
-width: 290px;
-}
-
-.footer-newsletter, .footer-social {
-margin-top: 30px;
-}
 
 .footer-newsletter h3, .footer-social h3 {
 text-align: center;
-}
-
-.footer-nav, .footer-quick-links {
-margin-top: 26px;
 }
 
 .footer-nav h3, .footer-quick-links h3 {
@@ -723,18 +712,10 @@ margin: 6px 46px;
 font-family: 'Quicksandbold', sans-serif;
 }
 
-.footer-newsletter {
-margin: 30px 19px 0 0;
-}
-
 .footer-newsletter-email {
 padding: 9px 9px;
-margin: 13px 0 4px 14px;
+margin: 13px 0 4px 28px;
 width: 160px;
-}
-
-.ie7 .footer-newsletter-email, .ie8 .footer-newsletter-email, .ie9 .footer-newsletter-email, .ie10 .footer-newsletter-email, .ie11 .footer-newsletter-email {
-margin-left: 15px;
 }
 
 .footer-social h3 {
@@ -745,6 +726,9 @@ margin-bottom: 7px;
 margin-left: 7px;
 }
 
+.footer-social-push {
+margin-left:14px;
+}
 .btn-submit-red {
 text-transform: uppercase;
 font-family: 'Quicksandbold', sans-serif !important;
@@ -767,7 +751,7 @@ color: #f7bd20;
 }
 
 .footer-newsletter-submit {
-margin-left: 16px;
+margin-left: 29px;
 width: 178px;
 }
 
