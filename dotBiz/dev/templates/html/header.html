@@ -26,6 +26,22 @@
 <div id="page-wrapper">
 <div id="header">
 <a href="/"><h1>ROCKETERIA</h1></a>
+<p class="header-info">
+<b>(301) 774-5690</b><br>
+18120 Hillcrest Ave.<br>
+Olney, MD 20832<br>
+<a href="about.html">Hours</a></p>
+<script type="text/javascript">
+$(document).ready(function() {
+	try {
+		var hours = override_hours;
+	}
+	catch(e) {
+		var hours = ['CLOSED','11-9','11-9','11-9','11-9','11-9','10-4'][(new Date()).getDay()];
+	}
+	$('#header .header-info').append(' Today: ' + hours);
+});
+</script>
 </div>
 <div id="nav-wrapper">
 <ul id="nav-contents">
