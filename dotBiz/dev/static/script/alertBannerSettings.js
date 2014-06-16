@@ -19,6 +19,7 @@ $(document).ready(function(){
 			'banner_bg' : $('input[name="banner_color"]:checked').val(),
 			'text_color' : $('input[name="text_color"]:checked').val(),
 			'message' : $('#banner').html(),
+			'override_hours' : $('input[name="override_hours"]').val(),
 			'expire' : $('input[name="expire"]').val(),
 		})
 		.done(function() {
@@ -42,6 +43,7 @@ $(document).ready(function(){
 			$('input[name="text_color"]').each( function() {
 				$(this).prop('disabled', true);
 			});
+			$('input[name="override_hours"]').prop('disabled', true);
 			$('input[name="expire"]').prop('disabled', true);
 			$('#banner').addClass('disabled');
 		}
@@ -52,6 +54,7 @@ $(document).ready(function(){
 			$('input[name="text_color"]').each( function() {
 				$(this).prop('disabled', false);
 			});
+			$('input[name="override_hours"]').prop('disabled', false);
 			$('input[name="expire"]').prop('disabled', false);
 			$('#banner').removeClass('disabled');
 		}
