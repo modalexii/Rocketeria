@@ -1,6 +1,3 @@
-//
-// OFFLINE/DESIGN environemnt
-//
 
 $(document).ready(function() {
 
