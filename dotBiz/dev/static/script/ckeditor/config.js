@@ -8,19 +8,11 @@ CKEDITOR.editorConfig = function( config ) {
 	// For complete reference see:
 	// http://docs.ckeditor.com/#!/api/CKEDITOR.config
 	 CKEDITOR.stylesSet.add( 'my_styles', [
-		// Block-level styles
-		{ 
-			name: 'Normal', 
-			element: 'p', 
-			styles: { '*':'inherit !important' }
-		},
-		{ 
-			name: 'Testimonial',
-			element: 'p',
-			styles: { 'border-bottom':'1px solid #0f0403', 'padding-bottom':'12px', 'padding-top':'12px' },
-			attributes: { 'class': 'testimonial' }
-		},
 		// Inline styles
+		{ name: 'Undecorate Link',
+			element: 'a', 
+			styles: { 'text-decoration':'none;'}
+		},
 		{ name: 'Big', element: 'big', },
 		{ name: 'Quote Feed',
 			element: 'span', 
@@ -56,6 +48,13 @@ CKEDITOR.editorConfig = function( config ) {
 			attributes: { 'class': 'btn' },
 			styles: { 'background-color':'#9702b7' }
 		},
+		// Block-level styles
+		{ 
+			name: 'Testimonial',
+			element: 'p',
+			styles: { 'border-bottom':'1px solid #0f0403', 'padding-bottom':'12px', 'padding-top':'12px' },
+			attributes: { 'class': 'testimonial' }
+		}
 	] );
 
 	config.stylesSet = 'my_styles';
