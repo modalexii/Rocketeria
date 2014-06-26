@@ -120,7 +120,7 @@ font-family: 'Quicksandbold', sans-serif !important;
 padding: 8px 7px 8px 24px;
 }
 
-#nav-contents a:hover, .footer-nav a:hover {
+#nav-contents a:hover, .footer-nav a:hover, .footer-quick-links a:hover {
 color: #96231f;
 }
 
@@ -684,52 +684,38 @@ text-transform: uppercase;
 margin-top: 0;
 }
 
-.footer-nav, .footer-newsletter, .footer-social {
+.footer-nav, .footer-newsletter, .footer-social, .footer-quick-links {
 float: left;
-width: 206px;
+width: 240px;
+margin-top: 28px;
 }
 
-.footer-nav {
-margin-right: 288px;
-}
-
-.footer-newsletter, .footer-social {
-margin-top: 30px;
-}
 
 .footer-newsletter h3, .footer-social h3 {
 text-align: center;
 }
 
-.footer-nav h3 {
-margin: 26px 32px 0 32px;
+.footer-nav h3, .footer-quick-links h3 {
+margin-left: 34px;
 }
 
-.footer-nav ul {
+.footer-nav ul, .footer-quick-links ul {
 list-style-type: none;
 padding-left: 0;
 }
 
-.footer-nav li {
+.footer-nav li, .footer-quick-links li {
 margin: 6px 46px;
 }
 
-.footer-nav li a {
+.footer-nav li a, .footer-quick-links li a {
 font-family: 'Quicksandbold', sans-serif;
-}
-
-.footer-newsletter {
-margin: 30px 19px 0 0;
 }
 
 .footer-newsletter-email {
 padding: 9px 9px;
-margin: 13px 0 4px 14px;
+margin: 13px 0 4px 28px;
 width: 160px;
-}
-
-.ie7 .footer-newsletter-email, .ie8 .footer-newsletter-email, .ie9 .footer-newsletter-email, .ie10 .footer-newsletter-email, .ie11 .footer-newsletter-email {
-margin-left: 15px;
 }
 
 .footer-social h3 {
@@ -740,6 +726,9 @@ margin-bottom: 7px;
 margin-left: 7px;
 }
 
+.footer-social-push {
+margin-left:14px;
+}
 .btn-submit-red {
 text-transform: uppercase;
 font-family: 'Quicksandbold', sans-serif !important;
@@ -762,7 +751,7 @@ color: #f7bd20;
 }
 
 .footer-newsletter-submit {
-margin-left: 16px;
+margin-left: 29px;
 width: 178px;
 }
 
