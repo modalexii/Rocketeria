@@ -2,7 +2,7 @@
 $(document).ready(function(){
 	$('#banner').addClass('red_bg');
 	$('input[name="banner_color"]').change(function () {
-		$('#banner').removeClass('red_bg yellow_bg green_bg blue_bg plain_bg').addClass($(this).val());
+		$('#banner').removeClass('purple_bg red_bg yellow_bg green_bg blue_bg plain_bg').addClass($(this).val());
 	});
 	$('input[name="text_color"]').change(function () {
 		$('#banner').removeClass('white_txt black_txt red_txt').addClass($(this).val());
