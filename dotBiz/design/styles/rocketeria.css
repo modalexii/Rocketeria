@@ -111,13 +111,15 @@ text-transform: uppercase;
 }
 
 #nav-contents li {
-float: left;
-margin-top: 8px;
+    float: left;
+    margin-top: 8px;
+    text-align: center;
+    width: 137px;
 }
 
 #nav-contents a{
-font-family: 'Quicksandbold', sans-serif !important;
-padding: 8px 7px 8px 24px;
+font-family: 'Quicksandbold',sans-serif !important;
+padding: 8px 7px;
 }
 
 #nav-contents a:hover, .footer-nav a:hover, .footer-quick-links a:hover {
