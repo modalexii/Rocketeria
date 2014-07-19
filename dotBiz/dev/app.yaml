@@ -8,7 +8,7 @@ libraries:
 - name: webapp2
   version: latest
 - name: lxml
-  version: "latest"
+  version: latest
 
 pagespeed:
   domains_to_rewrite:
