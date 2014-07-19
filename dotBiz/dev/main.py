@@ -6,6 +6,27 @@ logging.getLogger().setLevel(logging.INFO)
 
 class MainHandler(webapp2.RequestHandler):	
 
+	def get_title_from_h1(self,content):
+		'''
+		returns the contents of the first <h1>,
+		or throws IndexError if no <h1> in content
+		'''
+		from lxml.html import document_fromstring
+		from lxml.html.clean import Cleaner
+
+		r = document_fromstring(content)
+		h1_0 = r.xpath('//h1')[0]
+		h1_0 = h1_0.text_content()
+		h1_0 = h1_0[:40]
+
+		cleaner = Cleaner() # with no options, will remove most anything
+
+		h1_0 = cleaner.clean_html(h1_0)
+		h1_0 = h1_0[3:-4] # remove <p> added by lxml
+		h1_0 = h1_0.encode('utf-8', 'xmlcharrefreplace')
+
+		return h1_0
+
 	def get(self):
 		'''handle HTTP GETs'''
 
@@ -18,10 +39,6 @@ class MainHandler(webapp2.RequestHandler):
 
 		if not uri:
 			uri = "index"
-
-		self.response.write(
-			templates.get("header")
-		)
 
 		try:
 			# check the database...
@@ -41,6 +58,15 @@ class MainHandler(webapp2.RequestHandler):
 		else:
 			content_source = "db"
 
+		try:
+			title = self.get_title_from_h1(content)
+		except IndexError:
+			title = "ROCKETERIA"
+
+		self.response.write(
+			templates.get("header").format(**locals())
+		)
+
 		if uri == "index":
 			try:
 				# grab banner
@@ -53,7 +79,6 @@ class MainHandler(webapp2.RequestHandler):
 
 			nosidebar = True
 			random_quote = quote_feed.get_random()
-			#content = content.format(**locals())
 
 		self.response.write(content.format(**locals()))
 
