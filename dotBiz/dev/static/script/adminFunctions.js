@@ -10,13 +10,15 @@ function savePage() {
 		// the following assumes that all editable pages are identical
 		// content has to be recreated
 		// if it is captured with outerHTML, we get all the ckeditor junk too
-		var content_template = '<div id="header-sub"><img class="bg-header-sub" src="{0}" width="705px" height="82px"/><h1>{1}</h1></div><!-- /header-sub --><div id="content-sub">{2}</div><!-- /content-sub -->'
+		var content_template = '<div id="header-sub"><img class="bg-header-sub" src="{0}" width="705px" height="82px"/><h1>{1}</h1></div><!-- /header-sub --><div id="content_sub">{2}</div><!-- /content_sub -->'
+		var CKEData = CKEDITOR.instances.content_sub.getData();
 		var content = String.format(
 			content_template,
 			$('img.bg-header-sub').attr('src'),
 			$('#header-sub h1').html(),
-			$('#content-sub').html()
+			CKEData
 		);
+
 		$.post('/modify/publish', {
 			'content' : content,
 			'resource' : resource,
@@ -35,7 +37,7 @@ function savePage() {
 }
 
 function enterEditingMode(newPath) {
-	$('#content-sub').prop('contenteditable',true);
+	$('#content_sub').prop('contenteditable',true);
 	$('#header-sub h1').prop('contenteditable',true);
 	$('#editthis').removeClass('admin_link');
 	$('#editthis').html(
@@ -94,8 +96,8 @@ function enterEditingMode(newPath) {
 	CKEDITOR.disableAutoInline = true;
 
 	try {
-		CKEDITOR.inline( 'content-sub' );
-		//CKEDITOR.inline( 'content-sub' ); // + line for each div that should spawn a ck instance
+		CKEDITOR.inline( 'content_sub' );
+		//CKEDITOR.inline( 'content_sub' ); // + line for each div that should spawn a ck instance
 	}
 	catch(e) {
 		console.log('Error attaching in-line editor: ' + e);
