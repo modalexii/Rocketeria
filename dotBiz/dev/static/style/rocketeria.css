@@ -113,11 +113,13 @@ text-transform: uppercase;
 #nav-contents li {
 float: left;
 margin-top: 8px;
+text-align: center;
+width: 137px;
 }
 
 #nav-contents a{
-font-family: 'Quicksandbold', sans-serif !important;
-padding: 8px 7px 8px 24px;
+font-family: 'Quicksandbold',sans-serif !important;
+padding: 8px 7px;
 }
 
 #nav-contents a:hover, .footer-nav a:hover, .footer-quick-links a:hover {
@@ -344,6 +346,19 @@ width: 160px;
 border: 0;
 }
 
+.form-input {
+font-family: 'Quicksandbold', sans-serif !important;
+padding-left: 4px;
+padding-right: 4px;
+padding-top: 2px;
+padding-bottom: 2px;
+margin: 0 0 4px 14px;
+border: 0;
+text-align:center;
+background-color: inherit;
+border-bottom: 2px solid #ccc;
+}
+
 .newsletter-tag {
 margin: 5px 36px;
 font-size: 12px;
@@ -548,24 +563,24 @@ bottom: 29px;
 left: 46px;
 }
 
-#content-sub, #header-sub {
+#content_sub, #header-sub {
 float: left;
 width: 665px;
 }
 
-#content-sub {
+#content_sub {
 padding: 0 0 115px 35px;
 }
 
-#content-sub p, #content-sub ul {
+#content_sub p, #content_sub ul {
 line-height: 1.4em;
 }
 
-#content-sub ul {
+#content_sub ul {
 padding: 6px 15px;
 }
 
-#content-sub a {
+#content_sub a {
 text-decoration: underline;
 }
  
@@ -614,6 +629,7 @@ padding: 7px 15px;
 -webkit-border-radius: 10px;
 -moz-border-radius: 10px;
 border-radius: 10px;
+border: 0;
 } 
 
 .btn:hover {
