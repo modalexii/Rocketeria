@@ -43,7 +43,7 @@ class ModificationHandler(webapp2.RequestHandler):
 			self.response.write(
 				templates.get("header-sub")
 			)
-			self.response.write('''<div id="content-sub">''')
+			self.response.write('''<div id="content_sub" contenteditable>''')
 			self.response.write(
 				'''
 				<p>Click here to begin editing...</p>
@@ -51,7 +51,7 @@ class ModificationHandler(webapp2.RequestHandler):
 				<p>Consult the <a href="https://docs.google.com/a/rocketeria.biz/document/d/161u3MvfQGBfpvJJqEpcVHPntjfqvizoCDssJQLySAEc/edit?usp=sharing" target="_blank">Content Author's Manual</a> for further guidance.</p>
 				'''
 			)
-			self.response.write('''</div> <!--End of #content-sub -->''')
+			self.response.write('''</div> <!--End of #content_sub -->''')
 
 			random_quote = "This text replaces Quote Feed content when creating a new page. Please disregard."
 			self.response.write(
