@@ -140,6 +140,10 @@ overflow: hidden;
 
 /* Home Page */
 
+.billboard-image {
+z-index: 0;
+}
+
 /* Billboard Slider */
 
 #slides, .no-js-slide {
@@ -196,15 +200,15 @@ display: none;
 .billboard-content h2 {
 text-transform: uppercase;
 font-size: 33px;
-background-color: #58a326;
-width: 332px;
-padding-left: 64px;
+width: 366px;
+padding-left: 30px;
 margin: 0;
 padding-top: 3px;
 position: relative;
 right: 48px;
 bottom: 252px;
 height: 42px;
+text-align: center;
 }
 
 .ie7 .billboard-content h2 {
@@ -213,12 +217,22 @@ top: 38px;
 right: 0;
 }
 
+.billboard-header-green {
+background-color: #58a326;
+}
+
+.billboard-header-yellow {
+background-color: #d79e05;
+}
+
+.billboard-header-red {
+background-color: #96231f;
+}
+
 .billboard-content {
 height: 289px;
 width: 348px;
-position: relative;
-bottom: 289px;
-left: 348px;
+float: right;
 color: #FFFFFF;
 /* background: url("../images/billboard-content-bg-green.png") top right no-repeat; */
 }
@@ -228,10 +242,6 @@ position: relative;
 right: 95px;
 }
 
-.ie7 .billboard-content {
-bottom: 289px;
-}
-
 .billboard-content p {
 position: relative;
 bottom: 250px;
@@ -239,18 +249,27 @@ width: 275px;
 font-size: 16px;
 line-height: 1.35em;
 left: 35px;
+text-align: center;
 }
 
 .ie7 .billboard-content p {
-width: 275px;
-position: absolute;
-top: 105px;
+bottom: 200px;
 }
 
-.billboard-link {
+.billboard-link-1 {
 position: relative;
-bottom: 227px;
-left: 68px;
+top: 40px;
+}
+
+.billboard-link-2 {
+position: relative;
+top: 20px;
+}
+
+.billboard-link-3 {
+position: relative;
+bottom: 90px;
+left: 125px;
 }
 
 .ie7 .billboard-link {
