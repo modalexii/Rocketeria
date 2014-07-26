@@ -9,9 +9,13 @@ CKEDITOR.editorConfig = function( config ) {
 	// http://docs.ckeditor.com/#!/api/CKEDITOR.config
 	 CKEDITOR.stylesSet.add( 'my_styles', [
 		// Inline styles
-		{ name: 'Undecorate Link',
+		{ name: 'Link: Undecorate',
 			element: 'a', 
 			styles: { 'text-decoration':'none;'}
+		},
+		{ name: 'Link: Clickable Cell',
+			element: 'a', 
+			styles: { 'text-decoration':'none;','display':'block','width':'100%'}
 		},
 		{ name: 'Big', element: 'big', },
 		{ name: 'Quote Feed',
