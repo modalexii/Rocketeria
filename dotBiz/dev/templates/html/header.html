@@ -38,7 +38,7 @@ $(document).ready(function() {{
 		var hours = override_hours;
 	}}
 	catch(e) {{
-		var hours = ['CLOSED','11-9','11-9','11-9','11-9','11-9','10-4'][(new Date()).getDay()];
+		var hours = ['CLOSED','11-9','11-9','11-9','11-9','11-8','10-4'][(new Date()).getDay()];
 	}}
 	$('#header .header-info').append(' Today: ' + hours);
 }});
