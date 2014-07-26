@@ -36,9 +36,10 @@ class ModificationHandler(webapp2.RequestHandler):
 			nickname = current_user.email()
 
 			seteditable = '''<script>var editable_existing = false; var new_editor = true;</script>'''
-
+			title = "New Page"
+			
 			self.response.write(
-				templates.get("header")
+				templates.get("header").format(**locals())
 			)
 			self.response.write(
 				templates.get("header-sub")
