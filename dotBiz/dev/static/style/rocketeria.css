@@ -173,7 +173,7 @@ position: relative;
 bottom: 170px;
 left: 590px;
 z-index: 9999;
-background: url("/.static/image/a03.png") 55px -35px no-repeat;
+background: url("/static/image/a03.png") 55px -35px no-repeat;
 }
 
 #slides .arrow-next:focus,  #slides .arrow-previous:focus {
