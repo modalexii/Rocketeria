@@ -10,7 +10,7 @@ $(document).ready(function() {
 			yearEnd:2030,
 			onClose:function(current_time,$input){
 				if(current_time <= $.now()) {
-					$('#makeup_disclaimer').html('I understand that under the terms of Rocketeria\'s <a href="/lessons/policy" target="_blank">Music Lessons Policies</a>, same-day cancellations are not elidgible for make-ups.');
+					$('#makeup_disclaimer').html('I understand that under the terms of Rocketeria\'s <a href="/lessons/policy" target="_blank">Music Lessons Policies</a>, same-day cancellations are not eligible for make-ups.');
 				}
 				else {
 					$('#makeup_disclaimer').html(originalMakeup_diaclaimer);
@@ -95,32 +95,33 @@ function sendChangeRequest(form) {
 	$('input.animate.changesubmit').prop('src','/static/image/wait.gif');
 	$('input[type="image"].changesubmit').css('padding','12px, 45px');
 	$('input[type="image"].changesubmit').css('border','0');
+	$('input').prop('disabled',true)
 	if (form === 'change_one_form'){
 		$.post('/sendmail/changerequest', {
-			account_name : $('input[name="account_name"]').val(),
-			student_name : $('input[name="student_name"]').val(),
-			lesson_day : $('input[name="lesson_date"]').val(),
+			account_name : $('#' + form + ' input[name="account_name"]').val(),
+			student_name : $('#' + form + ' input[name="student_name"]').val(),
+			lesson_date : $('input[name="lesson_date"]').val(),
 			lesson_time : $('input[name="lesson_time"]').val(),
 		})
 		.done(function() {
 			showPostSubmitNote('submit_ok_one');
 		})
 		.fail(function(data, textStatus, xhr) {
-			showPostSubmitNote('fail');
+			showPostSubmitNote('submit_fail');
 		});
 	}
 	else if (form === 'change_all_form') {
 		$.post('/sendmail/changerequest', {
-			account_name : $('input[name="account_name"]').val(),
-			student_name : $('input[name="student_name"]').val(),
-			requested_action : $('input[name="requested_action"]').val(),
-			pref_contact : $('input[name="pref_contact"]').val(),
+			account_name : $('#' + form + ' input[name="account_name"]').val(),
+			student_name : $('#' + form + ' input[name="student_name"]').val(),
+			requested_action : $('select[name="requested_action"]').val(),
+			pref_contact : $('select[name="pref_contact"]').val(),
 		})
 		.done(function() {
 			showPostSubmitNote('submit_ok_all');
 		})
 		.fail(function(data, textStatus, xhr) {
-			showPostSubmitNote('fail');
+			showPostSubmitNote('submit_fail');
 		});
 
 	}
