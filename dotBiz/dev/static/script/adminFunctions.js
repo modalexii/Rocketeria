@@ -107,7 +107,7 @@ function enterEditingMode(newPath) {
 $(document).ready(function(){
 
 	// define pages that should have delete disabled
-	var protectedPages = ["/lessons","/store","/rentals","/repairs","/events","/about","/contact"];
+	var protectedPages = ["/lessons","/store","/rentals","/repairs","/events","/about","/contact","/testimonials"];
 
 	if (!String.format) {
 		// stackoverflow.com/questions/610406/javascript-equivalent-to-printf-string-format
