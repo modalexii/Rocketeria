@@ -165,7 +165,7 @@ $(document).ready(function(){
 		}
 		$('#editthis').on('click', function() {
 			$('#editthis').off('click');
-			enterEditingMode(newPath = window.location.pathname.replace('/',''));
+			enterEditingMode(newPath = decodeURIComponent(window.location.pathname.replace('/','')));
 		});
 	}
 	else if (new_editor) {
