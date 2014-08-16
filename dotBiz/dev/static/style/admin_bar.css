@@ -83,6 +83,11 @@
 	cursor: pointer;
 }
 
+.gcs_dir {
+	vertical-align: baseline;
+	cursor: pointer;
+}
+
 .quote_feed {
 	border-bottom: 2px solid #abfffc;
 	border-right: 1px solid #abfffc;
