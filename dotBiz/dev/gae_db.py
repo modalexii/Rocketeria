@@ -16,6 +16,9 @@ def add_or_update_page(uri, content):
 	return key
 
 def delete_page(uri):
+	from urllib import unquote
+	uri = uri.encode('utf-8', 'xmlcharrefreplace')
+	uri = unquote(uri)
 	ndb.Key(Page, uri).delete()
 
 def fetch_content(uri):
