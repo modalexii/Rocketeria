@@ -2,6 +2,8 @@
 
 /* @font-face {
 font-family: Quicksand;
+font-weight: normal;
+font-style: normal;
 src: url("/static/style/fonts/Quicksand-Regular.otf");
 }
 
@@ -372,6 +374,7 @@ padding-top: 2px;
 padding-bottom: 2px;
 margin: 0 0 4px 14px;
 border: 0;
+outline: none;
 text-align:center;
 background-color: inherit;
 border-bottom: 2px solid #ccc;
@@ -655,6 +658,14 @@ border: 0;
 	text-decoration: none !important;
 	cursor: pointer;
 	cursor: hand;
+}
+
+.hover_yellow:hover {
+	color: #f7bd20 !important;
+}
+
+.hover_red:hover {
+	color: #962320 !important;
 }
  
 #sidebar {
