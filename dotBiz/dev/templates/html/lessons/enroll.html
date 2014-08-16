@@ -1,0 +1,320 @@
+<div id="header-sub">
+<img class="bg-header-sub" src="/static/image/header-green.png" width="705px" height="82px"/>
+<h1>Enroll</h1>
+</div><!-- /header-sub -->
+<div id="content_sub">
+<style>
+	.comment {{
+		width: 100%;
+		background-color:#f7bd20;
+	}}
+	.comment p :hover {{
+		cursor: pointer;
+	}}
+	.comment textarea {{
+		width: 99%;
+		resize: none;
+		font-family: 'Quicksandregular', sans-serif;
+		font-size: 1em;
+	}}
+	.headingicon img {{
+		height: 1em;
+		vertical-align: middle;
+	}}
+	.labels {{
+		display: inline-block;
+		width: 30%;
+		text-align: right;
+		text-decoration: none !important;
+	}}
+	.inputs {{
+		display: inline-block;
+		text-align: left;
+	}}
+	.validators {{
+		display: inline-block;
+		text-align: right;
+		padding-left: 12px;
+		width: 20px;
+	}}
+	.form-input {{
+		text-align: left;
+		border-left: 2px solid #ccc;
+	}}
+	input[type="text"] {{
+		width: 100%;
+	}}
+	.template {{
+		display: none;
+	}}
+	td.program {{
+		padding-left: 24px;
+	}}
+	.comment {{
+		width: 100%;
+		background-color:#f7bd20;
+	}}
+	.comment p :hover {{
+		cursor: pointer;
+	}}
+	.comment textarea {{
+		width: 99%;
+		resize: none;
+		font-family: 'Quicksandregular', sans-serif;
+		font-size: 1em;
+	}}
+	.comment img {{
+		height: 1em;
+		vertical-align: middle;
+		margin-top: -2px;
+	}}
+</style>
+<form id="enroll">
+<big>Ready to take the plunge?</big>
+<br/><br/><p>Submit the questionaire below and we&#39;ll be in touch shortly. Enter however much information you care to provide - only the first section, <i>Bill To</i>, is required.</p>
+<br/>
+<p>Submitting this form does not constitute a commitment to enroll.</p>
+<br/>
+<p>
+<table border="0" cellpadding="1" cellspacing="0" style="width:100%">
+	<tbody>
+		<tr>
+			<td style="background-color: rgb(150, 35, 31);"><big><strong><span style="color:#FFFFFF">&#160;Bill To</span></strong></big></td>
+		</tr>
+		<tr>
+			<td>
+				<br/>
+				<p class="labels">First &amp; Last Name</p><p class="validators">&#9642;</p><p class="inputs"><input type="text" class="form-input" /></p><br/>
+				<p class="labels">Email</p><p class="validators">&#9642;</p><p class="inputs"><input type="text" class="form-input"/></p><br/>
+				<p class="labels">Mobile Phone</p><p class="validators">&#9642;</p><p class="inputs"><input type="text" class="form-input"/></p><br/>
+				<p class="labels">Alt Phone</p><p class="validators">&#9643;</p><p class="inputs"><input type="text" class="form-input"/></p><br/>
+				<p class="labels">Address</p><p class="validators">&#9642;</p><p class="inputs"><input type="text" class="form-input"/></p><br/>
+				<p class="labels">&nbsp;</p><p class="validators"></p><p class="inputs"><input type="text" class="form-input" value="Olney, MD 20832"/></p><br/>
+				<br/>
+				<div id="add_person"></div>
+				<div id="add_person_template" class="template">
+					<br/>
+					<p class="labels">First &amp; Last Name</p><p class="validators">&#9642;</p><p class="inputs"><input type="text" class="form-input" /></p><br/>
+					<p class="labels">Email</p><p class="validators">&#9642;</p><p class="inputs"><input type="text" class="form-input"/></p><br/>
+					<p class="labels">Mobile Phone</p><p class="validators">&#9642;</p><p class="inputs"><input type="text" class="form-input"/></p><br/>
+					<p class="labels">Alt Phone</p><p class="validators">&#9643;</p><p class="inputs"><input type="text" class="form-input"/></p><br/>
+					<br/>
+				</div>
+				<p class="labels">
+				<a href="#" style="color: rgb(150, 35, 31); text-decoration: none;" onclick=""><strong>&#x2795;&nbsp;&nbsp;add another</strong></a>
+				</p>
+				<br/>
+				<br/>
+				</td>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color: rgb(151, 2, 183);"><big><strong><span style="color:#FFFFFF">&#160;Student</span></strong></big></td>
+		</tr>
+		<tr>
+			<td>
+				<br/>
+					<table border="0" cellpadding="1" cellspacing="0" style="width:100%;">
+					<tbody>
+						<tr>
+							<td rowspan=3 style="text-align:right; width:30%;">Same as <i>Bill To</i>?</td>
+						</tr>
+						<tr>
+							<td rowspan=3 style="width:22px;"></td>
+						</tr>
+						<tr>
+							<td class="program"><input type="checkbox"> Yes</td>
+						</tr>
+					</tbody>
+				</table>
+				<br/>
+				<p class="labels">First &amp; Last Name</p><p class="validators">&#9643;</p><p class="inputs"><input type="text" class="form-input" /></p><br/>
+				<p class="labels">Email</p><p class="validators">&#9643;</p><p class="inputs"><input type="text" class="form-input"/></p><br/>
+				<p class="labels">Mobile Phone</p><p class="validators">&#9643;</p><p class="inputs"><input type="text" class="form-input"/></p><br/>
+				<p class="labels">Alt Phone</p><p class="validators">&#9643;</p><p class="inputs"><input type="text" class="form-input"/></p><br/>
+				<br/>
+				<div id="add_student_template" class="template">
+					<br/>
+					<p class="labels">First &amp; Last Name</p><p class="validators">&#9643;</p><p class="inputs"><input type="text" class="form-input" /></p><br/>
+					<p class="labels">Email</p><p class="validators">&#9643;</p><p class="inputs"><input type="text" class="form-input"/></p><br/>
+					<p class="labels">Mobile Phone</p><p class="validators">&#9643;</p><p class="inputs"><input type="text" class="form-input"/></p><br/>
+					<p class="labels">Alt Phone</p><p class="validators">&#9643;</p><p class="inputs"><input type="text" class="form-input"/></p><br/>
+					<br/>
+				</div>
+				<p class="labels">
+				<a href="#" style="color: rgb(151, 2, 183); text-decoration: none;" onclick=""><strong>&#x2795;&nbsp;&nbsp;add another</strong></a>
+				</p>
+				<br/>
+				<br/>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color: rgb(88, 163, 38);"><big><strong><span style="color:#FFFFFF">&#160;Programs</span></strong></big></td>
+		</tr>
+		<tr>
+			<td>
+				<br/>
+				<table border="0" cellpadding="1" cellspacing="0" style="width:100%;">
+					<tbody>
+						<tr>
+							<td rowspan=3 style="text-align:right; width:30%;">Environment</td>
+						</tr>
+						<tr>
+							<td rowspan=3 style="width:22px; border-right:1px solid #0f0403;"></td>
+						</tr>
+						<tr>
+							<td class="program"><input type="checkbox"> <strong>Private</strong></td>
+							<td class="program"><input type="checkbox"> Group</td>
+							<td class="program"><input type="checkbox"> Jam</td>
+						</tr>
+					</tbody>
+				</table>
+				<br/>
+				<table border="0" cellpadding="1" cellspacing="0" style="width:100%;">
+					<tbody>
+						<tr>
+							<td rowspan=6 style="text-align:right; width:30%;">Instruments</td>
+						</tr>
+						<tr>
+							<td rowspan=6 style="width:22px; border-right:1px solid #0f0403;"></td>
+						</tr>
+						<tr>
+							<td class="program"><input type="checkbox"> Guitar</td>
+							<td class="program"><input type="checkbox"> Voice</td>
+							<td class="program"><input type="checkbox"> Tenor Banjo</td>
+						</tr>
+						<tr>
+							<td class="program"><input type="checkbox"> Bass</td>
+							<td class="program"><input type="checkbox"> Alto Sax</td>
+							<td class="program"><input type="checkbox"> Mandolin</td>
+						</tr>
+						<tr>
+							<td class="program"><input type="checkbox"> Piano</td>
+							<td class="program"><input type="checkbox"> Trumpet</td>
+							<td class="program"><input type="checkbox"> Ukulele</td>
+						</tr>
+						<tr>
+							<td class="program"><input type="checkbox"> Drums</td>
+							<td class="program"><input type="checkbox"> Clarinet</td>
+							<td class="program">&nbsp;</td>
+						</tr>
+					</tbody>
+				</table>
+				<br/>
+				<table border="0" cellpadding="1" cellspacing="0" style="width:100%;">
+					<tbody>
+						<tr>
+							<td rowspan=5 style="text-align:right; width:30%;">Teachers</td>
+						</tr>
+						<tr>
+							<td rowspan=5 style="width:22px; border-right:1px solid #0f0403;"></td>
+						</tr>
+						<tr>
+							<td class="program"><input type="checkbox"> <strong>Any</strong></td>
+							<td class="program"><input type="checkbox"> Allan Y.</td>
+							<td class="program"><input type="checkbox"> Brian W.</td>
+						</tr>
+						<tr>
+							<td class="program"><input type="checkbox"> Chris C.</td>
+							<td class="program"><input type="checkbox"> Dave P.</td>
+							<td class="program"><input type="checkbox"> Geoff E.</td>
+						</tr>
+						<tr>
+							<td class="program"><input type="checkbox"> Greg E.</td>
+							<td class="program"><input type="checkbox"> Kris F.</td>
+							<td class="program"><input type="checkbox"> Luke S.</td>
+						</tr>
+					</tbody>
+				</table>
+				<br/>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color: rgb(4, 189, 229);">&#160;<big><strong><span style="color:#FFFFFF">&#160;Schedule</span></strong></big></td>
+		</tr>
+		<tr>
+			<td>
+				<br/>
+				<table border="0" cellpadding="1" cellspacing="0" style="width:100%;">
+					<tbody>
+						<tr>
+							<td rowspan=3 style="text-align:right; width:30%;">Recurrence</td>
+						</tr>
+						<tr>
+							<td rowspan=3 style="width:22px; border-right:1px solid #0f0403;"></td>
+						</tr>
+						<tr>
+							<td class="program">
+								<input type="radio" name="recurrence"> <strong>Weekly</strong><br/>
+								<input type="radio" name="recurrence"> Intermittently<br/>
+								<input type="radio" name="recurrence"> Just One Session<br/>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<br/>
+				<table border="0" cellpadding="1" cellspacing="0" style="width:100%;">
+					<tbody>
+						<tr>
+							<td rowspan=4 style="text-align:right; width:30%;">Day of Week</td>
+						</tr>
+						<tr>
+							<td rowspan=3 style="width:22px; border-right:1px solid #0f0403;"></td>
+						</tr>
+						<tr>
+							<td class="program"><input type="checkbox"> Mondays</td>
+							<td class="program"><input type="checkbox"> Tuesdays</td>
+							<td class="program"><input type="checkbox"> Wednesdays</td>
+						</tr>
+						<tr>
+							<td class="program"><input type="checkbox"> Thursdays</td>
+							<td class="program"><input type="checkbox"> Fridays</td>
+							<td class="program"><input type="checkbox"> Saturdays</td>
+						</tr>
+					</tbody>
+				</table>
+				<br/>
+				<table border="0" cellpadding="1" cellspacing="0" style="width:100%;">
+					<tbody>
+						<tr>
+							<td rowspan=7 style="text-align:right; width:30%;">Time Range</td>
+						</tr>
+						<tr>
+							<td rowspan=7 style="width:22px; border-right:1px solid #0f0403;"></td>
+						</tr>
+						<tr>
+							<td class="program"><input type="checkbox"> 10 am - 12 pm (Sat Only)</td>
+						</tr>
+						<tr>
+							<td class="program"><input type="checkbox"> 12:30 pm - 1:30 pm (Sat Only)</td>
+						</tr>
+						<tr>
+							<td class="program"><input type="checkbox"> 2 pm - 3:30 pm</td>
+						</tr>
+						<tr>
+							<td class="program"><input type="checkbox"> 4 pm - 6:30 pm (Weekdays Only)</td>
+						</tr>
+						<tr>
+							<td class="program"><input type="checkbox"> 7 pm - 8:30 pm (Weekdays Only)</td>
+						</tr>
+					</tbody>
+				</table>
+				<br/>
+				<div class="comment">
+					<p><b>&nbsp;<img src="/static/image/note.png"/>&nbsp;Add a note</b> (optional)</p>
+					<textarea id="change_all_comment_area" name="comment"></textarea>
+				</div>
+				<br/>
+				<p style="text-align:center;">
+				<input class="btn animate changesubmit" style="background-color:#58a326" type="submit" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SUBMIT &gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" onclick="unhighlightInputs('change_one_form'); validateChangeRequest('change_one_form'); return false;"><!-- noscript-compat -->
+				<br/>
+				</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+</p>
+</form>
+</div> <!-- /content_sub -->
+
+<script src="/static/script/enroll.js"></script>
