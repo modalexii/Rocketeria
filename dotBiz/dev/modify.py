@@ -18,8 +18,6 @@ class ModificationHandler(webapp2.RequestHandler):
 		if not users.is_current_user_admin():
 			logging.error("SECURITY: non-admin user %s requested %s" % (nickname, request_path))
 			return
-		else:
-			logging.info("User %s sent GET request for %s" % (nickname, request_path))
 
 		if request_path == "modify/upload":
 			import cloudstorage
