@@ -3,6 +3,26 @@
 <h1>Change a Lesson</h1>
 </div><!-- /header-sub -->
 <div id="content_sub">
+<style>
+	.comment {{
+		width: 100%;
+		background-color:#f7bd20;
+	}}
+	.comment p :hover {{
+		cursor: pointer;
+	}}
+	.comment textarea {{
+		width: 99%;
+		resize: none;
+		font-family: 'Quicksandregular', sans-serif;
+		font-size: 1em;
+	}}
+	.comment img {{
+		height: 1em;
+		vertical-align: middle;
+		margin-top: -2px;
+	}}
+</style>
 <br/>
 <p id="form_switch_buttons" style="text-align: center; height: 50px;"><a href="#change_one" id="change_one_btn" class="btn" style="background-color: #96231f; border: 3px solid #0f0403" onclick="return false;">Change One Lesson</a>&nbsp; <a href="#change_all" id="change_all_btn" class="btn" style="background-color:#58a326; border: 3px solid #fff" onclick="return false;">Change all lessons</a></p>
 <hr/>
@@ -19,6 +39,11 @@
 		I understand that if this lesson is eligible for make-up under the terms of Rocketeria's <a href="/lessons/policy" target="_blank">Music Lessons Policies</a>, I am responsible for booking it within the allowed time. 
 	</p>
 	<br/>
+	<div class="comment">
+		<p><b>&nbsp;<img src="/static/image/note.png"/>&nbsp;Add a note</b> (optional)</p>
+		<textarea id="change_one_comment_area" name="comment"></textarea>
+	</div>
+	<br/>
 	<div class="validation_fail"></div>
 	<p>
 			<input class="btn animate changesubmit" style="background-color:#58a326" type="submit" value="SUBMIT &gt;" onclick="unhighlightInputs('change_one_form'); validateChangeRequest('change_one_form'); return false;"><!-- noscript-compat -->
@@ -30,8 +55,13 @@
 	<p>
 		<form id="change_all_form" method="post" name="change_all" action="/sendmail/changerequest" accept-charset="utf-8">
 			Billing / Account Name: <input name="account_name" type="text" class="form-input" value="Last, First"><br/><br/>
-			Student<input name="student_name" type="text" class="form-input" value="Last, First"> wishes to<select class="form-input" name="requested_action"><option value="change day or time">change day or time</option><option value="change teacher">change teacher</option><option value="change instrument">change instrument</option><option value="cancel all lessons">cancel all lessons</option><option value="(something else)">(something else)</option></select> going forward. Please contact me via<select class="form-input" name="pref_contact"><option value="phone">phone</option><option value="email">email</option></select> to discuss options.
+			Student<input name="student_name" type="text" class="form-input" value="Last, First"> wishes to<select class="form-input" name="requested_action"><option value="change day or time">change day or time</option><option value="change teacher">change teacher</option><option value="change instrument">change instrument</option><option value="cancel all lessons">cancel all lessons</option></select> going forward.
 	</p>
+	<br/>
+	<div class="comment">
+		<p><b>&nbsp;<img src="/static/image/note.png"/>&nbsp;Add a note</b> (optional)</p>
+		<textarea id="change_all_comment_area" name="comment"></textarea>
+	</div>
 	<br/>
 	<div class="validation_fail"></div>
 	<p>
@@ -44,7 +74,7 @@
 <br/><br/>
 <h2>Thanks!</h2>
 <p>
-Rest assured we received your request and are updating our schedule right this moment. Please don't hesitate to <a href="/contact">contact us</a> with any questions or concerns.
+We&#39;ll update our books ASAP. Please don&#39;t hesitate to <a href="/contact">contact us</a> with any questions or concerns.
 </p>
 </div>
 <div id="submit_ok_all" style="display:none;">
@@ -52,21 +82,35 @@ Rest assured we received your request and are updating our schedule right this m
 <br/><br/>
 <h2>Thanks!</h2>
 <p>
-We received your request and will contact you as soon as we are able. Please don't hesitate to <a href="/contact">contact us</a> before then with any questions or concerns.
+We&#39;ll be in touch.
 </p>
 </div>
 <div id="submit_fail" style="display:none;">
 <hr/>
 <br/><br/>
-<h2>Oh Noes :( </h2>
+<h2>Houston, we have a problem</h2>
 <p>
-Something went wrong and we most likely did not receive your schedule change request. Refresh this page and try again, or <a href="/contact">contact us</a> via phone or email while we get this sorted out.
+Something went wrong and we likely did not receive your change request. Refresh this page and try again, or <a href="/contact">contact us</a> via phone or email while we get this sorted out.
 </p>
 </div>
 </div> <!-- /content_sub -->
 <script> 
 	// hidden here for noscript compat
 	document.getElementById("change_all_form").style.display="none";
+
+	// auto-expand comment areas
+	var textarea1 = document.getElementById('change_one_comment_area');
+	var textarea2 = document.getElementById('change_all_comment_area');
+	var heightLimit = 200; /* Maximum height: 200px */
+
+	textarea1.oninput = function() {{
+		textarea1.style.height = ""; /* Reset the height*/
+		textarea1.style.height = Math.min(textarea1.scrollHeight, heightLimit) + "px";
+	}};
+	textarea2.oninput = function() {{
+		textarea2.style.height = ""; /* Reset the height*/
+		textarea2.style.height = Math.min(textarea2.scrollHeight, heightLimit) + "px";
+	}};
 </script>
 <script src="/static/script/changerequest.js"></script>
 <script src="/static/script/datetimepicker/jquery.datetimepicker.js"></script>
