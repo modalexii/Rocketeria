@@ -10,7 +10,7 @@ $(document).ready(function() {
 			yearEnd:2030,
 			onClose:function(current_time,$input){
 				if(current_time <= $.now()) {
-					$('#makeup_disclaimer').html('I understand that under the terms of Rocketeria\'s <a href="/lessons/policy" target="_blank">Music Lessons Policies</a>, same-day cancellations are not eligible for make-ups.');
+					$('#makeup_disclaimer').html('<b>I understand that under the terms of Rocketeria\'s <a href="/lessons/policy" target="_blank">Music Lessons Policies</a>, same-day cancellations are not eligible for make-ups.</b>');
 				}
 				else {
 					$('#makeup_disclaimer').html(originalMakeup_diaclaimer);
@@ -53,7 +53,7 @@ $(document).ready(function() {
 		$(this).css('background-color', '#96231f');
 		$(this).css('border', '3px solid #0f0403');
 		$('#change_all_btn').css('background-color', '#58a326');
-		$('#change_all_btn').css('border', '3px solid #ddd');
+		$('#change_all_btn').css('border', '3px solid #fff');
 		if ($('#change_one_form').css('display') == 'none') {
 			$('#change_all_form').slideUp(function() {
 				$('#change_one_form').slideDown();
@@ -64,7 +64,7 @@ $(document).ready(function() {
 		$(this).css('background-color', '#96231f');
 		$(this).css('border', '3px solid #0f0403');
 		$('#change_one_btn').css('background-color', '#58a326');
-		$('#change_one_btn').css('border', '3px solid #ddd');
+		$('#change_one_btn').css('border', '3px solid #fff');
 		if ($('#change_all_form').css('display') == 'none') {
 			$('#change_one_form').slideUp(function() {
 				$('#change_all_form').slideDown();
@@ -95,13 +95,15 @@ function sendChangeRequest(form) {
 	$('input.animate.changesubmit').prop('src','/static/image/wait.gif');
 	$('input[type="image"].changesubmit').css('padding','12px, 45px');
 	$('input[type="image"].changesubmit').css('border','0');
-	$('input').prop('disabled',true)
+	$('input').prop('disabled',true);
+	$('textarea').prop('disabled',true);
 	if (form === 'change_one_form'){
 		$.post('/sendmail/changerequest', {
 			account_name : $('#' + form + ' input[name="account_name"]').val(),
 			student_name : $('#' + form + ' input[name="student_name"]').val(),
 			lesson_date : $('input[name="lesson_date"]').val(),
 			lesson_time : $('input[name="lesson_time"]').val(),
+			comment : $('#change_one_comment_area').val(),
 		})
 		.done(function() {
 			showPostSubmitNote('submit_ok_one');
@@ -115,7 +117,7 @@ function sendChangeRequest(form) {
 			account_name : $('#' + form + ' input[name="account_name"]').val(),
 			student_name : $('#' + form + ' input[name="student_name"]').val(),
 			requested_action : $('select[name="requested_action"]').val(),
-			pref_contact : $('select[name="pref_contact"]').val(),
+			comment : $('#change_all_comment_area').val(),
 		})
 		.done(function() {
 			showPostSubmitNote('submit_ok_all');
@@ -129,11 +131,12 @@ function sendChangeRequest(form) {
 
 function validateChangeRequest(form) {
 	unhighlightInputs(form);
-	var exp = /^.*,.*$/;
+	var exp = /^.*[,| ].*$/;
 	if (!(exp.test($('#' + form + ' input[name="account_name"]').val()))) {
 		var fail = true;
 		highlight('#' + form + ' input[name="account_name"]');
 	}
+	exp = /[a-zA-Z]+/;
 	if (!(exp.test($('#' + form + ' input[name="student_name"]').val()))) {
 		var fail = true;
 		highlight('#' + form + 'input[name="student_name"]');
@@ -161,7 +164,7 @@ function validateChangeRequest(form) {
 
 	}
 	if (fail) {
-		$('.validation_fail').html('<p style="color: #96231f; font-family: \'Quicksandbold\', sans-serif;">Some of the data above doesn\'t make sense. Please review the highlighted fields.</p><br/>');
+		$('.validation_fail').html('<p style="color: #96231f; font-family: \'Quicksandbold\', sans-serif;">Please correct the highlighted fields above.</p><br/>');
 	}
 	else {
 		console.log('moving to send request');
