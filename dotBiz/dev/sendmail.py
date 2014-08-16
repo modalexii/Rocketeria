@@ -60,6 +60,9 @@ A helpful user reported a missing page or file on rocketeria.biz. They were expe
 
 				lesson_date = self.request.get("lesson_date").encode('utf-8', 'xmlcharrefreplace')
 				lesson_time = self.request.get("lesson_time").encode('utf-8', 'xmlcharrefreplace')
+				comment = self.request.get("comment").encode('utf-8', 'xmlcharrefreplace')
+				if not comment:
+					comment = "(none)"
 
 				if lesson_date or lesson_time:
 					# still send the message if either date or time was missed
@@ -71,16 +74,20 @@ Billing / Account Name: {account_name}
 
 Student {student_name} will not be able to attend the lesson currently scheduled for {lesson_date} at {lesson_time}.
 
+Comment:
+{comment}
 					'''.format(**locals())
 	
 				else:
 					requested_action = self.request.get("requested_action").encode('utf-8', 'xmlcharrefreplace')
-					pref_contact = self.request.get("pref_contact").encode('utf-8', 'xmlcharrefreplace')
 
 					message.body = '''
 Billing / Account Name: {account_name}
 
-Student {student_name} wishes to {requested_action} going forward. Please contact via {pref_contact}.
+Student {student_name} wishes to {requested_action} going forward.
+
+Comment:
+{comment}
 						'''.format(**locals())
 			
 		try:
