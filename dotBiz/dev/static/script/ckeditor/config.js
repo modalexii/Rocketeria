@@ -29,27 +29,27 @@ CKEDITOR.editorConfig = function( config ) {
 		{ name: 'Highlight: P', element: 'span', styles: { 'background-color': '#e26ffb' } },
 		{ name: 'Button: R',
 			element: 'span', 
-			attributes: { 'class': 'btn' },
+			attributes: { 'class': 'btn hover_yellow' },
 			styles: { 'color':'#fff', 'background-color':'#96231f' }
 		},
 		{ name: 'Button: G',
 			element: 'a', 
-			attributes: { 'class': 'btn' },
+			attributes: { 'class': 'btn hover_yellow' },
 			styles: { 'background-color':'#58a326' }
 		},
 		{ name: 'Button: B',
 			element: 'a', 
-			attributes: { 'class': 'btn' },
+			attributes: { 'class': 'btn hover_yellow' },
 			styles: { 'background-color':'#04bde5' }
 		},
 		{ name: 'Button: Y',
 			element: 'a', 
-			attributes: { 'class': 'btn' },
+			attributes: { 'class': 'btn hover_red' },
 			styles: { 'background-color':'#d79e05' }
 		},
 		{ name: 'Button: P',
 			element: 'a', 
-			attributes: { 'class': 'btn' },
+			attributes: { 'class': 'btn hover_yellow' },
 			styles: { 'background-color':'#9702b7' }
 		},
 		// Block-level styles
@@ -92,4 +92,8 @@ CKEDITOR.editorConfig = function( config ) {
 
 	// Simplify the dialog windows.
 	//config.removeDialogTabs = 'image:advanced;link:advanced';
+
+	// convert all non-ascii to HTML entities
+	config.entities_processNumerical = true;
+	config.entities_processNumerical = 'force';
 };
