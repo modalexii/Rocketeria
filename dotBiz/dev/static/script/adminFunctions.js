@@ -140,10 +140,10 @@ $(document).ready(function(){
 		window.open('/modify/upload', 'upload', 'left=20,top=20,width=500,height=500,toolbar=0,menubar=0,resizable=0');
 	});
 	$('.info').on('click', function() {
-		window.open('/modify/info', 'upload', 'left=20,top=20,width=500,height=500,toolbar=0,menubar=0,resizable=0');
+		window.open('/modify/info', 'info', 'left=20,top=20,width=500,height=500,toolbar=0,menubar=0,resizable=0');
 	})
 	$('.gcs_dir').on('click', function() {
-		window.open('/dres/directory', 'GCS Directory', 'left=20,top=20,width=500,height=500,menubar=0,resizable=1');
+		window.open('/dres/directory', 'directory', 'left=20,top=20,width=500,height=500,menubar=0,resizable=1');
 	})
 
 	if (editable_existing){
