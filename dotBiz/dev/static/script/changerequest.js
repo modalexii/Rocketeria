@@ -1,4 +1,7 @@
 $(document).ready(function() {
+	// hidden here for noscript compat
+	document.getElementById("change_all_form").style.display="none";
+
 	$('head').append('<link rel="stylesheet" type="text/css" href="/static/script/datetimepicker/jquery.datetimepicker.css"/ >');
 	var originalMakeup_diaclaimer = $('#makeup_disclaimer').html();
 	jQuery('#datepicker').datetimepicker({
@@ -71,6 +74,20 @@ $(document).ready(function() {
 			});
 		}
 	});
+
+	// auto-expand comment areas
+	var textarea1 = document.getElementById('change_one_comment_area');
+	var textarea2 = document.getElementById('change_all_comment_area');
+	var heightLimit = 200; /* Maximum height: 200px */
+
+	textarea1.oninput = function() {{
+		textarea1.style.height = ""; /* Reset the height*/
+		textarea1.style.height = Math.min(textarea1.scrollHeight, heightLimit) + "px";
+	}};
+	textarea2.oninput = function() {{
+		textarea2.style.height = ""; /* Reset the height*/
+		textarea2.style.height = Math.min(textarea2.scrollHeight, heightLimit) + "px";
+	}};
 
 });
 
