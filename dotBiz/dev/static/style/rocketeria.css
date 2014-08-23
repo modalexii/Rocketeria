@@ -9,6 +9,7 @@ src: url("/static/style/fonts/Quicksand-Regular.otf");
 
 @font-face {
 font-family: Quicksand-Bold;
+font-weight: bold;
 src: url("/static/style/fonts/Quicksand-Bold.otf");
 } */
 
