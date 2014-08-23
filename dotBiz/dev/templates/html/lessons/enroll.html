@@ -15,7 +15,6 @@
 		width: 99%;
 		resize: none;
 		font-family: 'Quicksandregular', sans-serif;
-		font-size: 1em;
 	}}
 	.headingicon img {{
 		height: 1em;
@@ -42,7 +41,8 @@
 		border-left: 2px solid #ccc;
 	}}
 	input[type="text"] {{
-		width: 100%;
+		width: 130%;
+		font-size: 1.1em;
 	}}
 	.template {{
 		display: none;
@@ -61,22 +61,28 @@
 		width: 99%;
 		resize: none;
 		font-family: 'Quicksandregular', sans-serif;
-		font-size: 1em;
+		font-size: 1.1em;
 	}}
 	.comment img {{
-		height: 1em;
 		vertical-align: middle;
 		margin-top: -2px;
+		height: 1em;
+	}}
+	.larger {{
+		font-size: 1.1em;
+	}}
+	.gray {{
+		color: #ccc !important;
 	}}
 </style>
-<form id="enroll">
+<form id="enroll" method="post">
 <big>Ready to take the plunge?</big>
 <br/><br/><p>Submit the questionaire below and we&#39;ll be in touch shortly. Enter however much information you care to provide - only the first section, <i>Bill To</i>, is required.</p>
 <br/>
 <p>Submitting this form does not constitute a commitment to enroll.</p>
 <br/>
 <p>
-<table border="0" cellpadding="1" cellspacing="0" style="width:100%">
+<table border="0" cellpadding="1" cellspacing="0" style="width:100%" class="larger">
 	<tbody>
 		<tr>
 			<td style="background-color: rgb(150, 35, 31);"><big><strong><span style="color:#FFFFFF">&#160;Bill To</span></strong></big></td>
@@ -84,25 +90,12 @@
 		<tr>
 			<td>
 				<br/>
-				<p class="labels">First &amp; Last Name</p><p class="validators">&#9642;</p><p class="inputs"><input type="text" class="form-input" /></p><br/>
-				<p class="labels">Email</p><p class="validators">&#9642;</p><p class="inputs"><input type="text" class="form-input"/></p><br/>
-				<p class="labels">Mobile Phone</p><p class="validators">&#9642;</p><p class="inputs"><input type="text" class="form-input"/></p><br/>
-				<p class="labels">Alt Phone</p><p class="validators">&#9643;</p><p class="inputs"><input type="text" class="form-input"/></p><br/>
-				<p class="labels">Address</p><p class="validators">&#9642;</p><p class="inputs"><input type="text" class="form-input"/></p><br/>
-				<p class="labels">&nbsp;</p><p class="validators"></p><p class="inputs"><input type="text" class="form-input" value="Olney, MD 20832"/></p><br/>
-				<br/>
-				<div id="add_person"></div>
-				<div id="add_person_template" class="template">
-					<br/>
-					<p class="labels">First &amp; Last Name</p><p class="validators">&#9642;</p><p class="inputs"><input type="text" class="form-input" /></p><br/>
-					<p class="labels">Email</p><p class="validators">&#9642;</p><p class="inputs"><input type="text" class="form-input"/></p><br/>
-					<p class="labels">Mobile Phone</p><p class="validators">&#9642;</p><p class="inputs"><input type="text" class="form-input"/></p><br/>
-					<p class="labels">Alt Phone</p><p class="validators">&#9643;</p><p class="inputs"><input type="text" class="form-input"/></p><br/>
-					<br/>
-				</div>
-				<p class="labels">
-				<a href="#" style="color: rgb(150, 35, 31); text-decoration: none;" onclick=""><strong>&#x2795;&nbsp;&nbsp;add another</strong></a>
-				</p>
+				<p class="labels">First &amp; Last Name</p><p class="validators">&#9642;</p><p class="inputs"><input type="text" class="form-input" name="billto_firstandlast"/></p><br/>
+				<p class="labels">Email</p><p class="validators">&#9642;</p><p class="inputs"><input type="text" class="form-input" name="billto_email"/></p><br/>
+				<p class="labels">Mobile Phone</p><p class="validators">&#9642;</p><p class="inputs"><input type="text" class="form-input" name="billto_mobilephone"/></p><br/>
+				<p class="labels">Alt Phone</p><p class="validators">&#9643;</p><p class="inputs"><input type="text" class="form-input" name="billto_altphone"/></p><br/>
+				<p class="labels">Address</p><p class="validators">&#9642;</p><p class="inputs"><input type="text" class="form-input" name="billto_address1"/></p><br/>
+				<p class="labels">&nbsp;</p><p class="validators"></p><p class="inputs"><input type="text" class="form-input" ame="billto_address2"/></p><br/>
 				<br/>
 				<br/>
 				</td>
@@ -123,26 +116,95 @@
 							<td rowspan=3 style="width:22px;"></td>
 						</tr>
 						<tr>
-							<td class="program"><input type="checkbox"> Yes</td>
+							<td class="program"><input type="checkbox" id="student_same_as_bill_to" name="student_same_as_bill_to"> Yes</td>
 						</tr>
 					</tbody>
 				</table>
 				<br/>
-				<p class="labels">First &amp; Last Name</p><p class="validators">&#9643;</p><p class="inputs"><input type="text" class="form-input" /></p><br/>
-				<p class="labels">Email</p><p class="validators">&#9643;</p><p class="inputs"><input type="text" class="form-input"/></p><br/>
-				<p class="labels">Mobile Phone</p><p class="validators">&#9643;</p><p class="inputs"><input type="text" class="form-input"/></p><br/>
-				<p class="labels">Alt Phone</p><p class="validators">&#9643;</p><p class="inputs"><input type="text" class="form-input"/></p><br/>
-				<br/>
-				<div id="add_student_template" class="template">
+				<div id="student1" 
 					<br/>
-					<p class="labels">First &amp; Last Name</p><p class="validators">&#9643;</p><p class="inputs"><input type="text" class="form-input" /></p><br/>
-					<p class="labels">Email</p><p class="validators">&#9643;</p><p class="inputs"><input type="text" class="form-input"/></p><br/>
-					<p class="labels">Mobile Phone</p><p class="validators">&#9643;</p><p class="inputs"><input type="text" class="form-input"/></p><br/>
-					<p class="labels">Alt Phone</p><p class="validators">&#9643;</p><p class="inputs"><input type="text" class="form-input"/></p><br/>
+					<p class="labels">First &amp; Last Name</p><p class="validators">&#9643;</p><p class="inputs"><input type="text" class="form-input" name="student1_firstandlast"/></p><br/>
+					<p class="labels">Email</p><p class="validators">&#9643;</p><p class="inputs"><input type="text" class="form-input" name="student1_email"/></p><br/>
+					<p class="labels">Mobile Phone</p><p class="validators">&#9643;</p><p class="inputs"><input type="text" class="form-input" name="student1_mobilephone"/></p><br/>
+					<p class="labels">Alt Phone</p><p class="validators">&#9643;</p><p class="inputs"><input type="text" class="form-input" name="student1_altphone"/></p><br/>
+					<p class="labels">School</p><p class="validators">&#9643;</p><p class="inputs"><input type="text" class="form-input" name="student1_school"/></p><br/>
+					<p class="labels">Grade</p><p class="validators">&#9643;</p><p class="inputs">
+					<select class="form-input" name="student1_grade">
+						<option value="Pre-K">Pre-K</option>
+						<option value="1st">1st</option>
+						<option value="2nd">2nd</option>
+						<option value="3rd">3rd</option>
+						<option value="4th">4th</option>
+						<option value="5th" selected="selected">5th</option>
+						<option value="6th">6th</option>
+						<option value="7th">7th</option>
+						<option value="8th">8th</option>
+						<option value="9th">9th</option>
+						<option value="10th">10th</option>
+						<option value="11th">11th</option>
+						<option value="12th">12th</option>
+						<option value="Adult">Adult</option>
+					</select>
+					</p><br/>
+				</div>
+				<br/>
+				<div id="student2" class="template">
+					<br/>
+					<p class="labels">First &amp; Last Name</p><p class="validators">&#9643;</p><p class="inputs"><input type="text" class="form-input" name="student2_firstandlast"/></p><br/>
+					<p class="labels">Email</p><p class="validators">&#9643;</p><p class="inputs"><input type="text" class="form-input" name="student2_email"/></p><br/>
+					<p class="labels">Mobile Phone</p><p class="validators">&#9643;</p><p class="inputs"><input type="text" class="form-input" name="student2_mobilephone"/></p><br/>
+					<p class="labels">Alt Phone</p><p class="validators">&#9643;</p><p class="inputs"><input type="text" class="form-input" name="student2_altphone"/></p><br/>
+					<p class="labels">School</p><p class="validators">&#9643;</p><p class="inputs"><input type="text" class="form-input" name="student2_school"/></p><br/>
+					<p class="labels">Grade</p><p class="validators">&#9643;</p><p class="inputs">
+					<select class="form-input" name="student2_grade">
+						<option value="Pre-K">Pre-K</option>
+						<option value="1st">1st</option>
+						<option value="2nd">2nd</option>
+						<option value="3rd">3rd</option>
+						<option value="4th">4th</option>
+						<option value="5th" selected="selected">5th</option>
+						<option value="6th">6th</option>
+						<option value="7th">7th</option>
+						<option value="8th">8th</option>
+						<option value="9th">9th</option>
+						<option value="10th">10th</option>
+						<option value="11th">11th</option>
+						<option value="12th">12th</option>
+						<option value="Adult">Adult</option>
+					</select>
+					</p><br/>
+					<br/>
+				</div>
+				<br/>
+				<div id="student3" class="template" style="display:none;">
+					<br/>
+					<p class="labels">First &amp; Last Name</p><p class="validators">&#9643;</p><p class="inputs"><input type="text" class="form-input" name="student3_firstandlast"/></p><br/>
+					<p class="labels">Email</p><p class="validators">&#9643;</p><p class="inputs"><input type="text" class="form-input" name="student3_email"/></p><br/>
+					<p class="labels">Mobile Phone</p><p class="validators">&#9643;</p><p class="inputs"><input type="text" class="form-input" name="student3_mobilephone"/></p><br/>
+					<p class="labels">Alt Phone</p><p class="validators">&#9643;</p><p class="inputs"><input type="text" class="form-input" name="student3_altphone"/></p><br/>
+					<p class="labels">School</p><p class="validators">&#9643;</p><p class="inputs"><input type="text" class="form-input" name="student3_school"/></p><br/>
+					<p class="labels">Grade</p><p class="validators">&#9643;</p><p class="inputs">
+					<select class="form-input" name="student3_grade">
+						<option value="Pre-K">Pre-K</option>
+						<option value="1st">1st</option>
+						<option value="2nd">2nd</option>
+						<option value="3rd">3rd</option>
+						<option value="4th">4th</option>
+						<option value="5th" selected="selected">5th</option>
+						<option value="6th">6th</option>
+						<option value="7th">7th</option>
+						<option value="8th">8th</option>
+						<option value="9th">9th</option>
+						<option value="10th">10th</option>
+						<option value="11th">11th</option>
+						<option value="12th">12th</option>
+						<option value="Adult">Adult</option>
+					</select>
+					</p><br/>
 					<br/>
 				</div>
 				<p class="labels">
-				<a href="#" style="color: rgb(151, 2, 183); text-decoration: none;" onclick=""><strong>&#x2795;&nbsp;&nbsp;add another</strong></a>
+				<a href="" style="color: rgb(151, 2, 183); text-decoration: none;" id="add_student" onclick="return false;"><strong>&#x2795;&nbsp;&nbsp;add another</strong></a>
 				</p>
 				<br/>
 				<br/>
@@ -204,6 +266,22 @@
 				<table border="0" cellpadding="1" cellspacing="0" style="width:100%;">
 					<tbody>
 						<tr>
+							<td rowspan=3 style="text-align:right; width:30%;">Expertise</td>
+						</tr>
+						<tr>
+							<td rowspan=3 style="width:22px; border-right:1px solid #0f0403;"></td>
+						</tr>
+						<tr>
+							<td class="program"><input type="checkbox"> Beginner</td>
+							<td class="program"><input type="checkbox"> Intermediate</td>
+							<td class="program"><input type="checkbox"> Advanced</td>
+						</tr>
+					</tbody>
+				</table>
+				<br/>
+				<table border="0" cellpadding="1" cellspacing="0" style="width:100%;">
+					<tbody>
+						<tr>
 							<td rowspan=5 style="text-align:right; width:30%;">Teachers</td>
 						</tr>
 						<tr>
@@ -256,19 +334,21 @@
 				<table border="0" cellpadding="1" cellspacing="0" style="width:100%;">
 					<tbody>
 						<tr>
-							<td rowspan=4 style="text-align:right; width:30%;">Day of Week</td>
+							<td rowspan=5 style="text-align:right; width:30%;">Day of Week</td>
 						</tr>
 						<tr>
-							<td rowspan=3 style="width:22px; border-right:1px solid #0f0403;"></td>
+							<td rowspan=4 style="width:22px; border-right:1px solid #0f0403;"></td>
 						</tr>
 						<tr>
 							<td class="program"><input type="checkbox"> Mondays</td>
-							<td class="program"><input type="checkbox"> Tuesdays</td>
-							<td class="program"><input type="checkbox"> Wednesdays</td>
+							<td class="program"><input type="checkbox"> Thursdays</td>
 						</tr>
 						<tr>
-							<td class="program"><input type="checkbox"> Thursdays</td>
+							<td class="program"><input type="checkbox"> Tuesdays</td>
 							<td class="program"><input type="checkbox"> Fridays</td>
+						</tr>
+						<tr>
+							<td class="program"><input type="checkbox"> Wednesdays</td>
 							<td class="program"><input type="checkbox"> Saturdays</td>
 						</tr>
 					</tbody>
@@ -283,30 +363,30 @@
 							<td rowspan=7 style="width:22px; border-right:1px solid #0f0403;"></td>
 						</tr>
 						<tr>
-							<td class="program"><input type="checkbox"> 10 am - 12 pm (Sat Only)</td>
+							<td class="program"><input type="checkbox"> 10 am - 12 pm - Sat Only</td>
 						</tr>
 						<tr>
-							<td class="program"><input type="checkbox"> 12:30 pm - 1:30 pm (Sat Only)</td>
+							<td class="program"><input type="checkbox"> 12:30 pm - 1:30 pm - Sat Only</td>
 						</tr>
 						<tr>
-							<td class="program"><input type="checkbox"> 2 pm - 3:30 pm</td>
+							<td class="program"><input type="checkbox"> 2 pm - 3:30 pm - M T W Th F S</td>
 						</tr>
 						<tr>
-							<td class="program"><input type="checkbox"> 4 pm - 6:30 pm (Weekdays Only)</td>
+							<td class="program"><input type="checkbox"> 4 pm - 6:30 pm - M T W Th F</td>
 						</tr>
 						<tr>
-							<td class="program"><input type="checkbox"> 7 pm - 8:30 pm (Weekdays Only)</td>
+							<td class="program"><input type="checkbox"> 7 pm - 8:30 pm - M T W Th F</td>
 						</tr>
 					</tbody>
 				</table>
 				<br/>
 				<div class="comment">
 					<p><b>&nbsp;<img src="/static/image/note.png"/>&nbsp;Add a note</b> (optional)</p>
-					<textarea id="change_all_comment_area" name="comment"></textarea>
+					<textarea id="comment1" name="comment1"></textarea>
 				</div>
 				<br/>
 				<p style="text-align:center;">
-				<input class="btn animate changesubmit" style="background-color:#58a326" type="submit" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SUBMIT &gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" onclick="unhighlightInputs('change_one_form'); validateChangeRequest('change_one_form'); return false;"><!-- noscript-compat -->
+				<input class="btn animate changesubmit" style="background-color:#58a326" type="submit" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SUBMIT &gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" onclick="validateEnroll();"><!-- noscript-compat -->
 				<br/>
 				</p>
 			</td>
