@@ -28,7 +28,7 @@ CKEDITOR.editorConfig = function( config ) {
 		{ name: 'Highlight: Y', element: 'span', styles: { 'background-color': '#f5ed14' } },
 		{ name: 'Highlight: P', element: 'span', styles: { 'background-color': '#e26ffb' } },
 		{ name: 'Button: R',
-			element: 'span', 
+			element: 'a', 
 			attributes: { 'class': 'btn hover_yellow' },
 			styles: { 'color':'#fff', 'background-color':'#96231f' }
 		},
