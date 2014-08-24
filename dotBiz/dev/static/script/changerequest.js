@@ -104,7 +104,7 @@ function highlight(field) {
 
 function unhighlightInputs(form) {
 	$('#' + form + ' input[type="text"]').css('background','none');
-	$('#' + form + ' input[type="text"]').css('background','none');
+	$('#' + form + ' input[type="email"]').css('background','none');
 }
 
 function sendChangeRequest(form) {
