@@ -1,0 +1,26 @@
+Enrollment form submission
+
+Bill To:
+    Name: {billto_firstandlast}
+    Email: {billto_email}
+    Mobile Phone: {billto_mobilephone}
+    Alt. Phone: {billto_altphone}
+    Address: {billto_address1} {billto_address2}
+
+Student same as Bill To? {student_same_as_bill_to}
+
+{student_info}
+
+Programs:
+    Environment: {lesson_environment}
+    Instrument(s): {instrument}
+    Expertise: {expertise}
+    Teacher(s): {teacher}
+
+Schedule:
+    Recurrence: {recurrence}
+    Day(s) of Week: {day_of_week}
+    Time Range: {time_range}
+
+Note:
+    {comment1}

@@ -1,0 +1,8 @@
+Lesson Change Request
+
+Billing / Account Name: {account_name}
+
+Student {student_name} will not be able to attend the lesson currently scheduled for {lesson_date} at {lesson_time}.
+
+Comment:
+{comment}

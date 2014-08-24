@@ -1,0 +1,8 @@
+Lesson Change Request
+
+Billing / Account Name: {account_name}
+
+Student {student_name} wishes to {requested_action} going forward.
+
+Comment:
+{comment}

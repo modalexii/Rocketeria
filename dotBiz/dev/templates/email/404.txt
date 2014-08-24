@@ -1,0 +1,5 @@
+A helpful user reported a missing page or file on rocketeria.biz. They were expecting to find something at:
+
+{badurl}
+
+...but got the 404 page instead. You may wish to investigate.
