@@ -1,0 +1,9 @@
+# robots for dev server
+
+User-agent: *
+#Crawl-delay: 5
+
+Host: rocketeria.biz
+
+Disallow: /static/script
+Disallow: /templates

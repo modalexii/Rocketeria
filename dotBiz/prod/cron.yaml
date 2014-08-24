@@ -1,0 +1,8 @@
+cron:
+- url: /cron/bihourly
+  schedule: every 2 hours
+
+- description: datastore backup
+  url: /_ah/datastore_admin/backup.create?name=DatastoreBUP&kind=Page&kind=EventLog&filesystem=gs&gs_bucket_name=dres
+  schedule: every monday 02:00
+  target: ah-builtin-python-bundle
