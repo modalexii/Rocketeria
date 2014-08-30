@@ -1,5 +1,5 @@
 def version():
-	return "0.9.6.0"
+	return "0.9.9.9"
 
 def from_url(url):
 	if "127.0" in url or "localhost" in url:

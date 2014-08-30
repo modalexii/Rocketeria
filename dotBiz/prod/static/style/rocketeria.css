@@ -79,7 +79,7 @@ cursor: hand;
 background: url("/static/image/header-text.png") no-repeat 26px 20px;
 text-indent: -9999px;
 height: 80px;
-width: 372px;
+width: 590px;
 margin: 0;
 float: left;
 }
@@ -851,4 +851,8 @@ border: 0;
 
 .btn-youtube-black:hover {
 background: url("/static/image/btn-youtube-red.png") no-repeat;
+}
+
+strong {
+	font-family: 'Quicksandbold', sans-serif;
 }

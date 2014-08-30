@@ -1,0 +1,8 @@
+Student {n}:
+    Name: {student_firstandlast}
+    Email: {student_email}
+    Mobile Phone: {student_mobilephone}
+    Alt. Phone: {student_altphone}
+    School: {student_school}
+    Grade: {student_grade}
+

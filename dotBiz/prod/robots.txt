@@ -1,7 +1,7 @@
-# robots for dev server
+# robots for prod server
 
 User-agent: *
-#Crawl-delay: 5
+Crawl-delay: 5
 
 Host: rocketeria.biz
 
