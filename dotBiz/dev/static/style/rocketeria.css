@@ -852,3 +852,7 @@ border: 0;
 .btn-youtube-black:hover {
 background: url("/static/image/btn-youtube-red.png") no-repeat;
 }
+
+strong {
+	font-family: 'Quicksandbold', sans-serif;
+}
