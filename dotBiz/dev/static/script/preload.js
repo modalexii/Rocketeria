@@ -1,4 +1,5 @@
 window.onload = function() {
+
 	var head = document.getElementsByTagName('head')[0];
 	setTimeout(function() {
 		// image
@@ -16,7 +17,6 @@ window.onload = function() {
 			var slides  = document.createElement('script');
 			slides.type = 'text/javascript';
 			slides.src  = '/static/script/jquery.slides.js';
-			head.appendChild(slides);
 			new Image().src = '/static/image/billboard-home.png';
 		}, 2000);
 
@@ -31,9 +31,11 @@ window.onload = function() {
 			new Image().src = '/static/image/bg-testimonials.png';
 		}, 3000);
 	}
-	else if (document.location.pathname !== '/') {
-		// preload sidebar
-		new Image().src = '/static/image/bg-testimonials-2.png';
+	else if (document.location.pathname === '/') {
+		setTimeout(function() {
+			// preload sidebar
+			new Image().src = '/static/image/bg-testimonials-2.png';
+		}, 2000);
 	}
 
 };
