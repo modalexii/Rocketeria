@@ -11,8 +11,10 @@ def templatify(message, remote_addr, remote_ua):
 	message.sender = "SCMS Application Server <info@rocketeria.biz>"
 	message.to = "info@rocketeria.biz"
 	message.subject = "[SCMS] %s" % message.subject
-	message.body = templates.get("mail_template","txt","email").format(**locals())
-	message.body = message.body.format(**locals())
+
+	content = message.body
+	full_body = templates.get("mail_template","txt","email").format(**locals())
+	message.body = full_body
 
 	return message
 
@@ -56,18 +58,18 @@ class MailHandler(webapp2.RequestHandler):
 
 			billto_firstandlast = self.request.get("billto_firstandlast").encode('utf-8', 'xmlcharrefreplace')
 			billto_email = self.request.get("billto_email").encode('utf-8', 'xmlcharrefreplace')
-			billto_mobilephone = self.request.get("requested_action").encode('utf-8', 'xmlcharrefreplace')
-			billto_altphone = self.request.get("billto_mobilephone").encode('utf-8', 'xmlcharrefreplace')
+			billto_mobilephone = self.request.get("billto_mobilephone").encode('utf-8', 'xmlcharrefreplace')
+			billto_altphone = self.request.get("billto_altphone").encode('utf-8', 'xmlcharrefreplace')
 			billto_address1 = self.request.get("billto_address1").encode('utf-8', 'xmlcharrefreplace')
 			billto_address2 = self.request.get("billto_address2").encode('utf-8', 'xmlcharrefreplace')
 
 			student_same_as_bill_to = self.request.get("student_same_as_bill_to").encode('utf-8', 'xmlcharrefreplace')
 
-			if student_same_as_bill_to:
-				student_same_as_bill_to = "YES"
+			if student_same_as_bill_to == "true":
+				student_same_as_bill_to = "Yes"
 				student_info = ""
 			else:
-				student_same_as_bill_to = "NO"
+				student_same_as_bill_to = "No"
 
 				for n in range(3):
 					n = n + 1
@@ -88,7 +90,7 @@ class MailHandler(webapp2.RequestHandler):
 				except UnboundLocalError:
 					student_info = "(no student info provided)"
 
-			lesson_environment = self.request.get_all("environment")
+			lesson_environment = self.request.get_all("lesson_environment")
 			lesson_environment = ', '.join(lesson_environment)
 			lesson_environment = lesson_environment.encode('utf-8', 'xmlcharrefreplace')
 
@@ -128,6 +130,7 @@ class MailHandler(webapp2.RequestHandler):
 			self.error(400)
 		else:
 			message.send()
+			print message.body
 		
 		self.redirect("/") # just for noscript
 
