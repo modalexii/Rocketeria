@@ -13,6 +13,15 @@ CKEDITOR.editorConfig = function( config ) {
 			element: 'a', 
 			styles: { 'text-decoration':'none;'}
 		},
+		{ name: 'Link: Undecorate Bold',
+			element: 'a', 
+			styles: { 
+				'text-decoration':'none;',
+				'font-family':'\'Quicksandbold\',sans-serif',
+				'display':'block',
+				'width':'100%'
+			}
+		},
 		{ name: 'Link: Clickable Cell',
 			element: 'a', 
 			styles: { 'text-decoration':'none;','display':'block','width':'100%'}
