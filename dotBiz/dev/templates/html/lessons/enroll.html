@@ -40,7 +40,7 @@
 		text-align: left;
 		border-left: 2px solid #ccc;
 	}}
-	input[type="text"].form-input, input[type="email"].form-input {{
+	input[type="text"].form-input, input[type="email"].form-input, select.form-input {{
 		width: 130%;
 		font-size: 1.1em;
 	}}
@@ -74,10 +74,25 @@
 	.gray {{
 		color: #ccc !important;
 	}}
+	#submit_ok {{
+		height: 185px;
+	}}
+	#submit_ok_thanks {{
+		height: 97px;
+	}}
+	#social_pointer {{
+		line-height: 85px !important;
+		background: #04bde5;
+		color: #fff;
+		font-size: 1.4em;
+		font-weight: bold;
+		text-align: center;
+	}}
 </style>
+<div id="hide_on_submit">
 <form id="enroll" method="post" action="/sendmail/enroll" accept-charset="utf-8">
 <big>Ready to take the plunge?</big>
-<br/><br/><p>Submit the questionaire below and we&#39;ll be in touch shortly. Enter however much information you care to provide - only the first section, <i>Bill To</i>, is required.</p>
+<br/><br/><p>Submit the questionnaire below and we&#39;ll be in touch shortly. Enter however much information you care to provide - only the first section, <i>Bill To</i>, is required.</p>
 <br/>
 <p>Submitting this form does not constitute a commitment to enroll.</p>
 <br/>
@@ -92,10 +107,11 @@
 				<br/>
 				<p class="labels">First &amp; Last Name</p><p class="validators">&#9642;</p><p class="inputs"><input type="text" class="form-input" name="billto_firstandlast"/></p><br/>
 				<p class="labels">Email</p><p class="validators">&#9642;</p><p class="inputs"><input type="email" class="form-input" name="billto_email"/></p><br/>
+				<p class="labels"></p><p class="validators"></p><p class="inputs" style="font-size: 0.85em; text-align: right;"> &nbsp; &nbsp; &nbsp;<input type="checkbox" class="form-input" name="billto_wants_newsletter"/> &nbsp;I&#39;d like to receive your newsletter</p><br/>
 				<p class="labels">Mobile Phone</p><p class="validators">&#9642;</p><p class="inputs"><input type="text" class="form-input" name="billto_mobilephone"/></p><br/>
 				<p class="labels">Alt Phone</p><p class="validators">&#9643;</p><p class="inputs"><input type="text" class="form-input" name="billto_altphone"/></p><br/>
 				<p class="labels">Address</p><p class="validators">&#9642;</p><p class="inputs"><input type="text" class="form-input" name="billto_address1"/></p><br/>
-				<p class="labels">&nbsp;</p><p class="validators"></p><p class="inputs"><input type="text" class="form-input" ame="billto_address2"/></p><br/>
+				<p class="labels">&nbsp;</p><p class="validators"></p><p class="inputs"><input type="text" class="form-input" name="billto_address2"/></p><br/>
 				<br/>
 				<br/>
 				</td>
@@ -116,7 +132,7 @@
 							<td rowspan=3 style="width:22px;"></td>
 						</tr>
 						<tr>
-							<td class="program"><input type="checkbox" id="student_same_as_bill_to" name="student_same_as_bill_to"> Yes</td>
+							<td class="program"><input type="checkbox" id="student_same_as_bill_to" name="student_same_as_bill_to" value="yes"> Yes</td>
 						</tr>
 					</tbody>
 				</table>
@@ -130,7 +146,7 @@
 					<p class="labels">School</p><p class="validators">&#9643;</p><p class="inputs"><input type="text" class="form-input" name="student1_school"/></p><br/>
 					<p class="labels">Grade</p><p class="validators">&#9643;</p><p class="inputs">
 					<select class="form-input" name="student1_grade">
-						<option value="-" selected="selected"></option>
+						<option value="" selected="selected"></option>
 						<option value="Adult">Adult</option>
 						<option value="Pre-K">Pre-K</option>
 						<option value="1st">1st</option>
@@ -244,23 +260,23 @@
 							<td rowspan=6 style="width:22px; border-right:1px solid #0f0403;"></td>
 						</tr>
 						<tr>
-							<td class="program"><input type="checkbox" name="insturument" value="guitar"> Guitar</td>
-							<td class="program"><input type="checkbox" name="insturument" value="voice"> Voice</td>
-							<td class="program"><input type="checkbox" name="insurument" value="tenor banjo"> Tenor Banjo</td>
+							<td class="program"><input type="checkbox" name="instrument" value="guitar"> Guitar</td>
+							<td class="program"><input type="checkbox" name="instrument" value="voice"> Voice</td>
+							<td class="program"><input type="checkbox" name="instrument" value="tenor banjo"> Tenor Banjo</td>
 						</tr>
 						<tr>
-							<td class="program"><input type="checkbox" name="insturument" value="bass"> Bass</td>
-							<td class="program"><input type="checkbox" name="insturument" value="alto sax"> Alto Sax</td>
-							<td class="program"><input type="checkbox" name="insturument" value="mandolin"> Mandolin</td>
+							<td class="program"><input type="checkbox" name="instrument" value="bass"> Bass</td>
+							<td class="program"><input type="checkbox" name="instrument" value="alto sax"> Alto Sax</td>
+							<td class="program"><input type="checkbox" name="instrument" value="mandolin"> Mandolin</td>
 						</tr>
 						<tr>
-							<td class="program"><input type="checkbox" name="insturument" value="piano"> Piano</td>
-							<td class="program"><input type="checkbox" name="insturument" value="trumpet"> Trumpet</td>
-							<td class="program"><input type="checkbox" name="insturument" value="ukulele"> Ukulele</td>
+							<td class="program"><input type="checkbox" name="instrument" value="piano"> Piano</td>
+							<td class="program"><input type="checkbox" name="instrument" value="trumpet"> Trumpet</td>
+							<td class="program"><input type="checkbox" name="instrument" value="ukulele"> Ukulele</td>
 						</tr>
 						<tr>
-							<td class="program"><input type="checkbox" name="insturument" value="drums"> Drums</td>
-							<td class="program"><input type="checkbox" name="insturument" value="clarinet"> Clarinet</td>
+							<td class="program"><input type="checkbox" name="instrument" value="drums"> Drums</td>
+							<td class="program"><input type="checkbox" name="instrument" value="clarinet"> Clarinet</td>
 							<td class="program">&nbsp;</td>
 						</tr>
 					</tbody>
@@ -269,15 +285,15 @@
 				<table border="0" cellpadding="1" cellspacing="0" style="width:100%;">
 					<tbody>
 						<tr>
-							<td rowspan=3 style="text-align:right; width:30%;">Expertise</td>
+							<td rowspan=3 style="text-align:right; width:30%;">Skill Level</td>
 						</tr>
 						<tr>
 							<td rowspan=3 style="width:22px; border-right:1px solid #0f0403;"></td>
 						</tr>
 						<tr>
-							<td class="program"><input type="checkbox"> Beginner</td>
-							<td class="program"><input type="checkbox"> Intermediate</td>
-							<td class="program"><input type="checkbox"> Advanced</td>
+							<td class="program"><input type="checkbox" name="expertise" value="beginner"> Beginner</td>
+							<td class="program"><input type="checkbox" name="expertise" value="intermediate"> Intermediate</td>
+							<td class="program"><input type="checkbox" name="expertise" value="advanced"> Advanced</td>
 						</tr>
 					</tbody>
 				</table>
@@ -389,7 +405,7 @@
 				</div>
 				<br/>
 				<p style="text-align:center;">
-				<input class="btn animate changesubmit" style="background-color:#58a326" type="submit" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SUBMIT &gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" onclick="unhighlightInputs('enroll'); validateEnroll(); return false;"><!-- noscript-compat -->
+				<input class="btn animate enrollsubmit" style="background-color:#58a326" type="submit" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SUBMIT &gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" onclick="unhighlightInputs('enroll'); validateEnroll(); return false;"><!-- noscript-compat -->
 				<br/>
 				</p>
 			</td>
@@ -398,6 +414,26 @@
 </table>
 </p>
 </form>
+</div>
+<div id="submit_ok" style="display:none;">
+<div id="submit_ok_thanks">
+<h2>Thanks!</h2>
+<p>
+We&#39;ll be in touch.
+</p>
+</div>
+
+<p id="social_pointer">
+ >>> STAY IN TOUCH WITH US >>> 
+</p>
+
+</div>
+<div id="submit_fail" style="display:none;">
+<h2>Houston, we have a problem</h2>
+<p>
+Something went wrong and we likely did not receive your change request. Refresh this page and try again, or <a href="/contact">contact us</a> via phone or email while we get this sorted out.
+</p>
+</div>
 </div> <!-- /content_sub -->
 
 <script src="/static/script/enroll.js"></script>
