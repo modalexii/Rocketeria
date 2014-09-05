@@ -65,6 +65,9 @@ function submit() {
 			return this.value;
 		}).get().join(),
 		comment1 : $('textarea[name="comment1"]').val(),
+		photo_release : $('input[name="photo_release"]:checked').map(function() {
+			return this.value;
+		}).get().join(),
 	})
 	.done(function() {
 		showPostSubmitMessage('submit_ok');
@@ -73,6 +76,15 @@ function submit() {
 		showPostSubmitMessage('submit_fail');
 	});
 	newsletterSignup();
+}
+
+function agreedToPolicies() {
+	if ($('input[name="read_policies"]').is(':checked')) {
+		return true;
+	}
+	else {
+		return false;
+	}
 }
 
 function addStudent() {
@@ -139,8 +151,15 @@ function validateEnroll() {
 		scrollToBillTo();
 	}
 	else {
-		submit();
+		if (agreedToPolicies()) {
+			submit();
+		}
+		else {
+			highlight('.policy_checkbox');
+			alert('Please confirm that you have read our Music Lessons Policies and are OK with them. Contact us before continuing if you have any questions or concerns.');
+		}
 	}
+
 }
 
 $(document).ready(function() {
