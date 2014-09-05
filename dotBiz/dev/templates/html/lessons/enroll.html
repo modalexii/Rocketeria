@@ -88,6 +88,17 @@
 		font-weight: bold;
 		text-align: center;
 	}}
+	.policies {{
+		height: 80px;
+	}}
+	.release_table_box {{
+		text-align: right;
+		width: 20%;
+	}}
+	.release_table_label{{
+
+	}}
+
 </style>
 <div id="hide_on_submit">
 <form id="enroll" method="post" action="/sendmail/enroll" accept-charset="utf-8">
@@ -402,6 +413,72 @@
 				<div class="comment">
 					<p><b>&nbsp;<img src="/static/image/note.png"/>&nbsp;Add a note</b> (optional)</p>
 					<textarea id="comment1" name="comment1"></textarea>
+				</div>
+				<br/>
+				<hr/>
+				<br/>
+				<table border="0" cellpadding="1" cellspacing="0" style="width:100%;">
+					<tbody>
+						<tr>
+							<td colspan=3>
+								<p>&quot;I give permission for Rocketeria to use photos and videos of the above student(s), captioned with a first name and last initial, in the following ways: &quot;</p>
+							</td>
+						</tr>
+						<tr>
+							<td class="release_table_box">
+								<input type="checkbox" id="photo_release_website" value="Rocketeria Websites" name="photo_release" />
+							</td>
+							<td class="release_table_label">
+								<label for="photo_release_website"> On Rocketeria's websites</label>
+							</td>
+							<td class="release_table_eg">
+								[<a href="/events/rockstravaganza" target="_blank">example</a>]
+							</td>
+						</tr>
+						<tr>
+							<td class="release_table_box">
+								<input type="checkbox" id="photo_release_social" value="Social Media Feeds" name="photo_release" />
+							</td>
+							<td class="release_table_label">
+								<label for="photo_release_social"> On social media feeds</label>
+							</td>
+							<td class="release_table_eg">
+								[<a href="https://www.facebook.com/rocketeria/photos/pb.19564590886.-2207520000.1409755099./10152198626070887/?type=3&theater" target="_blank">example</a>]
+							</td>
+						</tr>
+						<tr>
+							<td class="release_table_box">
+								<input type="checkbox" id="photo_release_lit" name="photo_release" value="Distributed Literature "/>
+							</td>
+							<td class="release_table_label">
+								<label for="photo_release_lit"> In distributed literature including email</label>
+							</td>
+							<td class="release_table_eg">
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<br/> 
+				<hr/>
+				<br/>
+				<table border="0" cellpadding="1" cellspacing="0" style="width:100%;">
+					<tbody>
+						<tr>
+							<td rowspan=3 class="policy_checkbox" style="text-align:right; width:30%;">
+								<input type="checkbox" id="read_policies" name="read_policies" />
+							</td>
+						</tr>
+						<tr>
+							<td rowspan=3 class="policy_checkbox" style="width:22px; border-right:1px solid #0f0403;">
+							</td>
+						</tr>
+						<tr>
+							<td class="policy_checkbox" style="padding-left: 20px;">
+								<label for="read_policies">&quot;I have read and agree to abide by Rocketeria&#39;s <a href="/lessons/policies" target="_blank">Music Lessons Policies</a>&quot;</label>
+							</td>
+						</tr>
+					</tbody>
+				</table>
 				</div>
 				<br/>
 				<p style="text-align:center;">
