@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+    "http://www.w3.org/TR/html4/strict.dtd">
+<!--[if lt IE 7 ]> <html class="ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie9"> <![endif]-->
+<!--[if (gt IE 11)|!(IE)]><!--> <html> <!--<![endif]-->
+<head>
+<link href="/static/style/rocketeria.css" type="text/css" rel="stylesheet">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="/static/script/newsletterSignup.js" type="text/javascript"></script>
+<script src="/static/script/preload.js" type="text/javascript"></script>
+<script>
+    if (document.documentMode===10){{
+        document.documentElement.className+=' ie10';
+    }}
+    else if (document.documentMode===11){{
+        document.documentElement.className+=' ie11';
+    }}
+</script>
+<title>{title}</title>
+<link href="/static/style/fonts/stylesheet.css" type="text/css" rel="stylesheet">
+<link rel="icon" type="image/png" href="/static/image/favicon.png" />
+</head>
+<!--[if (gte IE 10)|!(IE)]><body><![endif]-->
+<!--[if lte IE 9 ]><body class="image-bg"><![endif]-->
+<div id="page-wrapper">
+<div id="header">
+<a href="/"><h1>ROCKETERIA</h1></a>
+<p class="header-info">
+<b>(301) 774-5690</b><br>
+18120 Hillcrest Ave.<br>
+Olney, MD 20832<br>
+<a href="about.html#hours">Hours</a></p>
+<script type="text/javascript">
+$(document).ready(function() {{
+	try {{
+		var hours = override_hours;
+	}}
+	catch(e) {{
+		var hours = ['CLOSED','11-9','11-9','11-9','11-9','11-8','10-4'][(new Date()).getDay()];
+	}}
+	$('#header .header-info').append(' Today: ' + hours);
+}});
+</script>
+</div>
+<div id="nav-wrapper">
+<ul id="nav-contents">
+<li><a href="/lessons">Lessons</a></li>
+<li><a href="/store">Store</a></li>
+<li><a href="/rentals">Rentals</a></li>
+<li><a href="/repairs">Repairs</a></li>
+<li><a href="/events">Events</a></li>
+<li><a href="/about">About</a></li>
+<li><a href="/contact">Contact</a></li>
+</ul>
+</div>
+<div class="clear"></div>
+<div id="main">

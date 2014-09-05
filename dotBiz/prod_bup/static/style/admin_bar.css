@@ -1,0 +1,95 @@
+
+.red_border {
+	border: 2px solid #962320;
+}
+
+.yellow_border {
+	border: 2px solid #d79e06;
+}
+
+.blue_border {
+	border: 2px solid#03bde4;
+}
+
+.green_border {
+	border: 2px solid #58a225;
+}
+
+.red_bg {
+	background: #962320;
+}
+
+.yellow_bg {
+	background: #d79e06;
+}
+
+.blue_bg {
+	background: #03bde4;
+}
+
+.green_bg {
+	background: #58a225;
+}
+
+#admin_bar {
+	font-size: 20px;
+	text-align: center;
+	width: 960px;
+	position: fixed;
+	bottom: 12px;
+	left: 50%;
+	margin-left: -480px;
+	border-top: 2px solid #000;
+	border-bottom: 2px solid #000;
+	background: #03bde4;
+}
+
+#admin_bar input {
+	font-size: 20px;
+	font-family: 'Quicksandregular', sans-serif;
+}
+
+#admin_content {
+	width: 100%;
+	display: inline-block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#admin_content a:hover {
+	font-weight: bold;
+}
+
+.admin_link {
+	display: inline-block;
+	padding: 5px;
+	cursor: pointer;
+}
+
+.admin_link:hover {
+	font-weight: bolder;
+}
+
+#editfunctions {
+	display: inline-block;
+}
+
+#editthis {
+	padding-left: 5px;
+}
+
+.info {
+	vertical-align: baseline;
+	cursor: pointer;
+}
+
+.gcs_dir {
+	vertical-align: baseline;
+	cursor: pointer;
+}
+
+.quote_feed {
+	border-bottom: 2px solid #abfffc;
+	border-right: 1px solid #abfffc;
+	border-left: 1px solid #abfffc;
+}
