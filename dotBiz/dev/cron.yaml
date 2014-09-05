@@ -4,5 +4,5 @@ cron:
 
 - description: datastore backup
   url: /_ah/datastore_admin/backup.create?name=DatastoreBUP&kind=Page&kind=EventLog&filesystem=gs&gs_bucket_name=dres
-  schedule: every monday 02:00
+  schedule: 1 of month 00:00
   target: ah-builtin-python-bundle
