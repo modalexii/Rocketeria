@@ -24,3 +24,6 @@ Schedule:
 
 Note:
     {comment1}
+
+Photo release rights:
+    {photo_release}

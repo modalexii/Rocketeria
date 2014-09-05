@@ -1,9 +1,9 @@
 # robots for prod server
 
 User-agent: *
-Crawl-delay: 5
+Crawl-delay: 2
 
-Host: rocketeria.biz
+Host: www.rocketeria.biz
 
 Disallow: /static/script
 Disallow: /templates

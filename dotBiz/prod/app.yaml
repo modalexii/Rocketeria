@@ -30,6 +30,9 @@ handlers:
   static_dir: static
   http_headers:
     Cache-Control: public
+- url: /robots.txt
+  static_files: static/robots.txt
+  upload: static/robots.txt
 - url: /templates
   static_dir: templates
   application_readable: true

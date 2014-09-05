@@ -120,6 +120,12 @@ class MailHandler(webapp2.RequestHandler):
 			if not comment1:
 				comment1 = "(none)"
 
+			photo_release = self.request.get_all("photo_release")
+			photo_release = ', '.join(photo_release)
+			photo_release = photo_release.encode('utf-8', 'xmlcharrefreplace')
+			if not photo_release:
+				photo_release = "NO RELEASE RIGHTS GRANTED"
+
 			message.subject = "Enroll Form Submission: %s" % (billto_firstandlast)
 
 			message.body = templates.get("enroll","txt","email").format(**locals())

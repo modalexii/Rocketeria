@@ -59,9 +59,9 @@ class MainHandler(webapp2.RequestHandler):
 			content_source = "db"
 
 		try:
-			title = "%s (DEVELOPMENT SERVER)" % self.get_title_from_h1(content)
+			title = self.get_title_from_h1(content)
 		except IndexError:
-			title = "ROCKETERIA (DEVELOPMENT SERVER)"
+			title = "ROCKETERIA"
 
 		self.response.write(
 			templates.get("header").format(**locals())
