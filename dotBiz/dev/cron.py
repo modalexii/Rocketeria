@@ -7,7 +7,7 @@ def clear_banner(handler):
 	import gae_db
 
 	try:
-		banner = gae_db.fetch_content(uri = "/banner")
+		banner = gae_db.fetch_content(uri = "banner")
 	except AttributeError as e:
 		logging.info("cronjob clear_banner found no banner")
 		return
@@ -27,7 +27,7 @@ def clear_banner(handler):
 	now = datetime.now()
 
 	if now > expiry: # expiry was entered in UTC, no need to convert anything here
-		gae_db.delete_page("/banner")
+		gae_db.delete_page("banner")
 		logging.info("cronjob clear_banner removed an alert banner set to expire on %s" % expiry)
 	else:
 		logging.info("cronjob clear_banner found banner that has not expired yet - it will expire \"%s\"" % expiry)
