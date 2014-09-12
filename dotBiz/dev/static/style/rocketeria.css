@@ -201,23 +201,22 @@ display: none;
 }
 
 .billboard-content h2 {
-text-transform: uppercase;
-font-size: 33px;
-width: 366px;
-padding-left: 30px;
-margin: 0;
-padding-top: 3px;
-position: relative;
-right: 48px;
 bottom: 252px;
+font-size: 33px;
 height: 42px;
+left: 0;
+margin: 0;
+padding: 3px 26px 0 12px;
+position: relative;
 text-align: center;
+text-transform: uppercase;
+width: 310px;
 }
 
 .ie7 .billboard-content h2 {
 position: absolute;
 top: 38px;
-right: 0;
+left: 348px;
 }
 
 .billboard-header-green {
@@ -230,6 +229,10 @@ background-color: #d79e05;
 
 .billboard-header-red {
 background-color: #96231f;
+}
+
+.billboard-header-purple {
+background-color: #9702b6;
 }
 
 .billboard-content {
@@ -789,7 +792,6 @@ background-color: #96231f !important;
 -webkit-border-radius: 10px;
 -moz-border-radius: 10px;
 border-radius: 10px;
-behavior: url("pie/pie.htc");
 }
 
 .btn-submit-red:hover {
