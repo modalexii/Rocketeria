@@ -1,8 +1,6 @@
-import webapp2, logging
+import webapp2
 from google.appengine.api import mail
 import get_env, templates
-
-logging.getLogger().setLevel(logging.INFO)
 
 def templatify(message, remote_addr, remote_ua):
 	version = get_env.version()
