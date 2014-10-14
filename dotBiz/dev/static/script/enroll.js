@@ -1,6 +1,6 @@
 function newsletterSignup() {
 	if ($('input[name="billto_wants_newsletter"]').is(':checked')) {
-		$.post('/api_proxy_pub/cc', {
+		$.post('/api/external/cc', {
 			'email' : $('input[name="billto_email"]').val(),
 		})
 	}
@@ -16,6 +16,7 @@ function showPostSubmitMessage(blockToShow) {
 
 function submit() {
 	$('input.animate.enrollsubmit').prop('type','image');
+	$('input.animate.signaturesubmit').prop('src','/static/image/wait.gif');
 	$('input.animate.enrollsubmit').css('padding','12px, 45px');
 	$('input[type="image"].enrollsubmit').css('border','0');
 	$('input.animate.enrollsubmit').prop('disabled',true);
@@ -74,6 +75,9 @@ function submit() {
 	})
 	.fail(function(data, textStatus, xhr) {
 		showPostSubmitMessage('submit_fail');
+	})
+	.always(function() {
+		$('input.animate.enrollsubmit').hide();
 	});
 	newsletterSignup();
 }

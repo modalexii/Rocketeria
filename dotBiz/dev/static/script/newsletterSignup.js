@@ -5,7 +5,7 @@ $(document).ready(function() {
 		var email = form.find('input[name="email"]').val();
 		var container = form.parent()
 		container.html('<div style="height:50%; margin-bottom:-6px;"></div><h3><img src="/static/image/wait.gif"></h3>');
-		$.post('/api_proxy_pub/cc', {
+		$.post('/api/external/cc', {
 			'email' : email
 		})
 		.done(function() {

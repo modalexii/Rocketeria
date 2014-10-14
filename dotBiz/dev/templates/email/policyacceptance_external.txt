@@ -1,0 +1,10 @@
+{policy_content_text}
+
+"I have read and agree to abide by Rocketeria's Music Lessons Policies."
+ - {signature_name}
+
+ ---
+
+"I give permission for Rocketeria to use photos and videos of myself and all minors enrolling on my account, captioned with a first name and last initial, in the following ways: {photo_release}"
+
+---

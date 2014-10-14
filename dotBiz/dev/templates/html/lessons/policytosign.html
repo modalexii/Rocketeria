@@ -1,0 +1,181 @@
+<div id="header-sub">
+<img class="bg-header-sub" src="/static/image/header-green.png" width="705px" height="82px"/>
+<h1>Policy Acceptance</h1>
+</div><!-- /header-sub -->
+<div id="content_sub">
+<style>
+	.labels {{
+		display: inline-block;
+		width: 30%;
+		text-align: right;
+		text-decoration: none !important;
+	}}
+	.inputs {{
+		display: inline-block;
+		text-align: left;
+	}}
+	.validators {{
+		display: inline-block;
+		text-align: right;
+		padding-left: 12px;
+		width: 20px;
+	}}
+	.signature-input {{
+		padding-top: 2px;
+		padding-bottom: 2px;
+		width: 90%;
+		border: 0;
+		outline: none;
+		text-align:center;
+		background-color: inherit;
+		border-bottom: 2px solid #ccc;
+	}}
+	input[type="text"].signature-input, input[type="email"].signature-input, select.form-input {{
+		font-size: 1.1em;
+	}}
+	.template {{
+		display: none;
+	}}
+	td.program {{
+		padding-left: 24px;
+	}}
+	.larger {{
+		font-size: 1.1em;
+	}}
+	.gray {{
+		color: #ccc !important;
+	}}
+	.policies {{
+		height: 80px;
+	}}
+	.release_table_box {{
+		text-align: right;
+		width: 20%;
+	}}
+
+</style>
+
+<div id="hide_on_submit">
+<div id="pleasewait" style="text-align: center;">
+	Please wait while we fetch the latest Music Lesson Policies
+	<img src="/static/image/wait.gif"/>
+	<br/><br/>
+	If this page never loads entirely, then it is likely that Javascript is being blocked by your browser or network, and you will not be able to submit this form. In this case, you may <a href="/lessons/policies">read our Music Lessons Policies here</a> and stop by the store to sign them in-person. 
+	<br/><br/>
+	<strong>Policies must be signed <i>before</i> a student&#39;s first lesson!</strong>
+</div> <!-- /pleasewait -->
+<form id="sign" method="post" action="/sendmail/policyacceptance" accept-charset="utf-8">
+<div id="signature_form_content" style="display:none">
+<br/>
+	<hr/>
+	<p id="disclaimer" class="hideonfail"><big>By submitting your digital signature you signify your acceptance of our Music Lessons Policies which follow.</big></p>
+	<hr/>
+	<table id="form_table" border="0" cellpadding="1" cellspacing="0" style="width:100%" class="larger hideonfail">
+		<tbody>
+			<tr>
+				<td>
+					<table border="0" cellpadding="1" cellspacing="0" style="width:100%;">
+						<tbody>
+							<tr>
+								<td colspan=3>
+									<p>&quot;I give permission for Rocketeria to use photos and videos of myself and all minors enrolling on my account, captioned with a first name and last initial, in the following ways [not required]: &quot;</p>
+									<br/>
+								</td>
+							</tr>
+							<tr>
+								<td class="release_table_box">
+									<input type="checkbox" id="photo_release_website" value="Rocketeria Websites" name="photo_release"/>
+								</td>
+								<td class="release_table_label">
+									<label for="photo_release_website"> On Rocketeria's websites</label>
+								</td>
+								<td class="release_table_eg">
+									[<a href="/events/rockstravaganza" target="_blank">example</a>]
+								</td>
+							</tr>
+							<tr>
+								<td class="release_table_box">
+									<input type="checkbox" id="photo_release_social" value="Social Media Feeds" name="photo_release" />
+								</td>
+								<td class="release_table_label">
+									<label for="photo_release_social"> On social media feeds</label>
+								</td>
+								<td class="release_table_eg">
+									[<a href="https://www.facebook.com/rocketeria/photos/pb.19564590886.-2207520000.1409755099./10152198626070887/?type=3&theater" target="_blank">example</a>]
+								</td>
+							</tr>
+							<tr>
+								<td class="release_table_box">
+									<input type="checkbox" id="photo_release_lit" name="photo_release" value="Distributed Literature "/ >
+								</td>
+								<td class="release_table_label">
+									<label for="photo_release_lit"> In distributed literature including email</label>
+								</td>
+								<td class="release_table_eg">
+									[<a href="/static/html/cc-example/index.html" target="_blank">example</a>]
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<br/> 
+					<hr/>
+					<table border="0" class="hideonfail" cellpadding="1" cellspacing="0">
+						<tbody>
+							<tr>
+								<td colspan=4>
+								&quot;I have read and agree to abide by Rocketeria&#39;s Music Lessons Policies.&quot;
+								<br/>
+								<br/>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									First &amp; Last<br/>Name: 
+								</td>
+								<td style="width:35%">
+									<input type="text" class="signature-input" name="signature_name" />
+								</td>
+								<td>
+									Email: 
+								</td>
+								<td style="width:35%">
+									<input type="email" class="signature-input" name="signature_email"/ >
+								</td>
+							</tr> 
+						</tbody> 
+					</table> 
+
+					<br/>
+					<p style="text-align:center;">
+					<input class="btn animate signaturesubmit hideonfail" style="background-color:#ccc" type="submit" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SUBMIT &gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" onclick="unhighlightInputs('sign'); validateSignature(); return false;" ><!-- noscript-compat -->
+					<br/>
+					</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<br/>
+	<hr/>
+</div> <!-- /signature_form_content -->
+</form>
+</div> <!-- /hide_on_submit -->
+<div id="submit_ok" style="display:none;">
+	<div id="submit_ok_thanks">
+		<br/>
+		<h2>Thanks!</h2>
+		<p>
+		A copy of our Music Lessons Policies has been emailed to you for your records. Please note that our policies are subject to change.
+		</p>
+	</div>
+</div>
+<div id="submit_fail" style="display:none;">
+	<h2>Houston, we have a problem</h2>
+	<p>
+	Something went wrong and we likely did not receive your submission. Refresh this page and try again, or <a href="/contact">contact us</a> via phone or email while we get this sorted out.
+	</p>
+</div>
+
+<div id="policy_content" class="hideonfail">
+</div> <!-- /policy _content -->
+</div> <!-- /content_sub -->
+<script src="/static/script/policytosign.js"></script>

@@ -1,0 +1,117 @@
+<div id="header-sub">
+<img class="bg-header-sub" src="/static/image/header-green.png" width="705px" height="82px"/>
+<h1>Enter to Win!</h1>
+</div><!-- /header-sub -->
+<div id="content_sub">
+<style>
+    .labels {{
+        display: inline-block;
+        width: 30%;
+        text-align: right;
+        text-decoration: none !important;
+    }}
+    .inputs {{
+        display: inline-block;
+        text-align: left;
+    }}
+    .validators {{
+        display: inline-block;
+        text-align: right;
+        padding-left: 12px;
+        width: 20px;
+    }}
+    input[type="text"].form-input,select.form-input {{
+        font-size: 1.1em;
+    }}
+    td.program {{
+        padding-left: 24px;
+    }}
+    .larger {{
+        font-size: 1.1em;
+    }}
+    .gray {{
+        color: #ccc !important;
+    }}
+
+</style>
+<script type="text/javascript">var submitted=false;</script>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {{window.location='/splash4.aspx';}}"></iframe>
+
+<p><big>Submit your contact info below for a chance to win&#160;one free month&#160;of private music lessons!</big></p>
+<br/>
+<table border="0" cellpadding="1" cellspacing="0">
+    <tbody>
+        <tr>
+             <td>
+                <br/>
+                <p class="labels">First &amp; Last Name</p><p class="validators">&#9642;</p><p class="inputs"><input type="text" name="entry.0.single" value="" class="ss-q-short" id="entry_0" /></p><br/>
+                <p class="labels">Address</p><p class="validators">&#9642;</p><p class="inputs"><textarea name="entry.1.single" rows="3" cols="25" class="ss-q-long" id="entry_1"></textarea></p><br/>
+                <p class="labels"></p><p class="validators"></p><p class="inputs" style="font-size: 0.85em; text-align: right;"> &nbsp; &nbsp; &nbsp;<input type="checkbox" class="form-input" name="billto_wants_newsletter"/> &nbsp;I&#39;d like to receive your newsletter</p><br/>
+                <p class="labels">Where did you see this offer?</p><p class="validators"></p><p class="inputs"><input type="text" class="form-input" name="billto_address2"/></p><br/>
+                <br/>
+                <br/>
+                </td>
+            </td>
+            <td style="text-align: right;">&#160;Name&#160;</td>
+            <td>&#160;<input type="text" name="entry.0.single" value="" class="ss-q-short" id="entry_0" /></textarea></td>
+        </tr>
+        <tr>
+            <td style="text-align: right;">&#160;Address&#160;</td>
+            <td>&#160;<textarea name="entry.1.single" rows="3" cols="25" class="ss-q-long" id="entry_1"></textarea></td>
+        </tr>
+        <tr>
+            <td style="text-align: right;">&#160;Email&#160;</td>
+            <td>&#160;<input type="text" name="entry.2.single" value="" class="ss-q-short" id="entry_2" /></td>
+        </tr>
+        <tr>
+            <td style="text-align: right;">&#160;Where did you &#160;&#160;<br />
+            see this offer?&#160;</td>
+            <td>
+                <input type="radio" name="entry.3.group" value="Safeway" class="ss-q-radio" id="group_3_1" />&nbsp;Safeway<br />
+                <input type="radio" name="entry.3.group" value="Harris Teeter" class="ss-q-radio" id="group_3_2" />&nbsp;Harris Teeter<br />
+                <input type="radio" name="entry.3.group" value="__option__" class="ss-q-radio" id="other_option:3" />&nbsp;<label for="other_option:3">Other:</label>&nbsp;<input type="text" name="entry.3.group.other_option_" size="10" value="" class="ss-q-other" />
+            </td>
+        </tr>
+        <tr>
+            <td>&#160;</td>
+            <td>
+            <p>&#160;&#160;</p>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: right;">&nbsp;</td>
+            <td>
+                <p style="text-align: left;">&nbsp;<input type="submit" name="submit" value="Submit" /><input type="hidden" name="pageNumber" value="0" />&nbsp;<input type="hidden" name="backupCache" value="" /></p>
+            </td>
+            </tr>
+    </tbody>
+</table>
+
+<br/>
+<p>
+One winner is selected at random each month from a pool of all past submissions. There is no need to re-enter each month. Duplicate entries will be discarded. Winners will be contacted by email and given a specified finite amount of time to claim and book their free appointments. By entering, you are also subscribing to Rocketeria's periodic email newsletters. You may unsubscribe at any time.
+</p>
+<script type="text/javascript">
+      
+      (function() {{
+var divs = document.getElementById('ss-form').
+getElementsByTagName('div');
+var numDivs = divs.length;
+for (var j = 0; j < numDivs; j++) {{
+if (divs[j].className == 'errorbox-bad') {{
+divs[j].lastChild.firstChild.lastChild.focus();
+return;
+}}
+}}
+for (var i = 0; i < numDivs; i++) {{
+var div = divs[i];
+if (div.className == 'ss-form-entry' &&
+div.firstChild &&
+div.firstChild.className == 'ss-q-title') {{
+div.lastChild.focus();
+return;
+}}
+}}
+}})();
+</script> 
+</div> <!-- /content_sub -->
