@@ -1,9 +1,23 @@
-Policy Acceptance
+Policy acceptance submission
 
-"I give permission for Rocketeria to use photos and videos of myself and all minors enrolling on my account, captioned with a first name and last initial, in the following ways: {photo_release}"
+Bill To:
+    Name: {billto_firstandlast}
+    Email: {billto_email}
+    Mobile Phone: {billto_mobilephone}
+    Alt. Phone: {billto_altphone}
+    Address: {billto_address1} {billto_address2}
 
-"I have read and agree to abide by Rocketeria's Music Lessons Policies."
- - {signature_name}
+Student same as Bill To? {student_same_as_bill_to}
 
+{student_info}
 
-A confirmation was sent along with a copy of the policies to {signature_email}.
+Note:
+    {comment1}
+
+Charges to Account:
+	{chargeaccount_text}
+
+Photo release:
+    {photo_release_text}
+
+Signature: {digital_signature_name}
