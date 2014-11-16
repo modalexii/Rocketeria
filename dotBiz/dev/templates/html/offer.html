@@ -4,6 +4,22 @@
 </div><!-- /header-sub -->
 <div id="content_sub">
 <style>
+    .comment {{
+        width: 100%;
+        background-color:#f7bd20;
+    }}
+    .comment p :hover {{
+        cursor: pointer;
+    }}
+    .comment textarea {{
+        width: 99%;
+        resize: none;
+        font-family: 'Quicksandregular', sans-serif;
+    }}
+    .headingicon img {{
+        height: 1em;
+        vertical-align: middle;
+    }}
     .labels {{
         display: inline-block;
         width: 30%;
@@ -20,8 +36,16 @@
         padding-left: 12px;
         width: 20px;
     }}
-    input[type="text"].form-input,select.form-input {{
+    .form-input {{
+        text-align: left;
+        border-left: 2px solid #ccc;
+    }}
+    input[type="text"].form-input, input[type="email"].form-input, select.form-input {{
+        width: 130%;
         font-size: 1.1em;
+    }}
+    .template {{
+        display: none;
     }}
     td.program {{
         padding-left: 24px;
@@ -32,86 +56,55 @@
     .gray {{
         color: #ccc !important;
     }}
+    #submit_ok {{
+        height: 185px;
+    }}
+    #submit_ok_thanks {{
+        height: 97px;
+    }}
 
 </style>
-<script type="text/javascript">var submitted=false;</script>
-<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {{window.location='/splash4.aspx';}}"></iframe>
-
-<p><big>Submit your contact info below for a chance to win&#160;one free month&#160;of private music lessons!</big></p>
-<br/>
-<table border="0" cellpadding="1" cellspacing="0">
+<big>Submit your info below for a chance to win one free month of private music lessons!</big>
+<table border="0" cellpadding="1" cellspacing="0" style="width:100%" class="larger">
     <tbody>
         <tr>
-             <td>
-                <br/>
-                <p class="labels">First &amp; Last Name</p><p class="validators">&#9642;</p><p class="inputs"><input type="text" name="entry.0.single" value="" class="ss-q-short" id="entry_0" /></p><br/>
-                <p class="labels">Address</p><p class="validators">&#9642;</p><p class="inputs"><textarea name="entry.1.single" rows="3" cols="25" class="ss-q-long" id="entry_1"></textarea></p><br/>
-                <p class="labels"></p><p class="validators"></p><p class="inputs" style="font-size: 0.85em; text-align: right;"> &nbsp; &nbsp; &nbsp;<input type="checkbox" class="form-input" name="billto_wants_newsletter"/> &nbsp;I&#39;d like to receive your newsletter</p><br/>
-                <p class="labels">Where did you see this offer?</p><p class="validators"></p><p class="inputs"><input type="text" class="form-input" name="billto_address2"/></p><br/>
-                <br/>
-                <br/>
-                </td>
-            </td>
-            <td style="text-align: right;">&#160;Name&#160;</td>
-            <td>&#160;<input type="text" name="entry.0.single" value="" class="ss-q-short" id="entry_0" /></textarea></td>
+            <td style="background-color: rgb(150, 35, 31);"><big><span style="color:#FFFFFF" id="offer_heading">&#160;All fields required</span></big></td>
         </tr>
         <tr>
-            <td style="text-align: right;">&#160;Address&#160;</td>
-            <td>&#160;<textarea name="entry.1.single" rows="3" cols="25" class="ss-q-long" id="entry_1"></textarea></td>
-        </tr>
-        <tr>
-            <td style="text-align: right;">&#160;Email&#160;</td>
-            <td>&#160;<input type="text" name="entry.2.single" value="" class="ss-q-short" id="entry_2" /></td>
-        </tr>
-        <tr>
-            <td style="text-align: right;">&#160;Where did you &#160;&#160;<br />
-            see this offer?&#160;</td>
             <td>
-                <input type="radio" name="entry.3.group" value="Safeway" class="ss-q-radio" id="group_3_1" />&nbsp;Safeway<br />
-                <input type="radio" name="entry.3.group" value="Harris Teeter" class="ss-q-radio" id="group_3_2" />&nbsp;Harris Teeter<br />
-                <input type="radio" name="entry.3.group" value="__option__" class="ss-q-radio" id="other_option:3" />&nbsp;<label for="other_option:3">Other:</label>&nbsp;<input type="text" name="entry.3.group.other_option_" size="10" value="" class="ss-q-other" />
+                <br/>
+                <p class="labels">First Name</p><p class="validators">&#9642;</p><p class="inputs"><input type="text" class="form-input" name="offer_first"/></p><br/>
+                <p class="labels">Last Name</p><p class="validators">&#9642;</p><p class="inputs"><input type="text" class="form-input" name="offer_last"/></p><br/>
+                <p class="labels">Email</p><p class="validators">&#9642;</p><p class="inputs"><input type="email" class="form-input" name="offer_email"/></p><br/>
+                <p class="labels">Address</p><p class="validators">&#9642;</p><p class="inputs"><input type="text" class="form-input" name="offer_address"/></p><br/>
+                <br/>
+                <table border="0" cellpadding="1" cellspacing="0" style="width:100%;">
+                    <tbody>
+                        <tr>
+                            <td rowspan=3 style="text-align:right; width:30%;">Where did you see this offer?</td>
+                        </tr>
+                        <tr>
+                            <td rowspan=3 style="width:22px; border-right:1px solid #0f0403;"></td>
+                        </tr>
+                        <tr>
+                            <td class="program" style="line-height:1.5em;">
+                                <input type="radio" name="offer_whereseen" value="Safeway"> Safeway<br/>
+                                <input type="radio" name="offer_whereseen" value="Harris Teeter"> Harris Teeter<br/>
+                                <input type="radio" name="offer_whereseen" value="Other"> Other:<input type="text" class="form-input" name="offer_whereseen_other" style="width:inherit;font-size:inherit;border-left:none;"/><br/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </td>
         </tr>
-        <tr>
-            <td>&#160;</td>
-            <td>
-            <p>&#160;&#160;</p>
-            </td>
-        </tr>
-        <tr>
-            <td style="text-align: right;">&nbsp;</td>
-            <td>
-                <p style="text-align: left;">&nbsp;<input type="submit" name="submit" value="Submit" /><input type="hidden" name="pageNumber" value="0" />&nbsp;<input type="hidden" name="backupCache" value="" /></p>
-            </td>
-            </tr>
     </tbody>
 </table>
-
 <br/>
-<p>
-One winner is selected at random each month from a pool of all past submissions. There is no need to re-enter each month. Duplicate entries will be discarded. Winners will be contacted by email and given a specified finite amount of time to claim and book their free appointments. By entering, you are also subscribing to Rocketeria's periodic email newsletters. You may unsubscribe at any time.
+<p style="text-align:center;">
+    <input class="btn animate offersubmit" style="background-color:#58a326" type="submit" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SUBMIT &gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" onclick="unhighlightInputs('offer'); validateOffer(); return false;"><!-- noscript-compat -->
+    <br/><br/>
 </p>
-<script type="text/javascript">
-      
-      (function() {{
-var divs = document.getElementById('ss-form').
-getElementsByTagName('div');
-var numDivs = divs.length;
-for (var j = 0; j < numDivs; j++) {{
-if (divs[j].className == 'errorbox-bad') {{
-divs[j].lastChild.firstChild.lastChild.focus();
-return;
-}}
-}}
-for (var i = 0; i < numDivs; i++) {{
-var div = divs[i];
-if (div.className == 'ss-form-entry' &&
-div.firstChild &&
-div.firstChild.className == 'ss-q-title') {{
-div.lastChild.focus();
-return;
-}}
-}}
-}})();
-</script> 
+<p>
+    One winner is selected at random each month from a pool of all past submissions. There is no need to re-enter each month. Duplicate entries will be discarded. Winners will be contacted by email and given a specified finite amount of time to claim and book their free appointments. By entering, you are also subscribing to Rocketeria's periodic email newsletters. You may unsubscribe at any time.
+</p>
 </div> <!-- /content_sub -->
