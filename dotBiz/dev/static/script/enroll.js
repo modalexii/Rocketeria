@@ -66,9 +66,9 @@ function submit() {
 			return this.value;
 		}).get().join(),
 		comment1 : $('textarea[name="comment1"]').val(),
-		photo_release : $('input[name="photo_release"]:checked').map(function() {
-			return this.value;
-		}).get().join(),
+		no_chargeaccount : $('input[name="no_chargeaccount"]').is(':checked'),
+		no_media_release : $('input[name="no_media_release"]').is(':checked'),
+		digital_signature_name : $('input[name="digital_signature_name"]').val(),
 	})
 	.done(function() {
 		showPostSubmitMessage('submit_ok');
@@ -93,7 +93,7 @@ function agreedToPolicies() {
 
 function addStudent() {
 	if ($('#student3').is(':visible')) {
-		alert('More then 3 students? Enter additional information in the comment box below, or give us a call.')
+		alert('More then 3 students? Give us a call.')
 	}
 	else if ($('#student2').is(':visible')) {
 		$('#student3').slideDown(function() {
@@ -104,13 +104,12 @@ function addStudent() {
 	}
 }
 
-function highlight(field) {
-	$(field).css('background', '#f5ed14');
+function setReqdAsterisk(container) {
+	$(container).html('<span class="reqd_asterisk">&ast;</span>');
 }
 
-function unhighlightInputs(form) {
-	$('input[type="text"].form-input').css('background','none');
-	$('input[type="email"].form-input').css('background','none');
+function removeReqdAsterisk(container) {
+	$(container).html('&nbsp;');
 }
 
 function scrollToBillTo() {
@@ -123,78 +122,252 @@ function validateEnroll() {
 	var validationError = false;
 
 	var exp = /.*[,| ].*$/;
-	if (!(exp.test($('input[name="billto_firstandlast"]').val()))) {
+	if (exp.test($('input[name="billto_firstandlast"]').val())) {
+		removeReqdAsterisk('#reqd_billto_firstandlast');
+	}
+	else {
 		var fail = true;
-		highlight('input[name="billto_firstandlast"]');
+		setReqdAsterisk('#reqd_billto_firstandlast');
 		validationError = true;
 	}
 
 	var exp = /^.+\@.+\..+$/;
-	if (!(exp.test($('input[name="billto_email"]').val()))) {
+	if (exp.test($('input[name="billto_email"]').val())) {
+		removeReqdAsterisk('#reqd_billto_email');
+	}
+	else {
 		var fail = true;
-		highlight('input[name="billto_email"]');
+		setReqdAsterisk('#reqd_billto_email');
 		validationError = true;
 	}
 
 	var exp = /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/;
-	if (!(exp.test($('input[name="billto_mobilephone"]').val()))) {
+	if (exp.test($('input[name="billto_mobilephone"]').val())) {
+		removeReqdAsterisk('#reqd_billto_mobilephone');
+	}
+	else {
 		var fail = true;
-		highlight('input[name="billto_mobilephone"]');
+		setReqdAsterisk('#reqd_billto_mobilephone');
 		validationError = true;
 	}
 
 	var exp = /^.* .*$/;
-	if (!(exp.test($('input[name="billto_address1"]').val()))) {
+	if (exp.test($('input[name="billto_address1"]').val())) {
+		removeReqdAsterisk('#reqd_billto_address1');
+	}
+	else {
 		var fail = true;
-		highlight('input[name="billto_address1"]');
+		setReqdAsterisk('#reqd_billto_address1');
+		validationError = true;
+	}
+
+	var exp = /^.* .*$/;
+	if (exp.test($('input[name="billto_address2"]').val())) {
+		removeReqdAsterisk('#reqd_billto_address2');
+	}
+	else {
+		var fail = true;
+		setReqdAsterisk('#reqd_billto_address2');
 		validationError = true;
 	}
 
 	if (validationError) {
-		alert('Sorry, some fields were not filled out correctly. Please correct information in the highlighted areas.');
+		alert('Sorry, some fields were not filled out correctly. Please correct all fields marked with an asterisk (*).');
 		scrollToBillTo();
 	}
 	else {
-		if (agreedToPolicies()) {
+		if ($('#digital_signature_name').val()) {
 			submit();
 		}
 		else {
-			highlight('.policy_checkbox');
-			alert('Please confirm that you have read our Music Lessons Policies and are OK with them. Contact us before continuing if you have any questions or concerns.');
+			alert('Please type your full name on the signature line to indicate that you have read and agree to abide by our Music Lessons Policies. Contact us before continuing if you have any questions or concerns.');
 		}
+	}
+
+}
+
+function getURLParameter(name) {
+  return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null
+}
+
+function addPolicyContent() {
+	// fetch the Policy content 
+	var uri = '/api/db?identifier=lessons/policies';
+	$.getJSON(uri)
+	.done(function( data ) {
+		var content = $(data.content);
+		content = content[2].innerHTML;
+		// lame solution for emailing policy contents to client
+		//window.policy_content_html = content;
+		//window.policy_content_text = content.text;
+		$('#policy_content').html(content);
+	})
+}
+
+function activateComponentBillto() {}
+
+function activateComponentStudent() {
+	// show 2nd, 3rd student fields on click
+	$('#add_student').on('click', function() {
+		addStudent();
+	});
+}
+
+function activateComponentStudents() {}
+
+function activateComponentPrograms() {}
+
+function activateComponentSchedule() {}
+
+function activateComponentChargeAccount() {}
+
+function activateComponentRelease() {}
+
+function activateComponentNote() {
+	// auto-expand comment area
+	var comment1 = document.getElementById('comment1');
+	var heightLimit = 200; /* Maximum height: 200px */
+
+	comment1.oninput = function() {
+		comment1.style.height = ""; /* Reset the height*/
+		comment1.style.height = Math.min(comment1.scrollHeight, heightLimit) + "px";
+	};
+}
+
+function activateComponentPolicy() {
+	// fetch the Policy content from the API & add it to the page
+	addPolicyContent();
+}
+
+
+
+function processActiveBlocks(activeBlocks) {
+	/* 
+	show/hide pieces of the form based on the URL parameter,
+	and run any other schript needed by visible areas.
+
+	possible active blocks:
+	billto, student, programs, schedule, note, release, policy 
+	*/
+
+	if($.inArray('billto',activeBlocks) === -1) {
+		$('.component_billto').remove();
+	}
+	else {
+		activateComponentBillto();
+	}
+
+	if($.inArray('student',activeBlocks) === -1) {
+		$('.component_student').remove();
+	}
+	else {
+		activatecomponentStudent();
+
+		// if Bill To is shown, disable Student inputs when Same as Bill To
+		// is checked
+		if($.inArray('billto',activeBlocks) === -1) {
+			var student_same_as_bill_to = $('#student_same_as_bill_to')
+			student_same_as_bill_to.change(function() {
+				if (student_same_as_bill_to.is(':checked')) {
+					$('#add_student').css('display','none')
+					$('#student1').slideUp();
+					$('#student2').slideUp();
+					$('#student3').slideUp();
+				}
+				else {
+					$('#add_student').removeClass('gray');
+					$('#student1').slideDown(function() {
+						$('#add_student').css('display','inherit');
+					});
+				}
+			});
+		}
+		else {
+			// Bill To is not shown, so remove the Same as Bill To option
+			$('.student_same_as_bill_to').remove();
+		}
+	}
+
+	if($.inArray('programs',activeBlocks) === -1) {
+		$('.component_programs').remove();
+	}
+	else {
+		activateComponentPrograms();
+	}
+
+	if($.inArray('schedule',activeBlocks) === -1) {
+		$('.component_schedule').remove();
+	}
+	else {
+		activateComponentSchedule();
+	}
+
+	if($.inArray('note',activeBlocks) === -1) {
+		$('.component_note').remove();
+	}
+	else {
+		activateComponentNote();
+	}
+
+	if($.inArray('chargeaccount',activeBlocks) === -1) {
+		$('.component_chargeaccount').remove();
+	}
+	else {
+		activateComponentChargeAccount();
+	}
+
+	if($.inArray('release',activeBlocks) === -1) {
+		$('.component_release').remove();
+	}
+	else {
+		activateComponentRelease();
+	}
+
+	if($.inArray('policy',activeBlocks) === -1) {
+		$('.component_policy').remove();
+	}
+	else {
+		activateComponentPolicy();
 	}
 
 }
 
 $(document).ready(function() {
 
-	$('#add_student').on('click', function() {
-		addStudent();
-	});
+	// if show param is given we MAY need to fetch policy content,
+	// but if show isn't given, we MUST fetch policy content
 
-	// auto-expand comment areas
-	var comment1 = document.getElementById('comment1');
-	var heightLimit = 200; /* Maximum height: 200px */
+	if (getURLParameter('show')) {
+		activeBlocks = getURLParameter('show').split(',');
+		processActiveBlocks(activeBlocks);
+	}
+	else {
+		// actiate everything
+		activateComponentBillto();
+		activateComponentStudent();
+		activateComponentPrograms();
+		activateComponentSchedule();
+		activateComponentNote();
+		activateComponentChargeAccount();
+		activateComponentRelease();
+		activateComponentPolicy();
+	}
 
-	comment1.oninput = function() {{
-		comment1.style.height = ""; /* Reset the height*/
-		comment1.style.height = Math.min(comment1.scrollHeight, heightLimit) + "px";
-	}};
-
-	var student_same_as_bill_to = $('#student_same_as_bill_to')
-	student_same_as_bill_to.change(function() {
-		if (student_same_as_bill_to.is(':checked')) {
-			$('#add_student').css('display','none')
-			$('#student1').slideUp();
-			$('#student2').slideUp();
-			$('#student3').slideUp();
-		}
-		else {
-			$('#add_student').removeClass('gray');
-			$('#student1').slideDown(function() {
-				$('#add_student').css('display','inherit');
-			});
-		}
-	});
 
 });
+
+WebFontConfig = {
+	google: { families: [ 'Dawning+of+a+New+Day::latin' ] }
+};
+(function() {
+	var wf = document.createElement('script');
+	wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+	  '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+	wf.type = 'text/javascript';
+	wf.async = 'true';
+	var s = document.getElementsByTagName('script')[0];
+	s.parentNode.insertBefore(wf, s);
+})();
+
+// hold the active blocks (GET param) that we need to show/hide, run additional script on, and validate
+var activeBlocks = [];
