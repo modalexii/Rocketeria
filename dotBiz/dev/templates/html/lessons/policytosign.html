@@ -4,178 +4,424 @@
 </div><!-- /header-sub -->
 <div id="content_sub">
 <style>
-	.labels {{
+	.comment {
+		width: 100%;
+		background-color:#f7bd20;
+	}
+	.comment p :hover {
+		cursor: pointer;
+	}
+	.comment textarea {
+		width: 99%;
+		resize: none;
+		font-family: 'Quicksandregular', sans-serif;
+	}
+	.headingicon img {
+		height: 1em;
+		vertical-align: middle;
+	}
+	.labels {
 		display: inline-block;
 		width: 30%;
 		text-align: right;
 		text-decoration: none !important;
-	}}
-	.inputs {{
+	}
+	.inputs {
 		display: inline-block;
 		text-align: left;
-	}}
-	.validators {{
+	}
+	.validators {
 		display: inline-block;
 		text-align: right;
 		padding-left: 12px;
 		width: 20px;
-	}}
-	.signature-input {{
-		padding-top: 2px;
-		padding-bottom: 2px;
-		width: 90%;
-		border: 0;
-		outline: none;
-		text-align:center;
-		background-color: inherit;
-		border-bottom: 2px solid #ccc;
-	}}
-	input[type="text"].signature-input, input[type="email"].signature-input, select.form-input {{
+	}
+	.form-input {
+		text-align: left;
+		border-left: 2px solid #ccc;
+	}
+	input[type="text"].form-input, input[type="email"].form-input, select.form-input {
+		width: 100%;
 		font-size: 1.1em;
-	}}
-	.template {{
+	}
+	.template {
 		display: none;
-	}}
-	td.program {{
+	}
+	td.program {
 		padding-left: 24px;
-	}}
-	.larger {{
+	}
+	.comment {
+		width: 100%;
+		background-color:#f7bd20;
+	}
+	.comment p :hover {
+		cursor: pointer;
+	}
+	.comment textarea {
+		width: 99%;
+		resize: none;
+		font-family: 'Quicksandregular', sans-serif;
 		font-size: 1.1em;
-	}}
-	.gray {{
+	}
+	.comment img {
+		vertical-align: middle;
+		margin-top: -2px;
+		height: 1em;
+	}
+	.larger {
+		font-size: 1.1em;
+	}
+	.gray {
 		color: #ccc !important;
-	}}
-	.policies {{
+	}
+	#submit_ok {
+		height: 185px;
+	}
+	#submit_ok_thanks {
+		height: 97px;
+	}
+	#social_pointer {
+		line-height: 85px !important;
+		background: #04bde5;
+		color: #fff;
+		font-size: 1.4em;
+		font-weight: bold;
+		text-align: center;
+	}
+	.policies {
 		height: 80px;
-	}}
-	.release_table_box {{
+	}
+	.release_table_box {
 		text-align: right;
 		width: 20%;
-	}}
+	}
+	#policy_content {
+		width: 100%;
+		height: 300px;
+		overflow-y: scroll;
+		padding: 3px;
+		font-size: .9em;
+	}
+	#policy_loading {
+		color: #d79e05;
+	}
+	#policy_loading a {
+		color: #d79e05;
+	}
+	.digital_signature {
+		font-family: 'Dawning of a New Day', cursive !important;
+		border-bottom-style: dashed;
+		background-color: #f5ed14;
+		font-size: 2em !important;
+		width: 90% !important;
+	}
+	.reqd_asterisk {
+		color: red;
+		font-weight: bold;
+	}
 
 </style>
-
 <div id="hide_on_submit">
-<div id="pleasewait" style="text-align: center;">
-	Please wait while we fetch the latest Music Lesson Policies
-	<img src="/static/image/wait.gif"/>
-	<br/><br/>
-	If this page never loads entirely, then it is likely that Javascript is being blocked by your browser or network, and you will not be able to submit this form. In this case, you may <a href="/lessons/policies">read our Music Lessons Policies here</a> and stop by the store to sign them in-person. 
-	<br/><br/>
-	<strong>Policies must be signed <i>before</i> a student&#39;s first lesson!</strong>
-</div> <!-- /pleasewait -->
-<form id="sign" method="post" action="/sendmail/policyacceptance" accept-charset="utf-8">
-<div id="signature_form_content" style="display:none">
-<br/>
-	<hr/>
-	<p id="disclaimer" class="hideonfail"><big>By submitting your digital signature you signify your acceptance of our Music Lessons Policies which follow.</big></p>
-	<hr/>
-	<table id="form_table" border="0" cellpadding="1" cellspacing="0" style="width:100%" class="larger hideonfail">
-		<tbody>
-			<tr>
-				<td>
-					<table border="0" cellpadding="1" cellspacing="0" style="width:100%;">
-						<tbody>
-							<tr>
-								<td colspan=3>
-									<p>&quot;I give permission for Rocketeria to use photos and videos of myself and all minors enrolling on my account, captioned with a first name and last initial, in the following ways [not required]: &quot;</p>
-									<br/>
-								</td>
-							</tr>
-							<tr>
-								<td class="release_table_box">
-									<input type="checkbox" id="photo_release_website" value="Rocketeria Websites" name="photo_release"/>
-								</td>
-								<td class="release_table_label">
-									<label for="photo_release_website"> On Rocketeria's websites</label>
-								</td>
-								<td class="release_table_eg">
-									[<a href="/events/rockstravaganza" target="_blank">example</a>]
-								</td>
-							</tr>
-							<tr>
-								<td class="release_table_box">
-									<input type="checkbox" id="photo_release_social" value="Social Media Feeds" name="photo_release" />
-								</td>
-								<td class="release_table_label">
-									<label for="photo_release_social"> On social media feeds</label>
-								</td>
-								<td class="release_table_eg">
-									[<a href="https://www.facebook.com/rocketeria/photos/pb.19564590886.-2207520000.1409755099./10152198626070887/?type=3&theater" target="_blank">example</a>]
-								</td>
-							</tr>
-							<tr>
-								<td class="release_table_box">
-									<input type="checkbox" id="photo_release_lit" name="photo_release" value="Distributed Literature "/ >
-								</td>
-								<td class="release_table_label">
-									<label for="photo_release_lit"> In distributed literature including email</label>
-								</td>
-								<td class="release_table_eg">
-									[<a href="/static/html/cc-example/index.html" target="_blank">example</a>]
-								</td>
-							</tr>
-						</tbody>
-					</table>
-					<br/> 
-					<hr/>
-					<table border="0" class="hideonfail" cellpadding="1" cellspacing="0">
-						<tbody>
-							<tr>
-								<td colspan=4>
-								&quot;I have read and agree to abide by Rocketeria&#39;s Music Lessons Policies.&quot;
-								<br/>
-								<br/>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									First &amp; Last<br/>Name: 
-								</td>
-								<td style="width:35%">
-									<input type="text" class="signature-input" name="signature_name" />
-								</td>
-								<td>
-									Email: 
-								</td>
-								<td style="width:35%">
-									<input type="email" class="signature-input" name="signature_email"/ >
-								</td>
-							</tr> 
-						</tbody> 
-					</table> 
-
-					<br/>
-					<p style="text-align:center;">
-					<input class="btn animate signaturesubmit hideonfail" style="background-color:#ccc" type="submit" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SUBMIT &gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" onclick="unhighlightInputs('sign'); validateSignature(); return false;" ><!-- noscript-compat -->
-					<br/>
-					</p>
+<form id="policytosign" method="post" action="/sendmail/policytosign" accept-charset="utf-8">
+<p>
+	<big><span style="color: red;">&ast;Required</span></big>
+</p>
+<p>
+<table border="0" cellpadding="1" cellspacing="0" style="width:100%" class="larger">
+	<tbody>
+		<tr class="component_billto">
+			<td style="background-color: rgb(150, 35, 31);"><big><strong><span style="color:#FFFFFF" id="billto_heading">&#160;Bill To</span></strong></big></td>
+		</tr>
+		<tr class="component_billto">
+			<td>
+				<br/>
+				<p class="labels">First &amp; Last Name</p><p class="validators" id="reqd_billto_firstandlast"><span class="reqd_asterisk">&ast;</span></p><p class="inputs"><input type="text" class="form-input" name="billto_firstandlast"/></p><br/>
+				<p class="labels">Email</p><p class="validators" id="reqd_billto_email"><span class="reqd_asterisk">&ast;</span></p><p class="inputs"><input type="email" class="form-input" name="billto_email"/></p><br/>
+				<p class="labels"></p><p class="validators"></p><p class="inputs" style="font-size: 0.85em; text-align: right;"> &nbsp; &nbsp; &nbsp;<input type="checkbox" class="form-input" id="billto_wants_newsletter_box" name="billto_wants_newsletter"/> &nbsp;<label for="billto_wants_newsletter_box">I&#39;d like to receive your newsletter</label></p><br/>
+				<p class="labels">Mobile Phone</p><p class="validators" id="reqd_billto_mobilephone"><span class="reqd_asterisk">&ast;</span></p><p class="inputs"><input type="text" class="form-input" name="billto_mobilephone"/></p><br/>
+				<p class="labels">Alt Phone</p><p class="validators"> </p><p class="inputs"><input type="text" class="form-input" name="billto_altphone"/></p><br/>
+				<p class="labels">Street Address</p><p class="validators" id="reqd_billto_address1"><span class="reqd_asterisk">&ast;</span></p><p class="inputs"><input type="text" class="form-input" name="billto_address1"/></p><br/>
+				<p class="labels">City, State &amp; Zip</p><p class="validators" id="reqd_billto_address2"><span class="reqd_asterisk">&ast;</span></p><p class="inputs"><input type="text" class="form-input" name="billto_address2"/></p><br/>
+				<br/>
+				<br/>
 				</td>
-			</tr>
-		</tbody>
-	</table>
-	<br/>
-	<hr/>
-</div> <!-- /signature_form_content -->
+			</td>
+		</tr>
+		<tr class="component_student">
+			<td style="background-color: rgb(151, 2, 183);"><big><strong><span style="color:#FFFFFF">&#160;Student</span></strong></big></td>
+		</tr>
+		<tr class="component_student">
+			<td>
+				<br/>
+					<table border="0" cellpadding="1" cellspacing="0" style="width:100%;" class="student_same_as_bill_to">
+					<tbody>
+						<tr>
+							<td rowspan=3 style="text-align:right; width:30%;">Same as <i>Bill To</i>?</td>
+						</tr>
+						<tr>
+							<td rowspan=3 style="width:22px;"></td>
+						</tr>
+						<tr>
+							<td class="program"><input type="checkbox" id="student_same_as_bill_to" name="student_same_as_bill_to" value="yes"><label for="student_same_as_bill_to"> Yes</label></td>
+						</tr>
+					</tbody>
+				</table>
+				<br/>
+				<div id="student1" 
+					<br/>
+					<p class="labels">First &amp; Last Name</p><p class="validators"> </p><p class="inputs"><input type="text" class="form-input" name="student1_firstandlast"/></p><br/>
+					<p class="labels">Email</p><p class="validators"> </p><p class="inputs"><input type="text" class="form-input" name="student1_email"/></p><br/>
+					<p class="labels">Mobile Phone</p><p class="validators"> </p><p class="inputs"><input type="text" class="form-input" name="student1_mobilephone"/></p><br/>
+					<p class="labels">Alt Phone</p><p class="validators"> </p><p class="inputs"><input type="text" class="form-input" name="student1_altphone"/></p><br/>
+					<p class="labels">School</p><p class="validators"> </p><p class="inputs"><input type="text" class="form-input" name="student1_school"/></p><br/>
+					<p class="labels">Grade</p><p class="validators"> </p><p class="inputs">
+					<select class="form-input" name="student1_grade">
+						<option value="" selected="selected"></option>
+						<option value="Adult">Adult</option>
+						<option value="Pre-K">Pre-K</option>
+						<option value="1st">1st</option>
+						<option value="2nd">2nd</option>
+						<option value="3rd">3rd</option>
+						<option value="4th">4th</option>
+						<option value="5th">5th</option>
+						<option value="6th">6th</option>
+						<option value="7th">7th</option>
+						<option value="8th">8th</option>
+						<option value="9th">9th</option>
+						<option value="10th">10th</option>
+						<option value="11th">11th</option>
+						<option value="12th">12th</option>
+					</select>
+					</p><br/>
+				</div>
+				<br/>
+				<div id="student2" class="template">
+					<br/>
+					<p class="labels">First &amp; Last Name</p><p class="validators"> </p><p class="inputs"><input type="text" class="form-input" name="student2_firstandlast"/></p><br/>
+					<p class="labels">Email</p><p class="validators"> </p><p class="inputs"><input type="text" class="form-input" name="student2_email"/></p><br/>
+					<p class="labels">Mobile Phone</p><p class="validators"> </p><p class="inputs"><input type="text" class="form-input" name="student2_mobilephone"/></p><br/>
+					<p class="labels">Alt Phone</p><p class="validators"> </p><p class="inputs"><input type="text" class="form-input" name="student2_altphone"/></p><br/>
+					<p class="labels">School</p><p class="validators"> </p><p class="inputs"><input type="text" class="form-input" name="student2_school"/></p><br/>
+					<p class="labels">Grade</p><p class="validators"> </p><p class="inputs">
+					<select class="form-input" name="student2_grade">
+						<option value="-" selected="selected"></option>
+						<option value="Adult">Adult</option>
+						<option value="Pre-K">Pre-K</option>
+						<option value="1st">1st</option>
+						<option value="2nd">2nd</option>
+						<option value="3rd">3rd</option>
+						<option value="4th">4th</option>
+						<option value="5th">5th</option>
+						<option value="6th">6th</option>
+						<option value="7th">7th</option>
+						<option value="8th">8th</option>
+						<option value="9th">9th</option>
+						<option value="10th">10th</option>
+						<option value="11th">11th</option>
+						<option value="12th">12th</option>
+					</select>
+					</p><br/>
+					<br/>
+				</div>
+				<br/>
+				<div id="student3" class="template" style="display:none;">
+					<br/>
+					<p class="labels">First &amp; Last Name</p><p class="validators"> </p><p class="inputs"><input type="text" class="form-input" name="student3_firstandlast"/></p><br/>
+					<p class="labels">Email</p><p class="validators"> </p><p class="inputs"><input type="text" class="form-input" name="student3_email"/></p><br/>
+					<p class="labels">Mobile Phone</p><p class="validators"> </p><p class="inputs"><input type="text" class="form-input" name="student3_mobilephone"/></p><br/>
+					<p class="labels">Alt Phone</p><p class="validators"> </p><p class="inputs"><input type="text" class="form-input" name="student3_altphone"/></p><br/>
+					<p class="labels">School</p><p class="validators"> </p><p class="inputs"><input type="text" class="form-input" name="student3_school"/></p><br/>
+					<p class="labels">Grade</p><p class="validators"> </p><p class="inputs">
+					<select class="form-input" name="student3_grade">
+						<option value="-" selected="selected"></option>
+						<option value="Adult">Adult</option>
+						<option value="Pre-K">Pre-K</option>
+						<option value="1st">1st</option>
+						<option value="2nd">2nd</option>
+						<option value="3rd">3rd</option>
+						<option value="4th">4th</option>
+						<option value="5th">5th</option>
+						<option value="6th">6th</option>
+						<option value="7th">7th</option>
+						<option value="8th">8th</option>
+						<option value="9th">9th</option>
+						<option value="10th">10th</option>
+						<option value="11th">11th</option>
+						<option value="12th">12th</option>
+					</select>
+					</p><br/>
+					<br/>
+				</div>
+				<p class="labels">
+				<a href="" style="color: rgb(151, 2, 183); text-decoration: none;" id="add_student" onclick="return false;"><strong>&#x2795;&nbsp;&nbsp;add another</strong></a>
+				</p>
+				<br/>
+				<br/>
+			</td>
+		</tr>
+		<tr class="component_note">
+			<td>
+				<br/>
+				<div class="comment">
+					<p><b>&nbsp;<img src="/static/image/note.png"/>&nbsp;Add a note</b></p>
+					<textarea id="comment1" name="comment1"></textarea>
+				</div>
+				<br/>
+			</td>
+		</tr>
+		<tr class="component_chargeaccount">
+			<td>
+				<table border="0" cellpadding="1" cellspacing="0" style="width:100%;">
+					<tbody>
+						<tr>
+							<td colspan=3>
+								<hr/>
+								<br/>
+								<p style="text-align: justify;">
+									Rocketeria offers its students the ability to charge items to their store account. All charges-to-account are added to the following month&#39;s tuition.
+								</p>
+								<br/>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan=3 style="text-align:right; width:30%;">
+								<input type="checkbox" id="no_chargeaccount" name="no_chargeaccount" />
+							</td>
+						</tr>
+						<tr>
+							<td rowspan=2 style="width:22px; border-right:1px solid #0f0403;">
+							</td>
+						</tr>
+						<tr>
+							<td style="padding-left: 20px;">
+								<label for="no_chargeaccount">Check here to request that Rocketeria never allow charges-to-account</label>
+							</td>
+						</tr>
+						<tr>
+							<td colspan=3>
+								<br/>
+								<p style="text-align: justify;">
+									When you cancel lessons with an outstanding balance, it will be charged automatically to the credit card on file. 
+								</p>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<br/>
+			</td>
+		</tr>
+		<tr class="component_release">
+			<td>
+				<table border="0" cellpadding="1" cellspacing="0" style="width:100%;">
+					<tbody>
+						<tr>
+							<td colspan=3>
+								<hr/>
+								<br/>
+								<p style="text-align: justify;">
+									Rocketeria occasionally captures photos and videos of music lessons, jam sessions, performances and other goings-on, and uses these photos and videos in promotional materials, advertisements, and social media posts.
+								</p>
+								<br/>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan=3 style="text-align:right; width:30%;">
+								<input type="checkbox" id="no_media_release" name="no_media_release" />
+							</td>
+						</tr>
+						<tr>
+							<td rowspan=3 style="width:22px; border-right:1px solid #0f0403;">
+							</td>
+						</tr>
+						<tr>
+							<td style="padding-left: 20px;">
+								<label for="no_media_release">Check here to request that Rocketeria never use your likeness without your explicit consent</label>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<br/>
+			</td>
+		</tr>
+		<tr class="component_policy">
+			<br/>
+			<td>
+				<table border="0" cellpadding="1" cellspacing="0" style="width:100%;">
+					<tbody>
+						<tr>
+							<td>
+								<hr/>
+								<br/>
+								<div id="policy_content" class="hideonfail">
+									<p id="policy_loading">
+										Please wait while we fetch the latest Music Lesson Policies
+										<img src="/static/image/wait.gif"/>
+										<br/><br/>
+										If this text never disappears, then it is likely that Javascript is being blocked by your browser or network. In this case, please <a href="/lessons/policies" target="_blank">review our Music Lessons Policies here</a>. 
+									</p>
+								</div> <!-- /policy_content -->
+								<br/>
+								<hr/>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<br/> 
+				<table border="0" cellpadding="1" cellspacing="0" style="width:100%;">
+					<tbody>
+						<tr>
+							<td colspan=2>
+								<p>
+									&quot;I have read and agree to abide by Rocketeria&#39;s Music Lessons Policies&quot;
+									<br/>
+									<br/>
+								</p>
+							</td>
+						</tr>
+						<tr>
+							<td style="min-width: 150px;">
+								Digital Signature<br/>(Full Name)*
+							</td>
+							<td style="width:100%">
+								<input type="text" id="digital_signature_name" name="digital_signature_name" class="digital_signature form-input"/>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				</div>
+				<br/>
+			</td>
+		</tr>
+		<tr class="component_submit">
+			<td>
+				<p style="text-align:center;">
+				<input class="btn animate policytosignsubmit" style="background-color:#58a326" type="submit" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SUBMIT &gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" onclick="validatepolicytosign(); return false;"><!-- noscript-compat -->
+				<br/>
+				</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+</p>
 </form>
 </div> <!-- /hide_on_submit -->
 <div id="submit_ok" style="display:none;">
-	<div id="submit_ok_thanks">
-		<br/>
-		<h2>Thanks!</h2>
-		<p>
-		A copy of our Music Lessons Policies has been emailed to you for your records. Please note that our policies are subject to change.
-		</p>
-	</div>
-</div>
-<div id="submit_fail" style="display:none;">
-	<h2>Houston, we have a problem</h2>
-	<p>
-	Something went wrong and we likely did not receive your submission. Refresh this page and try again, or <a href="/contact">contact us</a> via phone or email while we get this sorted out.
-	</p>
+<div id="submit_ok_thanks">
+<h2>Thanks!</h2>
+<p>
+A copy of our Music Lessons Policies has been emailed to you, for your information. It is also available for review anytime, here on our web site: <a href="http://www.rocketeria.biz/lessons/policies">rocketeria.biz/lessons/policies</a>
+<br/><br/>
+You will receive tuition receipts as email .pdf attachments. Be sure to review the comments section (under the total paid) for important notes, including notice of upcoming changes to your schedule.
+</p>
 </div>
 
-<div id="policy_content" class="hideonfail">
-</div> <!-- /policy _content -->
+</div>
+<div id="submit_fail" style="display:none;">
+<h2>Houston, we have a problem</h2>
+<p>
+Something went wrong and we likely did not receive your submission. Refresh this page and try again, or <a href="/contact">contact us</a> via phone or email while we get this sorted out.
+</p>
+</div>
 </div> <!-- /content_sub -->
+
 <script src="/static/script/policytosign.js"></script>
