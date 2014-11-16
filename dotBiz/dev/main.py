@@ -64,7 +64,9 @@ class MainHandler(webapp2.RequestHandler):
 			title = "ROCKETERIA"
 
 		self.response.write(
-			templates.get("header").format(**locals())
+			templates.get("header").format(
+					title = title,
+				)
 		)
 
 		if uri == "index":
@@ -78,15 +80,26 @@ class MainHandler(webapp2.RequestHandler):
 				pass
 
 			nosidebar = True
-			random_quote = quote_feed.get_random()
 
-		self.response.write(content.format(**locals()))
+			random_quote = quote_feed.get_random()
+			random_quote = random_quote.encode('utf-8')
+
+			self.response.write(
+				content.format(
+					random_quote = random_quote
+				)
+			)
+
+		else:
+			# do not .format() here or else all braces will need to be escaped
+			self.response.write(content)
 
 		try:
 			nosidebar
 		except UnboundLocalError:
 			# drop a random quote in the sidebar before writing it out
 			random_quote = quote_feed.get_random()
+			random_quote = random_quote.encode('utf-8')
 			self.response.write(
 				templates.get("sidebar").format(**locals())
 			)
