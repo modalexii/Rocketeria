@@ -4,137 +4,165 @@
 </div><!-- /header-sub -->
 <div id="content_sub">
 <style>
-	.comment {{
+	.comment {
 		width: 100%;
 		background-color:#f7bd20;
-	}}
-	.comment p :hover {{
+	}
+	.comment p :hover {
 		cursor: pointer;
-	}}
-	.comment textarea {{
+	}
+	.comment textarea {
 		width: 99%;
 		resize: none;
 		font-family: 'Quicksandregular', sans-serif;
-	}}
-	.headingicon img {{
+	}
+	.headingicon img {
 		height: 1em;
 		vertical-align: middle;
-	}}
-	.labels {{
+	}
+	.labels {
 		display: inline-block;
 		width: 30%;
 		text-align: right;
 		text-decoration: none !important;
-	}}
-	.inputs {{
+	}
+	.inputs {
 		display: inline-block;
 		text-align: left;
-	}}
-	.validators {{
+	}
+	.validators {
 		display: inline-block;
 		text-align: right;
 		padding-left: 12px;
 		width: 20px;
-	}}
-	.form-input {{
+	}
+	.form-input {
 		text-align: left;
 		border-left: 2px solid #ccc;
-	}}
-	input[type="text"].form-input, input[type="email"].form-input, select.form-input {{
-		width: 130%;
+	}
+	input[type="text"].form-input, input[type="email"].form-input, select.form-input {
+		width: 100%;
 		font-size: 1.1em;
-	}}
-	.template {{
+	}
+	.template {
 		display: none;
-	}}
-	td.program {{
+	}
+	td.program {
 		padding-left: 24px;
-	}}
-	.comment {{
+	}
+	.comment {
 		width: 100%;
 		background-color:#f7bd20;
-	}}
-	.comment p :hover {{
+	}
+	.comment p :hover {
 		cursor: pointer;
-	}}
-	.comment textarea {{
+	}
+	.comment textarea {
 		width: 99%;
 		resize: none;
 		font-family: 'Quicksandregular', sans-serif;
 		font-size: 1.1em;
-	}}
-	.comment img {{
+	}
+	.comment img {
 		vertical-align: middle;
 		margin-top: -2px;
 		height: 1em;
-	}}
-	.larger {{
+	}
+	.larger {
 		font-size: 1.1em;
-	}}
-	.gray {{
+	}
+	.gray {
 		color: #ccc !important;
-	}}
-	#submit_ok {{
+	}
+	#submit_ok {
 		height: 185px;
-	}}
-	#submit_ok_thanks {{
+	}
+	#submit_ok_thanks {
 		height: 97px;
-	}}
-	#social_pointer {{
+	}
+	#social_pointer {
 		line-height: 85px !important;
 		background: #04bde5;
 		color: #fff;
 		font-size: 1.4em;
 		font-weight: bold;
 		text-align: center;
-	}}
-	.policies {{
+	}
+	.policies {
 		height: 80px;
-	}}
-	.release_table_box {{
+	}
+	.release_table_box {
 		text-align: right;
 		width: 20%;
-	}}
-	.release_table_label{{
-
-	}}
+	}
+	#policy_content {
+		width: 100%;
+		height: 300px;
+		overflow-y: scroll;
+		padding: 3px;
+		font-size: .9em;
+	}
+	#policy_loading {
+		color: #d79e05;
+	}
+	#policy_loading a {
+		color: #d79e05;
+	}
+	.digital_signature {
+		font-family: 'Dawning of a New Day', cursive !important;
+		border-bottom-style: dashed;
+		background-color: #f5ed14;
+		font-size: 2em !important;
+		width: 90% !important;
+	}
+	.reqd_asterisk {
+		color: red;
+		font-weight: bold;
+	}
 
 </style>
 <div id="hide_on_submit">
 <form id="enroll" method="post" action="/sendmail/enroll" accept-charset="utf-8">
 <big>Ready to take the plunge?</big>
-<br/><br/><p>Submit the questionnaire below and we&#39;ll be in touch shortly. Enter however much information you care to provide - only the first section, <i>Bill To</i>, is required.</p>
-<br/>
-<p>Submitting this form does not constitute a commitment to enroll.</p>
-<br/>
+<br/><br/>
+<p>
+	Submit the form below and we&#39;ll be in touch shortly. Enter however much information you care to provide. 
+	<br/><br/>
+</p>
+<p>
+	<small>(Submitting this form does not constitute a commitment to enroll.)</small>
+</p>
+<p>
+	<br/><big><span style="color: red;">&ast;Required</span></big>
+</p>
 <p>
 <table border="0" cellpadding="1" cellspacing="0" style="width:100%" class="larger">
 	<tbody>
-		<tr>
+		<tr class="component_billto">
 			<td style="background-color: rgb(150, 35, 31);"><big><strong><span style="color:#FFFFFF" id="billto_heading">&#160;Bill To</span></strong></big></td>
 		</tr>
-		<tr>
+		<tr class="component_billto">
 			<td>
 				<br/>
-				<p class="labels">First &amp; Last Name</p><p class="validators">&#9642;</p><p class="inputs"><input type="text" class="form-input" name="billto_firstandlast"/></p><br/>
-				<p class="labels">Email</p><p class="validators">&#9642;</p><p class="inputs"><input type="email" class="form-input" name="billto_email"/></p><br/>
-				<p class="labels"></p><p class="validators"></p><p class="inputs" style="font-size: 0.85em; text-align: right;"> &nbsp; &nbsp; &nbsp;<input type="checkbox" class="form-input" name="billto_wants_newsletter"/> &nbsp;I&#39;d like to receive your newsletter</p><br/>
-				<p class="labels">Mobile Phone</p><p class="validators">&#9642;</p><p class="inputs"><input type="text" class="form-input" name="billto_mobilephone"/></p><br/>
-				<p class="labels">Alt Phone</p><p class="validators">&#9643;</p><p class="inputs"><input type="text" class="form-input" name="billto_altphone"/></p><br/>
-				<p class="labels">Address</p><p class="validators">&#9642;</p><p class="inputs"><input type="text" class="form-input" name="billto_address1"/></p><br/>
-				<p class="labels">&nbsp;</p><p class="validators"></p><p class="inputs"><input type="text" class="form-input" name="billto_address2"/></p><br/>
+				<p class="labels">First &amp; Last Name</p><p class="validators" id="reqd_billto_firstandlast"><span class="reqd_asterisk">&ast;</span></p><p class="inputs"><input type="text" class="form-input" name="billto_firstandlast"/></p><br/>
+				<p class="labels">Email</p><p class="validators" id="reqd_billto_email"><span class="reqd_asterisk">&ast;</span></p><p class="inputs"><input type="email" class="form-input" name="billto_email"/></p><br/>
+				<p class="labels"></p><p class="validators"></p><p class="inputs" style="font-size: 0.85em; text-align: right;"> &nbsp; &nbsp; &nbsp;<input type="checkbox" class="form-input" id="billto_wants_newsletter_box" name="billto_wants_newsletter"/> &nbsp;<label for="billto_wants_newsletter_box">I&#39;d like to receive your newsletter</label></p><br/>
+				<p class="labels">Mobile Phone</p><p class="validators" id="reqd_billto_mobilephone"><span class="reqd_asterisk">&ast;</span></p><p class="inputs"><input type="text" class="form-input" name="billto_mobilephone"/></p><br/>
+				<p class="labels">Alt Phone</p><p class="validators"> </p><p class="inputs"><input type="text" class="form-input" name="billto_altphone"/></p><br/>
+				<p class="labels">Street Address</p><p class="validators" id="reqd_billto_address1"><span class="reqd_asterisk">&ast;</span></p><p class="inputs"><input type="text" class="form-input" name="billto_address1"/></p><br/>
+				<p class="labels">City, State &amp; Zip</p><p class="validators" id="reqd_billto_address2"><span class="reqd_asterisk">&ast;</span></p><p class="inputs"><input type="text" class="form-input" name="billto_address2"/></p><br/>
 				<br/>
 				<br/>
 				</td>
 			</td>
 		</tr>
-		<tr>
+		<tr class="component_student">
 			<td style="background-color: rgb(151, 2, 183);"><big><strong><span style="color:#FFFFFF">&#160;Student</span></strong></big></td>
 		</tr>
-		<tr>
+		<tr class="component_student">
 			<td>
 				<br/>
-					<table border="0" cellpadding="1" cellspacing="0" style="width:100%;">
+					<table border="0" cellpadding="1" cellspacing="0" style="width:100%;" class="student_same_as_bill_to">
 					<tbody>
 						<tr>
 							<td rowspan=3 style="text-align:right; width:30%;">Same as <i>Bill To</i>?</td>
@@ -143,19 +171,19 @@
 							<td rowspan=3 style="width:22px;"></td>
 						</tr>
 						<tr>
-							<td class="program"><input type="checkbox" id="student_same_as_bill_to" name="student_same_as_bill_to" value="yes"> Yes</td>
+							<td class="program"><input type="checkbox" id="student_same_as_bill_to" name="student_same_as_bill_to" value="yes"><label for="student_same_as_bill_to"> Yes</label></td>
 						</tr>
 					</tbody>
 				</table>
 				<br/>
 				<div id="student1" 
 					<br/>
-					<p class="labels">First &amp; Last Name</p><p class="validators">&#9643;</p><p class="inputs"><input type="text" class="form-input" name="student1_firstandlast"/></p><br/>
-					<p class="labels">Email</p><p class="validators">&#9643;</p><p class="inputs"><input type="text" class="form-input" name="student1_email"/></p><br/>
-					<p class="labels">Mobile Phone</p><p class="validators">&#9643;</p><p class="inputs"><input type="text" class="form-input" name="student1_mobilephone"/></p><br/>
-					<p class="labels">Alt Phone</p><p class="validators">&#9643;</p><p class="inputs"><input type="text" class="form-input" name="student1_altphone"/></p><br/>
-					<p class="labels">School</p><p class="validators">&#9643;</p><p class="inputs"><input type="text" class="form-input" name="student1_school"/></p><br/>
-					<p class="labels">Grade</p><p class="validators">&#9643;</p><p class="inputs">
+					<p class="labels">First &amp; Last Name</p><p class="validators"> </p><p class="inputs"><input type="text" class="form-input" name="student1_firstandlast"/></p><br/>
+					<p class="labels">Email</p><p class="validators"> </p><p class="inputs"><input type="text" class="form-input" name="student1_email"/></p><br/>
+					<p class="labels">Mobile Phone</p><p class="validators"> </p><p class="inputs"><input type="text" class="form-input" name="student1_mobilephone"/></p><br/>
+					<p class="labels">Alt Phone</p><p class="validators"> </p><p class="inputs"><input type="text" class="form-input" name="student1_altphone"/></p><br/>
+					<p class="labels">School</p><p class="validators"> </p><p class="inputs"><input type="text" class="form-input" name="student1_school"/></p><br/>
+					<p class="labels">Grade</p><p class="validators"> </p><p class="inputs">
 					<select class="form-input" name="student1_grade">
 						<option value="" selected="selected"></option>
 						<option value="Adult">Adult</option>
@@ -178,12 +206,12 @@
 				<br/>
 				<div id="student2" class="template">
 					<br/>
-					<p class="labels">First &amp; Last Name</p><p class="validators">&#9643;</p><p class="inputs"><input type="text" class="form-input" name="student2_firstandlast"/></p><br/>
-					<p class="labels">Email</p><p class="validators">&#9643;</p><p class="inputs"><input type="text" class="form-input" name="student2_email"/></p><br/>
-					<p class="labels">Mobile Phone</p><p class="validators">&#9643;</p><p class="inputs"><input type="text" class="form-input" name="student2_mobilephone"/></p><br/>
-					<p class="labels">Alt Phone</p><p class="validators">&#9643;</p><p class="inputs"><input type="text" class="form-input" name="student2_altphone"/></p><br/>
-					<p class="labels">School</p><p class="validators">&#9643;</p><p class="inputs"><input type="text" class="form-input" name="student2_school"/></p><br/>
-					<p class="labels">Grade</p><p class="validators">&#9643;</p><p class="inputs">
+					<p class="labels">First &amp; Last Name</p><p class="validators"> </p><p class="inputs"><input type="text" class="form-input" name="student2_firstandlast"/></p><br/>
+					<p class="labels">Email</p><p class="validators"> </p><p class="inputs"><input type="text" class="form-input" name="student2_email"/></p><br/>
+					<p class="labels">Mobile Phone</p><p class="validators"> </p><p class="inputs"><input type="text" class="form-input" name="student2_mobilephone"/></p><br/>
+					<p class="labels">Alt Phone</p><p class="validators"> </p><p class="inputs"><input type="text" class="form-input" name="student2_altphone"/></p><br/>
+					<p class="labels">School</p><p class="validators"> </p><p class="inputs"><input type="text" class="form-input" name="student2_school"/></p><br/>
+					<p class="labels">Grade</p><p class="validators"> </p><p class="inputs">
 					<select class="form-input" name="student2_grade">
 						<option value="-" selected="selected"></option>
 						<option value="Adult">Adult</option>
@@ -207,12 +235,12 @@
 				<br/>
 				<div id="student3" class="template" style="display:none;">
 					<br/>
-					<p class="labels">First &amp; Last Name</p><p class="validators">&#9643;</p><p class="inputs"><input type="text" class="form-input" name="student3_firstandlast"/></p><br/>
-					<p class="labels">Email</p><p class="validators">&#9643;</p><p class="inputs"><input type="text" class="form-input" name="student3_email"/></p><br/>
-					<p class="labels">Mobile Phone</p><p class="validators">&#9643;</p><p class="inputs"><input type="text" class="form-input" name="student3_mobilephone"/></p><br/>
-					<p class="labels">Alt Phone</p><p class="validators">&#9643;</p><p class="inputs"><input type="text" class="form-input" name="student3_altphone"/></p><br/>
-					<p class="labels">School</p><p class="validators">&#9643;</p><p class="inputs"><input type="text" class="form-input" name="student3_school"/></p><br/>
-					<p class="labels">Grade</p><p class="validators">&#9643;</p><p class="inputs">
+					<p class="labels">First &amp; Last Name</p><p class="validators"> </p><p class="inputs"><input type="text" class="form-input" name="student3_firstandlast"/></p><br/>
+					<p class="labels">Email</p><p class="validators"> </p><p class="inputs"><input type="text" class="form-input" name="student3_email"/></p><br/>
+					<p class="labels">Mobile Phone</p><p class="validators"> </p><p class="inputs"><input type="text" class="form-input" name="student3_mobilephone"/></p><br/>
+					<p class="labels">Alt Phone</p><p class="validators"> </p><p class="inputs"><input type="text" class="form-input" name="student3_altphone"/></p><br/>
+					<p class="labels">School</p><p class="validators"> </p><p class="inputs"><input type="text" class="form-input" name="student3_school"/></p><br/>
+					<p class="labels">Grade</p><p class="validators"> </p><p class="inputs">
 					<select class="form-input" name="student3_grade">
 						<option value="-" selected="selected"></option>
 						<option value="Adult">Adult</option>
@@ -240,10 +268,10 @@
 				<br/>
 			</td>
 		</tr>
-		<tr>
+		<tr class="component_programs">
 			<td style="background-color: rgb(88, 163, 38);"><big><strong><span style="color:#FFFFFF">&#160;Programs</span></strong></big></td>
 		</tr>
-		<tr>
+		<tr class="component_programs">
 			<td>
 				<br/>
 				<table border="0" cellpadding="1" cellspacing="0" style="width:100%;">
@@ -255,9 +283,24 @@
 							<td rowspan=3 style="width:22px; border-right:1px solid #0f0403;"></td>
 						</tr>
 						<tr>
-							<td class="program"><input type="checkbox" name="environment" value="private"> <strong>Private</strong></td>
-							<td class="program"><input type="checkbox" name="environment" value="group"> Group</td>
-							<td class="program"><input type="checkbox" name="environment" value="jam"> Jam</td>
+							<td class="program">
+								<input type="checkbox" id="env_private_box" name="environment" value="private">
+								<label for="env_private_box">
+									 <strong>Private</strong>
+								</label>
+							</td>
+							<td class="program">
+								<input type="checkbox" id="env_group_box" name="environment" value="group">
+								<label for="env_group_box">
+									 Group
+								 </label>
+							</td>
+							<td class="program">
+								<input type="checkbox" id="env_jam_box" name="environment" value="jam">
+								<label for="env_jam_box">
+									 Jam
+								</label>
+							</td>
 						</tr>
 					</tbody>
 				</table>
@@ -271,23 +314,78 @@
 							<td rowspan=6 style="width:22px; border-right:1px solid #0f0403;"></td>
 						</tr>
 						<tr>
-							<td class="program"><input type="checkbox" name="instrument" value="guitar"> Guitar</td>
-							<td class="program"><input type="checkbox" name="instrument" value="voice"> Voice</td>
-							<td class="program"><input type="checkbox" name="instrument" value="tenor banjo"> Tenor Banjo</td>
+							<td class="program">
+								<input type="checkbox" id="program_guitar_box" name="instrument" value="guitar">
+								<label for="program_guitar_box">
+									 Guitar
+								</label>
+							</td>
+							<td class="program">
+								<input type="checkbox" id="program_voice_box" name="instrument" value="voice">
+								<label for="program_voice_box">
+									 Voice
+								</label>
+							</td>
+							<td class="program">
+								<input type="checkbox" id="program_tbanjo_box" name="instrument" value="tenor banjo">
+								<label for="program_tbanjo_box">
+									 Tenor Banjo
+								</label>
+							</td>
 						</tr>
 						<tr>
-							<td class="program"><input type="checkbox" name="instrument" value="bass"> Bass</td>
-							<td class="program"><input type="checkbox" name="instrument" value="alto sax"> Alto Sax</td>
-							<td class="program"><input type="checkbox" name="instrument" value="mandolin"> Mandolin</td>
+							<td class="program">
+								<input type="checkbox" id="program_bass_box" name="instrument" value="bass">
+								<label for="program_bass_box">
+									 Bass
+								</label>
+							</td>
+							<td class="program">
+								<input type="checkbox" id="program_asax_box" name="instrument" value="alto sax">
+								<label for="program_asax_box">
+									 Alto Sax
+								</label>
+							</td>
+							<td class="program">
+								<input type="checkbox" id="program_mandolin_box" name="instrument" value="mandolin">
+								<label for="program_mandolin_box">
+									 Mandolin
+								</label>
+							</td>
 						</tr>
 						<tr>
-							<td class="program"><input type="checkbox" name="instrument" value="piano"> Piano</td>
-							<td class="program"><input type="checkbox" name="instrument" value="trumpet"> Trumpet</td>
-							<td class="program"><input type="checkbox" name="instrument" value="ukulele"> Ukulele</td>
+							<td class="program">
+								<input type="checkbox" id="program_piano_box" name="instrument" value="piano">
+								<label for="program_piano_box">
+									 Piano
+								</label>
+							</td>
+							<td class="program">
+								<input type="checkbox" id="program_trumpet_box" name="instrument" value="trumpet">
+								<label for="program_trumpet_box">
+									 Trumpet
+								</label>
+							</td>
+							<td class="program">
+								<input type="checkbox" id="program_ukulele_box" name="instrument" value="ukulele">
+								<label for="program_ukulele_box">
+									 Ukulele
+								</label>
+							</td>
 						</tr>
 						<tr>
-							<td class="program"><input type="checkbox" name="instrument" value="drums"> Drums</td>
-							<td class="program"><input type="checkbox" name="instrument" value="clarinet"> Clarinet</td>
+							<td class="program">
+								<input type="checkbox" id="program_drums_box" name="instrument" value="drums">
+								<label for="program_drums_box">
+									 Drums
+								</label>
+							</td>
+							<td class="program">
+								<input type="checkbox" id="program_clarinet_box" name="instrument" value="clarinet">
+								<label for="program_clarinet_box">
+									 Clarinet
+								</label>
+							</td>
 							<td class="program">&nbsp;</td>
 						</tr>
 					</tbody>
@@ -302,9 +400,24 @@
 							<td rowspan=3 style="width:22px; border-right:1px solid #0f0403;"></td>
 						</tr>
 						<tr>
-							<td class="program"><input type="checkbox" name="expertise" value="beginner"> Beginner</td>
-							<td class="program"><input type="checkbox" name="expertise" value="intermediate"> Intermediate</td>
-							<td class="program"><input type="checkbox" name="expertise" value="advanced"> Advanced</td>
+							<td class="program">
+								<input type="checkbox" id="program_beginner_box" name="expertise" value="beginner">
+									<label for="program_beginner_box">
+										 Beginner
+									</label>
+							</td>
+							<td class="program">
+								<input type="checkbox" id="program_intermediate_box" name="expertise" value="intermediate">
+									<label for="program_intermediate_box">
+										 Intermediate
+									</label>
+							</td>
+							<td class="program">
+								<input type="checkbox" id="program_advanced_box" name="expertise" value="advanced">
+									<label for="program_advanced_box">
+										 Advanced
+									</label>
+							</td>
 						</tr>
 					</tbody>
 				</table>
@@ -318,29 +431,74 @@
 							<td rowspan=5 style="width:22px; border-right:1px solid #0f0403;"></td>
 						</tr>
 						<tr>
-							<td class="program"><input type="checkbox" name="teacher" value="any"> <strong>Any</strong></td>
-							<td class="program"><input type="checkbox" name="teacher" value="allan y"> Allan Y.</td>
-							<td class="program"><input type="checkbox" name="teacher" value="brian w"> Brian W.</td>
+							<td class="program">
+								<input type="checkbox" id="program_any_box" name="teacher" value="any">
+								<label for="program_any_box">
+									 <strong>Any</strong>
+								</label>
+							</td>
+							<td class="program">
+								<input type="checkbox" id="program_allany_box" name="teacher" value="allan y">
+								<label for="program_allany_box">
+									 Allan Y.
+								</label>
+							</td>
+							<td class="program">
+								<input type="checkbox" id="program_brianw_box" name="teacher" value="brian w">
+								<label for="program_brianw_box">
+									 Brian W.
+								</label>
+							</td>
 						</tr>
 						<tr>
-							<td class="program"><input type="checkbox" name="teacher" value="chris c"> Chris C.</td>
-							<td class="program"><input type="checkbox" name="teacher" value="dave p"> Dave P.</td>
-							<td class="program"><input type="checkbox" name="teacher" value="geoff e"> Geoff E.</td>
+							<td class="program">
+								<input type="checkbox" id="program_chrisc_box" name="teacher" value="chris c">
+								<label for="program_chrisc_box">
+									 Chris C.
+								</label>
+							</td>
+							<td class="program">
+								<input type="checkbox" id="program_davep_box" name="teacher" value="dave p">
+								<label for="program_davep_box">
+									 Dave P.
+								</label>
+							</td>
+							<td class="program">
+								<input type="checkbox" id="program_geoffe_box" name="teacher" value="geoff e">
+								<label for="program_geoffe_box">
+								 	 Geoff E.
+								</label>
+							</td>
 						</tr>
 						<tr>
-							<td class="program"><input type="checkbox" name="teacher" value="greg e"> Greg E.</td>
-							<td class="program"><input type="checkbox" name="teacher" value="kris f"> Kris F.</td>
-							<td class="program"><input type="checkbox" name="teacher" value="luke s"> Luke S.</td>
+							<td class="program">
+								<input type="checkbox" id="program_grege_box" name="teacher" value="greg e">
+								<label for="program_grege_box">
+									 Greg E.
+								</label>
+							</td>
+							<td class="program">
+								<input type="checkbox" id="program_krisf_box" name="teacher" value="kris f">
+								<label for="program_krisf_box">
+									 Kris F.
+								</label>
+							</td>
+							<td class="program">
+								<input type="checkbox" id="program_lukes_box" name="teacher" value="luke s">
+								<label for="program_lukes_box">
+									 Luke S.
+								</label>
+							</td>
 						</tr>
 					</tbody>
 				</table>
 				<br/>
 			</td>
 		</tr>
-		<tr>
+		<tr class="component_schedule">
 			<td style="background-color: rgb(4, 189, 229);">&#160;<big><strong><span style="color:#FFFFFF">&#160;Schedule</span></strong></big></td>
 		</tr>
-		<tr>
+		<tr class="component_schedule">
 			<td>
 				<br/>
 				<table border="0" cellpadding="1" cellspacing="0" style="width:100%;">
@@ -353,9 +511,18 @@
 						</tr>
 						<tr>
 							<td class="program">
-								<input type="radio" name="recurrence" value="weekly"> <strong>Weekly</strong><br/>
-								<input type="radio" name="recurrence" value="intermittently"> Intermittently<br/>
-								<input type="radio" name="recurrence" value="just one session"> Just One Session<br/>
+								<input type="radio" id="schedule_weekly_box" name="recurrence" value="weekly">
+								<label for="schedule_weekly_box">
+									 <strong>Weekly</strong><br/>
+								</label>
+								<input type="radio" id="schedule_intermit_box" name="recurrence" value="intermittently">
+								<label for="schedule_intermit_box">
+									 Intermittently<br/>
+								</label>
+								<input type="radio" id="schedule_justone_box" name="recurrence" value="just one session">
+								<label for="schedule_justone_box">
+									 Just One Session<br/>
+								</label>
 							</td>
 						</tr>
 					</tbody>
@@ -370,16 +537,47 @@
 							<td rowspan=4 style="width:22px; border-right:1px solid #0f0403;"></td>
 						</tr>
 						<tr>
-							<td class="program"><input type="checkbox" name="day_of_week" value="mondays"> Mondays</td>
-							<td class="program"><input type="checkbox" name="day_of_week" value="thursdays"> Thursdays</td>
+							<td class="program">
+								<input type="checkbox" id="schedule_mon_box" name="day_of_week" value="mondays">
+								<label for="schedule_mon_box">
+									 Mondays
+								</label>
+							</td>
+							<td class="program">
+
+								<input type="checkbox" id="schedule_thur_box" name="day_of_week" value="thursdays">
+								<label for="schedule_thur_box">
+									 Thursdays
+								</label>
+							</td>
 						</tr>
 						<tr>
-							<td class="program"><input type="checkbox" name="day_of_week" value="tuesdays"> Tuesdays</td>
-							<td class="program"><input type="checkbox" name="day_of_week" value="fridays"> Fridays</td>
+							<td class="program">
+								<input type="checkbox" id="schedule_tues_box" name="day_of_week" value="tuesdays">
+								<label for="schedule_tues_box">
+									 Tuesdays
+								</label>
+							</td>
+							<td class="program">
+								<input type="checkbox" id="schedule_fri_box" name="day_of_week" value="fridays">
+								<label for="schedule_fri_box">
+									 Fridays
+								</label>
+							</td>
 						</tr>
 						<tr>
-							<td class="program"><input type="checkbox" name="day_of_week" value="wednesdays"> Wednesdays</td>
-							<td class="program"><input type="checkbox" name="day_of_week" value="saturdays"> Saturdays</td>
+							<td class="program">
+								<input type="checkbox" id="schedule_wed_box" name="day_of_week" value="wednesdays">
+								<label for="schedule_wed_box">
+									 Wednesdays
+								</label>
+							</td>
+							<td class="program">
+								<input type="checkbox" id="schedule_sat_box" name="day_of_week" value="saturdays">
+								<label for="schedule_sat_box">
+									 Saturdays
+								</label>
+							</td>
 						</tr>
 					</tbody>
 				</table>
@@ -393,97 +591,186 @@
 							<td rowspan=7 style="width:22px; border-right:1px solid #0f0403;"></td>
 						</tr>
 						<tr>
-							<td class="program"><input type="checkbox" name="time_range" value="10 am - 12 pm"> 10 am - 12 pm - Sat Only</td>
+							<td class="program">
+								<input type="checkbox" id="program_time1_box"  name="time_range" value="10 am - 12 pm">
+								<label for="program_time1_box">
+									 10 am - 12 pm - Sat Only
+								</label>
+							</td>
 						</tr>
 						<tr>
-							<td class="program"><input type="checkbox" name="time_range" value="12:30 pm - 1:30 pm"> 12:30 pm - 1:30 pm - Sat Only</td>
+							<td class="program">
+								<input type="checkbox" id="program_time2_box"  name="time_range" value="12:30 pm - 1:30 pm">
+								<label for="program_time2_box">
+									 12:30 pm - 1:30 pm - Sat Only
+								</label>
+							</td>
 						</tr>
 						<tr>
-							<td class="program"><input type="checkbox" name="time_range" value="2 pm - 3:30 pm"> 2 pm - 3:30 pm - M T W Th F S</td>
+							<td class="program">
+								<input type="checkbox" id="program_time3_box"  name="time_range" value="2 pm - 3:30 pm">
+								<label for="program_time3_box">
+									 2 pm - 3:30 pm - M T W Th F S
+								</label>
+							</td>
 						</tr>
 						<tr>
-							<td class="program"><input type="checkbox" name="time_range" value="4 pm - 6:30 pm"> 4 pm - 6:30 pm - M T W Th F</td>
+							<td class="program">
+								<input type="checkbox" id="program_time4_box"  name="time_range" value="4 pm - 6:30 pm">
+								<label for="program_time4_box">
+									 4 pm - 6:30 pm - M T W Th F
+								</label>
+							</td>
 						</tr>
 						<tr>
-							<td class="program"><input type="checkbox" name="time_range" value="7 pm - 8:30 pm"> 7 pm - 8:30 pm - M T W Th F</td>
+							<td class="program">
+								<input type="checkbox" id="program_time5_box"  name="time_range" value="7 pm - 8:30 pm">
+								<label for="program_time5_box">
+									 7 pm - 8:30 pm - M T W Th F
+								</label>
+							</td>
 						</tr>
 					</tbody>
 				</table>
+			</td>
+		</tr>
+		<tr class="component_note">
+			<td>
 				<br/>
 				<div class="comment">
-					<p><b>&nbsp;<img src="/static/image/note.png"/>&nbsp;Add a note</b> (optional)</p>
+					<p><b>&nbsp;<img src="/static/image/note.png"/>&nbsp;Add a note</b></p>
 					<textarea id="comment1" name="comment1"></textarea>
 				</div>
 				<br/>
-				<hr/>
-				<br/>
+			</td>
+		</tr>
+		<tr class="component_chargeaccount">
+			<td>
 				<table border="0" cellpadding="1" cellspacing="0" style="width:100%;">
 					<tbody>
 						<tr>
 							<td colspan=3>
-								<p>&quot;I give permission for Rocketeria to use photos and videos of the above student(s), captioned with a first name and last initial, in the following ways: &quot;</p>
+								<hr/>
+								<br/>
+								<p style="text-align: justify;">
+									Rocketeria offers its students the ability to charge items to their store account. All charges-to-account are added to the following month&#39;s tuition.
+								</p>
+								<br/>
 							</td>
 						</tr>
 						<tr>
-							<td class="release_table_box">
-								<input type="checkbox" id="photo_release_website" value="Rocketeria Websites" name="photo_release" />
-							</td>
-							<td class="release_table_label">
-								<label for="photo_release_website"> On Rocketeria's websites</label>
-							</td>
-							<td class="release_table_eg">
-								[<a href="/events/rockstravaganza" target="_blank">example</a>]
+							<td rowspan=3 style="text-align:right; width:30%;">
+								<input type="checkbox" id="no_chargeaccount" name="no_chargeaccount" />
 							</td>
 						</tr>
 						<tr>
-							<td class="release_table_box">
-								<input type="checkbox" id="photo_release_social" value="Social Media Feeds" name="photo_release" />
-							</td>
-							<td class="release_table_label">
-								<label for="photo_release_social"> On social media feeds</label>
-							</td>
-							<td class="release_table_eg">
-								[<a href="https://www.facebook.com/rocketeria/photos/pb.19564590886.-2207520000.1409755099./10152198626070887/?type=3&theater" target="_blank">example</a>]
+							<td rowspan=2 style="width:22px; border-right:1px solid #0f0403;">
 							</td>
 						</tr>
 						<tr>
-							<td class="release_table_box">
-								<input type="checkbox" id="photo_release_lit" name="photo_release" value="Distributed Literature "/>
+							<td style="padding-left: 20px;">
+								<label for="no_chargeaccount">Check here to request that Rocketeria never allow charges-to-account</label>
 							</td>
-							<td class="release_table_label">
-								<label for="photo_release_lit"> In distributed literature including email</label>
+						</tr>
+						<tr>
+							<td colspan=3>
+								<br/>
+								<p style="text-align: justify;">
+									When you cancel lessons with an outstanding balance, it will be charged automatically to the credit card on file. 
+								</p>
 							</td>
-							<td class="release_table_eg">
-								[<a href="/static/html/cc-example/index.html" target="_blank">example</a>]
+						</tr>
+					</tbody>
+				</table>
+				<br/>
+			</td>
+		</tr>
+		<tr class="component_release">
+			<td>
+				<table border="0" cellpadding="1" cellspacing="0" style="width:100%;">
+					<tbody>
+						<tr>
+							<td colspan=3>
+								<hr/>
+								<br/>
+								<p style="text-align: justify;">
+									Rocketeria occasionally captures photos and videos of music lessons, jam sessions, performances and other goings-on, and uses these photos and videos in promotional materials, advertisements, and social media posts.
+								</p>
+								<br/>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan=3 style="text-align:right; width:30%;">
+								<input type="checkbox" id="no_media_release" name="no_media_release" />
+							</td>
+						</tr>
+						<tr>
+							<td rowspan=3 style="width:22px; border-right:1px solid #0f0403;">
+							</td>
+						</tr>
+						<tr>
+							<td style="padding-left: 20px;">
+								<label for="no_media_release">Check here to request that Rocketeria never use your likeness without your explicit consent</label>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<br/>
+			</td>
+		</tr>
+		<tr class="component_policy">
+			<br/>
+			<td>
+				<table border="0" cellpadding="1" cellspacing="0" style="width:100%;">
+					<tbody>
+						<tr>
+							<td>
+								<hr/>
+								<br/>
+								<div id="policy_content" class="hideonfail">
+									<p id="policy_loading">
+										Please wait while we fetch the latest Music Lesson Policies
+										<img src="/static/image/wait.gif"/>
+										<br/><br/>
+										If this text never disappears, then it is likely that Javascript is being blocked by your browser or network. In this case, please <a href="/lessons/policies" target="_blank">review our Music Lessons Policies here</a>. 
+									</p>
+								</div> <!-- /policy_content -->
+								<br/>
+								<hr/>
 							</td>
 						</tr>
 					</tbody>
 				</table>
 				<br/> 
-				<hr/>
-				<br/>
 				<table border="0" cellpadding="1" cellspacing="0" style="width:100%;">
 					<tbody>
 						<tr>
-							<td rowspan=3 class="policy_checkbox" style="text-align:right; width:30%;">
-								<input type="checkbox" id="read_policies" name="read_policies" />
+							<td colspan=2>
+								<p>
+									&quot;I have read and agree to abide by Rocketeria&#39;s Music Lessons Policies&quot;
+									<br/>
+									<br/>
+								</p>
 							</td>
 						</tr>
 						<tr>
-							<td rowspan=3 class="policy_checkbox" style="width:22px; border-right:1px solid #0f0403;">
+							<td style="min-width: 150px;">
+								Digital Signature<br/>(Full Name)*
 							</td>
-						</tr>
-						<tr>
-							<td class="policy_checkbox" style="padding-left: 20px;">
-								<label for="read_policies">&quot;I have read and agree to abide by Rocketeria&#39;s <a href="/lessons/policies" target="_blank">Music Lessons Policies</a>&quot;</label>
+							<td style="width:100%">
+								<input type="text" id="digital_signature_name" name="digital_signature_name" class="digital_signature form-input"/>
 							</td>
 						</tr>
 					</tbody>
 				</table>
 				</div>
 				<br/>
+			</td>
+		</tr>
+		<tr class="component_submit">
+			<td>
 				<p style="text-align:center;">
-				<input class="btn animate enrollsubmit" style="background-color:#58a326" type="submit" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SUBMIT &gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" onclick="unhighlightInputs('enroll'); validateEnroll(); return false;"><!-- noscript-compat -->
+				<input class="btn animate enrollsubmit" style="background-color:#58a326" type="submit" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SUBMIT &gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" onclick="validateEnroll(); return false;"><!-- noscript-compat -->
 				<br/>
 				</p>
 			</td>
@@ -492,7 +779,7 @@
 </table>
 </p>
 </form>
-</div>
+</div> <!-- /hide_on_submit -->
 <div id="submit_ok" style="display:none;">
 <div id="submit_ok_thanks">
 <h2>Thanks!</h2>
