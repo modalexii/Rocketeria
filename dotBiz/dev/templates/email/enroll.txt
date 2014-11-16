@@ -14,7 +14,7 @@ Student same as Bill To? {student_same_as_bill_to}
 Programs:
     Environment: {lesson_environment}
     Instrument(s): {instrument}
-    Expertise: {expertise}
+    Skill Level: {expertise}
     Teacher(s): {teacher}
 
 Schedule:
@@ -25,5 +25,10 @@ Schedule:
 Note:
     {comment1}
 
-Photo release rights:
-    {photo_release}
+Charges to Account:
+	{chargeaccount_text}
+
+Photo release:
+    {photo_release_text}
+
+Signature: {digital_signature_name}
