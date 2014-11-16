@@ -30,6 +30,9 @@ handlers:
 - url: /robots.txt
   static_files: static/robots.txt
   upload: static/robots.txt
+- url: /favicon.ico
+  static_files: static/image/favicon.ico
+  upload: static/image/favicon.ico
 - url: /templates
   static_dir: templates
   application_readable: true
