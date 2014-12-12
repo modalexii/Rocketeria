@@ -1,3 +1,6 @@
+# The version must be the first thing between double quotes "" in
+# this file or else the update_prod_from_dev script must be edited!
+
 def version():
 	return "1.3.1"
 
