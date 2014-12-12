@@ -21,19 +21,19 @@ Did a link in an advertisement, flyer or email land you here? <br/>Help us out w
 </p>
 </div><!-- /content_sub -->
 <script type="text/javascript">
-function reportDeadLink() {{
+function reportDeadLink() {
 	$('a.report').html('<img src="/static/image/wait.gif" style="padding-left:70px;padding-right:70px;"/>');
-	$.post('/sendmail/deadlink', {{
+	$.post('/sendmail/deadlink', {
 			'badurl' : document.URL
-	}})
-	.done(function() {{
+	})
+	.done(function() {
 		alert('You rock! Click OK to go to the home page.');
 		window.location = '/';
-	}})
-	.fail(function(data, textStatus, xhr) {{
+	})
+	.fail(function(data, textStatus, xhr) {
 		// thank them anyway
 		alert('Thanks! Click OK to go to the home page.');
 		window.location = '/';
-	}});
-}}
+	});
+}
 </script>

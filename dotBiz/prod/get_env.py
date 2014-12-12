@@ -1,5 +1,8 @@
+# The version must be the first thing between double quotes "" in
+# this file or else the update_prod_from_dev script must be edited!
+
 def version():
-	return "1.01"
+	return "1.3.1"
 
 def from_url(url):
 	if "127.0" in url or "localhost" in url:

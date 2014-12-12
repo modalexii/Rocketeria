@@ -1,6 +1,6 @@
 <div id="header-sub">
 <img class="bg-header-sub" src="/static/image/header-green.png" width="705px" height="82px"/>
-<h1>Enroll</h1>
+<h1>Policy Acceptance</h1>
 </div><!-- /header-sub -->
 <div id="content_sub">
 <style>
@@ -121,25 +121,11 @@
 	}
 
 </style>
-
 <div id="hide_on_submit">
-<form id="enroll" method="post" action="/sendmail/enroll" accept-charset="utf-8">
-<big>
-	<span class="click2change">Ready to take the plunge?
-	<br/><br/></span>
-
-	<p>
-		<span>Submit the form below and we&#39;ll be in touch shortly. Enter however much information you care to provide. 
-		<br/><br/></span>
-	</p>
-	<p>
-		<span>(Submitting this form does not constitute a commitment to enroll.)</span>
-	</p>
-	<p>
-		<span><br/><span style="color: red;">&ast;Required</span></span>
-	</p>
-</big>
-
+<form id="policytosign" method="post" action="/sendmail/policytosign" accept-charset="utf-8">
+<p>
+	<big><span style="color: red;">&ast;Required</span></big>
+</p>
 <p>
 <table border="0" cellpadding="1" cellspacing="0" style="width:100%" class="larger">
 	<tbody>
@@ -271,372 +257,6 @@
 				</p>
 				<br/>
 				<br/>
-			</td>
-		</tr>
-		<tr class="component_programs">
-			<td style="background-color: rgb(88, 163, 38);"><big><strong><span style="color:#FFFFFF">&#160;Programs</span></strong></big></td>
-		</tr>
-		<tr class="component_programs">
-			<td>
-				<br/>
-				<table border="0" cellpadding="1" cellspacing="0" style="width:100%;">
-					<tbody>
-						<tr>
-							<td rowspan=3 style="text-align:right; width:30%;">Environment</td>
-						</tr>
-						<tr>
-							<td rowspan=3 style="width:22px; border-right:1px solid #0f0403;"></td>
-						</tr>
-						<tr>
-							<td class="program">
-								<input type="checkbox" id="env_private_box" name="environment" value="private">
-								<label for="env_private_box">
-									 <strong>Private</strong>
-								</label>
-							</td>
-							<td class="program">
-								<input type="checkbox" id="env_group_box" name="environment" value="group">
-								<label for="env_group_box">
-									 Group
-								 </label>
-							</td>
-							<td class="program">
-								<input type="checkbox" id="env_jam_box" name="environment" value="jam">
-								<label for="env_jam_box">
-									 Jam
-								</label>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-				<br/>
-				<table border="0" cellpadding="1" cellspacing="0" style="width:100%;">
-					<tbody>
-						<tr>
-							<td rowspan=6 style="text-align:right; width:30%;">Instruments</td>
-						</tr>
-						<tr>
-							<td rowspan=6 style="width:22px; border-right:1px solid #0f0403;"></td>
-						</tr>
-						<tr>
-							<td class="program">
-								<input type="checkbox" id="program_guitar_box" name="instrument" value="guitar">
-								<label for="program_guitar_box">
-									 Guitar
-								</label>
-							</td>
-							<td class="program">
-								<input type="checkbox" id="program_voice_box" name="instrument" value="voice">
-								<label for="program_voice_box">
-									 Voice
-								</label>
-							</td>
-							<td class="program">
-								<input type="checkbox" id="program_tbanjo_box" name="instrument" value="tenor banjo">
-								<label for="program_tbanjo_box">
-									 Tenor Banjo
-								</label>
-							</td>
-						</tr>
-						<tr>
-							<td class="program">
-								<input type="checkbox" id="program_bass_box" name="instrument" value="bass">
-								<label for="program_bass_box">
-									 Bass
-								</label>
-							</td>
-							<td class="program">
-								<input type="checkbox" id="program_asax_box" name="instrument" value="alto sax">
-								<label for="program_asax_box">
-									 Alto Sax
-								</label>
-							</td>
-							<td class="program">
-								<input type="checkbox" id="program_mandolin_box" name="instrument" value="mandolin">
-								<label for="program_mandolin_box">
-									 Mandolin
-								</label>
-							</td>
-						</tr>
-						<tr>
-							<td class="program">
-								<input type="checkbox" id="program_piano_box" name="instrument" value="piano">
-								<label for="program_piano_box">
-									 Piano
-								</label>
-							</td>
-							<td class="program">
-								<input type="checkbox" id="program_trumpet_box" name="instrument" value="trumpet">
-								<label for="program_trumpet_box">
-									 Trumpet
-								</label>
-							</td>
-							<td class="program">
-								<input type="checkbox" id="program_ukulele_box" name="instrument" value="ukulele">
-								<label for="program_ukulele_box">
-									 Ukulele
-								</label>
-							</td>
-						</tr>
-						<tr>
-							<td class="program">
-								<input type="checkbox" id="program_drums_box" name="instrument" value="drums">
-								<label for="program_drums_box">
-									 Drums
-								</label>
-							</td>
-							<td class="program">
-								<input type="checkbox" id="program_clarinet_box" name="instrument" value="clarinet">
-								<label for="program_clarinet_box">
-									 Clarinet
-								</label>
-							</td>
-							<td class="program">&nbsp;</td>
-						</tr>
-					</tbody>
-				</table>
-				<br/>
-				<table border="0" cellpadding="1" cellspacing="0" style="width:100%;">
-					<tbody>
-						<tr>
-							<td rowspan=3 style="text-align:right; width:30%;">Skill Level</td>
-						</tr>
-						<tr>
-							<td rowspan=3 style="width:22px; border-right:1px solid #0f0403;"></td>
-						</tr>
-						<tr>
-							<td class="program">
-								<input type="checkbox" id="program_beginner_box" name="expertise" value="beginner">
-									<label for="program_beginner_box">
-										 Beginner
-									</label>
-							</td>
-							<td class="program">
-								<input type="checkbox" id="program_intermediate_box" name="expertise" value="intermediate">
-									<label for="program_intermediate_box">
-										 Intermediate
-									</label>
-							</td>
-							<td class="program">
-								<input type="checkbox" id="program_advanced_box" name="expertise" value="advanced">
-									<label for="program_advanced_box">
-										 Advanced
-									</label>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-				<br/>
-				<table border="0" cellpadding="1" cellspacing="0" style="width:100%;">
-					<tbody>
-						<tr>
-							<td rowspan=5 style="text-align:right; width:30%;">Teachers</td>
-						</tr>
-						<tr>
-							<td rowspan=5 style="width:22px; border-right:1px solid #0f0403;"></td>
-						</tr>
-						<tr>
-							<td class="program">
-								<input type="checkbox" id="program_any_box" name="teacher" value="any">
-								<label for="program_any_box">
-									 <strong>Any</strong>
-								</label>
-							</td>
-							<td class="program">
-								<input type="checkbox" id="program_allany_box" name="teacher" value="allan y">
-								<label for="program_allany_box">
-									 Allan Y.
-								</label>
-							</td>
-							<td class="program">
-								<input type="checkbox" id="program_brianw_box" name="teacher" value="brian w">
-								<label for="program_brianw_box">
-									 Brian W.
-								</label>
-							</td>
-						</tr>
-						<tr>
-							<td class="program">
-								<input type="checkbox" id="program_chrisc_box" name="teacher" value="chris c">
-								<label for="program_chrisc_box">
-									 Chris C.
-								</label>
-							</td>
-							<td class="program">
-								<input type="checkbox" id="program_davep_box" name="teacher" value="dave p">
-								<label for="program_davep_box">
-									 Dave P.
-								</label>
-							</td>
-							<td class="program">
-								<input type="checkbox" id="program_geoffe_box" name="teacher" value="geoff e">
-								<label for="program_geoffe_box">
-								 	 Geoff E.
-								</label>
-							</td>
-						</tr>
-						<tr>
-							<td class="program">
-								<input type="checkbox" id="program_grege_box" name="teacher" value="greg e">
-								<label for="program_grege_box">
-									 Greg E.
-								</label>
-							</td>
-							<td class="program">
-								<input type="checkbox" id="program_krisf_box" name="teacher" value="kris f">
-								<label for="program_krisf_box">
-									 Kris F.
-								</label>
-							</td>
-							<td class="program">
-								<input type="checkbox" id="program_lukes_box" name="teacher" value="luke s">
-								<label for="program_lukes_box">
-									 Luke S.
-								</label>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-				<br/>
-			</td>
-		</tr>
-		<tr class="component_schedule">
-			<td style="background-color: rgb(4, 189, 229);">&#160;<big><strong><span style="color:#FFFFFF">&#160;Schedule</span></strong></big></td>
-		</tr>
-		<tr class="component_schedule">
-			<td>
-				<br/>
-				<table border="0" cellpadding="1" cellspacing="0" style="width:100%;">
-					<tbody>
-						<tr>
-							<td rowspan=3 style="text-align:right; width:30%;">Recurrence</td>
-						</tr>
-						<tr>
-							<td rowspan=3 style="width:22px; border-right:1px solid #0f0403;"></td>
-						</tr>
-						<tr>
-							<td class="program">
-								<input type="radio" id="schedule_weekly_box" name="recurrence" value="weekly">
-								<label for="schedule_weekly_box">
-									 <strong>Weekly</strong><br/>
-								</label>
-								<input type="radio" id="schedule_intermit_box" name="recurrence" value="intermittently">
-								<label for="schedule_intermit_box">
-									 Intermittently<br/>
-								</label>
-								<input type="radio" id="schedule_justone_box" name="recurrence" value="just one session">
-								<label for="schedule_justone_box">
-									 Just One Session<br/>
-								</label>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-				<br/>
-				<table border="0" cellpadding="1" cellspacing="0" style="width:100%;">
-					<tbody>
-						<tr>
-							<td rowspan=5 style="text-align:right; width:30%;">Day of Week</td>
-						</tr>
-						<tr>
-							<td rowspan=4 style="width:22px; border-right:1px solid #0f0403;"></td>
-						</tr>
-						<tr>
-							<td class="program">
-								<input type="checkbox" id="schedule_mon_box" name="day_of_week" value="mondays">
-								<label for="schedule_mon_box">
-									 Mondays
-								</label>
-							</td>
-							<td class="program">
-
-								<input type="checkbox" id="schedule_thur_box" name="day_of_week" value="thursdays">
-								<label for="schedule_thur_box">
-									 Thursdays
-								</label>
-							</td>
-						</tr>
-						<tr>
-							<td class="program">
-								<input type="checkbox" id="schedule_tues_box" name="day_of_week" value="tuesdays">
-								<label for="schedule_tues_box">
-									 Tuesdays
-								</label>
-							</td>
-							<td class="program">
-								<input type="checkbox" id="schedule_fri_box" name="day_of_week" value="fridays">
-								<label for="schedule_fri_box">
-									 Fridays
-								</label>
-							</td>
-						</tr>
-						<tr>
-							<td class="program">
-								<input type="checkbox" id="schedule_wed_box" name="day_of_week" value="wednesdays">
-								<label for="schedule_wed_box">
-									 Wednesdays
-								</label>
-							</td>
-							<td class="program">
-								<input type="checkbox" id="schedule_sat_box" name="day_of_week" value="saturdays">
-								<label for="schedule_sat_box">
-									 Saturdays
-								</label>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-				<br/>
-				<table border="0" cellpadding="1" cellspacing="0" style="width:100%;">
-					<tbody>
-						<tr>
-							<td rowspan=7 style="text-align:right; width:30%;">Time Range</td>
-						</tr>
-						<tr>
-							<td rowspan=7 style="width:22px; border-right:1px solid #0f0403;"></td>
-						</tr>
-						<tr>
-							<td class="program">
-								<input type="checkbox" id="program_time1_box"  name="time_range" value="10 am - 12 pm">
-								<label for="program_time1_box">
-									 10 am - 12 pm - Sat Only
-								</label>
-							</td>
-						</tr>
-						<tr>
-							<td class="program">
-								<input type="checkbox" id="program_time2_box"  name="time_range" value="12:30 pm - 1:30 pm">
-								<label for="program_time2_box">
-									 12:30 pm - 1:30 pm - Sat Only
-								</label>
-							</td>
-						</tr>
-						<tr>
-							<td class="program">
-								<input type="checkbox" id="program_time3_box"  name="time_range" value="2 pm - 3:30 pm">
-								<label for="program_time3_box">
-									 2 pm - 3:30 pm - M T W Th F S
-								</label>
-							</td>
-						</tr>
-						<tr>
-							<td class="program">
-								<input type="checkbox" id="program_time4_box"  name="time_range" value="4 pm - 6:30 pm">
-								<label for="program_time4_box">
-									 4 pm - 6:30 pm - M T W Th F
-								</label>
-							</td>
-						</tr>
-						<tr>
-							<td class="program">
-								<input type="checkbox" id="program_time5_box"  name="time_range" value="7 pm - 8:30 pm">
-								<label for="program_time5_box">
-									 7 pm - 8:30 pm - M T W Th F
-								</label>
-							</td>
-						</tr>
-					</tbody>
-				</table>
 			</td>
 		</tr>
 		<tr class="component_note">
@@ -775,7 +395,7 @@
 		<tr class="component_submit">
 			<td>
 				<p style="text-align:center;">
-				<input class="btn animate enrollsubmit" style="background-color:#58a326" type="submit" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SUBMIT &gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" onclick="validateEnroll(); return false;"><!-- noscript-compat -->
+				<input class="btn animate policytosignsubmit" style="background-color:#58a326" type="submit" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SUBMIT &gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" onclick="validatepolicytosign(); return false;"><!-- noscript-compat -->
 				<br/>
 				</p>
 			</td>
@@ -789,13 +409,11 @@
 <div id="submit_ok_thanks">
 <h2>Thanks!</h2>
 <p>
-We&#39;ll be in touch.
+A copy of our Music Lessons Policies has been emailed to you, for your information. It is also available for review anytime, here on our web site: <a href="http://www.rocketeria.biz/lessons/policies">rocketeria.biz/lessons/policies</a>
+<br/><br/>
+You will receive tuition receipts as email .pdf attachments. Be sure to review the comments section (under the total paid) for important notes, including notice of upcoming changes to your schedule.
 </p>
 </div>
-
-<p id="social_pointer">
- >>> STAY IN TOUCH WITH US >>> 
-</p>
 
 </div>
 <div id="submit_fail" style="display:none;">
@@ -806,4 +424,4 @@ Something went wrong and we likely did not receive your submission. Refresh this
 </div>
 </div> <!-- /content_sub -->
 
-<script src="/static/script/enroll.js"></script>
+<script src="/static/script/policytosign.js"></script>

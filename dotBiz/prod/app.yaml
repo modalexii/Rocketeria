@@ -33,6 +33,9 @@ handlers:
 - url: /robots.txt
   static_files: static/robots.txt
   upload: static/robots.txt
+- url: /favicon.ico
+  static_files: static/image/favicon.ico
+  upload: static/image/favicon.ico
 - url: /templates
   static_dir: templates
   application_readable: true
@@ -47,8 +50,8 @@ handlers:
 - url: /cron/.* # Non-Public
   script: cron.application
   login: admin
-- url: /api_proxy_pub/.* # Public 3rd-Party API Proxy
-  script: api_proxy_pub.application
+- url: /api/.* # Public 3rd-Party API Proxy
+  script: api.application
 - url: /sendmail/.* # Public 3rd-Party API Proxy
   script: sendmail.application
 - url: /.* # Catch-all

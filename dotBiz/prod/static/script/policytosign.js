@@ -15,12 +15,17 @@ function showPostSubmitMessage(blockToShow) {
 }
 
 function submit() {
-	$('input.animate.enrollsubmit').prop('type','image');
+	$('input.animate.policytosignsubmit').prop('type','image');
 	$('input.animate.signaturesubmit').prop('src','/static/image/wait.gif');
-	$('input.animate.enrollsubmit').css('padding','12px, 45px');
-	$('input[type="image"].enrollsubmit').css('border','0');
-	$('input.animate.enrollsubmit').prop('disabled',true);
-	$.post('/sendmail/enroll', {
+	$('input.animate.policytosignsubmit').css('padding','12px, 45px');
+	$('input[type="image"].policytosignsubmit').css('border','0');
+	$('input.animate.policytosignsubmit').prop('disabled',true);
+
+	// gmail interprets br as old message
+	var policyContentHTMLNoBR = $('#policy_content').clone();
+	policyContentHTMLNoBR.find('br').remove();
+
+	$.post('/sendmail/policytosign', {
 		billto_firstandlast : $('input[name="billto_firstandlast"]').val(),
 		billto_email : $('input[name="billto_email"]').val(),
 		billto_mobilephone : $('input[name="billto_mobilephone"]').val(),
@@ -46,29 +51,12 @@ function submit() {
 		student3_altphone : $('input[name="student3_altphone"]').val(),
 		student3_school : $('input[name="student3_school"]').val(),
 		student3_grade : $('select[name="student3_grade"] option:selected').val(),
-		lesson_environment : $('input[name="environment"]:checked').map(function() {
-			return this.value;
-		}).get().join(),
-		instrument : $('input[name="instrument"]:checked').map(function() {
-			return this.value;
-		}).get().join(),
-		expertise : $('input[name="expertise"]:checked').map(function() {
-			return this.value;
-		}).get().join(),
-		teacher : $('input[name="teacher"]:checked').map(function() {
-			return this.value;
-		}).get().join(),
-		recurrence : $('input[name="recurrence"]').val(),
-		day_of_week : $('input[name="day_of_week"]:checked').map(function() {
-			return this.value;
-		}).get().join(),
-		time_range : $('input[name="time_range"]:checked').map(function() {
-			return this.value;
-		}).get().join(),
 		comment1 : $('textarea[name="comment1"]').val(),
 		no_chargeaccount : $('input[name="no_chargeaccount"]').is(':checked'),
 		no_media_release : $('input[name="no_media_release"]').is(':checked'),
 		digital_signature_name : $('input[name="digital_signature_name"]').val(),
+		policy_content_text : $('#policy_content').text,
+		policy_content_html : policyContentHTMLNoBR.html(),
 	})
 	.done(function() {
 		showPostSubmitMessage('submit_ok');
@@ -77,7 +65,7 @@ function submit() {
 		showPostSubmitMessage('submit_fail');
 	})
 	.always(function() {
-		$('input.animate.enrollsubmit').hide();
+		$('input.animate.policytosignsubmit').hide();
 	});
 	newsletterSignup();
 }
@@ -112,14 +100,16 @@ function removeReqdAsterisk(container) {
 	$(container).html('&nbsp;');
 }
 
+
 function scrollToBillTo() {
 	$('html, body').animate({
 		scrollTop: $("#billto_heading").offset().top
 	}, 800);
 }
 
-function validateEnroll() {
+function validatepolicytosign() {
 	var validationError = false;
+
 
 	var exp = /.*[,| ].*$/;
 	if (exp.test($('input[name="billto_firstandlast"]').val())) {
@@ -215,10 +205,6 @@ function activateComponentStudent() {
 
 function activateComponentStudents() {}
 
-function activateComponentPrograms() {}
-
-function activateComponentSchedule() {}
-
 function activateComponentChargeAccount() {}
 
 function activateComponentRelease() {}
@@ -238,8 +224,6 @@ function activateComponentPolicy() {
 	// fetch the Policy content from the API & add it to the page
 	addPolicyContent();
 }
-
-
 
 function processActiveBlocks(activeBlocks) {
 	/* 
@@ -288,20 +272,6 @@ function processActiveBlocks(activeBlocks) {
 		}
 	}
 
-	if($.inArray('programs',activeBlocks) === -1) {
-		$('.component_programs').remove();
-	}
-	else {
-		activateComponentPrograms();
-	}
-
-	if($.inArray('schedule',activeBlocks) === -1) {
-		$('.component_schedule').remove();
-	}
-	else {
-		activateComponentSchedule();
-	}
-
 	if($.inArray('note',activeBlocks) === -1) {
 		$('.component_note').remove();
 	}
@@ -345,14 +315,11 @@ $(document).ready(function() {
 		// actiate everything
 		activateComponentBillto();
 		activateComponentStudent();
-		activateComponentPrograms();
-		activateComponentSchedule();
 		activateComponentNote();
 		activateComponentChargeAccount();
 		activateComponentRelease();
 		activateComponentPolicy();
 	}
-
 
 });
 

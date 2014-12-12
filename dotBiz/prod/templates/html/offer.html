@@ -1,0 +1,110 @@
+<div id="header-sub">
+<img class="bg-header-sub" src="/static/image/header-green.png" width="705px" height="82px"/>
+<h1>Enter to Win!</h1>
+</div><!-- /header-sub -->
+<div id="content_sub">
+<style>
+    .comment {{
+        width: 100%;
+        background-color:#f7bd20;
+    }}
+    .comment p :hover {{
+        cursor: pointer;
+    }}
+    .comment textarea {{
+        width: 99%;
+        resize: none;
+        font-family: 'Quicksandregular', sans-serif;
+    }}
+    .headingicon img {{
+        height: 1em;
+        vertical-align: middle;
+    }}
+    .labels {{
+        display: inline-block;
+        width: 30%;
+        text-align: right;
+        text-decoration: none !important;
+    }}
+    .inputs {{
+        display: inline-block;
+        text-align: left;
+    }}
+    .validators {{
+        display: inline-block;
+        text-align: right;
+        padding-left: 12px;
+        width: 20px;
+    }}
+    .form-input {{
+        text-align: left;
+        border-left: 2px solid #ccc;
+    }}
+    input[type="text"].form-input, input[type="email"].form-input, select.form-input {{
+        width: 130%;
+        font-size: 1.1em;
+    }}
+    .template {{
+        display: none;
+    }}
+    td.program {{
+        padding-left: 24px;
+    }}
+    .larger {{
+        font-size: 1.1em;
+    }}
+    .gray {{
+        color: #ccc !important;
+    }}
+    #submit_ok {{
+        height: 185px;
+    }}
+    #submit_ok_thanks {{
+        height: 97px;
+    }}
+
+</style>
+<big>Submit your info below for a chance to win one free month of private music lessons!</big>
+<table border="0" cellpadding="1" cellspacing="0" style="width:100%" class="larger">
+    <tbody>
+        <tr>
+            <td style="background-color: rgb(150, 35, 31);"><big><span style="color:#FFFFFF" id="offer_heading">&#160;All fields required</span></big></td>
+        </tr>
+        <tr>
+            <td>
+                <br/>
+                <p class="labels">First Name</p><p class="validators">&#9642;</p><p class="inputs"><input type="text" class="form-input" name="offer_first"/></p><br/>
+                <p class="labels">Last Name</p><p class="validators">&#9642;</p><p class="inputs"><input type="text" class="form-input" name="offer_last"/></p><br/>
+                <p class="labels">Email</p><p class="validators">&#9642;</p><p class="inputs"><input type="email" class="form-input" name="offer_email"/></p><br/>
+                <p class="labels">Address</p><p class="validators">&#9642;</p><p class="inputs"><input type="text" class="form-input" name="offer_address"/></p><br/>
+                <br/>
+                <table border="0" cellpadding="1" cellspacing="0" style="width:100%;">
+                    <tbody>
+                        <tr>
+                            <td rowspan=3 style="text-align:right; width:30%;">Where did you see this offer?</td>
+                        </tr>
+                        <tr>
+                            <td rowspan=3 style="width:22px; border-right:1px solid #0f0403;"></td>
+                        </tr>
+                        <tr>
+                            <td class="program" style="line-height:1.5em;">
+                                <input type="radio" name="offer_whereseen" value="Safeway"> Safeway<br/>
+                                <input type="radio" name="offer_whereseen" value="Harris Teeter"> Harris Teeter<br/>
+                                <input type="radio" name="offer_whereseen" value="Other"> Other:<input type="text" class="form-input" name="offer_whereseen_other" style="width:inherit;font-size:inherit;border-left:none;"/><br/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<br/>
+<p style="text-align:center;">
+    <input class="btn animate offersubmit" style="background-color:#58a326" type="submit" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SUBMIT &gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" onclick="unhighlightInputs('offer'); validateOffer(); return false;"><!-- noscript-compat -->
+    <br/><br/>
+</p>
+<p>
+    One winner is selected at random each month from a pool of all past submissions. There is no need to re-enter each month. Duplicate entries will be discarded. Winners will be contacted by email and given a specified finite amount of time to claim and book their free appointments. By entering, you are also subscribing to Rocketeria's periodic email newsletters. You may unsubscribe at any time.
+</p>
+</div> <!-- /content_sub -->

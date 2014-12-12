@@ -1,10 +1,8 @@
-import webapp2, logging
+import webapp2
 from google.appengine.api import mail
 import get_env, templates
 
-logging.getLogger().setLevel(logging.INFO)
-
-def templatify(message, remote_addr, remote_ua):
+def templatify_internal(message, remote_addr, remote_ua):
 	version = get_env.version()
 	environment = get_env.as_hardcoded()
 
@@ -13,7 +11,18 @@ def templatify(message, remote_addr, remote_ua):
 	message.subject = "[SCMS] %s" % message.subject
 
 	content = message.body
-	full_body = templates.get("mail_template","txt","email").format(**locals())
+	full_body = templates.get("mail_template_internal","txt","email").format(**locals())
+	message.body = full_body
+
+	return message
+
+def templatify_external(message):
+
+	message.sender = "Rocketeria <info@rocketeria.biz>"
+	message.subject = "%s [Automatically Generated]" % message.subject
+
+	content = message.body
+	full_body = templates.get("mail_template_external","txt","email").format(**locals())
 	message.body = full_body
 
 	return message
@@ -22,13 +31,21 @@ class MailHandler(webapp2.RequestHandler):
 
 	def post(self):
 
+		# status is bad until set good
+		self.response.set_status(400)
+
 		uri = self.request.path.strip('/')
+		messages = {
+			"internal": [],
+			"external": [],
+		}
 		message = mail.EmailMessage()
 
 		if uri == "sendmail/deadlink":
 			badurl = self.request.get("badurl").encode('utf-8', 'xmlcharrefreplace')
 			message.subject = "Missing resource reported by user"
 			message.body = templates.get("404","txt","email").format(**locals())
+			messages["internal"].append(message)
 
 		elif uri == "sendmail/changerequest":
 
@@ -53,6 +70,83 @@ class MailHandler(webapp2.RequestHandler):
 				else:
 					requested_action = self.request.get("requested_action").encode('utf-8', 'xmlcharrefreplace')
 					message.body = templates.get("change_one","txt","email").format(**locals())
+
+				messages["internal"].append(message)
+
+		elif uri == "sendmail/policytosign":
+
+			billto_firstandlast = self.request.get("billto_firstandlast").encode('utf-8', 'xmlcharrefreplace')
+			billto_email = self.request.get("billto_email").encode('utf-8', 'xmlcharrefreplace')
+			billto_mobilephone = self.request.get("billto_mobilephone").encode('utf-8', 'xmlcharrefreplace')
+			billto_altphone = self.request.get("billto_altphone").encode('utf-8', 'xmlcharrefreplace')
+			billto_address1 = self.request.get("billto_address1").encode('utf-8', 'xmlcharrefreplace')
+			billto_address2 = self.request.get("billto_address2").encode('utf-8', 'xmlcharrefreplace')
+
+			student_same_as_bill_to = self.request.get("student_same_as_bill_to").encode('utf-8', 'xmlcharrefreplace')
+
+			if student_same_as_bill_to == "true":
+				student_same_as_bill_to = "Yes"
+				student_info = ""
+			else:
+				student_same_as_bill_to = "No"
+
+				for n in range(3):
+					n = n + 1
+					if self.request.get("student%s_firstandlast" % n):
+						student_firstandlast = self.request.get("student%s_firstandlast" % n).encode('utf-8', 'xmlcharrefreplace')
+						student_email = self.request.get("student%s_email" % n).encode('utf-8', 'xmlcharrefreplace')
+						student_mobilephone = self.request.get("student%s_mobilephone" % n).encode('utf-8', 'xmlcharrefreplace')
+						student_altphone = self.request.get("student%s_altphone" % n).encode('utf-8', 'xmlcharrefreplace')
+						student_school = self.request.get("student%s_school" % n).encode('utf-8', 'xmlcharrefreplace')
+						student_grade = self.request.get("student%s_grade" % n).encode('utf-8', 'xmlcharrefreplace')
+						try:
+							student_info += templates.get("enroll_student_info","txt","email").format(**locals())
+						except NameError:
+							student_info = templates.get("enroll_student_info","txt","email").format(**locals())
+
+				try:
+					student_info
+				except UnboundLocalError:
+					student_info = "(no student info provided)"
+
+			comment1 = self.request.get("comment1").encode('utf-8', 'xmlcharrefreplace')
+			if not comment1:
+				comment1 = "(none)"
+
+			no_chargeaccount = self.request.get("no_chargeaccount").encode('utf-8', 'xmlcharrefreplace')
+
+			if no_chargeaccount == "true":
+				chargeaccount_text = "NO - Do not allow charges to account"
+			else:
+				chargeaccount_text = "OK [implicit]"
+
+			no_media_release = self.request.get("no_media_release").encode('utf-8', 'xmlcharrefreplace')
+
+			if no_media_release == "true":
+				photo_release_text = "NO - Never use my likeness without explicit consent"
+			else:
+				photo_release_text = "OK [implicit]"
+
+			digital_signature_name = self.request.get("digital_signature_name").encode('utf-8', 'xmlcharrefreplace')
+
+			policy_content_text = self.request.get("policy_content_text").encode('utf-8', 'xmlcharrefreplace')
+
+			policy_content_html = self.request.get("policy_content_html").encode('utf-8', 'xmlcharrefreplace')
+			
+			message.subject = "Policy Accepted: %s" % (digital_signature_name)
+			message.body = templates.get("policyacceptance_internal","txt","email").format(**locals())
+
+			messages["internal"].append(message)
+
+			message_tocustomer = mail.EmailMessage()
+
+			message_tocustomer.subject = "Rocketeria Music Lessons Policies"
+			message_tocustomer.body = templates.get("policyacceptance_external","txt","email").format(**locals())
+			message_tocustomer.html = templates.get("policyacceptance_external","html","email").format(**locals())
+			message_tocustomer.to = billto_email
+
+			messages["external"].append(message_tocustomer)
+
 
 		elif uri == "sendmail/enroll":
 
@@ -120,23 +214,45 @@ class MailHandler(webapp2.RequestHandler):
 			if not comment1:
 				comment1 = "(none)"
 
-			photo_release = self.request.get_all("photo_release")
-			photo_release = ', '.join(photo_release)
-			photo_release = photo_release.encode('utf-8', 'xmlcharrefreplace')
-			if not photo_release:
-				photo_release = "NO RELEASE RIGHTS GRANTED"
+			no_chargeaccount = self.request.get("no_chargeaccount").encode('utf-8', 'xmlcharrefreplace')
+
+			if no_chargeaccount == "true":
+				chargeaccount_text = "NO - Do not allow charges to account"
+			else:
+				chargeaccount_text = "OK [implicit]"
+
+			no_media_release = self.request.get("no_media_release").encode('utf-8', 'xmlcharrefreplace')
+
+			if no_media_release == "true":
+				photo_release_text = "NO - Never use my likeness without explicit consent"
+			else:
+				photo_release_text = "OK [implicit]"
+
+			digital_signature_name = self.request.get("digital_signature_name").encode('utf-8', 'xmlcharrefreplace')
 
 			message.subject = "Enroll Form Submission: %s" % (billto_firstandlast)
 
 			message.body = templates.get("enroll","txt","email").format(**locals())
-			
-		try:
-			message = templatify(message = message, remote_addr = self.request.remote_addr, remote_ua = self.request.headers['User-Agent'])
-		except AttributeError:
-			self.error(400)
-		else:
-			message.send()
-			print message.body
+
+			messages["internal"].append(message)
+
+		for m in messages["internal"]:
+			try:
+				message = templatify_internal(message = m, remote_addr = self.request.remote_addr, remote_ua = self.request.headers['User-Agent'])
+			except AttributeError:
+				self.error(400)
+			else:
+				self.response.set_status(200)
+				message.send()
+		
+		for m in messages["external"]:
+			try:
+				message = templatify_external(message = m)
+			except AttributeError:
+				self.error(400)
+			else:
+				self.response.set_status(200)
+				message.send()
 		
 		self.redirect("/") # just for noscript
 
