@@ -1,0 +1,317 @@
+<html>
+	<head>
+		<link href='http://fonts.googleapis.com/css?family=Viga' rel='stylesheet' type='text/css'>
+		<style = "text/css">
+			textarea, input {
+			   font-family: inherit;
+			   font-size: inherit;
+			   -webkit-border-radius:5px; outline: none;"
+			   -webkit-box-sizing: border-box;
+			   padding-left: 5px;
+			}
+			textarea {
+				border-top-color: #AAA;
+				border-left-color: #AAA;
+				border-bottom-color: #EEE;
+				border-right-color: #EEE;
+				border-width: 2px;
+			}
+			h1,h2,h3 {
+				 text-align: center;
+			}
+			.ss-required-asterisk {
+				color: red;
+				font-size: .8em;
+			}
+			.button:hover {
+				border-color: #770000;
+				background-color: #999;
+				color: #EEE;
+			}
+
+			.message {
+				-webkit-background-size: 20px 20px;
+				-moz-background-size: 20px 20px;
+				background-size: 20px 20px; 
+				background-image: -webkit-gradient(linear, left top, right bottom,
+				color-stop(.25, rgba(255, 255, 255, .05)), color-stop(.25, transparent),
+				color-stop(.5, transparent), color-stop(.5, rgba(255, 255, 255, .05)),
+				color-stop(.75, rgba(255, 255, 255, .05)), color-stop(.75, transparent),
+				to(transparent));
+				background-image: -webkit-linear-gradient(135deg, rgba(255, 255, 255, .05) 25%, transparent 25%,
+				transparent 50%, rgba(255, 255, 255, .05) 50%, rgba(255, 255, 255, .05) 75%,
+				transparent 75%, transparent);
+				background-image: -moz-linear-gradient(135deg, rgba(255, 255, 255, .05) 25%, transparent 25%,
+				transparent 50%, rgba(255, 255, 255, .05) 50%, rgba(255, 255, 255, .05) 75%,
+				transparent 75%, transparent);
+				background-image: -ms-linear-gradient(135deg, rgba(255, 255, 255, .05) 25%, transparent 25%,
+				transparent 50%, rgba(255, 255, 255, .05) 50%, rgba(255, 255, 255, .05) 75%,
+				transparent 75%, transparent);
+				background-image: -o-linear-gradient(135deg, rgba(255, 255, 255, .05) 25%, transparent 25%,
+				transparent 50%, rgba(255, 255, 255, .05) 50%, rgba(255, 255, 255, .05) 75%,
+				transparent 75%, transparent);
+				background-image: linear-gradient(135deg, rgba(255, 255, 255, .05) 25%, transparent 25%,
+				transparent 50%, rgba(255, 255, 255, .05) 50%, rgba(255, 255, 255, .05) 75%,
+				transparent 75%, transparent);
+
+				-moz-box-shadow: inset 0 -1px 0 rgba(255,255,255,.4);
+				-webkit-box-shadow: inset 0 -1px 0 rgba(255,255,255,.4); 
+				box-shadow: inset 0 -1px 0 rgba(255,255,255,.4);
+				width: auto;
+				border: none;
+				color: #fff;
+				padding: 20px;
+				-webkit-animation: animate-bg 5s linear infinite;
+				-moz-animation: animate-bg 5s linear infinite;
+			}
+
+			.general {
+				background-color: #990000;
+				margin:0;
+			}
+			@-webkit-keyframes animate-bg {
+				from { background-position: 0 0; }
+				to { background-position: -80px 0; }
+			}
+			@-moz-keyframes animate-bg {
+				from { background-position: 0 0; }
+				to { background-position: -80px 0; }
+			}
+		</style>
+	</head>
+	<body style="font-family: 'Viga', sans-serif; font-size: 1.3em; margin-top: -20 !important; margin-left: 0 !important; margin-right: 0 !important; margin-bottom: 0 !important;">
+		<div class="general message">
+			<h3>
+				SIGN UP TO RECEIVE A
+			</h3>
+			<h1 style="margin-top: -30px;">
+				FREE MUSIC LESSON
+			</h1>
+			<div class="ss-form-container" >
+				<div class="ss-form">
+					<table style="margin-left:auto; margin-right:auto;">
+						<tr>
+							<td>
+								<form action="https://docs.google.com/a/rocketeria.biz/spreadsheet/formResponse?formkey=dHhua3dHMWx2QW1xV2d0ZG1jeFlYbUE6MQ&amp;ifq" method="POST" id="ss-form" onsubmit="return checkform(this);"> 
+									<table> 
+										<tbody> 
+											<tr> 
+												<td align="right"> 
+													<div class="errorbox-good"> 
+														<div class="ss-item ss-item-required ss-text"> 
+															<div class="ss-form-entry">
+																<label class="ss-q-title" for="entry_0">
+																	First 
+																	<span class="ss-required-asterisk">*</span>
+																</label>
+															</div> 
+														</div> 
+													</div> 
+												</td> 
+												<td>
+													<input type="text" name="entry.0.single" value="" class="ss-q-short" id="entry_0" />
+												</td>
+											</tr> 
+											<tr> 
+												<td align="right"> 
+													<div class="errorbox-good"> 
+														<div class="ss-item ss-item-required ss-text"> 
+															<div class="ss-form-entry">
+																<label class="ss-q-title" for="entry_1">
+																	Last 
+																	<span class="ss-required-asterisk">*</span>
+																</label>
+															</div> 
+														</div> 
+													</div> 
+												</td> 
+												<td>
+													<input type="text" name="entry.1.single" value="" class="ss-q-short" id="entry_1" />
+												</td> 
+											</tr> 
+											<tr> 
+												<td align="right"> 
+													<div class="errorbox-good"> 
+														<div class="ss-item ss-item-required ss-paragraph-text"> 
+															<div class="ss-form-entry">
+																<label class="ss-q-title" for="entry_2">
+																	Address 
+																	<span class="ss-required-asterisk">*</span>
+																</label>
+															</div> 
+														</div> 
+													</div> 
+												</td> 
+												<td>
+													<textarea name="entry.2.single" rows="3" cols="30" class="ss-q-long" id="entry_2"></textarea>
+												</td> 
+											</tr> 
+											<tr> 
+												<td align="right"> 
+													<div class="errorbox-good"> 
+														<div class="ss-item ss-item-required ss-text"> 
+															<div class="ss-form-entry">
+																<label class="ss-q-title" for="entry_3">
+																	Email 
+																	<span class="ss-required-asterisk">*</span>
+																</label>
+															</div> 
+														</div> 
+													</div> 
+												</td> 
+												<td>
+													<input type="text" name="entry.3.single" value="" class="ss-q-short" id="entry_3" />
+												</td> 
+											</tr> 
+											<tr> 
+												<td align="right"> 
+													<div class="errorbox-good"> 
+														<div class="ss-item ss-item-required ss-text"> 
+															<div class="ss-form-entry">
+																<label class="ss-q-title" for="entry_4">
+																	Phone 
+																	<span class="ss-required-asterisk">*</span>
+																</label>
+															</div> 
+														</div> 
+													</div> 
+												</td>
+												<td>
+													<input type="text" name="entry.4.single" value="" class="ss-q-short" id="entry_4" />
+												</td> 
+											</tr> 
+											<tr> 
+												<td>
+													&nbsp;
+												</td> 
+												<td>
+													<input type="hidden" name="backupCache" value="" /> 
+													<div class="ss-item ss-navigate"> 
+														<div class="ss-form-entry">
+															<input type="submit" name="submit" value="Submit" class="button"/>
+														</div> 
+													</div> 
+												</td> 
+											</tr> 
+										</tbody> 
+									</table> 
+								</form> 
+							</td>
+							<td style="padding-left: 50px;">
+								<table>
+									<tr>
+										<td>
+											<img src="http://icons.iconarchive.com/icons/mugenB16/acoustic-guitars/128/Guitar-3-icon.png" width="50px">
+										</td>
+										<td style="padding-left: 10px; padding-top: -5px;">
+											guitar
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<img src="http://icons.iconarchive.com/icons/pc-unleashed/unleashed/128/guitar-icon.png" width="50px">
+										</td>
+										<td style="padding-left: 10px; padding-top: -5px;">
+											bass
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<img src="http://icons.iconarchive.com/icons/ergosign/free-instruments/128/drums-icon.png" width="50px">
+										</td>
+										<td style="padding-left: 10px; padding-top: -5px;">
+											drums
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<img src="http://weloveicons.s3.amazonaws.com/icons/grand_piano_susumu.png" width="50px">
+										</td>
+										<td style="padding-left: 10px; padding-top: -5px;">
+											piano
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<img src="http://icons.iconarchive.com/icons/aha-soft/multimedia/128/Microphone-SH-icon.png" width="50px">
+										</td>
+										<td style="padding-left: 10px; padding-top: -5px;">
+											voice
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<img src="http://icons.iconarchive.com/icons/artua/ukrainian-motifs/128/Mandolin-icon.png" width="50px">
+										</td>
+										<td style="padding-left: 10px; padding-top: -5px;">
+											mandolin
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<img src="http://icons.iconarchive.com/icons/iconshock/orchestra/128/saxophone-icon.png" width="50px">
+										</td>
+										<td style="padding-left: 10px; padding-top: -5px;">
+											saxophone
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<img src="http://host.unsecu.re/ugh/basset_clarinet_icon.png" width="50px">
+										</td>
+										<td style="padding-left: 10px; padding-top: -5px;">
+											clarinet
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</table>
+					<p style="width: 550px; margin-left:auto; margin-right:auto; font-size: .6em; color: #AAA; text-align: justify;">
+						Applicants will be contacted by email and given a specified finite amount of time to return contact and book their free appointment. Limit one free appointment per student. By entering, you are also subscribing to Rocketeria's periodic email newsletters. You may unsubscribe at any time.
+					</p>
+					<script type="text/javascript"> 
+						<!--
+						function checkform ( form ) {
+							if (form.entry_0.value == "") {
+								alert( "Please enter your First Name" );
+								form.entry_0.focus();
+								return false ;
+							}
+							if (form.entry_1.value == "") {
+								alert( "Please enter your Last Name" );
+								form.entry_1.focus();
+								return false ;
+							}
+							if (form.entry_2.value == "") {
+								alert( "Please enter your Address" );
+								form.entry_2.focus();
+								return false ;
+							}
+							if (form.entry_3.value == "") {
+								alert( "Please enter your email address" );
+								form.entry_3.focus();
+								return false ;
+							}
+							if (form.entry_4.value == "") {
+								alert( "Please enter your phone number" );
+								form.entry_4.focus();
+								return false ;
+							}
+							var x=document.forms["ss-form"]["entry_3"].value;
+							var atpos=x.indexOf("@");
+							var dotpos=x.lastIndexOf(".");
+							if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length) {
+								alert("Invalid email address");
+								form.entry_3.focus();
+								return false;
+							}
+							return true ;
+						}
+						//-->
+					</script>
+				</div> 
+			</div>
+		</div>
+	</body>
+</html>
