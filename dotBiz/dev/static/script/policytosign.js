@@ -57,6 +57,7 @@ function submit() {
 		digital_signature_name : $('input[name="digital_signature_name"]').val(),
 		policy_content_text : $('#policy_content').text,
 		policy_content_html : policyContentHTMLNoBR.html(),
+		no_machines : $('input[name="no_machines"]').val(),
 	})
 	.done(function() {
 		showPostSubmitMessage('submit_ok');
