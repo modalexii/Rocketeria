@@ -105,4 +105,10 @@ CKEDITOR.editorConfig = function( config ) {
 	// convert all non-ascii to HTML entities
 	config.entities_processNumerical = true;
 	config.entities_processNumerical = 'force';
+
 };
+
+// exceptions to Advanced Content Filter must go outside of the main config
+
+// Allow form and input, with all attributes, so that auth.net buttons work
+CKEDITOR.config.extraAllowedContent = 'form[*];input[*]';

@@ -121,6 +121,7 @@ function sendChangeRequest(form) {
 			lesson_date : $('input[name="lesson_date"]').val(),
 			lesson_time : $('input[name="lesson_time"]').val(),
 			comment : $('#change_one_comment_area').val(),
+			no_machines : $('input[name="no_machines"]').val(),
 		})
 		.done(function() {
 			showPostSubmitNote('submit_ok_one');
@@ -135,6 +136,7 @@ function sendChangeRequest(form) {
 			student_name : $('#' + form + ' input[name="student_name"]').val(),
 			requested_action : $('select[name="requested_action"]').val(),
 			comment : $('#change_all_comment_area').val(),
+			no_machines : $('input[name="no_machines"]').val(),
 		})
 		.done(function() {
 			showPostSubmitNote('submit_ok_all');

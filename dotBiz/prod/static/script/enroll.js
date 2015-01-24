@@ -69,6 +69,7 @@ function submit() {
 		no_chargeaccount : $('input[name="no_chargeaccount"]').is(':checked'),
 		no_media_release : $('input[name="no_media_release"]').is(':checked'),
 		digital_signature_name : $('input[name="digital_signature_name"]').val(),
+		no_machines : $('input[name="no_machines"]').val(),
 	})
 	.done(function() {
 		showPostSubmitMessage('submit_ok');

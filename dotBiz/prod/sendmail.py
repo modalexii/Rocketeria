@@ -1,4 +1,4 @@
-import webapp2
+import webapp2, logging
 from google.appengine.api import mail
 import get_env, templates
 
@@ -27,12 +27,25 @@ def templatify_external(message):
 
 	return message
 
+def obvious_spam(request):
+	# mild spam control - this field is display:none; and should never be filled out
+	no_machines = request.get("no_machines").encode('utf-8', 'xmlcharrefreplace')
+
+	if no_machines:
+		logging.warning("Aborting sendmail because no_machines contained: \"%s\"" % no_machines)
+		return True
+
+	return False
+
 class MailHandler(webapp2.RequestHandler):
 
 	def post(self):
 
 		# status is bad until set good
 		self.response.set_status(400)
+
+		if obvious_spam(self.request):
+			return
 
 		uri = self.request.path.strip('/')
 		messages = {
