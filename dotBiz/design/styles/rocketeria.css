@@ -153,6 +153,11 @@ float: left;
 padding: 12px;
 }
 
+.no-js-slide, .billboard-content h2 {
+left: -10px !important;
+width: 320px !important;
+}
+
 .ie7 .no-js-slide .billboard-content {
 bottom: 289px;
 }
@@ -201,7 +206,7 @@ display: none;
 bottom: 252px;
     font-size: 33px;
     height: 42px;
-    left: 0;
+    left: -5px;
     margin: 0;
     padding: 3px 26px 0 12px;
     position: relative;
@@ -213,7 +218,15 @@ bottom: 252px;
 .ie7 .billboard-content h2 {
 position: absolute;
 top: 38px;
-left: 348px;
+left: 340px;
+}
+
+.ie8 .billboard-content h2 {
+left: -10px;
+}
+
+.ie7 .billboard-content h2, .ie8 .billboard-content h2{
+width: 335px;
 }
 
 .billboard-header-green {
