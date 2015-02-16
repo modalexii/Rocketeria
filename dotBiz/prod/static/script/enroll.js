@@ -58,7 +58,7 @@ function submit() {
 		teacher : $('input[name="teacher"]:checked').map(function() {
 			return this.value;
 		}).get().join(),
-		recurrence : $('input[name="recurrence"]').val(),
+		recurrence : $('input[name="recurrence"]:checked').val(),
 		day_of_week : $('input[name="day_of_week"]:checked').map(function() {
 			return this.value;
 		}).get().join(),
