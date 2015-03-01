@@ -146,16 +146,11 @@ z-index: 0;
 
 /* Billboard Slider */
 
-#slides, .no-js-slide {
+#slides {
 width: 696px;
 height: 285px;
 float: left;
 padding: 12px;
-}
-
-.no-js-slide, .billboard-content h2 {
-left: -10px !important;
-width: 320px !important;
 }
 
 .ie7 .no-js-slide .billboard-content {
