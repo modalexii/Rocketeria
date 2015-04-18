@@ -2,7 +2,7 @@
 # this file or else the update_prod_from_dev script must be edited!
 
 def version():
-	return "1.3.2"
+	return "1.3.5"
 
 def from_url(url):
 	if "127.0" in url or "localhost" in url:
