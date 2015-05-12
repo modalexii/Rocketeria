@@ -240,8 +240,6 @@ function activateComponentPolicy() {
 	addPolicyContent();
 }
 
-
-
 function processActiveBlocks(activeBlocks) {
 	/* 
 	show/hide pieces of the form based on the URL parameter,
@@ -333,6 +331,21 @@ function processActiveBlocks(activeBlocks) {
 
 }
 
+function toggleNonGroupInstruments(action) {
+	if (action === 'enable') {
+		disabledState = false;
+	} 
+	else if (action === 'disable') {
+		disabledState = true;
+	}
+	else {
+		console.log('bad value for action passed to toggleNonGroupInstruments');
+		return
+	}
+	$('#program_piano_box').prop('disabled',disabledState);
+	$('#program_drums_box').prop('disabled',disabledState);
+}
+
 $(document).ready(function() {
 
 	// if show param is given we MAY need to fetch policy content,
@@ -354,6 +367,21 @@ $(document).ready(function() {
 		activateComponentPolicy();
 	}
 
+	// disable or enable Instrument options based on selected Environment
+	$('#env_group_box').change(function() {
+		if(this.checked) {
+			toggleNonGroupInstruments('disable');
+			// alert if instrument is already selected when group is checked
+			if($('#program_piano_box').is(':checked')) {
+				alert('Sorry, we don\'t offer group piano classes at this time. Please make another selection or call us for more information.');
+			}
+			if($('#program_drums_box').is(':checked')) {
+				alert('Sorry, we don\'t offer group drum classes at this time. Please make another selection or call us for more information.');
+			}
+		} else {
+			toggleNonGroupInstruments('enable');
+		}
+	});
 
 });
 

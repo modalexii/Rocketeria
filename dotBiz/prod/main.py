@@ -40,6 +40,12 @@ class MainHandler(webapp2.RequestHandler):
 		if not uri:
 			uri = "index"
 
+		# redirects
+		if uri == "lessons/policy":
+			self.redirect("/lessons/policies")
+			return
+
+
 		try:
 			# check the database...
 			content = gae_db.fetch_content(uri = uri)
