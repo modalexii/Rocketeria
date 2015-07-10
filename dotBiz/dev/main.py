@@ -1,3 +1,5 @@
+# I solemnly swear I will never again attempt to write an http seerver :-(
+
 import webapp2,logging
 import templates,quote_feed
 
