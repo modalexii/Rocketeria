@@ -5,5 +5,4 @@ Crawl-delay: 2
 
 Host: www.rocketeria.biz
 
-Disallow: /static/script
 Disallow: /templates
