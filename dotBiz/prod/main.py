@@ -47,6 +47,11 @@ class MainHandler(webapp2.RequestHandler):
 			self.redirect("/lessons/policies")
 			return
 
+		if uri == "rock-u":
+			# requested by ariana 3/23/2016
+			self.redirect("/lessons/options/rock-u")
+			return
+
 
 		try:
 			# check the database...
