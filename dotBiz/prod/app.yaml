@@ -13,18 +13,6 @@ libraries:
 - name: lxml
   version: latest
 
-pagespeed:
-  domains_to_rewrite:
-  - http://*.rocketeria.biz
-  #url_blacklist:
-  #- http://*.rocketeria.biz/dres/*
-  enabled_rewriters:
-  - InlineImages
-  - MinifyCss
-  disabled_rewriters:
-  - InlineCss
-  - ImageConvertToJpeg 
-
 handlers:
 - url: /static
   static_dir: static
