@@ -19,7 +19,7 @@ $(document).ready(function() {
 					container.html('<h3>You\'re already<br/>on the list!</h3><p style="text-align:center;">If you\'re not getting<br/>our communications,<br/>check your Spam folder<br/>or click <u><a href="http://visitor.r20.constantcontact.com/manage/optin?v=001Vzv-UqW3G56NXRBTdUDXONZrUTZ946XiB6U3hFR6fkYue7gVYRHgFVY46T0q7WyjvHimFuvShnf-fJnplm_iBqdyFrMPusjdscMu6lwCo94%3D" target="_blank">here</a></u> to update<br/>your profile.');
 					break;
 				default:
-					container.html('<h3>Sorry, there was a problem :-/<br/><br/>Please click <a href="http://visitor.r20.constantcontact.com/manage/optin/ea?v=001Vzv-UqW3G56TS4HpjB5lNw%3D%3D" target="_blank"><u>here</u></a> to subscribe.</h3>');
+					container.html('<h3>Sorry, there was a problem :-/<br/><br/>Please click <a href="https://visitor.r20.constantcontact.com/manage/optin/ea?v=001Vzv-UqW3G56TS4HpjB5lNw%3D%3D" target="_blank"><u>here</u></a> to subscribe.</h3>');
 			}
 		});
 		return false;
