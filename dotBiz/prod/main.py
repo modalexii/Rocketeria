@@ -52,6 +52,10 @@ class MainHandler(webapp2.RequestHandler):
 			self.redirect("/lessons/options/rock-u")
 			return
 
+		if uri == "instructors.aspx":
+			# in response to clients hitting this url from unknown sources Jan 2017
+			self.redirect("/lessons/teachers")
+			return
 
 		try:
 			# check the database...
