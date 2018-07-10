@@ -1,0 +1,956 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+    "http://www.w3.org/TR/html4/strict.dtd">
+<!--[if lt IE 7 ]> <html class="ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie9"> <![endif]-->
+<!--[if (gt IE 11)|!(IE)]><!--> <html> <!--<![endif]-->
+<head>
+<title>Enroll</title>
+<meta name="keywords" content="music sales, rentals, guitars, instruments, service, lessons, instruction, Olney, Brookeville, Rockville, G&amp;L, Orange" />
+<meta name="description" content="Rocketeria is a full-service music store serving Olney, Maryland and surrounding areas with sales, lessons, repairs, and instrument rentals and service"/>
+<meta property="og:title" content="Rocketeria: Music Lessons, Instruments and Service"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="http://rocketeria.biz"/>
+<meta property="og:description" content="Check out the latest instruments, jams, and shows at Rocketeria"/>
+<meta name="revisit-after" content="7 days"/>
+<meta name="robots" content="follow, index" />
+<link href="/static/style/rocketeria.css" type="text/css" rel="stylesheet">
+<link href="/static/style/fonts/stylesheet.css" type="text/css" rel="stylesheet">
+<link rel="icon" type="image/png" href="/static/image/favicon.png" />
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script>
+    if (document.documentMode===10){
+        document.documentElement.className+=' ie10';
+    }
+    else if (document.documentMode===11){
+        document.documentElement.className+=' ie11';
+    }
+</script>
+
+
+</head>
+<!--[if (gte IE 10)|!(IE)]><body><![endif]-->
+<!--[if lte IE 9 ]><body class="image-bg"><![endif]-->
+<div id="page-wrapper">
+<div id="header">
+<a href="/"><h1>ROCKETERIA</h1></a>
+<p class="header-info">
+<b>(301) 774-5690</b><br>
+18120 Hillcrest Ave.<br>
+Olney, MD 20832<br>
+<a href="/contact">Hours</a></p>
+<script type="text/javascript">
+$(document).ready(function() {
+	try {
+		var hours = override_hours;
+	}
+	catch(e) {
+		var hours = ['CLOSED','11-9','11-9','11-9','11-9','11-8','10-4'][(new Date()).getDay()];
+	}
+	$('#header .header-info').append(' Today: ' + hours);
+});
+</script>
+</div>
+<div id="nav-wrapper">
+<ul id="nav-contents">
+<li><a href="/lessons">Lessons</a></li>
+<li><a href="/store">Store</a></li>
+<li><a href="/rentals">Rentals</a></li>
+<li><a href="/repairs">Repairs</a></li>
+<li><a href="/events">Events</a></li>
+<li><a href="/about">About</a></li>
+<li><a href="/contact">Contact</a></li>
+</ul>
+</div>
+<div class="clear"></div>
+<div id="main"><div id="header-sub">
+<img class="bg-header-sub" src="/static/image/header-green.png" width="705px" height="82px"/>
+<h1>Enroll</h1>
+</div><!-- /header-sub -->
+<div id="content_sub">
+<style>
+	.comment {
+		width: 100%;
+		background-color:#f7bd20;
+	}
+	.comment p :hover {
+		cursor: pointer;
+	}
+	.comment textarea {
+		width: 99%;
+		resize: none;
+		font-family: 'Quicksandregular', sans-serif;
+	}
+	.headingicon img {
+		height: 1em;
+		vertical-align: middle;
+	}
+	.labels {
+		display: inline-block;
+		width: 30%;
+		text-align: right;
+		text-decoration: none !important;
+	}
+	.inputs {
+		display: inline-block;
+		text-align: left;
+	}
+	.validators {
+		display: inline-block;
+		text-align: right;
+		padding-left: 12px;
+		width: 20px;
+	}
+	.form-input {
+		text-align: left;
+		border-left: 2px solid #ccc;
+	}
+	input[type="text"].form-input, input[type="email"].form-input, select.form-input {
+		width: 100%;
+		font-size: 1.1em;
+	}
+	.template {
+		display: none;
+	}
+	td.program {
+		padding-left: 24px;
+	}
+	.comment {
+		width: 100%;
+		background-color:#f7bd20;
+	}
+	.comment p :hover {
+		cursor: pointer;
+	}
+	.comment textarea {
+		width: 99%;
+		resize: none;
+		font-family: 'Quicksandregular', sans-serif;
+		font-size: 1.1em;
+	}
+	.comment img {
+		vertical-align: middle;
+		margin-top: -2px;
+		height: 1em;
+	}
+	.larger {
+		font-size: 1.1em;
+	}
+	.gray {
+		color: #ccc !important;
+	}
+	#submit_ok {
+		height: 185px;
+	}
+	#submit_ok_thanks {
+		height: 97px;
+	}
+	#social_pointer {
+		line-height: 85px !important;
+		background: #04bde5;
+		color: #fff;
+		font-size: 1.4em;
+		font-weight: bold;
+		text-align: center;
+	}
+	.policies {
+		height: 80px;
+	}
+	.release_table_box {
+		text-align: right;
+		width: 20%;
+	}
+	#policy_content {
+		width: 100%;
+		height: 300px;
+		overflow-y: scroll;
+		padding: 3px;
+		font-size: .9em;
+	}
+	#policy_loading {
+		color: #d79e05;
+	}
+	#policy_loading a {
+		color: #d79e05;
+	}
+	.digital_signature {
+		font-family: 'Dawning of a New Day', cursive !important;
+		border-bottom-style: dashed;
+		background-color: #f5ed14;
+		font-size: 2em !important;
+		width: 90% !important;
+	}
+	.reqd_asterisk {
+		color: red;
+		font-weight: bold;
+	}
+
+</style>
+
+<div id="hide_on_submit">
+<form id="enroll" method="post" action="/sendmail/enroll" accept-charset="utf-8">
+<big>
+	<span class="click2change">Ready to take the plunge?
+	<br/><br/></span>
+
+	<p>
+		<span>Submit the form below and we&#39;ll be in touch shortly. Enter however much information you care to provide. 
+		<br/><br/></span>
+	</p>
+	<p>
+		<span>(Submitting this form does not constitute a commitment to enroll.)</span>
+	</p>
+	<p>
+		<span><br/><span style="color: red;">&ast;Required</span></span>
+	</p>
+</big>
+
+<p>
+<table border="0" cellpadding="1" cellspacing="0" style="width:100%" class="larger">
+	<tbody>
+		<tr class="component_billto">
+			<td style="background-color: rgb(150, 35, 31);"><big><strong><span style="color:#FFFFFF" id="billto_heading">&#160;Bill To</span></strong></big></td>
+		</tr>
+		<tr class="component_billto">
+			<td>
+				<br/>
+				<p class="labels">First &amp; Last Name</p><p class="validators" id="reqd_billto_firstandlast"><span class="reqd_asterisk">&ast;</span></p><p class="inputs"><input type="text" class="form-input" name="billto_firstandlast"/></p><br/>
+				<p class="labels">Email</p><p class="validators" id="reqd_billto_email"><span class="reqd_asterisk">&ast;</span></p><p class="inputs"><input type="email" class="form-input" name="billto_email"/></p><br/>
+				<p class="labels"></p><p class="validators"></p><p class="inputs" style="font-size: 0.85em; text-align: right;"> &nbsp; &nbsp; &nbsp;<input type="checkbox" class="form-input" id="billto_wants_newsletter_box" name="billto_wants_newsletter"/> &nbsp;<label for="billto_wants_newsletter_box">I&#39;d like to receive your newsletter</label></p><br/>
+				<p class="labels">Mobile Phone</p><p class="validators" id="reqd_billto_mobilephone"><span class="reqd_asterisk">&ast;</span></p><p class="inputs"><input type="text" class="form-input" name="billto_mobilephone"/></p><br/>
+				<p class="labels">Alt Phone</p><p class="validators"> </p><p class="inputs"><input type="text" class="form-input" name="billto_altphone"/></p><br/>
+				<p class="labels">Street Address</p><p class="validators" id="reqd_billto_address1"><span class="reqd_asterisk">&ast;</span></p><p class="inputs"><input type="text" class="form-input" name="billto_address1"/></p><br/>
+				<p class="labels">City, State &amp; Zip</p><p class="validators" id="reqd_billto_address2"><span class="reqd_asterisk">&ast;</span></p><p class="inputs"><input type="text" class="form-input" name="billto_address2"/></p><br/>
+				<br/>
+				<br/>
+				</td>
+			</td>
+		</tr>
+		<tr class="component_student">
+			<td style="background-color: rgb(151, 2, 183);"><big><strong><span style="color:#FFFFFF">&#160;Student</span></strong></big></td>
+		</tr>
+		<tr class="component_student">
+			<td>
+				<br/>
+					<table border="0" cellpadding="1" cellspacing="0" style="width:100%;" class="student_same_as_bill_to">
+					<tbody>
+						<tr>
+							<td rowspan=3 style="text-align:right; width:30%;">Same as <i>Bill To</i>?</td>
+						</tr>
+						<tr>
+							<td rowspan=3 style="width:22px;"></td>
+						</tr>
+						<tr>
+							<td class="program"><input type="checkbox" id="student_same_as_bill_to" name="student_same_as_bill_to" value="yes"><label for="student_same_as_bill_to"> Yes</label></td>
+						</tr>
+					</tbody>
+				</table>
+				<br/>
+				<div id="student1" 
+					<br/>
+					<p class="labels">First &amp; Last Name</p><p class="validators"> </p><p class="inputs"><input type="text" class="form-input" name="student1_firstandlast"/></p><br/>
+					<p class="labels">Email</p><p class="validators"> </p><p class="inputs"><input type="text" class="form-input" name="student1_email"/></p><br/>
+					<p class="labels">Mobile Phone</p><p class="validators"> </p><p class="inputs"><input type="text" class="form-input" name="student1_mobilephone"/></p><br/>
+					<p class="labels">Alt Phone</p><p class="validators"> </p><p class="inputs"><input type="text" class="form-input" name="student1_altphone"/></p><br/>
+					<p class="labels">School</p><p class="validators"> </p><p class="inputs"><input type="text" class="form-input" name="student1_school"/></p><br/>
+					<p class="labels">Grade</p><p class="validators"> </p><p class="inputs">
+					<select class="form-input" name="student1_grade">
+						<option value="" selected="selected"></option>
+						<option value="Adult">Adult</option>
+						<option value="Pre-K">Pre-K</option>
+						<option value="1st">1st</option>
+						<option value="2nd">2nd</option>
+						<option value="3rd">3rd</option>
+						<option value="4th">4th</option>
+						<option value="5th">5th</option>
+						<option value="6th">6th</option>
+						<option value="7th">7th</option>
+						<option value="8th">8th</option>
+						<option value="9th">9th</option>
+						<option value="10th">10th</option>
+						<option value="11th">11th</option>
+						<option value="12th">12th</option>
+					</select>
+					</p><br/>
+				</div>
+				<br/>
+				<div id="student2" class="template">
+					<br/>
+					<p class="labels">First &amp; Last Name</p><p class="validators"> </p><p class="inputs"><input type="text" class="form-input" name="student2_firstandlast"/></p><br/>
+					<p class="labels">Email</p><p class="validators"> </p><p class="inputs"><input type="text" class="form-input" name="student2_email"/></p><br/>
+					<p class="labels">Mobile Phone</p><p class="validators"> </p><p class="inputs"><input type="text" class="form-input" name="student2_mobilephone"/></p><br/>
+					<p class="labels">Alt Phone</p><p class="validators"> </p><p class="inputs"><input type="text" class="form-input" name="student2_altphone"/></p><br/>
+					<p class="labels">School</p><p class="validators"> </p><p class="inputs"><input type="text" class="form-input" name="student2_school"/></p><br/>
+					<p class="labels">Grade</p><p class="validators"> </p><p class="inputs">
+					<select class="form-input" name="student2_grade">
+						<option value="-" selected="selected"></option>
+						<option value="Adult">Adult</option>
+						<option value="Pre-K">Pre-K</option>
+						<option value="1st">1st</option>
+						<option value="2nd">2nd</option>
+						<option value="3rd">3rd</option>
+						<option value="4th">4th</option>
+						<option value="5th">5th</option>
+						<option value="6th">6th</option>
+						<option value="7th">7th</option>
+						<option value="8th">8th</option>
+						<option value="9th">9th</option>
+						<option value="10th">10th</option>
+						<option value="11th">11th</option>
+						<option value="12th">12th</option>
+					</select>
+					</p><br/>
+					<br/>
+				</div>
+				<br/>
+				<div id="student3" class="template" style="display:none;">
+					<br/>
+					<p class="labels">First &amp; Last Name</p><p class="validators"> </p><p class="inputs"><input type="text" class="form-input" name="student3_firstandlast"/></p><br/>
+					<p class="labels">Email</p><p class="validators"> </p><p class="inputs"><input type="text" class="form-input" name="student3_email"/></p><br/>
+					<p class="labels">Mobile Phone</p><p class="validators"> </p><p class="inputs"><input type="text" class="form-input" name="student3_mobilephone"/></p><br/>
+					<p class="labels">Alt Phone</p><p class="validators"> </p><p class="inputs"><input type="text" class="form-input" name="student3_altphone"/></p><br/>
+					<p class="labels">School</p><p class="validators"> </p><p class="inputs"><input type="text" class="form-input" name="student3_school"/></p><br/>
+					<p class="labels">Grade</p><p class="validators"> </p><p class="inputs">
+					<select class="form-input" name="student3_grade">
+						<option value="-" selected="selected"></option>
+						<option value="Adult">Adult</option>
+						<option value="Pre-K">Pre-K</option>
+						<option value="1st">1st</option>
+						<option value="2nd">2nd</option>
+						<option value="3rd">3rd</option>
+						<option value="4th">4th</option>
+						<option value="5th">5th</option>
+						<option value="6th">6th</option>
+						<option value="7th">7th</option>
+						<option value="8th">8th</option>
+						<option value="9th">9th</option>
+						<option value="10th">10th</option>
+						<option value="11th">11th</option>
+						<option value="12th">12th</option>
+					</select>
+					</p><br/>
+					<br/>
+				</div>
+				<p class="labels">
+				<a href="" style="color: rgb(151, 2, 183); text-decoration: none;" id="add_student" onclick="return false;"><strong>&#x2795;&nbsp;&nbsp;add another</strong></a>
+				</p>
+				<br/>
+				<br/>
+			</td>
+		</tr>
+		<tr class="component_programs">
+			<td style="background-color: rgb(88, 163, 38);"><big><strong><span style="color:#FFFFFF">&#160;Programs</span></strong></big></td>
+		</tr>
+		<tr class="component_programs">
+			<td>
+				<br/>
+				<table border="0" cellpadding="1" cellspacing="0" style="width:100%;">
+					<tbody>
+						<tr>
+							<td rowspan=3 style="text-align:right; width:30%;">Environment</td>
+						</tr>
+						<tr>
+							<td rowspan=3 style="width:22px; border-right:1px solid #0f0403;"></td>
+						</tr>
+						<tr>
+							<td class="program">
+								<input type="checkbox" id="env_private_box" name="environment" value="private">
+								<label for="env_private_box">
+									 <strong>Private</strong>
+								</label>
+							</td>
+							<td class="program">
+								<input type="checkbox" id="env_group_box" name="environment" value="group">
+								<label for="env_group_box">
+									 Group
+								 </label>
+							</td>
+							<td class="program">
+								<input type="checkbox" id="env_jam_box" name="environment" value="jam">
+								<label for="env_jam_box">
+									 Jam
+								</label>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<br/>
+				<table border="0" cellpadding="1" cellspacing="0" style="width:100%;">
+					<tbody>
+						<tr>
+							<td rowspan=6 style="text-align:right; width:30%;">Instruments</td>
+						</tr>
+						<tr>
+							<td rowspan=6 style="width:22px; border-right:1px solid #0f0403;"></td>
+						</tr>
+						<tr>
+							<td class="program">
+								<input type="checkbox" id="program_guitar_box" name="instrument" value="guitar">
+								<label for="program_guitar_box">
+									 Guitar
+								</label>
+							</td>
+							<td class="program">
+								<input type="checkbox" id="program_voice_box" name="instrument" value="voice">
+								<label for="program_voice_box">
+									 Voice
+								</label>
+							</td>
+							<td class="program">
+								<input type="checkbox" id="program_tbanjo_box" name="instrument" value="tenor banjo">
+								<label for="program_tbanjo_box">
+									 Tenor Banjo
+								</label>
+							</td>
+						</tr>
+						<tr>
+							<td class="program">
+								<input type="checkbox" id="program_bass_box" name="instrument" value="bass">
+								<label for="program_bass_box">
+									 Bass
+								</label>
+							</td>
+							<td class="program">
+								<input type="checkbox" id="program_asax_box" name="instrument" value="alto sax" >
+								<label for="program_asax_box">
+									 Alto Sax
+								</label>
+							</td>
+							<td class="program">
+								<input type="checkbox" id="program_mandolin_box" name="instrument" value="mandolin">
+								<label for="program_mandolin_box">
+									 Mandolin
+								</label>
+							</td>
+						</tr>
+						<tr>
+							<td class="program">
+								<input type="checkbox" id="program_piano_box" name="instrument" value="piano">
+								<label for="program_piano_box">
+									 Piano
+								</label>
+							</td>
+							<td class="program">
+								<input type="checkbox" id="program_trumpet_box" name="instrument" value="trumpet">
+								<label for="program_trumpet_box">
+									 Trumpet
+								</label>
+							</td>
+							<td class="program">
+								<input type="checkbox" id="program_ukulele_box" name="instrument" value="ukulele">
+								<label for="program_ukulele_box">
+									 Ukulele
+								</label>
+							</td>
+						</tr>
+						<tr>
+							<td class="program">
+								<input type="checkbox" id="program_drums_box" name="instrument" value="drums">
+								<label for="program_drums_box">
+									 Drums
+								</label>
+							</td>
+							<td class="program">
+								<input type="checkbox" id="program_clarinet_box" name="instrument" value="clarinet" >
+								<label for="program_clarinet_box">
+									 Clarinet
+								</label>
+							</td>
+							<td class="program">&nbsp;</td>
+						</tr>
+					</tbody>
+				</table>
+				<br/>
+				<table border="0" cellpadding="1" cellspacing="0" style="width:100%;">
+					<tbody>
+						<tr>
+							<td rowspan=3 style="text-align:right; width:30%;">Skill Level</td>
+						</tr>
+						<tr>
+							<td rowspan=3 style="width:22px; border-right:1px solid #0f0403;"></td>
+						</tr>
+						<tr>
+							<td class="program">
+								<input type="checkbox" id="program_beginner_box" name="expertise" value="beginner">
+									<label for="program_beginner_box">
+										 Beginner
+									</label>
+							</td>
+							<td class="program">
+								<input type="checkbox" id="program_intermediate_box" name="expertise" value="intermediate">
+									<label for="program_intermediate_box">
+										 Intermediate
+									</label>
+							</td>
+							<td class="program">
+								<input type="checkbox" id="program_advanced_box" name="expertise" value="advanced">
+									<label for="program_advanced_box">
+										 Advanced
+									</label>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<br/>
+				<table border="0" cellpadding="1" cellspacing="0" style="width:100%;">
+					<tbody>
+						<tr>
+							<td rowspan=5 style="text-align:right; width:30%;">Teachers</td>
+						</tr>
+						<tr>
+							<td rowspan=5 style="width:22px; border-right:1px solid #0f0403;"></td>
+						</tr>
+						<tr>
+							<td class="program">
+								<input type="checkbox" id="program_any_box" name="teacher" value="any">
+								<label for="program_any_box">
+									 <strong>Any</strong>
+								</label>
+							</td>
+							<td class="program">
+								<input type="checkbox" id="program_allany_box" name="teacher" value="allan y">
+								<label for="program_allany_box">
+									 Allan Y.
+								</label>
+							</td>
+							<td class="program">
+								<input type="checkbox" id="program_brianw_box" name="teacher" value="brian w">
+								<label for="program_brianw_box">
+									 Brian W.
+								</label>
+							</td>
+						</tr>
+						<tr>
+							<td class="program">
+								<input type="checkbox" id="program_chrisc_box" name="teacher" value="chris c" >
+								<label for="program_chrisc_box">
+									 Chris C.
+								</label>
+							</td>
+							<td class="program">
+								<input type="checkbox" id="program_eltonj_box" name="teacher" value="elton j">
+								<label for="program_eltonj_box">
+									 Elton J.
+								</label>
+							</td>
+							<td class="program">
+								<input type="checkbox" id="program_geoffe_box" name="teacher" value="geoff e">
+								<label for="program_geoffe_box">
+								 	 Geoff E.
+								</label>
+							</td>
+						</tr>
+						<tr>
+							<td class="program">
+								<input type="checkbox" id="program_krisf_box" name="teacher" value="kris f">
+								<label for="program_krisf_box">
+									 Kris F.
+								</label>
+							</td>
+							<td class="program">
+								<input type="checkbox" id="program_danielk_box" name="teacher" value="daniel k">
+								<label for="program_danielk_box">
+									Daniel K.
+								</label>
+							</td>
+							<td class="program">
+								<input type="checkbox" id="program_andrewb_box" name="teacher" value="andrew b">
+								<label for="program_andrewb_box">
+									Andrew B.
+								</label>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<br/>
+			</td>
+		</tr>
+		<tr class="component_schedule">
+			<td style="background-color: rgb(4, 189, 229);">&#160;<big><strong><span style="color:#FFFFFF">&#160;Schedule</span></strong></big></td>
+		</tr>
+		<tr class="component_schedule">
+			<td>
+				<br/>
+				<table border="0" cellpadding="1" cellspacing="0" style="width:100%;">
+					<tbody>
+						<tr>
+							<td rowspan=3 style="text-align:right; width:30%;">Recurrence</td>
+						</tr>
+						<tr>
+							<td rowspan=3 style="width:22px; border-right:1px solid #0f0403;"></td>
+						</tr>
+						<tr>
+							<td class="program">
+								<input type="radio" id="schedule_weekly_box" name="recurrence" value="weekly">
+								<label for="schedule_weekly_box">
+									 <strong>Weekly</strong><br/>
+								</label>
+								<input type="radio" id="schedule_intermit_box" name="recurrence" value="intermittently">
+								<label for="schedule_intermit_box">
+									 Intermittently<br/>
+								</label>
+								<input type="radio" id="schedule_justone_box" name="recurrence" value="just one session">
+								<label for="schedule_justone_box">
+									 Just One Session<br/>
+								</label>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<br/>
+				<table border="0" cellpadding="1" cellspacing="0" style="width:100%;">
+					<tbody>
+						<tr>
+							<td rowspan=5 style="text-align:right; width:30%;">Day of Week</td>
+						</tr>
+						<tr>
+							<td rowspan=4 style="width:22px; border-right:1px solid #0f0403;"></td>
+						</tr>
+						<tr>
+							<td class="program">
+								<input type="checkbox" id="schedule_mon_box" name="day_of_week" value="mondays">
+								<label for="schedule_mon_box">
+									 Mondays
+								</label>
+							</td>
+							<td class="program">
+
+								<input type="checkbox" id="schedule_thur_box" name="day_of_week" value="thursdays">
+								<label for="schedule_thur_box">
+									 Thursdays
+								</label>
+							</td>
+						</tr>
+						<tr>
+							<td class="program">
+								<input type="checkbox" id="schedule_tues_box" name="day_of_week" value="tuesdays">
+								<label for="schedule_tues_box">
+									 Tuesdays
+								</label>
+							</td>
+							<td class="program">
+								<input type="checkbox" id="schedule_fri_box" name="day_of_week" value="fridays">
+								<label for="schedule_fri_box">
+									 Fridays
+								</label>
+							</td>
+						</tr>
+						<tr>
+							<td class="program">
+								<input type="checkbox" id="schedule_wed_box" name="day_of_week" value="wednesdays">
+								<label for="schedule_wed_box">
+									 Wednesdays
+								</label>
+							</td>
+							<td class="program">
+								<input type="checkbox" id="schedule_sat_box" name="day_of_week" value="saturdays">
+								<label for="schedule_sat_box">
+									 Saturdays
+								</label>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<br/>
+				<table border="0" cellpadding="1" cellspacing="0" style="width:100%;">
+					<tbody>
+						<tr>
+							<td rowspan=7 style="text-align:right; width:30%;">Time Range</td>
+						</tr>
+						<tr>
+							<td rowspan=7 style="width:22px; border-right:1px solid #0f0403;"></td>
+						</tr>
+						<tr>
+							<td class="program">
+								<input type="checkbox" id="program_time1_box"  name="time_range" value="10 am - 12 pm">
+								<label for="program_time1_box">
+									 10 am - 12 pm - Sat Only
+								</label>
+							</td>
+						</tr>
+						<tr>
+							<td class="program">
+								<input type="checkbox" id="program_time2_box"  name="time_range" value="12:30 pm - 1:30 pm">
+								<label for="program_time2_box">
+									 12:30 pm - 1:30 pm - Sat Only
+								</label>
+							</td>
+						</tr>
+						<tr>
+							<td class="program">
+								<input type="checkbox" id="program_time3_box"  name="time_range" value="2 pm - 3:30 pm">
+								<label for="program_time3_box">
+									 2 pm - 3:30 pm - M T W Th F S
+								</label>
+							</td>
+						</tr>
+						<tr>
+							<td class="program">
+								<input type="checkbox" id="program_time4_box"  name="time_range" value="4 pm - 6:30 pm">
+								<label for="program_time4_box">
+									 4 pm - 6:30 pm - M T W Th F
+								</label>
+							</td>
+						</tr>
+						<tr>
+							<td class="program">
+								<input type="checkbox" id="program_time5_box"  name="time_range" value="7 pm - 8:30 pm">
+								<label for="program_time5_box">
+									 7 pm - 8:30 pm - M T W Th F
+								</label>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</td>
+		</tr>
+		<tr class="component_note">
+			<td>
+				<br/>
+				<div class="comment">
+					<p><b>&nbsp;<img src="/static/image/note.png"/>&nbsp;Add a note</b></p>
+					<textarea id="comment1" name="comment1"></textarea>
+				</div>
+				<br/>
+			</td>
+		</tr>
+		<tr class="component_chargeaccount">
+			<td>
+				<table border="0" cellpadding="1" cellspacing="0" style="width:100%;">
+					<tbody>
+						<tr>
+							<td colspan=3>
+								<hr/>
+								<br/>
+								<p style="text-align: justify;">
+									Rocketeria offers its students the ability to charge items to their store account. All charges-to-account are added to the following month&#39;s tuition.
+								</p>
+								<br/>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan=3 style="text-align:right; width:30%;">
+								<input type="checkbox" id="no_chargeaccount" name="no_chargeaccount" />
+							</td>
+						</tr>
+						<tr>
+							<td rowspan=2 style="width:22px; border-right:1px solid #0f0403;">
+							</td>
+						</tr>
+						<tr>
+							<td style="padding-left: 20px;">
+								<label for="no_chargeaccount">Check here to request that Rocketeria never allow charges-to-account</label>
+							</td>
+						</tr>
+						<tr>
+							<td colspan=3>
+								<br/>
+								<p style="text-align: justify;">
+									<b>When you cancel lessons with an outstanding balance, it will be charged automatically to the credit card on file.</b>
+								</p>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<br/>
+			</td>
+		</tr>
+		<tr class="component_release">
+			<td>
+				<table border="0" cellpadding="1" cellspacing="0" style="width:100%;">
+					<tbody>
+						<tr>
+							<td colspan=3>
+								<hr/>
+								<br/>
+								<p style="text-align: justify;">
+									Rocketeria occasionally captures photos and videos of music lessons, jam sessions, performances and other goings-on, and uses these photos and videos in promotional materials, advertisements, and social media posts.
+								</p>
+								<br/>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan=3 style="text-align:right; width:30%;">
+								<input type="checkbox" id="no_media_release" name="no_media_release" />
+							</td>
+						</tr>
+						<tr>
+							<td rowspan=3 style="width:22px; border-right:1px solid #0f0403;">
+							</td>
+						</tr>
+						<tr>
+							<td style="padding-left: 20px;">
+								<label for="no_media_release">Check here to request that Rocketeria never use your likeness without your explicit consent</label>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<br/>
+			</td>
+		</tr>
+		<tr class="component_policy">
+			<br/>
+			<td>
+				<table border="0" cellpadding="1" cellspacing="0" style="width:100%;">
+					<tbody>
+						<tr>
+							<td>
+								<hr/>
+								<br/>
+								<div id="policy_content" class="hideonfail">
+									<p id="policy_loading">
+										Please wait while we fetch the latest Music Lesson Policies
+										<img src="/static/image/wait.gif"/>
+										<br/><br/>
+										If this text never disappears, then it is likely that Javascript is being blocked by your browser or network. In this case, please <a href="/lessons/policies" target="_blank">review our Music Lessons Policies here</a>. 
+									</p>
+								</div> <!-- /policy_content -->
+								<br/>
+								<hr/>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<br/> 
+				<table border="0" cellpadding="1" cellspacing="0" style="width:100%;">
+					<tbody>
+						<tr>
+							<td colspan=2>
+								<p>
+									&quot;I have read and agree to abide by Rocketeria&#39;s Music Lessons Policies&quot;
+									<br/>
+									<br/>
+								</p>
+							</td>
+						</tr>
+						<tr>
+							<td style="min-width: 150px;">
+								Digital Signature<br/>(Full Name)*
+							</td>
+							<td style="width:100%">
+								<input type="text" id="digital_signature_name" name="digital_signature_name" class="digital_signature form-input"/>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				</div>
+				<br/>
+			</td>
+		</tr>
+		<tr class="component_submit">
+			<td>
+				<input type="text" name="no_machines" value="" style="display:none;">
+				<label for="no_machines" style="display:none;">This input should be left blank. It is for mild spam control only.</label>
+				<p style="text-align:center;">
+				<input class="btn animate enrollsubmit" style="background-color:#58a326" type="submit" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SUBMIT &gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" onclick="validateEnroll(); return false;"><!-- noscript-compat -->
+				<br/>
+				</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+</p>
+</form>
+</div> <!-- /hide_on_submit -->
+<div id="submit_ok" style="display:none;">
+<div id="submit_ok_thanks">
+<h2>Thanks!</h2>
+<p>
+We&#39;ll be in touch.
+</p>
+</div>
+
+<p id="social_pointer">
+ >>> STAY IN TOUCH WITH US >>> 
+</p>
+
+</div>
+<div id="submit_fail" style="display:none;">
+<h2>Houston, we have a problem</h2>
+<p>
+Something went wrong and we likely did not receive your submission. Refresh this page and try again, or <a href="/contact">contact us</a> via phone or email while we get this sorted out.
+</p>
+</div>
+</div> <!-- /content_sub -->
+
+<script src="/static/script/enroll.js"></script><div id="sidebar">
+<div class="newsletter-side">
+<div class="newsletter-signup">
+<h3>Sign up for our Newsletter</h3>
+<form id="billboard-newsletter-signup" method="GET" name="newsletter" action="javascript:void(0);">
+<input name="email" class="newsletter-email" type="email" required="required" value="ENTER EMAIL"><br />
+<input class="btn-submit-yellow newsletter-submit" type="submit" value="SUBMIT &gt;"></a><br />
+</form>
+<p class="newsletter-tag">No spam, just rock</p>
+</div>
+<div class="newsletter-social">
+<h3>Social</h3>
+<a href="https://www.facebook.com/rocketeria" target="_blank"><input type="button" class="btn-facebook-red" /></a>
+<a href="https://twitter.com/therocketeria" target="_blank"><input type="button" class="btn-twitter-red" /></a>
+<a href="https://instagram.com/therocketeria" target="_blank"><input type="button" class="btn-instagram-red" /></a>
+<a href="https://www.youtube.com/user/TheRocketeria" target="_blank"><input type="button" class="btn-youtube-red" /></a>
+</div>
+</div>
+<div class="testimonials-side">
+<a href="/testimonials"><h3>Testimonials</h3></a>
+<p class="home-testimonials-content">"Chris did a great job with the lessons (you really do have an awesome group of instructors) and I found them to be extremely helpful."</p>
+</div>
+</div><!--End of #sidebar -->
+<div class="push"></div></div><!--End of #main -->
+</div><!--End of #page-wrapper --> 
+<div id="footer">
+<div class="footer-nav">
+<h3>Navigation</h3>
+<ul>
+<li><a href="/about">About</a></li>
+<li><a href="/">Home</a></li>
+<li><a href="/store">Store</a></li>
+<li><a href="/rentals">Rentals</a></li>
+<li><a href="/repairs">Repairs</a></li>
+<li><a href="/events">Events</a></li>
+<li><a href="/contact">Contact</a></li>
+</ul>
+</div>
+<div class="footer-quick-links">
+<h3>Quick Links</h3>
+<ul>
+<li><a href="/lessons/schedule/changerequest">Change a Lesson</a></li>
+<li><a href="/lessons/lessons-faq">Lessons FAQ</a></li>
+<li><a href="/lessons/policies">Lessons Policies</a></li>
+<li><a href="/lessons/policies#closings">Holiday Closings</a></li>
+<li>&nbsp;</li>
+<li><a href="/contact#hours">Hours</a></li>
+<li><a href="/contact#directions">Directions</a></li>
+</ul>
+</div>
+<div class="footer-newsletter">
+<h3>Sign Up For Our Newsletter</h3>
+<form id="footer-newsletter-signup" method="GET" name="newsletter" action="javascript:void(0);">
+<input name="email" class="footer-newsletter-email" type="email" value="ENTER EMAIL">
+<input class="btn-submit-red footer-newsletter-submit" type="submit" value="SUBMIT &gt;">
+</form>
+</div>
+<div class="footer-social">
+<h3>Social</h3>
+<a href="https://www.facebook.com/rocketeria" target="_blank"><input type="button" class="btn-facebook-black footer-social-push" /></a>
+<a href="https://twitter.com/therocketeria" target="_blank"><input type="button" class="btn-twitter-black" /></a>
+<a href="https://instagram.com/therocketeria" target="_blank"><input type="button" class="btn-instagram-black" /></a>
+<a href="https://www.youtube.com/user/TheRocketeria" target="_blank"><input type="button" class="btn-youtube-black" /></a>
+</div>
+</div><!--End #footer -->
+ 
+</body>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-54353804-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<script src="/static/script/newsletterSignup.js" type="text/javascript"></script>
+<script src="/static/script/preload.js" type="text/javascript"></script>
+</html>
